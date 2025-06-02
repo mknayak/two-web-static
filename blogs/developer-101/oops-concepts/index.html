@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Developer 101 - TechWayFit Isn&#x2019;t Just About Code. It&#x2019;s About Writing It Right.</title>
+        <title>Developer 101 - Mastering OOP Concepts: The Blueprint of Modern Programming</title>
         <link href="/assets/css/styles.css" rel="stylesheet" />
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
@@ -44,14 +44,14 @@
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-10 col-xl-8">
                 <div class="single-post">
-                    <h1>Developer 101 - TechWayFit Isn&#x2019;t Just About Code. It&#x2019;s About Writing It Right.</h1>
-                    <p class="lead">TechWayFit isn&#x2019;t about teaching you syntax &#x2014; it&#x2019;s about teaching you how to write code the right way. From naming conventions to structure, this post explains why best practices matter regardless of the language you use. Plus, find handpicked links to trusted programming tutorials across Python, JavaScript, C#, and more. Learn the how elsewhere &#x2014; master the why here.</p>
+                    <h1>Developer 101 - Mastering OOP Concepts: The Blueprint of Modern Programming</h1>
+                    <p class="lead">Object-Oriented Programming (OOP) is the foundation of modern software design. This post breaks down the four core pillars&#x2014;encapsulation, abstraction, inheritance, and polymorphism&#x2014;with simple C# examples. It also compares OOP with functional programming to help you choose the right approach. A must-read for developers aiming to write clean, reusable code.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
-                                <div class="single-post-meta-details-date">2/6/2025 10:00:00&#x202F;AM &middot; 4 min read</div>
+                                <div class="single-post-meta-details-date">2/6/2025 10:00:00&#x202F;AM &middot; 3 min read</div>
                             </div>
                         </div>
                         <div>
@@ -60,16 +60,50 @@
                             </a>
                         </div>
                     </div>
-                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/not-about-code.webp" /> 
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/oops-concepts.webp" /> 
                     <div class="single-post-text my-5">
-                            <p><section><h2>Developer 101 – TechWayFit Isn’t Just About Code. It’s About Writing It Right.</h2><p>At <strong>TechWayFit</strong>, our mission isn’t to show you how <code>for</code> loops or <code>if</code> conditions work — the internet already does a great job at that.</p><blockquote>Instead, we ask: <strong>“As a developer, how should you write code that others love to maintain?”</strong></blockquote><p>Clean, readable, and reliable code is what sets apart professional developers from just code writers.</p><h3>🎯 The TechWayFit Philosophy</h3><ul><li>✅ Code readability and clarity</li><li>✅ Naming conventions that make sense</li><li>✅ Structure that supports maintainability</li><li>✅ Writing reusable and testable components</li><li>✅ Avoiding over-engineering and technical debt</li></ul><p><em>Coding isn’t just about functionality — it’s about clarity, quality, and collaboration.</em></p><h3>⚖️ OOP vs FP: Different Styles, Same Best Practices</h3><h4>👷‍♂️ Object-Oriented Programming (OOP)</h4><pre class='line-numbers'><code class='language-csharp'>public class Invoice {
-    public decimal Amount { get; set; }
+                            <p><h2>Developer 101 – Mastering OOP Concepts: The Blueprint of Modern Programming</h2><h3>What is OOP and Why Should You Care?</h3><p>OOP (Object-Oriented Programming) is more than just a way to write code — it's a mindset. Whether you're working with C#, Java, Python, or JavaScript, understanding OOP helps you build scalable, maintainable, and reusable applications.</p><p>Imagine building with LEGO bricks. Each brick is like an object — self-contained, but able to connect with others. OOP helps you structure software just like that.</p><h3>🔍 4 Pillars of OOP Explained Simply</h3><h4>1. Encapsulation – "Keep it together"</h4><p>Bundle data (fields) and behavior (methods) into a single unit — the class. Expose only what’s necessary.</p><pre class='line-numbers'><code class='language-csharp'>public class BankAccount {
+    private double balance;
 
-    public void ApplyDiscount(decimal percent) {
-        Amount -= Amount * percent / 100;
+    public void Deposit(double amount) {
+        if (amount > 0) balance += amount;
     }
-}</code></pre><p>✅ Best Practice: Use meaningful method names, make the class focused on one responsibility.</p><h4>🧠 Functional Programming (FP)</h4><pre class='line-numbers'><code class='language-csharp'>const applyDiscount = (amount, percent) =>
-    amount - (amount * percent / 100);</code></pre><p>✅ Best Practice: Use expressive function names and avoid side effects.</p><h3>🔄 Best Practices Apply Across Paradigms</h3><table class='table'><thead><tr><th>Principle</th><th>OOP Example</th><th>FP Example</th></tr></thead><tbody><tr><td>🧾 Meaningful Naming</td><td>ApplyDiscount()</td><td>applyDiscount(amount, percent)</td></tr><tr><td>🧹 Separation of Concerns</td><td>Class handles invoice only</td><td>Function focuses on one transformation</td></tr><tr><td>📦 Reusability</td><td>Use inheritance/interfaces</td><td>Use function composition</td></tr><tr><td>🧪 Testability</td><td>Test class methods in isolation</td><td>Test pure functions with known outputs</td></tr><tr><td>📚 Documentation</td><td>XML/summary comments</td><td>JS Doc / Type annotations</td></tr></tbody></table><h3>🌍 Language Learning References</h3><table class='table'><thead><tr><th>Language</th><th>Official Docs</th><th>Community Guides / Tutorials</th></tr></thead><tbody><tr><td>Python</td><td><a href='https://docs.python.org/3/'>python.org</a></td><td><a href='https://realpython.com/'>Real Python</a>, <a href='https://www.w3schools.com/python/'>W3Schools</a></td></tr><tr><td>JavaScript</td><td><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'>MDN</a></td><td><a href='https://javascript.info/'>JavaScript.info</a>, <a href='https://www.w3schools.com/js/'>W3Schools</a></td></tr><tr><td>Java</td><td><a href='https://docs.oracle.com/en/java/'>Oracle Docs</a></td><td><a href='https://www.baeldung.com/'>Baeldung</a>, <a href='https://www.javatpoint.com/java-tutorial'>JavaTpoint</a></td></tr><tr><td>C#</td><td><a href='https://learn.microsoft.com/en-us/dotnet/csharp/'>Microsoft Docs</a></td><td><a href='https://www.tutorialsteacher.com/csharp'>TutorialsTeacher</a>, <a href='https://csharp-station.com/'>C# Station</a></td></tr><tr><td>C++</td><td><a href='http://www.cplusplus.com/doc/tutorial/'>cplusplus.com</a></td><td><a href='https://learncpp.com/'>LearnCpp</a>, <a href='https://www.geeksforgeeks.org/c-plus-plus/'>GeeksforGeeks</a></td></tr><tr><td>Go</td><td><a href='https://go.dev/doc/'>Go.dev</a></td><td><a href='https://gobyexample.com/'>Go by Example</a>, <a href='https://go.dev/doc/effective_go'>Effective Go</a></td></tr><tr><td>TypeScript</td><td><a href='https://www.typescriptlang.org/docs/'>TS Handbook</a></td><td><a href='https://basarat.gitbook.io/typescript/'>Basarat Guide</a>, <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError'>MDN TS Intro</a></td></tr></tbody></table><h3>🧭 Where TechWayFit Fits In</h3><p>Once you’ve learned how a language works, come back here to learn how to write clean code, structure logic, and scale solutions for the real world.</p><blockquote>💡 We’re here to make sure you don’t just <strong>write code</strong> — you <strong>craft software</strong>.</blockquote><h3>✅ Summary</h3><table  class='table'><thead><tr><th>What You Learn Here</th><th>What You Learn Elsewhere</th></tr></thead><tbody><tr><td>How to write maintainable code</td><td>How to write syntax</td></tr><tr><td>Why naming conventions matter</td><td>How a for loop works</td></tr><tr><td>How to structure your logic</td><td>What each keyword means</td></tr><tr><td>How to collaborate and scale</td><td>How to print output</td></tr></tbody></table></section></@sec.SectionHtmlTag>
+
+    public double GetBalance() {
+        return balance;
+    }
+}</code></pre><h4>2. Abstraction – "Hide the complexity"</h4><p>Show only essential features. Hide implementation details.</p><pre class='line-numbers'><code class='language-csharp'>public abstract class Payment {
+    public abstract void ProcessPayment();
+}
+
+public class CreditCardPayment : Payment {
+    public override void ProcessPayment() {
+        Console.WriteLine("Processing credit card...");
+    }
+}</code></pre><h4>3. Inheritance – "Reuse and extend"</h4><p>Create new classes that reuse behavior from existing ones.</p><pre class='line-numbers'><code class='language-csharp'>public class Animal {
+    public void Eat() => Console.WriteLine("Eating...");
+}
+
+public class Dog : Animal {
+    public void Bark() => Console.WriteLine("Barking...");
+}</code></pre><h4>4. Polymorphism – "Same action, different forms"</h4><p>Use the same method name but allow different implementations.</p><pre class='line-numbers'><code class='language-csharp'>public class Shape {
+    public virtual void Draw() => Console.WriteLine("Drawing shape");
+}
+
+public class Circle : Shape {
+    public override void Draw() => Console.WriteLine("Drawing circle");
+}</code></pre><h3>🧪 More Real-World OOP Examples</h3><pre class='line-numbers'><code class='language-csharp'>public class Vehicle {
+    public string Brand { get; set; }
+    public virtual void Start() => Console.WriteLine("Starting vehicle");
+}
+
+public class Car : Vehicle {
+    public override void Start() => Console.WriteLine("Starting car");
+}
+
+public class Motorcycle : Vehicle {
+    public override void Start() => Console.WriteLine("Starting motorcycle");
+}</code></pre><h3>🛠️ Why It Matters in the Real World</h3><ul><li><strong>Maintainability:</strong> Easier to fix bugs and add features.</li><li><strong>Scalability:</strong> Components grow independently.</li><li><strong>Reusability:</strong> Code once, use everywhere.</li><li><strong>Team Collaboration:</strong> Clear structure improves understanding.</li></ul><h3>⚖️ OOP vs Functional Programming</h3><table class="table" border='1'><tr><th>Aspect</th><th>OOP</th><th>Functional Programming</th></tr><tr><td>Core Idea</td><td>Model behavior as objects</td><td>Model behavior as pure functions</td></tr><tr><td>Structure</td><td>Classes and objects</td><td>Functions and data immutability</td></tr><tr><td>State</td><td>Mutable state is common</td><td>Prefer stateless functions</td></tr><tr><td>Example Use Case</td><td>UI applications, simulations</td><td>Data transformation, analytics, concurrency</td></tr><tr><td>Reusability</td><td>Via inheritance and interfaces</td><td>Via higher-order functions and composition</td></tr><tr><td>Popular Languages</td><td>Java, C#, Python, C++</td><td>Haskell, Elixir, F#, JavaScript (can do both)</td></tr><tr><td>Debugging</td><td>Harder with shared state</td><td>Easier due to lack of side effects</td></tr></table><h3>✅ Summary</h3><table class="table" border='1'><tr><th>Pillar</th><th>Purpose</th><th>Real-world Analogy</th></tr><tr><td>Encapsulation</td><td>Hide internal data</td><td>ATM machine's PIN entry</td></tr><tr><td>Abstraction</td><td>Simplify interface</td><td>Car dashboard controls</td></tr><tr><td>Inheritance</td><td>Reuse logic</td><td>Child inherits from parent</td></tr><tr><td>Polymorphism</td><td>Dynamic behavior</td><td>A "play" button on multiple apps</td></tr></table><h3>📢 What’s Next?</h3><p>Now that you've got the basics of OOP down, try spotting these concepts in your existing codebase. Refactor where needed. Trust us — your future self and teammates will thank you.</p></@sec.SectionHtmlTag>
                     </div>
                 </div>
             </div>

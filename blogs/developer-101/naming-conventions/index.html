@@ -6,8 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Developer 101: Naming Conventions for Variables and Methods</title>
+        <title>Developer 101 - Naming Conventions for Variables and Methods</title>
         <link href="/assets/css/styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
@@ -41,7 +44,7 @@
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-10 col-xl-8">
                 <div class="single-post">
-                    <h1>Developer 101: Naming Conventions for Variables and Methods</h1>
+                    <h1>Developer 101 - Naming Conventions for Variables and Methods</h1>
                     <p class="lead">Discover the importance of clean, consistent naming conventions in your code. Learn the best practices for naming variables and methods in different programming languages. From camelCase to PascalCase, make your code more readable and maintainable. Join us at TechWayFit to level up your developer hygiene.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
@@ -59,7 +62,7 @@
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/banners/naming-convention.webp" /> 
                     <div class="single-post-text my-5">
-                            <p><h1 class="mb-3">Developer 101: Naming Conventions for Variables and Methods</h1><p class="text-muted">Published by TechWayFit</p><p>Discover the importance of clean, consistent naming conventions in your code. Learn the best practices for naming variables and methods in different programming languages. From camelCase to PascalCase, make your code more readable and maintainable.</p><h3>Why Naming Conventions Matter</h3><ul><li>Improves readability and understanding across teams</li><li>Makes debugging and refactoring easier</li><li>Ensures consistency across projects and languages</li></ul><h3>Popular Naming Styles</h3><table class="table table-striped"><thead><tr><th>Convention</th><th>Example</th><th>Used For</th></tr></thead><tbody><tr><td><code>camelCase</code></td><td><code>userName</code></td><td>Variables, methods (JavaScript, Java)</td></tr><tr><td><code>PascalCase</code></td><td><code>UserProfile</code></td><td>Classes, constructors (C#, TypeScript)</td></tr><tr><td><code>snake_case</code></td><td><code>user_name</code></td><td>Variables, functions (Python)</td></tr><tr><td><code>UPPER_CASE</code></td><td><code>MAX_LIMIT</code></td><td>Constants (Java, C)</td></tr></tbody></table><h3>💡 Naming Is for Humans, Not Machines</h3><p>Machines don’t care what your variable is called — they'll execute your code whether it’s <code>x</code>, <code>temp1</code>, or <code>totalCustomerRevenue</code>.</p><p>But your colleague, support engineer, or future self does care. Coding practices like naming conventions aren’t for the computer — they’re for the <strong>people who read, maintain, debug, and build on your code</strong>.</p><h3>⚠️ Common Bad Naming in C#</h3><pre><code>// ❌ Bad Examples
+                            <p><h1 class="mb-3">Developer 101: Naming Conventions for Variables and Methods</h1><p class="text-muted">Published by TechWayFit</p><p>Discover the importance of clean, consistent naming conventions in your code. Learn the best practices for naming variables and methods in different programming languages. From camelCase to PascalCase, make your code more readable and maintainable.</p><h3>Why Naming Conventions Matter</h3><ul><li>Improves readability and understanding across teams</li><li>Makes debugging and refactoring easier</li><li>Ensures consistency across projects and languages</li></ul><h3>Popular Naming Styles</h3><table class="table table-striped"><thead><tr><th>Convention</th><th>Example</th><th>Used For</th></tr></thead><tbody><tr><td><code>camelCase</code></td><td><code>userName</code></td><td>Variables, methods (JavaScript, Java)</td></tr><tr><td><code>PascalCase</code></td><td><code>UserProfile</code></td><td>Classes, constructors (C#, TypeScript)</td></tr><tr><td><code>snake_case</code></td><td><code>user_name</code></td><td>Variables, functions (Python)</td></tr><tr><td><code>UPPER_CASE</code></td><td><code>MAX_LIMIT</code></td><td>Constants (Java, C)</td></tr></tbody></table><h3>💡 Naming Is for Humans, Not Machines</h3><p>Machines don’t care what your variable is called — they'll execute your code whether it’s <code>x</code>, <code>temp1</code>, or <code>totalCustomerRevenue</code>.</p><p>But your colleague, support engineer, or future self does care. Coding practices like naming conventions aren’t for the computer — they’re for the <strong>people who read, maintain, debug, and build on your code</strong>.</p><h3>⚠️ Common Bad Naming in C#</h3><pre class='line-numbers'><code class='language-csharp'><code>// ❌ Bad Examples
 int a = 25;
 string str1 = "hello";
 bool isIt = true;
@@ -71,19 +74,19 @@ int maxRetryCount = 25;
 string userGreeting = "hello";
 bool isEmailVerified = true;
 float gravityConstant = 9.8f;
-var customerList = GetCustomerData();</code></pre><h3>👽 Alien Variables — What NOT to Do</h3><table class="table table-bordered"><thead><tr><th>Variable Name</th><th>Looks Like</th><th>Why It's Alien</th></tr></thead><tbody><tr><td><code>xx1</code>, <code>aa</code>, <code>z0</code></td><td><code>int xx1 = 10;</code></td><td>No context or meaning</td></tr><tr><td><code>flag1</code></td><td><code>bool flag1 = true;</code></td><td>Flag for what?</td></tr><tr><td><code>doit</code></td><td><code>void doit()</code></td><td>Do what exactly?</td></tr><tr><td><code>data1</code></td><td><code>var data1 = Get();</code></td><td>Data of what?</td></tr><tr><td><code>obj</code></td><td><code>object obj = new();</code></td><td>Extremely generic, not helpful</td></tr></tbody></table><h3>Code Readability in Action: Leap Year Example</h3><h5>❌ Bad Naming</h5><pre><code>public class C
+var customerList = GetCustomerData();</code></code></pre><h3>👽 Alien Variables — What NOT to Do</h3><table class="table table-bordered"><thead><tr><th>Variable Name</th><th>Looks Like</th><th>Why It's Alien</th></tr></thead><tbody><tr><td><code>xx1</code>, <code>aa</code>, <code>z0</code></td><td><code>int xx1 = 10;</code></td><td>No context or meaning</td></tr><tr><td><code>flag1</code></td><td><code>bool flag1 = true;</code></td><td>Flag for what?</td></tr><tr><td><code>doit</code></td><td><code>void doit()</code></td><td>Do what exactly?</td></tr><tr><td><code>data1</code></td><td><code>var data1 = Get();</code></td><td>Data of what?</td></tr><tr><td><code>obj</code></td><td><code>object obj = new();</code></td><td>Extremely generic, not helpful</td></tr></tbody></table><h3>Code Readability in Action: Leap Year Example</h3><h5>❌ Bad Naming</h5><pre class='line-numbers'><code class='language-csharp'><code>public class C
 {
     public bool F(int y)
     {
         return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
     }
-}</code></pre><h5>✅ Good Naming</h5><pre><code>public class LeapYearChecker
+}</code></code></pre><h5>✅ Good Naming</h5><pre class='line-numbers'><code class='language-csharp'><code>public class LeapYearChecker
 {
     public bool IsLeapYear(int year)
     {
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
-}</code></pre><h3>Code Readability in Action: Prime Number Example</h3><h5>❌ Bad Naming</h5><pre><code>public class P
+}</code></code></pre><h3>Code Readability in Action: Prime Number Example</h3><h5>❌ Bad Naming</h5><pre class='line-numbers'><code class='language-csharp'><code>public class P
 {
     public bool C(int n)
     {
@@ -93,7 +96,7 @@ var customerList = GetCustomerData();</code></pre><h3>👽 Alien Variables — W
         }
         return true;
     }
-}</code></pre><h5>✅ Good Naming</h5><pre><code>public class PrimeNumberChecker
+}</code></code></pre><h5>✅ Good Naming</h5><pre class='line-numbers'><code class='language-csharp'><code>public class PrimeNumberChecker
 {
     public bool IsPrime(int number)
     {
@@ -103,8 +106,8 @@ var customerList = GetCustomerData();</code></pre><h3>👽 Alien Variables — W
         }
         return true;
     }
-}</code></pre></@sec.SectionHtmlTag>
-                            <p><h3 class="mt-5"> Code Readability in Action: Real Example</h3><h5 class="text-danger mt-4">❌ Bad Naming Example</h5><pre><code class="language-csharp">public class A {
+}</code></code></pre></@sec.SectionHtmlTag>
+                            <p><h3 class="mt-5"> Code Readability in Action: Real Example</h3><h5 class="text-danger mt-4">❌ Bad Naming Example</h5><pre class='line-numbers'><code class='language-csharp'><code class="language-csharp">public class A {
     public void Do() {
         var x = Get();
         foreach (var i in x) {
@@ -121,7 +124,7 @@ var customerList = GetCustomerData();</code></pre><h3>👽 Alien Variables — W
 public class B {
     public int f1;
     public bool f2;
-}</code></pre><div class="alert alert-warning"><strong>Problems:</strong> Names like <code>A</code>, <code>x</code>, <code>i</code>, <code>f1</code> are meaningless. It's unclear what the code does.</div><h5 class="text-success mt-4">✅ Good Naming Example</h5><pre><code class="language-csharp">public class CustomerService {
+}</code></code></pre><div class="alert alert-warning"><strong>Problems:</strong> Names like <code>A</code>, <code>x</code>, <code>i</code>, <code>f1</code> are meaningless. It's unclear what the code does.</div><h5 class="text-success mt-4">✅ Good Naming Example</h5><pre class='line-numbers'><code class='language-csharp'><code class="language-csharp">public class CustomerService {
     public void PrintAdultVerifiedCustomers() {
         var customers = GetAllCustomers();
         foreach (var customer in customers) {
@@ -138,7 +141,7 @@ public class B {
 public class Customer {
     public int Age;
     public bool IsEmailVerified;
-}</code></pre><div class="alert alert-success"><strong>Why it works:</strong> The method, variables, and class names clearly express intent. Anyone reading this can instantly grasp the logic and purpose.</div> <div class="alert alert-info mt-4">💬 Join the discussion on our <a href="https://discord.gg/7Z9xjfAS" target="_blank">TechWayFit Discord</a> to share your naming tips!</div></@sec.SectionHtmlTag>
+}</code></code></pre><div class="alert alert-success"><strong>Why it works:</strong> The method, variables, and class names clearly express intent. Anyone reading this can instantly grasp the logic and purpose.</div> <div class="alert alert-info mt-4">💬 Join the discussion on our <a href="https://discord.gg/7Z9xjfAS" target="_blank">TechWayFit Discord</a> to share your naming tips!</div></@sec.SectionHtmlTag>
                     </div>
                 </div>
             </div>
@@ -152,6 +155,7 @@ public class Customer {
         </svg>
     </div>
 </section>
+
 
 
                     <!-- Page Header-->
@@ -191,5 +195,11 @@ public class Customer {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+
     </body>
 </html>

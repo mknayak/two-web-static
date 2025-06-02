@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Developer 101 - TechWayFit Isn&#x2019;t Just About Code. It&#x2019;s About Writing It Right.</title>
+        <title>Developer 101 - Encapsulation vs Abstraction</title>
         <link href="/assets/css/styles.css" rel="stylesheet" />
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
@@ -44,8 +44,8 @@
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-10 col-xl-8">
                 <div class="single-post">
-                    <h1>Developer 101 - TechWayFit Isn&#x2019;t Just About Code. It&#x2019;s About Writing It Right.</h1>
-                    <p class="lead">TechWayFit isn&#x2019;t about teaching you syntax &#x2014; it&#x2019;s about teaching you how to write code the right way. From naming conventions to structure, this post explains why best practices matter regardless of the language you use. Plus, find handpicked links to trusted programming tutorials across Python, JavaScript, C#, and more. Learn the how elsewhere &#x2014; master the why here.</p>
+                    <h1>Developer 101 - Encapsulation vs Abstraction</h1>
+                    <p class="lead">Explore the key differences between encapsulation and abstraction in object-oriented programming. Learn through real-world analogies, examples, and code how these principles promote clean, secure, and scalable software design.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
@@ -60,16 +60,62 @@
                             </a>
                         </div>
                     </div>
-                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/not-about-code.webp" /> 
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/encapsulation-vs-abstraction.webp" /> 
                     <div class="single-post-text my-5">
-                            <p><section><h2>Developer 101 – TechWayFit Isn’t Just About Code. It’s About Writing It Right.</h2><p>At <strong>TechWayFit</strong>, our mission isn’t to show you how <code>for</code> loops or <code>if</code> conditions work — the internet already does a great job at that.</p><blockquote>Instead, we ask: <strong>“As a developer, how should you write code that others love to maintain?”</strong></blockquote><p>Clean, readable, and reliable code is what sets apart professional developers from just code writers.</p><h3>🎯 The TechWayFit Philosophy</h3><ul><li>✅ Code readability and clarity</li><li>✅ Naming conventions that make sense</li><li>✅ Structure that supports maintainability</li><li>✅ Writing reusable and testable components</li><li>✅ Avoiding over-engineering and technical debt</li></ul><p><em>Coding isn’t just about functionality — it’s about clarity, quality, and collaboration.</em></p><h3>⚖️ OOP vs FP: Different Styles, Same Best Practices</h3><h4>👷‍♂️ Object-Oriented Programming (OOP)</h4><pre class='line-numbers'><code class='language-csharp'>public class Invoice {
-    public decimal Amount { get; set; }
+                            <p><h1 class="mb-3">Developer 101: Encapsulation vs Abstraction</h1><p class="text-muted">Published by TechWayFit</p><p>Encapsulation and abstraction are two essential principles of object-oriented programming. This blog demystifies them using real-life analogies, code examples, and clear distinctions.</p><h3>What is Encapsulation?</h3><p>Encapsulation is the process of hiding the internal state and requiring all interaction to be performed through an object's methods.</p><pre class='line-numbers'><code class='language-csharp'>public class BankAccount {
+    private double balance;
 
-    public void ApplyDiscount(decimal percent) {
-        Amount -= Amount * percent / 100;
+    public void deposit(double amount) {
+        if(amount > 0) balance += amount;
     }
-}</code></pre><p>✅ Best Practice: Use meaningful method names, make the class focused on one responsibility.</p><h4>🧠 Functional Programming (FP)</h4><pre class='line-numbers'><code class='language-csharp'>const applyDiscount = (amount, percent) =>
-    amount - (amount * percent / 100);</code></pre><p>✅ Best Practice: Use expressive function names and avoid side effects.</p><h3>🔄 Best Practices Apply Across Paradigms</h3><table class='table'><thead><tr><th>Principle</th><th>OOP Example</th><th>FP Example</th></tr></thead><tbody><tr><td>🧾 Meaningful Naming</td><td>ApplyDiscount()</td><td>applyDiscount(amount, percent)</td></tr><tr><td>🧹 Separation of Concerns</td><td>Class handles invoice only</td><td>Function focuses on one transformation</td></tr><tr><td>📦 Reusability</td><td>Use inheritance/interfaces</td><td>Use function composition</td></tr><tr><td>🧪 Testability</td><td>Test class methods in isolation</td><td>Test pure functions with known outputs</td></tr><tr><td>📚 Documentation</td><td>XML/summary comments</td><td>JS Doc / Type annotations</td></tr></tbody></table><h3>🌍 Language Learning References</h3><table class='table'><thead><tr><th>Language</th><th>Official Docs</th><th>Community Guides / Tutorials</th></tr></thead><tbody><tr><td>Python</td><td><a href='https://docs.python.org/3/'>python.org</a></td><td><a href='https://realpython.com/'>Real Python</a>, <a href='https://www.w3schools.com/python/'>W3Schools</a></td></tr><tr><td>JavaScript</td><td><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'>MDN</a></td><td><a href='https://javascript.info/'>JavaScript.info</a>, <a href='https://www.w3schools.com/js/'>W3Schools</a></td></tr><tr><td>Java</td><td><a href='https://docs.oracle.com/en/java/'>Oracle Docs</a></td><td><a href='https://www.baeldung.com/'>Baeldung</a>, <a href='https://www.javatpoint.com/java-tutorial'>JavaTpoint</a></td></tr><tr><td>C#</td><td><a href='https://learn.microsoft.com/en-us/dotnet/csharp/'>Microsoft Docs</a></td><td><a href='https://www.tutorialsteacher.com/csharp'>TutorialsTeacher</a>, <a href='https://csharp-station.com/'>C# Station</a></td></tr><tr><td>C++</td><td><a href='http://www.cplusplus.com/doc/tutorial/'>cplusplus.com</a></td><td><a href='https://learncpp.com/'>LearnCpp</a>, <a href='https://www.geeksforgeeks.org/c-plus-plus/'>GeeksforGeeks</a></td></tr><tr><td>Go</td><td><a href='https://go.dev/doc/'>Go.dev</a></td><td><a href='https://gobyexample.com/'>Go by Example</a>, <a href='https://go.dev/doc/effective_go'>Effective Go</a></td></tr><tr><td>TypeScript</td><td><a href='https://www.typescriptlang.org/docs/'>TS Handbook</a></td><td><a href='https://basarat.gitbook.io/typescript/'>Basarat Guide</a>, <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError'>MDN TS Intro</a></td></tr></tbody></table><h3>🧭 Where TechWayFit Fits In</h3><p>Once you’ve learned how a language works, come back here to learn how to write clean code, structure logic, and scale solutions for the real world.</p><blockquote>💡 We’re here to make sure you don’t just <strong>write code</strong> — you <strong>craft software</strong>.</blockquote><h3>✅ Summary</h3><table  class='table'><thead><tr><th>What You Learn Here</th><th>What You Learn Elsewhere</th></tr></thead><tbody><tr><td>How to write maintainable code</td><td>How to write syntax</td></tr><tr><td>Why naming conventions matter</td><td>How a for loop works</td></tr><tr><td>How to structure your logic</td><td>What each keyword means</td></tr><tr><td>How to collaborate and scale</td><td>How to print output</td></tr></tbody></table></section></@sec.SectionHtmlTag>
+
+    public double getBalance() {
+        return balance;
+    }
+}</code></pre><h3>What is Abstraction?</h3><p>Abstraction hides complexity by exposing only the essential features of an object or system.</p><pre class='line-numbers'><code class='language-csharp'>public abstract class Vehicle {
+    abstract void start();
+    abstract void stop();
+}</code></pre><h3>Real-World Analogies</h3><ul><li><strong>Encapsulation:</strong> A medicine capsule hides bitter contents inside.</li><li><strong>Abstraction:</strong> A car steering wheel lets you control the car without understanding engine mechanics.</li></ul><h3>Code Comparison Example</h3><pre class='line-numbers'><code class='language-csharp'>public abstract class ATM {
+    public abstract void withdraw(double amount);
+    public abstract double checkBalance();
+}
+
+public class MyATM : ATM {
+    private double balance = 1000;
+
+    public override void withdraw(double amount) {
+        if(amount <= balance) balance -= amount;
+    }
+
+    public override double checkBalance() {
+        return balance;
+    }
+}</code></pre><h3>Encapsulation Examples</h3><ul><li><strong>Smartphone:</strong> Internal hardware/software is hidden via user interface.</li><li><strong>Online Shopping Cart:</strong> Private item list manipulated via public methods.</li></ul><pre class='line-numbers'><code class='language-python'>class ShoppingCart:
+    def __init__(self):
+        self.__items = []
+
+    def add_item(self, item):
+        self.__items.append(item)
+
+    def get_total(self):
+        return sum(item['price'] for item in self.__items)</code></pre><h3>Abstraction Examples</h3><ul><li><strong>Coffee Machine:</strong> Press a button for coffee without knowing the internal process.</li><li><strong>Web API:</strong> Users access data via endpoints, not knowing backend logic.</li></ul><pre class='line-numbers'><code class='language-java'>interface Vehicle {
+    void start();
+    void drive();
+    void stop();
+}</code></pre><h3>Netflix: Combined Example</h3><table class="table"><thead><tr><th>Concept</th><th>Application</th></tr></thead><tbody><tr><td>Encapsulation</td><td>User data and history are hidden and securely handled.</td></tr><tr><td>Abstraction</td><td>User presses play; system handles streaming and buffering.</td></tr></tbody></table><h3>Interview Q&A</h3><ul><li><strong>Q:</strong> Can abstraction exist without encapsulation?<br><strong>A:</strong> Not typically. Encapsulation is foundational to abstraction.</li><li><strong>Q:</strong> When to use an interface?<br><strong>A:</strong> When you need to define behavior without implementation details.</li></ul><h3>Summary</h3><ul><li>Encapsulation protects internal state via access control.</li><li>Abstraction simplifies usage by exposing only what is essential.</li><li>Together they create clean, secure, and maintainable OOP design.</li></ul></@sec.SectionHtmlTag>
+                            <p><h3>Additional Real-World Examples</h3><h4>Encapsulation</h4><ul><li><strong>Smartphone:</strong> OS hides low-level access using public-facing apps and settings.</li><li><strong>Bank ATM:</strong> Internal validation and transaction processing are hidden behind simple options.</li><li><strong>Shopping Cart:</strong> Private item lists manipulated via add/remove methods.</li></ul><pre class='line-numbers'><code class='language-python'>class ShoppingCart:
+    def __init__(self):
+        self.__items = []
+
+    def add_item(self, item):
+        self.__items.append(item)
+
+    def get_total(self):
+        return sum(item['price'] for item in self.__items)</code></pre><h4>Abstraction</h4><ul><li><strong>Driving a Car:</strong> User uses steering and pedals, not engine components.</li><li><strong>Coffee Machine:</strong> Press a button, and internal mechanisms brew the coffee.</li><li><strong>Web API:</strong> Call endpoints to get results without backend logic visibility.</li></ul><pre class='line-numbers'><code class='language-java'>interface Vehicle {
+    void start();
+    void drive();
+    void stop();
+}</code></pre></@sec.SectionHtmlTag>
                     </div>
                 </div>
             </div>
