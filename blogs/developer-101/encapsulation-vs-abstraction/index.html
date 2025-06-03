@@ -103,19 +103,6 @@ public class MyATM : ATM {
     void drive();
     void stop();
 }</code></pre><h3>Netflix: Combined Example</h3><table class="table"><thead><tr><th>Concept</th><th>Application</th></tr></thead><tbody><tr><td>Encapsulation</td><td>User data and history are hidden and securely handled.</td></tr><tr><td>Abstraction</td><td>User presses play; system handles streaming and buffering.</td></tr></tbody></table><h3>Interview Q&A</h3><ul><li><strong>Q:</strong> Can abstraction exist without encapsulation?<br><strong>A:</strong> Not typically. Encapsulation is foundational to abstraction.</li><li><strong>Q:</strong> When to use an interface?<br><strong>A:</strong> When you need to define behavior without implementation details.</li></ul><h3>Summary</h3><ul><li>Encapsulation protects internal state via access control.</li><li>Abstraction simplifies usage by exposing only what is essential.</li><li>Together they create clean, secure, and maintainable OOP design.</li></ul></@sec.SectionHtmlTag>
-                            <p><h3>Additional Real-World Examples</h3><h4>Encapsulation</h4><ul><li><strong>Smartphone:</strong> OS hides low-level access using public-facing apps and settings.</li><li><strong>Bank ATM:</strong> Internal validation and transaction processing are hidden behind simple options.</li><li><strong>Shopping Cart:</strong> Private item lists manipulated via add/remove methods.</li></ul><pre class='line-numbers'><code class='language-python'>class ShoppingCart:
-    def __init__(self):
-        self.__items = []
-
-    def add_item(self, item):
-        self.__items.append(item)
-
-    def get_total(self):
-        return sum(item['price'] for item in self.__items)</code></pre><h4>Abstraction</h4><ul><li><strong>Driving a Car:</strong> User uses steering and pedals, not engine components.</li><li><strong>Coffee Machine:</strong> Press a button, and internal mechanisms brew the coffee.</li><li><strong>Web API:</strong> Call endpoints to get results without backend logic visibility.</li></ul><pre class='line-numbers'><code class='language-java'>interface Vehicle {
-    void start();
-    void drive();
-    void stop();
-}</code></pre></@sec.SectionHtmlTag>
                     </div>
                 </div>
             </div>
