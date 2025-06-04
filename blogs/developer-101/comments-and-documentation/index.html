@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Developer 101 - Mastering Comments and Documentation</title>
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <div class="single-post">
+                    <h1>Developer 101 - Mastering Comments and Documentation</h1>
+                    <p class="lead">Learn how to write meaningful comments and documentation in your code. Explore best practices, real-world scenarios, and examples from Python and C# to improve your code clarity and maintainability.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
+                                <div class="single-post-meta-details-date">4/6/2025 12:48:08&#x202F;PM &middot; 4 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/comments-documentation.webp" /> 
+                    <div class="single-post-text my-5">
+                            <p><h1 class="mb-3">Developer 101: Mastering Comments and Documentation</h1><p class="text-muted">Published by TechWayFit</p><p>Writing good code is only part of the job. Making it understandable for your teammates — and for your future self — is equally important. Comments and documentation play a vital role in making your codebase maintainable, readable, and collaborative.</p><h2>Types of Comments</h2><ul><li><strong>Inline Comments:</strong> Placed on the same line as code, they explain a specific logic.</li><li><strong>Block Comments:</strong> Span multiple lines, used to explain complex logic or sections.</li><li><strong>TODO/FIXME Notes:</strong> Indicate pending work or known issues.</li></ul><h2>Best Practices</h2><ul><li>Don’t state the obvious — write comments that add value.</li><li>Keep comments short, but informative.</li><li>Update comments when the code changes.</li><li>Use a consistent style and tone.</li></ul><h2>Commenting Examples</h2><h3>C#</h3><pre><code class="language-csharp">// Bad: Too obvious
+int total = 0; // Set total to 0
+
+// Good: Adds context
+int total = 0; // Initialize total to accumulate cart item prices
+
+// TODO: Handle discounts in future</code></pre><h3>Python</h3><pre><code class="language-python"># Bad: Redundant
+count = 0  # Count is zero
+
+# Good: Clarifies purpose
+count = 0  # Number of users currently online
+
+# FIXME: This needs optimization for large datasets</code></pre><h2>Docstrings and Documentation</h2><p>Docstrings are embedded documentation for functions, classes, and modules. Use them to describe purpose, parameters, and return values.</p><h3>Python Docstring</h3><pre><code class="language-python">def add(a, b):
+    """Add two numbers and return the result.
+
+    Args:
+        a (int): First number.
+        b (int): Second number.
+
+    Returns:
+        int: Sum of a and b.
+    """
+    return a + b</code></pre><h3>C# XML Documentation</h3><pre><code class="language-csharp">/// <summary>
+/// Adds two integers and returns the result.
+/// </summary>
+/// <param name="a">First integer</param>
+/// <param name="b">Second integer</param>
+/// <returns>Sum of a and b</returns>
+public int Add(int a, int b)
+{
+    return a + b;
+}</code></pre><h2>External Documentation</h2><ul><li><strong>README:</strong> Explain project structure, dependencies, and usage.</li><li><strong>Wiki or Notion:</strong> Maintain detailed project architecture, workflows, and design decisions.</li><li><strong>API Docs:</strong> Auto-generated using tools like Swagger, JSDoc, or Sphinx.</li></ul><h2>Bad Code Readability – Real-World Problems</h2><p>Unreadable code leads to confusion, delays, and bugs — especially for support teams maintaining the code under pressure. Without clear comments or structure, even a simple issue can take hours to debug.</p><h3>❌ Poorly Commented Code (C#)</h3><pre><code class="language-csharp">public void C(int x) {
+    if (x == 1) { P(); } else { Q(); }
+}</code></pre><ul><li>Method and variable names are meaningless.</li><li>No indication of what <code>P()</code> or <code>Q()</code> do.</li><li>Support team has no clue what behavior to expect.</li></ul><h3>✅ Refactored and Documented Version (C#)</h3><pre><code class="language-csharp">/// <summary>
+/// Processes user request based on priority flag.
+/// </summary>
+/// <param name="priorityFlag">1 = high priority</param>
+public void ProcessRequest(int priorityFlag) {
+    if (priorityFlag == 1) {
+        HandleUrgentRequest();
+    } else {
+        HandleStandardRequest();
+    }
+}</code></pre><h3>❌ Poorly Written Code (Python)</h3><pre><code class="language-python">def c(x):
+    if x == 0:
+        t()
+    else:
+        y()</code></pre><ul><li>Function and method names are cryptic.</li><li>No comments or docstrings to explain the logic.</li><li>Debugging becomes trial-and-error.</li></ul><h3>✅ Improved Version (Python)</h3><pre><code class="language-python">def process_login(user_status):
+    """Processes login based on user status.
+
+    Args:
+        user_status (int): 0 for guest, 1 for registered user.
+    """
+    if user_status == 0:
+        handle_guest_login()
+    else:
+        handle_registered_user()</code></pre><h2>Support Team Impact</h2><ul><li><strong>Delayed Fixes:</strong> Time is wasted understanding what the code is supposed to do.</li><li><strong>Incorrect Fixes:</strong> Misinterpretation of logic can lead to introducing new bugs.</li><li><strong>Lower Morale:</strong> Developers dread working on unclear legacy code.</li><li><strong>Poor Handover:</strong> Code transitions become chaotic when developers leave.</li></ul><h2>Real-World Bugs Caused by Poor Documentation</h2><h3>🧨 Scenario 1: Misunderstood Business Logic (C#)</h3><pre><code class="language-csharp">// Original developer assumed business hours end at 6 PM.
+if (DateTime.Now.Hour < 18)
+    SendNotification();</code></pre><p>Notifications were sent after hours. Policy had changed but comments didn't reflect that.</p><h3>Fix:</h3><pre><code class="language-csharp">// Business hours updated as of Jan 2025 policy
+if (DateTime.Now.Hour < 17)
+    SendNotification();</code></pre><h3>🧨 Scenario 2: Silent Failures Due to Assumptions (Python)</h3><pre><code class="language-python">def calculate_discount(user_type):
+    if user_type == 'premium':
+        return 0.20
+    return None</code></pre><h3>Fix:</h3><pre><code class="language-python">def calculate_discount(user_type):
+    """Returns discount rate for known user types."""
+    if user_type == 'premium':
+        return 0.20
+    elif user_type == 'standard':
+        return 0.10
+    raise ValueError("Unknown user type")</code></pre><h3>🧨 Scenario 3: Unclear API Response Mapping (C#)</h3><pre><code class="language-csharp">// Mistook business code for HTTP code
+if (response.status_code == 200)
+    ApproveRequest();</code></pre><h3>Fix:</h3><pre><code class="language-csharp">// 100 = success; 200 = validation error, etc.
+if (response.status_code == 100)
+    ApproveRequest();</code></pre><h3>🧨 Scenario 4: Hidden Calculation Logic (Python)</h3><pre><code class="language-python"># Monthly interest
+interest = principal * 0.015</code></pre><p>Hardcoded value caused miscalculations after interest rate changes.</p><h3>Fix:</h3><pre><code class="language-python">monthly_interest_rate = get_config("interest_rate")
+interest = principal * monthly_interest_rate</code></pre><h2>Conclusion</h2><p>Don’t leave your future self (or your teammates) in the dark. Clean, meaningful comments and documentation are a hallmark of professional development. When done right, they reduce bugs, speed up onboarding, and make everyone’s life easier.</p></@sec.SectionHtmlTag>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="svg-border-rounded text-dark">
+        <!-- Rounded SVG Border-->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+            fill="currentColor">
+            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+        </svg>
+    </div>
+</section>
+
+
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="#!">Privacy Policy</a>
+                                &middot;
+                                <a href="#!">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Quizs</title>
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+        
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: auto;
+            padding-top: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					 
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="single-post">
+                <h1>Developer 101: Mastering the Fundamentals</h1>
+                <p class="lead">Test your knowledge of fundamental programming concepts, clean code practices, and object-oriented programming principles with this quiz. Ideal for beginners and professionals looking to reinforce their coding skills.</p>
+                <div class="d-flex align-items-center justify-content-between mb-5">
+                    <div class="single-post-meta me-4">
+                        <img class="single-post-meta-img" src="/assets/images/cards/group-deveoper-101_200x133.webp" />
+                        <div class="single-post-meta-details">
+                            <div class="single-post-meta-details-name">25 Questions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container quiz-container mb-10">
+    <div id="status" class="text-end text-muted mb-3"></div>
+    <div class="card" id="quizCard">
+        <div class="card-body question-box">
+            <h5 id="question" class="mb-3"></h5>
+            <form id="optionsForm" class="options"></form>
+        </div>
+        <div class="card-footer text-end">
+            <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+
+    <div id="quizResult" class="result text-center mt-4"></div>
+    <div id="reviewSection" class="mt-4"></div>
+</div>
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="#!">Privacy Policy</a>
+                                &middot;
+                                <a href="#!">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script>
+        const questionSource = [{"question":"What is the primary goal of using meaningful variable names in code?","options":["To impress senior developers","To confuse compilers","To make code readable and maintainable","To reduce the number of comments"],"correctIndex":2},{"question":"Which of the following is a poor variable name?","options":["userName","x1y2z3","emailAddress","isLoggedIn"],"correctIndex":1},{"question":"In PascalCase naming convention, which of these is correct?","options":["user_name","UserProfile","userprofile","userProfile"],"correctIndex":1},{"question":"What does the principle of encapsulation ensure in OOP?","options":["Code runs faster","Data is separated from functions","Internal object details are hidden from the outside","Objects can inherit from multiple parents"],"correctIndex":2},{"question":"Which statement about abstraction is correct?","options":["It removes all logic from classes","It exposes only relevant data to the user","It stores all values in public variables","It forces classes to use inheritance"],"correctIndex":1},{"question":"How does code readability affect team collaboration?","options":["Makes no difference","Reduces code size","Helps others understand and maintain the code easily","Slows down development process"],"correctIndex":2},{"question":"Which of the following pairs shows the difference between bad and good naming?","options":["temp, t","data1, data2","getU, fetchUserDetails","xyz, abc"],"correctIndex":2},{"question":"What is the key benefit of using code formatting tools or linters?","options":["They auto-generate business logic","They make the UI better","They enforce consistent style and improve code quality","They remove bugs automatically"],"correctIndex":2},{"question":"What does the term \u0027alien variables\u0027 refer to in coding?","options":["Variables that are from another class","Variables with unclear or meaningless names","Variables written in another language","Variables used in space applications"],"correctIndex":1},{"question":"In OOP, which combination best represents the relationship between encapsulation and abstraction?","options":["Abstraction focuses on hiding data, encapsulation on showing it","Both expose internal logic to improve transparency","Encapsulation hides internal details, abstraction hides complexity","Abstraction and encapsulation are unrelated"],"correctIndex":2},{"question":"What is one of the biggest problems with poorly named variables?","options":["They take more memory","They cause syntax errors","They make code hard to understand and maintain","They don\u2019t work in Python"],"correctIndex":2},{"question":"Which of these best practices improves readability?","options":["Writing everything in one line","Avoiding comments","Using consistent indentation","Removing white spaces"],"correctIndex":2},{"question":"In clean code, what does the principle \u0027Don\u2019t Repeat Yourself (DRY)\u0027 promote?","options":["Copy-paste coding","Writing all logic in a single method","Code duplication for faster output","Reusable and modular code"],"correctIndex":3},{"question":"Which naming convention is typically used for constants?","options":["camelCase","snake_case","UPPER_CASE","kebab-case"],"correctIndex":2},{"question":"What is the purpose of access modifiers like \u0027private\u0027, \u0027public\u0027, and \u0027protected\u0027 in OOP?","options":["They control memory allocation","They define variable types","They manage access to class members","They format output strings"],"correctIndex":2},{"question":"Which of these is NOT a benefit of encapsulation?","options":["Code modularity","Data hiding","Improved UI design","Controlled access"],"correctIndex":2},{"question":"What is a key characteristic of well-abstracted code?","options":["It has many public variables","Users only need to know what the code does, not how","Everything is marked private","All classes are final"],"correctIndex":1},{"question":"Which example violates encapsulation?","options":["Using a getter method to read a value","Accessing a class\u2019s internal variable directly","Updating data via a setter","Hiding internal logic with private methods"],"correctIndex":1},{"question":"Why is code formatting especially important in team development?","options":["It makes code harder to copy","It adds extra functions","It ensures all developers can understand and edit code consistently","It increases CPU usage"],"correctIndex":2},{"question":"Which of the following statements best describes functional programming?","options":["Emphasizes changing state and mutable data","Encourages objects and class hierarchies","Uses functions as first-class citizens and avoids shared state","Focuses only on UI logic"],"correctIndex":2},{"question":"Why is it important to avoid stating the obvious in comments?","options":["It helps to meet code formatting rules","It reduces the number of comments in the code","It ensures comments are useful and not redundant","It saves memory during execution"],"correctIndex":2},{"question":"What is the main problem with this Python comment?\ncount = 0  # Count is zero","options":["It\u0027s written in the wrong syntax","It\u0027s overly technical","It\u0027s redundant and uninformative","It lacks proper indentation"],"correctIndex":2},{"question":"What type of bug might occur due to hardcoding configuration values like interest rates directly in code?","options":["Compilation failure","Runtime memory overflow","Misaligned UI layout","Business logic failure after policy changes"],"correctIndex":3},{"question":"In the blog, which documentation style is used for C# method comments?","options":["Markdown","YAML","XML documentation comments","JSON inline docs"],"correctIndex":2},{"question":"Which of the following tools is used for auto-generating Python documentation?","options":["Swagger","DocFX","JSDoc","Sphinx"],"correctIndex":3}];
+    </script>
+    <script src="/assets/js/quizs.js"></script>
+
+    </body>
+</html>

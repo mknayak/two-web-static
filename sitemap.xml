@@ -3,84 +3,98 @@
   <url>
     <Loc>http://localhost:5277/</Loc>
     <Name>Home</Name>
-    <LastMod>2025-06-03T14:22:15.786619Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512215Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/blogs</Loc>
     <Name>Blogs</Name>
-    <LastMod>2025-06-03T14:22:15.78662Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512215Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/about</Loc>
     <Name>About Us</Name>
-    <LastMod>2025-06-03T14:22:15.786621Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512216Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/contact</Loc>
     <Name>Contact</Name>
-    <LastMod>2025-06-03T14:22:15.786621Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512216Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/blogs/groups/developer-101</Loc>
     <Name>Developer 101: Mastering the Fundamentals</Name>
-    <LastMod>2025-06-03T14:22:15.786622Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512217Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/blogs/developer-101/welcome-to-twf</Loc>
     <Name>Developer 101 - Building the Right Way from Day One</Name>
-    <LastMod>2025-06-03T14:22:15.786623Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512218Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/blogs/developer-101/naming-conventions</Loc>
     <Name>Developer 101 - Naming Conventions for Variables and Methods</Name>
-    <LastMod>2025-06-03T14:22:15.786623Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512218Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/blogs/developer-101/not-just-code</Loc>
     <Name>Developer 101 - TechWayFit Isn’t Just About Code. It’s About Writing It Right.</Name>
-    <LastMod>2025-06-03T14:22:15.786623Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512218Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/blogs/developer-101/oops-concepts</Loc>
     <Name>Developer 101 - Mastering OOP Concepts: The Blueprint of Modern Programming</Name>
-    <LastMod>2025-06-03T14:22:15.786623Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512218Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/blogs/developer-101/encapsulation-vs-abstraction</Loc>
     <Name>Developer 101 - Encapsulation vs Abstraction</Name>
-    <LastMod>2025-06-03T14:22:15.786624Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.512219Z</LastMod>
+    <ChangeFreq>daily</ChangeFreq>
+    <Priority>0.5</Priority>
+  </url>
+  <url>
+    <Loc>http://localhost:5277/blogs/developer-101/comments-and-documentation</Loc>
+    <Name>Developer 101 - Mastering Comments and Documentation</Name>
+    <LastMod>2025-06-04T13:57:22.512219Z</LastMod>
+    <ChangeFreq>daily</ChangeFreq>
+    <Priority>0.5</Priority>
+  </url>
+  <url>
+    <Loc>http://localhost:5277/quizs/developer-101/set-1</Loc>
+    <Name>Developer 101: Mastering the Fundamentals</Name>
+    <LastMod>2025-06-04T13:57:22.51222Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/sitemap.xml</Loc>
     <Name>Sitemap</Name>
-    <LastMod>2025-06-03T14:22:15.786624Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.51222Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
   <url>
     <Loc>http://localhost:5277/robots.txt</Loc>
     <Name>Robots</Name>
-    <LastMod>2025-06-03T14:22:15.786624Z</LastMod>
+    <LastMod>2025-06-04T13:57:22.51222Z</LastMod>
     <ChangeFreq>daily</ChangeFreq>
     <Priority>0.5</Priority>
   </url>
