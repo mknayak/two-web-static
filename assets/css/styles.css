@@ -18839,3 +18839,7 @@ section {
     border-right: 0.0625rem solid #e0e5ec;
   }
 }
+
+.img-max-100 {
+  max-width: 100%;
+}

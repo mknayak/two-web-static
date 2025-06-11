@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Developer 101 - Version Control Like a Pro | TechWayFit</title>
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <div class="single-post">
+                    <h1>Developer 101 - Version Control Like a Pro</h1>
+                    <p class="lead">Learn the power of Git for professional software development. Master version control essentials, collaboration workflows, and real-world practices that every developer should know.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
+                                <div class="single-post-meta-details-date">6/8/2025 3:00:00 PM &middot; 4 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/version-control.webp" /> 
+                    <div class="single-post-text my-5">
+                        <div class="blog-detail container my-5">
+
+
+    <p>Whether you're working solo or in a team, version control is the backbone of reliable software development. It
+        helps track changes, collaborate efficiently, and reduce the fear of breaking code. In this blog, we dive into
+        Git — the most popular distributed version control system — and how to use it like a pro.</p>
+
+    <h2>🔧 What is Version Control?</h2>
+    <p>Version control systems (VCS) allow developers to manage and track changes to source code over time. It enables
+        collaboration, rollback, and historical tracking of every change made.</p>
+
+    <ul>
+        <li><strong>Centralized VCS:</strong> One central server, e.g., SVN</li>
+        <li><strong>Distributed VCS:</strong> Everyone has a full copy — like Git</li>
+    </ul>
+
+    <h2>🚀 Getting Started with Git</h2>
+    <p>Git is a distributed VCS where every developer has a local copy of the complete project history. This ensures
+        speed, redundancy, and offline work capabilities.</p>
+
+    <pre><code class="language-bash"># Initialize a repository
+git init
+
+# Clone a remote repo
+git clone https://github.com/your-repo.git
+
+# Stage & commit changes
+git add .
+git commit -m "Initial commit"
+
+# Push changes to remote
+git push origin main</code></pre>
+
+    <h2>🌿 Understanding Branches</h2>
+    <p>Branches allow multiple developers to work independently. The <code>main</code> branch typically holds
+        production-ready code.</p>
+
+    <ul>
+        <li><code>git branch feature-login</code> – Create new branch</li>
+        <li><code>git checkout feature-login</code> – Switch to it</li>
+        <li><code>git merge feature-login</code> – Merge into main</li>
+    </ul>
+
+    <h2>⚔️ Handling Merge Conflicts</h2>
+    <p>Conflicts happen when the same part of a file is modified in multiple branches. Git will ask you to manually
+        resolve these. Here’s how to handle it:</p>
+    <pre><code class="language-bash"># Attempt to merge branches
+git merge feature-login
+# If conflicts arise, Git will notify you
+# Open the conflicted file and resolve conflicts
+# After resolving, stage the file and commit
+git add conflicted-file.txt
+git commit -m "Resolved merge conflict in conflicted-file.txt"</code></pre> 
+    </p>
+
+    <pre><code class="language-bash"># After resolving conflict
+git add conflicted-file.txt
+git commit</code></pre>
+
+    <div class="alert alert-warning mt-3">
+        <strong>Tip:</strong> Always pull the latest code before starting work to avoid large merge conflicts.
+    </div>
+
+    <h2>📋 Best Practices</h2>
+    <ul>
+        <li>Commit frequently with meaningful messages</li>
+        <li>Use feature branches for isolated work</li>
+        <li>Review code via pull requests</li>
+        <li>Don’t commit secrets or sensitive files</li>
+        <li>Use .gitignore to exclude unnecessary files</li>
+        <li>Keep your branches up-to-date with <code>git pull</code></li>
+        <li>Use tags for releases (e.g., <code>git tag v1.0</code>)</li>
+        <li>Document your workflow in a CONTRIBUTING.md file</li>
+        <li>Regularly backup your repositories</li>
+        <li>Use descriptive commit messages (e.g., "Fix login bug" instead of "Update code")</li>
+    </ul>
+
+    <h2>🤝 Code Reviews and Pull Requests</h2>
+    <p>Pull Requests (PRs) are not just for merging — they’re a chance to review, comment, and ensure quality. Encourage
+        peer reviews with constructive feedback.
+        <br>Use tools like GitHub, GitLab, or Bitbucket to create PRs and discuss changes before merging.</p>
+    <p>Example PR workflow:
+        <br>1. Create a feature branch: <code>git checkout -b feature-login</code>
+        <br>2. Make changes and commit: <code>git commit -m "Add login feature"</code>
+        <br>3. Push branch to remote: <code>git push origin feature-login</code>
+        <br>4. Open a PR on your Git hosting platform
+        <br>5. Request reviews from teammates
+        <br>6. Address feedback and merge when approved
+    </p>
+
+    <h2>🛠 Common Git Commands</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>git log</code></td>
+                <td>Show commit history</td>
+            </tr>
+            <tr>
+                <td><code>git status</code></td>
+                <td>See current state of working directory</td>
+            </tr>
+            <tr>
+                <td><code>git revert &lt;commit&gt;</code></td>
+                <td>Undo a specific commit safely</td>
+            </tr>
+            <tr>
+                <td><code>git reset --hard</code></td>
+                <td>Forcefully reset to a previous commit</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🔁 Git Rebase vs Merge</h2>
+    <p><strong>Merge:</strong> Creates a merge commit, keeps full history.
+        <br><strong>Rebase:</strong> Rewrites history, results in a cleaner log. Use with caution.
+    </p>
+
+    <h2>💡 Real-World Scenario</h2>
+    <p>You're working on a feature branch while a teammate pushes changes to <code>main</code>. Always
+        <code>git pull origin main</code> into your branch to stay updated and resolve conflicts early.
+        <br>Example:
+        <br>1. You start on <code>feature-login</code>
+        <br>2. Your teammate pushes changes to <code>main</code>
+        <br>3. You run <code>git pull origin main</code>
+        <br>4. Git merges changes into your branch
+        <br>5. If conflicts arise, resolve them in your code editor
+        <br>6. Stage and commit the resolved files
+        <br>7. Continue working on your feature
+        <br>8. When ready, merge your branch back into <code>main</code>
+    </p>
+
+    <h2>🧪 Try It Yourself</h2>
+    <p>Practice your Git skills interactively: <a href="https://learngitbranching.js.org"
+            target="_blank">https://learngitbranching.js.org</a></p>
+
+    <h2>❓ FAQ</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <strong class="accordion-header" id="faq1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1Collapse">
+                    What’s the difference between Git and GitHub?
+                </button>
+            </strong>
+            <div id="faq1Collapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Git is a tool for version control. GitHub is a platform that hosts Git repositories and provides
+                    collaboration tools.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <strong class="accordion-header" id="faq2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq2Collapse">
+                    Should I use Git rebase or merge?
+                </button>
+            </strong>
+            <div id="faq2Collapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Use merge in teams to preserve history. Use rebase for cleaner history in solo/local workflows.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <strong class="accordion-header" id="faq3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq3Collapse">
+                    How do I undo my last commit?
+                </button>
+            </strong>
+            <div id="faq3Collapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Use <code>git reset --soft HEAD~1</code> to undo the last commit but keep changes staged, or <code>git revert HEAD</code> to create a new commit that undoes the last one.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <strong class="accordion-header" id="faq4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq4Collapse">
+                    What is a .gitignore file?
+                </button>
+            </strong>
+            <div id="faq4Collapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    A <code>.gitignore</code> file tells Git which files or folders to ignore and not track in the repository, such as build outputs or sensitive data.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <strong class="accordion-header" id="faq5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq5Collapse">
+                    How can I see who made changes to a file?
+                </button>
+            </strong>
+            <div id="faq5Collapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Use <code>git blame &lt;filename&gt;</code> to see line-by-line authorship and when each line was last changed.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <strong class="accordion-header" id="faq6">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq6Collapse">
+                    What should I do if I accidentally committed sensitive data?
+                </button>
+            </strong>
+            <div id="faq6Collapse" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Remove the sensitive data, commit the change, and use tools like <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository" target="_blank">BFG Repo-Cleaner</a> or <code>git filter-branch</code> to remove it from history. Change any exposed credentials immediately.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="mt-5">🎯 Final Thoughts</h2>
+    <p>Mastering Git doesn’t happen overnight, but understanding its core operations, commands, and branching strategies
+        will help you collaborate confidently and recover from mistakes swiftly. Start practicing today — every great
+        developer is also great at version control.</p>
+
+        
+        <a href="/assets/files/TechWayFit_Git_Quick_Reference.pdf" class="btn btn-secondary mb-3">Download Git Quick Reference</a>
+    <p>For more in-depth learning, check out the official Git documentation: <a href="https://git-scm.com/doc"
+            target="_blank">Git Documentation</a></p>
+
+    <div class="text-center mt-5">
+        <a href="/blogs/groups/developer-101" class="btn btn-primary btn-lg">← Back to Developer 101 Series</a>
+    </div>
+</div>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</section>
+
+
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="#!">Privacy Policy</a>
+                                &middot;
+                                <a href="#!">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+
+    </body>
+</html>

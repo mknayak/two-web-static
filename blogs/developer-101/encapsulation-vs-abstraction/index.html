@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Developer 101 - Encapsulation vs Abstraction</title>
+        <title>Developer 101 - Encapsulation vs Abstraction | TechWayFit</title>
         <link href="/assets/css/styles.css" rel="stylesheet" />
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
@@ -51,7 +51,7 @@
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
-                                <div class="single-post-meta-details-date">2/6/2025 10:00:00&#x202F;AM &middot; 4 min read</div>
+                                <div class="single-post-meta-details-date">6/2/2025 10:00:00 AM &middot; 4 min read</div>
                             </div>
                         </div>
                         <div>
@@ -62,7 +62,16 @@
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/banners/encapsulation-vs-abstraction.webp" /> 
                     <div class="single-post-text my-5">
-                            <p><h1 class="mb-3">Developer 101: Encapsulation vs Abstraction</h1><p class="text-muted">Published by TechWayFit</p><p>Encapsulation and abstraction are two essential principles of object-oriented programming. This blog demystifies them using real-life analogies, code examples, and clear distinctions.</p><h3>What is Encapsulation?</h3><p>Encapsulation is the process of hiding the internal state and requiring all interaction to be performed through an object's methods.</p><pre class='line-numbers'><code class='language-csharp'>public class BankAccount {
+                        <section>
+    <h1 class=\"mb-3\">Developer 101: Encapsulation vs Abstraction</h1>
+    <p class=\"text-muted\">Published by TechWayFit</p>
+    <p>Encapsulation and abstraction are two essential principles of object-oriented programming. This blog demystifies
+        them using real-life analogies, code examples, and clear distinctions.</p>
+    <h3>What is Encapsulation?</h3>
+    <p>Encapsulation is the process of hiding the internal state and requiring all interaction to be performed through
+        an object's methods.</p>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public class BankAccount {
     private double balance;
 
     public void deposit(double amount) {
@@ -72,10 +81,23 @@
     public double getBalance() {
         return balance;
     }
-}</code></pre><h3>What is Abstraction?</h3><p>Abstraction hides complexity by exposing only the essential features of an object or system.</p><pre class='line-numbers'><code class='language-csharp'>public abstract class Vehicle {
+}</code></pre>
+    <h3>What is Abstraction?</h3>
+    <p>Abstraction hides complexity by exposing only the essential features of an object or system.</p>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public abstract class Vehicle {
     abstract void start();
     abstract void stop();
-}</code></pre><h3>Real-World Analogies</h3><ul><li><strong>Encapsulation:</strong> A medicine capsule hides bitter contents inside.</li><li><strong>Abstraction:</strong> A car steering wheel lets you control the car without understanding engine mechanics.</li></ul><h3>Code Comparison Example</h3><pre class='line-numbers'><code class='language-csharp'>public abstract class ATM {
+}</code></pre>
+    <h3>Real-World Analogies</h3>
+    <ul>
+        <li><strong>Encapsulation:</strong> A medicine capsule hides bitter contents inside.</li>
+        <li><strong>Abstraction:</strong> A car steering wheel lets you control the car without understanding engine
+            mechanics.</li>
+    </ul>
+    <h3>Code Comparison Example</h3>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public abstract class ATM {
     public abstract void withdraw(double amount);
     public abstract double checkBalance();
 }
@@ -90,7 +112,14 @@ public class MyATM : ATM {
     public override double checkBalance() {
         return balance;
     }
-}</code></pre><h3>Encapsulation Examples</h3><ul><li><strong>Smartphone:</strong> Internal hardware/software is hidden via user interface.</li><li><strong>Online Shopping Cart:</strong> Private item list manipulated via public methods.</li></ul><pre class='line-numbers'><code class='language-python'>class ShoppingCart:
+}</code></pre>
+    <h3>Encapsulation Examples</h3>
+    <ul>
+        <li><strong>Smartphone:</strong> Internal hardware/software is hidden via user interface.</li>
+        <li><strong>Online Shopping Cart:</strong> Private item list manipulated via public methods.</li>
+    </ul>
+    <pre
+        class='line-numbers'><code class='language-python'>class ShoppingCart:
     def __init__(self):
         self.__items = []
 
@@ -98,23 +127,57 @@ public class MyATM : ATM {
         self.__items.append(item)
 
     def get_total(self):
-        return sum(item['price'] for item in self.__items)</code></pre><h3>Abstraction Examples</h3><ul><li><strong>Coffee Machine:</strong> Press a button for coffee without knowing the internal process.</li><li><strong>Web API:</strong> Users access data via endpoints, not knowing backend logic.</li></ul><pre class='line-numbers'><code class='language-java'>interface Vehicle {
+        return sum(item['price'] for item in self.__items)</code></pre>
+    <h3>Abstraction Examples</h3>
+    <ul>
+        <li><strong>Coffee Machine:</strong> Press a button for coffee without knowing the internal process.</li>
+        <li><strong>Web API:</strong> Users access data via endpoints, not knowing backend logic.</li>
+    </ul>
+    <pre
+        class='line-numbers'><code class='language-java'>interface Vehicle {
     void start();
     void drive();
     void stop();
-}</code></pre><h3>Netflix: Combined Example</h3><table class="table"><thead><tr><th>Concept</th><th>Application</th></tr></thead><tbody><tr><td>Encapsulation</td><td>User data and history are hidden and securely handled.</td></tr><tr><td>Abstraction</td><td>User presses play; system handles streaming and buffering.</td></tr></tbody></table><h3>Interview Q&A</h3><ul><li><strong>Q:</strong> Can abstraction exist without encapsulation?<br><strong>A:</strong> Not typically. Encapsulation is foundational to abstraction.</li><li><strong>Q:</strong> When to use an interface?<br><strong>A:</strong> When you need to define behavior without implementation details.</li></ul><h3>Summary</h3><ul><li>Encapsulation protects internal state via access control.</li><li>Abstraction simplifies usage by exposing only what is essential.</li><li>Together they create clean, secure, and maintainable OOP design.</li></ul></@sec.SectionHtmlTag>
+}</code></pre>
+    <h3>Netflix: Combined Example</h3>
+    <table class=\"table\">
+        <thead>
+            <tr>
+                <th>Concept</th>
+                <th>Application</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Encapsulation</td>
+                <td>User data and history are hidden and securely handled.</td>
+            </tr>
+            <tr>
+                <td>Abstraction</td>
+                <td>User presses play; system handles streaming and buffering.</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Interview Q&A</h3>
+    <ul>
+        <li><strong>Q:</strong> Can abstraction exist without encapsulation?<br><strong>A:</strong> Not typically.
+            Encapsulation is foundational to abstraction.</li>
+        <li><strong>Q:</strong> When to use an interface?<br><strong>A:</strong> When you need to define behavior
+            without implementation details.</li>
+    </ul>
+    <h3>Summary</h3>
+    <ul>
+        <li>Encapsulation protects internal state via access control.</li>
+        <li>Abstraction simplifies usage by exposing only what is essential.</li>
+        <li>Together they create clean, secure, and maintainable OOP design.</li>
+    </ul>
+</section>                      
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="svg-border-rounded text-dark">
-        <!-- Rounded SVG Border-->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
-            fill="currentColor">
-            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
-        </svg>
-    </div>
+ 
 </section>
 
 
@@ -161,6 +224,7 @@ public class MyATM : ATM {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
 
     </body>
 </html>

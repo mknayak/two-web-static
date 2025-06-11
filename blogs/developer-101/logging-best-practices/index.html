@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Developer 101 - Logging Like a Pro | TechWayFit</title>
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <div class="single-post">
+                    <h1>Developer 101 - Logging Like a Pro</h1>
+                    <p class="lead">Master the art of logging with this Developer 101 guide. Learn log levels, structured logging, real-world examples, and tools like Serilog and Python logging module.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
+                                <div class="single-post-meta-details-date">6/9/2025 8:00:00 AM &middot; 4 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/logging-best-practices.webp" /> 
+                    <div class="single-post-text my-5">
+                         
+  <h2>Why Logging Matters</h2>
+  <p>Effective logging is essential for debugging, monitoring, and auditing. It helps uncover issues in production and ensures traceability of actions in your applications.</p>
+
+  <h2>What Makes a Good Log Message</h2>
+  <pre><code class="language-csharp">// Good
+_log.Info("User login successful: userId=1234");
+
+// Bad
+_log.Info("Something happened");
+  </code></pre>
+
+  <h2>Log Levels Explained</h2>
+  <table class="table table-bordered">
+    <tr><th>Level</th><th>Purpose</th><th>When to Use</th></tr>
+    <tr><td>DEBUG</td><td>Internal dev info</td><td>Tracing logic, flow</td></tr>
+    <tr><td>INFO</td><td>High-level events</td><td>User login, request received</td></tr>
+    <tr><td>WARN</td><td>Unexpected but non-breaking</td><td>Retry attempt, fallback used</td></tr>
+    <tr><td>ERROR</td><td>Application failure</td><td>DB not reachable, exception thrown</td></tr>
+    <tr><td>FATAL</td><td>System critical failure</td><td>Service crash</td></tr>
+  </table>
+
+  <h2>Structured vs Unstructured Logging</h2>
+  <pre class="language-javascript"><code>// Structured
+{
+  "timestamp": "2025-06-09T08:00:00Z",
+  "level": "INFO",
+  "message": "User logged in",
+  "userId": "1234"
+}
+
+// Unstructured
+User logged in successfully with ID 1234
+  </code></pre>
+
+  <h2>Logging in C# with Serilog</h2>
+  <pre><code class="language-csharp">Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+Log.Information("Application Started");
+  </code></pre>
+
+  <h2>Logging in Python</h2>
+  <pre><code class="language-python">import logging
+
+logging.basicConfig(level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s')
+
+logging.info("Service started")
+  </code></pre>
+
+  <h2>Real-World Logging Examples</h2>
+  <pre><code class="language-csharp">// C# Bad
+_log.Error("Exception occurred");
+
+// C# Good
+_log.Error(ex, "Payment processing failed for OrderId={OrderId}", orderId);
+  </code></pre>
+
+  <pre><code class="language-python"># Python Bad
+logging.warning("Something is wrong")
+
+# Python Good
+logging.warning("Payment delay detected for user_id=%s", user_id)
+  </code></pre>
+
+  <h2>Anti-Patterns to Avoid</h2>
+  <ul>
+    <li>❌ Logging passwords, tokens, or PII</li>
+    <li>❌ Logging stack traces without context</li>
+    <li>❌ Overusing INFO/ERROR for all logs</li>
+    <li>❌ Ignoring structured logs in favor of raw text</li>
+  </ul>
+
+  <p><strong>Stay tuned for quiz and downloadable guide!</strong></p>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</section>
+
+
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="#!">Privacy Policy</a>
+                                &middot;
+                                <a href="#!">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+
+    </body>
+</html>
