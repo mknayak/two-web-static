@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Developer 101 - Mastering OOP Concepts: The Blueprint of Modern Programming</title>
+        <title>Developer 101 - Mastering OOP Concepts: The Blueprint of Modern Programming | TechWayFit</title>
         <link href="/assets/css/styles.css" rel="stylesheet" />
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
@@ -51,7 +51,7 @@
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
-                                <div class="single-post-meta-details-date">2/6/2025 10:00:00&#x202F;AM &middot; 3 min read</div>
+                                <div class="single-post-meta-details-date">6/2/2025 10:00:00 AM &middot; 3 min read</div>
                             </div>
                         </div>
                         <div>
@@ -62,7 +62,19 @@
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/banners/oops-concepts.webp" /> 
                     <div class="single-post-text my-5">
-                            <p><h2>Developer 101 – Mastering OOP Concepts: The Blueprint of Modern Programming</h2><h3>What is OOP and Why Should You Care?</h3><p>OOP (Object-Oriented Programming) is more than just a way to write code — it's a mindset. Whether you're working with C#, Java, Python, or JavaScript, understanding OOP helps you build scalable, maintainable, and reusable applications.</p><p>Imagine building with LEGO bricks. Each brick is like an object — self-contained, but able to connect with others. OOP helps you structure software just like that.</p><h3>🔍 4 Pillars of OOP Explained Simply</h3><h4>1. Encapsulation – "Keep it together"</h4><p>Bundle data (fields) and behavior (methods) into a single unit — the class. Expose only what’s necessary.</p><pre class='line-numbers'><code class='language-csharp'>public class BankAccount {
+                        <section>
+    <h2>Developer 101 – Mastering OOP Concepts: The Blueprint of Modern Programming</h2>
+    <h3>What is OOP and Why Should You Care?</h3>
+    <p>OOP (Object-Oriented Programming) is more than just a way to write code — it's a mindset. Whether you're working
+        with C#, Java, Python, or JavaScript, understanding OOP helps you build scalable, maintainable, and reusable
+        applications.</p>
+    <p>Imagine building with LEGO bricks. Each brick is like an object — self-contained, but able to connect with
+        others. OOP helps you structure software just like that.</p>
+    <h3>🔍 4 Pillars of OOP Explained Simply</h3>
+    <h4>1. Encapsulation – \"Keep it together\"</h4>
+    <p>Bundle data (fields) and behavior (methods) into a single unit — the class. Expose only what’s necessary.</p>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public class BankAccount {
     private double balance;
 
     public void Deposit(double amount) {
@@ -72,50 +84,141 @@
     public double GetBalance() {
         return balance;
     }
-}</code></pre><h4>2. Abstraction – "Hide the complexity"</h4><p>Show only essential features. Hide implementation details.</p><pre class='line-numbers'><code class='language-csharp'>public abstract class Payment {
+}</code></pre>
+    <h4>2. Abstraction – \"Hide the complexity\"</h4>
+    <p>Show only essential features. Hide implementation details.</p>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public abstract class Payment {
     public abstract void ProcessPayment();
 }
 
 public class CreditCardPayment : Payment {
     public override void ProcessPayment() {
-        Console.WriteLine("Processing credit card...");
+        Console.WriteLine(\"Processing credit card...\");
     }
-}</code></pre><h4>3. Inheritance – "Reuse and extend"</h4><p>Create new classes that reuse behavior from existing ones.</p><pre class='line-numbers'><code class='language-csharp'>public class Animal {
-    public void Eat() => Console.WriteLine("Eating...");
+}</code></pre>
+    <h4>3. Inheritance – \"Reuse and extend\"</h4>
+    <p>Create new classes that reuse behavior from existing ones.</p>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public class Animal {
+    public void Eat() => Console.WriteLine(\"Eating...\");
 }
 
 public class Dog : Animal {
-    public void Bark() => Console.WriteLine("Barking...");
-}</code></pre><h4>4. Polymorphism – "Same action, different forms"</h4><p>Use the same method name but allow different implementations.</p><pre class='line-numbers'><code class='language-csharp'>public class Shape {
-    public virtual void Draw() => Console.WriteLine("Drawing shape");
+    public void Bark() => Console.WriteLine(\"Barking...\");
+}</code></pre>
+    <h4>4. Polymorphism – \"Same action, different forms\"</h4>
+    <p>Use the same method name but allow different implementations.</p>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public class Shape {
+    public virtual void Draw() => Console.WriteLine(\"Drawing shape\");
 }
 
 public class Circle : Shape {
-    public override void Draw() => Console.WriteLine("Drawing circle");
-}</code></pre><h3>🧪 More Real-World OOP Examples</h3><pre class='line-numbers'><code class='language-csharp'>public class Vehicle {
+    public override void Draw() => Console.WriteLine(\"Drawing circle\");
+}</code></pre>
+    <h3>🧪 More Real-World OOP Examples</h3>
+    <pre
+        class='line-numbers'><code class='language-csharp'>public class Vehicle {
     public string Brand { get; set; }
-    public virtual void Start() => Console.WriteLine("Starting vehicle");
+    public virtual void Start() => Console.WriteLine(\"Starting vehicle\");
 }
 
 public class Car : Vehicle {
-    public override void Start() => Console.WriteLine("Starting car");
+    public override void Start() => Console.WriteLine(\"Starting car\");
 }
 
 public class Motorcycle : Vehicle {
-    public override void Start() => Console.WriteLine("Starting motorcycle");
-}</code></pre><h3>🛠️ Why It Matters in the Real World</h3><ul><li><strong>Maintainability:</strong> Easier to fix bugs and add features.</li><li><strong>Scalability:</strong> Components grow independently.</li><li><strong>Reusability:</strong> Code once, use everywhere.</li><li><strong>Team Collaboration:</strong> Clear structure improves understanding.</li></ul><h3>⚖️ OOP vs Functional Programming</h3><table class="table" border='1'><tr><th>Aspect</th><th>OOP</th><th>Functional Programming</th></tr><tr><td>Core Idea</td><td>Model behavior as objects</td><td>Model behavior as pure functions</td></tr><tr><td>Structure</td><td>Classes and objects</td><td>Functions and data immutability</td></tr><tr><td>State</td><td>Mutable state is common</td><td>Prefer stateless functions</td></tr><tr><td>Example Use Case</td><td>UI applications, simulations</td><td>Data transformation, analytics, concurrency</td></tr><tr><td>Reusability</td><td>Via inheritance and interfaces</td><td>Via higher-order functions and composition</td></tr><tr><td>Popular Languages</td><td>Java, C#, Python, C++</td><td>Haskell, Elixir, F#, JavaScript (can do both)</td></tr><tr><td>Debugging</td><td>Harder with shared state</td><td>Easier due to lack of side effects</td></tr></table><h3>✅ Summary</h3><table class="table" border='1'><tr><th>Pillar</th><th>Purpose</th><th>Real-world Analogy</th></tr><tr><td>Encapsulation</td><td>Hide internal data</td><td>ATM machine's PIN entry</td></tr><tr><td>Abstraction</td><td>Simplify interface</td><td>Car dashboard controls</td></tr><tr><td>Inheritance</td><td>Reuse logic</td><td>Child inherits from parent</td></tr><tr><td>Polymorphism</td><td>Dynamic behavior</td><td>A "play" button on multiple apps</td></tr></table><h3>📢 What’s Next?</h3><p>Now that you've got the basics of OOP down, try spotting these concepts in your existing codebase. Refactor where needed. Trust us — your future self and teammates will thank you.</p></@sec.SectionHtmlTag>
+    public override void Start() => Console.WriteLine(\"Starting motorcycle\");
+}</code></pre>
+    <h3>🛠️ Why It Matters in the Real World</h3>
+    <ul>
+        <li><strong>Maintainability:</strong> Easier to fix bugs and add features.</li>
+        <li><strong>Scalability:</strong> Components grow independently.</li>
+        <li><strong>Reusability:</strong> Code once, use everywhere.</li>
+        <li><strong>Team Collaboration:</strong> Clear structure improves understanding.</li>
+    </ul>
+    <h3>⚖️ OOP vs Functional Programming</h3>
+    <table class=\"table\" border='1'>
+        <tr>
+            <th>Aspect</th>
+            <th>OOP</th>
+            <th>Functional Programming</th>
+        </tr>
+        <tr>
+            <td>Core Idea</td>
+            <td>Model behavior as objects</td>
+            <td>Model behavior as pure functions</td>
+        </tr>
+        <tr>
+            <td>Structure</td>
+            <td>Classes and objects</td>
+            <td>Functions and data immutability</td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td>Mutable state is common</td>
+            <td>Prefer stateless functions</td>
+        </tr>
+        <tr>
+            <td>Example Use Case</td>
+            <td>UI applications, simulations</td>
+            <td>Data transformation, analytics, concurrency</td>
+        </tr>
+        <tr>
+            <td>Reusability</td>
+            <td>Via inheritance and interfaces</td>
+            <td>Via higher-order functions and composition</td>
+        </tr>
+        <tr>
+            <td>Popular Languages</td>
+            <td>Java, C#, Python, C++</td>
+            <td>Haskell, Elixir, F#, JavaScript (can do both)</td>
+        </tr>
+        <tr>
+            <td>Debugging</td>
+            <td>Harder with shared state</td>
+            <td>Easier due to lack of side effects</td>
+        </tr>
+    </table>
+    <h3>✅ Summary</h3>
+    <table class=\"table\" border='1'>
+        <tr>
+            <th>Pillar</th>
+            <th>Purpose</th>
+            <th>Real-world Analogy</th>
+        </tr>
+        <tr>
+            <td>Encapsulation</td>
+            <td>Hide internal data</td>
+            <td>ATM machine's PIN entry</td>
+        </tr>
+        <tr>
+            <td>Abstraction</td>
+            <td>Simplify interface</td>
+            <td>Car dashboard controls</td>
+        </tr>
+        <tr>
+            <td>Inheritance</td>
+            <td>Reuse logic</td>
+            <td>Child inherits from parent</td>
+        </tr>
+        <tr>
+            <td>Polymorphism</td>
+            <td>Dynamic behavior</td>
+            <td>A \"play\" button on multiple apps</td>
+        </tr>
+    </table>
+    <h3>📢 What’s Next?</h3>
+    <p>Now that you've got the basics of OOP down, try spotting these concepts in your existing codebase. Refactor where
+        needed. Trust us — your future self and teammates will thank you.</p>
+</section>                      
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="svg-border-rounded text-dark">
-        <!-- Rounded SVG Border-->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
-            fill="currentColor">
-            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
-        </svg>
-    </div>
+ 
 </section>
 
 
@@ -162,6 +265,7 @@ public class Motorcycle : Vehicle {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
 
     </body>
 </html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Secure By Design - Why Security Matters | TechWayFit</title>
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <div class="single-post">
+                    <h1>Secure By Design - Why Security Matters</h1>
+                    <p class="lead">Security is no longer optional&#x2014;it&#x27;s foundational. This post explores why security is critical by examining real-world breaches like Equifax, Target, and SolarWinds. Learn how these incidents happened, what went wrong, and how developers can adopt a security-first mindset from the start.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
+                                <div class="single-post-meta-details-date">6/10/2025 10:00:00 AM &middot; 5 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/why-security-matters.webp" /> 
+                    <div class="single-post-text my-5">
+                        <section>
+
+    <h2>Introduction: The High Stakes of Software Security</h2>
+    <p>
+        Security is foundational, not optional. Developers, not just IT security teams, are responsible for preventing
+        breaches that can cost millions and shatter trust. From misconfigurations to outdated libraries, small gaps can
+        have devastating consequences.
+    </p>
+
+    <h2>The Cost of Ignorance: Real-World Breach Stories</h2>
+
+    <img src="/assets/images/blogs/secure-by-design/cards/security-breaches-timeline.webp"
+        alt="Timeline of Real-World Security Breaches" class="img-fluid mb-3" />
+
+    <div class="lesson">
+        <h3>🚨 Equifax (2017) - The Patch That Never Came</h3>
+        <table class="table table-sm table-responsive">
+
+            <tbody>
+                <tr>
+                    <td><strong>Issue:</strong></td>
+                    <td>Apache Struts vulnerability left unpatched [ <a
+                            href="https://www.ftc.gov/news-events/news/press-releases/2019/07/equifax-consumer-settlement"
+                            target="_blank" >Read more</a>]</td>
+                </tr>
+                <tr>
+                    <td><strong>Impact:</strong></td>
+                    <td> 147 million Americans affected; over $700 million in settlements</td>
+                </tr>
+                <tr>
+                    <td><strong>Lesson:</strong></td>
+                    <td>Always patch known vulnerabilities and monitor dependencies</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="lesson">
+        <h3>🔥 Target (2013) - A Vendor's Weak Link</h3>
+        <table class="table table-sm table-responsive">
+            <tbody>
+                <tr>
+                    <td><strong>Issue:</strong></td>
+                    <td>HVAC vendor credentials compromised [ <a
+                            href="https://www.csoonline.com/article/2130877/target-confirms-malware-related-data-breach.html"
+                            target="_blank" >Read more</a>]</td>
+                </tr>
+                <tr>
+                    <td><strong>Impact:</strong></td>
+                    <td>40 million credit card numbers, 70 million records leaked</td>
+                </tr>
+                <tr>
+                    <td><strong>Lesson:</strong></td>
+                    <td>Implement network segmentation and strict vendor access controls</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="lesson">
+        <h3>🛠 SolarWinds (2020) - Supply Chain Sabotage</h3>
+        <table class="table table-sm table-responsive">
+            <tbody>
+                <tr>
+                    <td><strong>Issue:</strong></td>
+                    <td>Malicious code inserted into software update [ <a
+                            href="https://www.npr.org/2020/12/14/946973967/u-s-government-agencies-hacked-in-foreign-cyber-attack"
+                            target="_blank" >Read more</a>]</td>
+                </tr>
+                <tr>
+                    <td><strong>Impact:</strong></td>
+                    <td>Government agencies and large companies compromised</td>
+                </tr>
+                <tr>
+                    <td><strong>Lesson:</strong></td>
+                    <td>Secure your build pipeline and validate update sources</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="lesson">
+        <h3>⚠️ Capital One (2019) - The Cloud Misconfiguration Fallout</h3>
+        <table class="table table-sm table-responsive">
+            <tbody>
+                <tr>
+                    <td><strong>Issue:</strong></td>
+                    <td>SSRF vulnerability exposed via misconfigured AWS WAF [ <a
+                            href="https://www.wired.com/story/capital-one-hack-amazon-cloud/" target="_blank"
+                            >Read more</a>]</td>
+                </tr>
+                <tr>
+                    <td><strong>Impact:</strong></td>
+                    <td>Over 100 million records leaked</td>
+                </tr>
+                <tr>
+                    <td><strong>Lesson:</strong></td>
+                    <td>Infrastructure security is as critical as application security</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="lesson">
+        <h3>🔑 Uber (2016) - Secrets in the Code</h3>
+        <table class="table table-sm table-responsive">
+            <tbody>
+                <tr>
+                    <td><strong>Issue:</strong></td>
+                    <td>Hardcoded AWS keys in public GitHub repo [ <a
+                            href="https://techcrunch.com/2017/01/05/uber-github-amazon-aws/" target="_blank"
+                            >Read more</a>]</td>
+                </tr>
+                <tr>
+                    <td><strong>Impact:</strong></td>
+                    <td>$100K fine and reputational damage</td>
+                </tr>
+                <tr>
+                    <td><strong>Lesson:</strong></td>
+                    <td>Never hardcode secrets; use secret management tools</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Common Causes of Breaches & How to Prevent Them</h2>
+    <table class="table table-bordered mt-4">
+        <thead class="thead-light">
+            <tr>
+                <th>Best Practice</th>
+                <th>Real-World Example</th>
+                <th>Lesson Learned</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Validate and Sanitize All Inputs</td>
+                <td>A fintech developer blocked a stored XSS attack in a feedback form using input validation. A <a
+                        href="https://portswigger.net/daily-swig/stored-xss-vulnerability-in-google-cloud-platform-resolved"
+                        target="_blank">similar XSS vulnerability in Google Cloud</a> exposed user risk before being
+                    patched.</td>
+                <td>Always validate and sanitize user inputs—never rely solely on client-side validation.</td>
+            </tr>
+            <tr>
+                <td>Use Secure Storage for Credentials</td>
+                <td>A junior dev leaked AWS keys in GitHub. <a
+                        href="https://techcrunch.com/2017/01/05/uber-github-amazon-aws/" target="_blank">Uber suffered a
+                        similar breach</a> where hardcoded secrets led to a $100K fine and public backlash.</td>
+                <td>Use secret managers and tools like <code>git-secrets</code> to avoid committing sensitive
+                    credentials.</td>
+            </tr>
+            <tr>
+                <td>Apply the Principle of Least Privilege</td>
+                <td><a href="https://www.wired.com/story/capital-one-hack-amazon-cloud/" target="_blank">Capital One’s
+                        breach</a> involved over-permissive IAM roles, allowing an attacker lateral access through SSRF.
+                </td>
+                <td>Enforce minimal privileges by role and eliminate unnecessary access to sensitive data.</td>
+            </tr>
+            <tr>
+                <td>Shift Security Left with DevSecOps Tools</td>
+                <td><a href="https://securitylab.github.com/research/github-token-scanning/" target="_blank">GitHub’s
+                        token scanning and Dependabot</a> helped prevent dependency-related exploits early in CI
+                    pipelines.</td>
+                <td>Automate vulnerability checks at the pull request stage to reduce exposure windows.</td>
+            </tr>
+            <tr>
+                <td>Embrace Automated Security Testing</td>
+                <td><a href="https://blog.sonarsource.com/multiple-sql-injections-found-in-popular-open-source-projects/"
+                        target="_blank">SonarQube scans discovered SQL injection flaws</a> in popular open-source tools
+                    before real-world exploitation.</td>
+                <td>Regularly scan legacy and live code for hidden security debt using SAST tools like SonarQube.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>How Developers Can Make a Difference</h2>
+
+    <img src="/assets/images/blogs/secure-by-design/cards/developer-security-checklist.webp"
+        alt="Developer Security Checklist" class="img-fluid mb-3" />
+
+    <h2>How Developers Make a Difference – Real-World Examples</h2>
+
+    <table class="table table-bordered mt-4">
+        <thead class="thead-light">
+            <tr>
+                <th>Best Practice</th>
+                <th>Real-World Example</th>
+                <th>Lesson Learned</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Validate and Sanitize All Inputs</td>
+                <td>A fintech developer blocked a stored XSS injection in a feedback form using regex validation and
+                    sanitization. A competitor later suffered a similar successful attack due to lack of input checks.
+                </td>
+                <td>Always validate and sanitize user inputs, even with client-side validation in place.</td>
+            </tr>
+            <tr>
+                <td>Use Secure Storage for Credentials</td>
+                <td>A junior dev accidentally committed AWS keys to GitHub. Bots used them to run crypto miners, causing
+                    a $10,000+ bill.</td>
+                <td>Use secret managers like AWS Secrets Manager or Vault. Prevent secrets in code with tools like
+                    <code>git-secrets</code>.</td>
+            </tr>
+            <tr>
+                <td>Apply the Principle of Least Privilege</td>
+                <td>A disgruntled intern with broad IAM access leaked customer data from a dashboard only meant for the
+                    support team.</td>
+                <td>Enforce "need-to-know" access. Scope IAM roles tightly based on user responsibilities.</td>
+            </tr>
+            <tr>
+                <td>Shift Security Left with DevSecOps Tools</td>
+                <td>Retailers using GitHub Advanced Security caught a vulnerable Node.js dependency before it was
+                    exploited in the wild.</td>
+                <td>Catch vulnerabilities during code review to prevent downstream deployment risks.</td>
+            </tr>
+            <tr>
+                <td>Embrace Automated Security Testing</td>
+                <td>SonarQube uncovered legacy SQL injection vectors in a gaming app's admin panel, live for years
+                    without detection.</td>
+                <td>Use static analysis and SAST tools to find hidden vulnerabilities, especially in legacy codebases.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h2>Conclusion</h2>
+    <p>
+        Security belongs to everyone—not just the security team. These breach stories
+        underscore how simple flaws can escalate into large-scale incidents. Stay tuned
+        as we dive deeper into OWASP Top 10, secure design principles, and coding practices
+        that make software resilient from the ground up.
+    </p>
+
+    <h2>Optional Enhancements</h2>
+
+    <h4>Timeline of Breaches</h4>
+    <ul>
+        <li>2013: Target</li>
+        <li>2017: Equifax</li>
+        <li>2019: Capital One</li>
+        <li>2020: SolarWinds</li>
+    </ul>
+
+    <h4>Quote</h4>
+    <blockquote>
+        “Security is not a feature, it's a mindset.” — Gene Spafford
+    </blockquote>
+
+    <h4>Breach vs. Prevention Cost</h4>
+    <p>
+        Investing in security is not just about compliance; it’s about protecting your users and your business. The cost
+        of a breach far outweighs the investment in prevention.
+        <strong>Remember:</strong> An ounce of prevention is worth a pound of cure.
+    </p>
+    <h2>The True Cost: Breach vs. Prevention</h2>
+    <p><span class="highlight">💸 Average cost of a breach (IBM 2023):</span> $4.45M</p>
+    <p><span class="highlight">🛡 Annual cost of implementing DevSecOps:</span> Less than $100K</p>
+    <p>The **smartest investment** in security isn’t post-breach recovery—it’s prevention.</p>
+
+    <img src="/assets/images/blogs/secure-by-design/cards/cost-of-breach-vs-prevention.webp"
+        alt="Cost of Breach vs Prevention" class="img-fluid mb-3" />
+
+    <h2>Final Takeaway</h2>
+    <p>Security belongs to <span class="highlight">everyone</span>—not just the security team. Stay tuned for insights
+        into <strong>OWASP Top 10</strong>, secure coding principles, and DevSecOps strategies.</p>
+    <p>Remember: An ounce of prevention is worth a pound of cure. Investing in security is not just about compliance;
+        it’s about protecting your users and your business.</p>
+</section>
+
+
+
+
+
+<!-- <h2>How Developers Can Make a Difference</h2>
+    <ul>
+        <li>🔍 Validate and sanitize all inputs to prevent SQL injections & XSS attacks</li>
+        <li>🔑 Use secure storage for credentials (Vault, AWS Secrets Manager)</li>
+        <li>⚙️ Automate security testing within CI/CD pipelines</li>
+        <li>🛡 Apply the principle of least privilege across systems</li>
+        <li>🛠 Conduct threat modeling & risk assessments before deployment</li>
+    </ul>
+  -->                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</section>
+
+
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="#!">Privacy Policy</a>
+                                &middot;
+                                <a href="#!">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+
+    </body>
+</html>
