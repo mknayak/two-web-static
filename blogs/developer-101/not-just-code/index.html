@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Developer 101 - TechWayFit Isn&#x2019;t Just About Code. It&#x2019;s About Writing It Right. | TechWayFit</title>
-        <link href="/assets/css/styles.css" rel="stylesheet" />
+        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
 
@@ -31,7 +31,7 @@
    
    <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-   <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
 </ul>
 
                             </div>
@@ -51,7 +51,8 @@
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Manas Kumar Nayak</div>
-                                <div class="single-post-meta-details-date">6/2/2025 10:00:00 AM &middot; 4 min read</div>
+                                <div class="single-post-meta-details-date">6/2/2025 10:00:00 AM &middot;
+                                    4 min read</div>
                             </div>
                         </div>
                         <div>
@@ -60,7 +61,7 @@
                             </a>
                         </div>
                     </div>
-                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/not-about-code.webp" /> 
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/not-about-code.webp" />
                     <div class="single-post-text my-5">
                         <section>
     <h2>Developer 101 – TechWayFit Isn’t Just About Code. It’s About Writing It Right.</h2>
@@ -218,13 +219,38 @@
             </tr>
         </tbody>
     </table>
-</section>                      
+</section>
+                    </div>
+                </div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3">Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
- 
+
 </section>
 
 
@@ -272,6 +298,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
     <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+
 
     </body>
 </html>
