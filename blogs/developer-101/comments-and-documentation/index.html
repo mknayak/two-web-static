@@ -64,8 +64,8 @@
                     <img class="img-fluid mb-2 rounded" src="/assets/images/banners/comments-documentation.webp" />
                     <div class="single-post-text my-5">
                         <section>
-    <h1 class=\"mb-3\">Developer 101: Mastering Comments and Documentation</h1>
-    <p class=\"text-muted\">Published by TechWayFit</p>
+    <h1 class="mb-3">Developer 101: Mastering Comments and Documentation</h1>
+    <p class="text-muted">Published by TechWayFit</p>
     <p>Writing good code is only part of the job. Making it understandable for your teammates — and for your future self
         — is equally important. Comments and documentation play a vital role in making your codebase maintainable,
         readable, and collaborative.</p>
@@ -84,7 +84,7 @@
     </ul>
     <h2>Commenting Examples</h2>
     <h3>C#</h3>
-    <pre><code class=\"language-csharp\">// Bad: Too obvious
+    <pre><code class="language-csharp">// Bad: Too obvious
 int total = 0; // Set total to 0
 
 // Good: Adds context
@@ -92,7 +92,7 @@ int total = 0; // Initialize total to accumulate cart item prices
 
 // TODO: Handle discounts in future</code></pre>
     <h3>Python</h3>
-    <pre><code class=\"language-python\"># Bad: Redundant
+    <pre><code class="language-python"># Bad: Redundant
 count = 0  # Count is zero
 
 # Good: Clarifies purpose
@@ -103,8 +103,8 @@ count = 0  # Number of users currently online
     <p>Docstrings are embedded documentation for functions, classes, and modules. Use them to describe purpose,
         parameters, and return values.</p>
     <h3>Python Docstring</h3>
-    <pre><code class=\"language-python\">def add(a, b):
-    \"\"\"Add two numbers and return the result.
+    <pre><code class="language-python">def add(a, b):
+    """Add two numbers and return the result.
 
     Args:
         a (int): First number.
@@ -112,14 +112,14 @@ count = 0  # Number of users currently online
 
     Returns:
         int: Sum of a and b.
-    \"\"\"
+    """
     return a + b</code></pre>
     <h3>C# XML Documentation</h3>
-    <pre><code class=\"language-csharp\">/// <summary>
+    <pre><code class="language-csharp">/// <summary>
 /// Adds two integers and returns the result.
 /// </summary>
-/// <param name=\"a\">First integer</param>
-/// <param name=\"b\">Second integer</param>
+/// <param name="a">First integer</param>
+/// <param name="b">Second integer</param>
 /// <returns>Sum of a and b</returns>
 public int Add(int a, int b)
 {
@@ -136,7 +136,7 @@ public int Add(int a, int b)
     <p>Unreadable code leads to confusion, delays, and bugs — especially for support teams maintaining the code under
         pressure. Without clear comments or structure, even a simple issue can take hours to debug.</p>
     <h3>❌ Poorly Commented Code (C#)</h3>
-    <pre><code class=\"language-csharp\">public void C(int x) {
+    <pre><code class="language-csharp">public void C(int x) {
     if (x == 1) { P(); } else { Q(); }
 }</code></pre>
     <ul>
@@ -145,10 +145,10 @@ public int Add(int a, int b)
         <li>Support team has no clue what behavior to expect.</li>
     </ul>
     <h3>✅ Refactored and Documented Version (C#)</h3>
-    <pre><code class=\"language-csharp\">/// <summary>
+    <pre><code class="language-csharp">/// <summary>
 /// Processes user request based on priority flag.
 /// </summary>
-/// <param name=\"priorityFlag\">1 = high priority</param>
+/// <param name="priorityFlag">1 = high priority</param>
 public void ProcessRequest(int priorityFlag) {
     if (priorityFlag == 1) {
         HandleUrgentRequest();
@@ -157,7 +157,7 @@ public void ProcessRequest(int priorityFlag) {
     }
 }</code></pre>
     <h3>❌ Poorly Written Code (Python)</h3>
-    <pre><code class=\"language-python\">def c(x):
+    <pre><code class="language-python">def c(x):
     if x == 0:
         t()
     else:
@@ -168,12 +168,12 @@ public void ProcessRequest(int priorityFlag) {
         <li>Debugging becomes trial-and-error.</li>
     </ul>
     <h3>✅ Improved Version (Python)</h3>
-    <pre><code class=\"language-python\">def process_login(user_status):
-    \"\"\"Processes login based on user status.
+    <pre><code class="language-python">def process_login(user_status):
+    """Processes login based on user status.
 
     Args:
         user_status (int): 0 for guest, 1 for registered user.
-    \"\"\"
+    """
     if user_status == 0:
         handle_guest_login()
     else:
@@ -187,41 +187,41 @@ public void ProcessRequest(int priorityFlag) {
     </ul>
     <h2>Real-World Bugs Caused by Poor Documentation</h2>
     <h3>🧨 Scenario 1: Misunderstood Business Logic (C#)</h3>
-    <pre><code class=\"language-csharp\">// Original developer assumed business hours end at 6 PM.
+    <pre><code class="language-csharp">// Original developer assumed business hours end at 6 PM.
 if (DateTime.Now.Hour < 18)
     SendNotification();</code></pre>
     <p>Notifications were sent after hours. Policy had changed but comments didn't reflect that.</p>
     <h3>Fix:</h3>
-    <pre><code class=\"language-csharp\">// Business hours updated as of Jan 2025 policy
+    <pre><code class="language-csharp">// Business hours updated as of Jan 2025 policy
 if (DateTime.Now.Hour < 17)
     SendNotification();</code></pre>
     <h3>🧨 Scenario 2: Silent Failures Due to Assumptions (Python)</h3>
-    <pre><code class=\"language-python\">def calculate_discount(user_type):
+    <pre><code class="language-python">def calculate_discount(user_type):
     if user_type == 'premium':
         return 0.20
     return None</code></pre>
     <h3>Fix:</h3>
-    <pre><code class=\"language-python\">def calculate_discount(user_type):
-    \"\"\"Returns discount rate for known user types.\"\"\"
+    <pre><code class="language-python">def calculate_discount(user_type):
+    """Returns discount rate for known user types."""
     if user_type == 'premium':
         return 0.20
     elif user_type == 'standard':
         return 0.10
-    raise ValueError(\"Unknown user type\")</code></pre>
+    raise ValueError("Unknown user type")</code></pre>
     <h3>🧨 Scenario 3: Unclear API Response Mapping (C#)</h3>
-    <pre><code class=\"language-csharp\">// Mistook business code for HTTP code
+    <pre><code class="language-csharp">// Mistook business code for HTTP code
 if (response.status_code == 200)
     ApproveRequest();</code></pre>
     <h3>Fix:</h3>
-    <pre><code class=\"language-csharp\">// 100 = success; 200 = validation error, etc.
+    <pre><code class="language-csharp">// 100 = success; 200 = validation error, etc.
 if (response.status_code == 100)
     ApproveRequest();</code></pre>
     <h3>🧨 Scenario 4: Hidden Calculation Logic (Python)</h3>
-    <pre><code class=\"language-python\"># Monthly interest
+    <pre><code class="language-python"># Monthly interest
 interest = principal * 0.015</code></pre>
     <p>Hardcoded value caused miscalculations after interest rate changes.</p>
     <h3>Fix:</h3>
-    <pre><code class=\"language-python\">monthly_interest_rate = get_config(\"interest_rate\")
+    <pre><code class="language-python">monthly_interest_rate = get_config("interest_rate")
 interest = principal * monthly_interest_rate</code></pre>
     <h2>Conclusion</h2>
     <p>Don’t leave your future self (or your teammates) in the dark. Clean, meaningful comments and documentation are a

@@ -72,7 +72,7 @@
     <p>Imagine building with LEGO bricks. Each brick is like an object — self-contained, but able to connect with
         others. OOP helps you structure software just like that.</p>
     <h3>🔍 4 Pillars of OOP Explained Simply</h3>
-    <h4>1. Encapsulation – \"Keep it together\"</h4>
+    <h4>1. Encapsulation – "Keep it together"</h4>
     <p>Bundle data (fields) and behavior (methods) into a single unit — the class. Expose only what’s necessary.</p>
     <pre
         class='line-numbers'><code class='language-csharp'>public class BankAccount {
@@ -86,7 +86,7 @@
         return balance;
     }
 }</code></pre>
-    <h4>2. Abstraction – \"Hide the complexity\"</h4>
+    <h4>2. Abstraction – "Hide the complexity"</h4>
     <p>Show only essential features. Hide implementation details.</p>
     <pre
         class='line-numbers'><code class='language-csharp'>public abstract class Payment {
@@ -95,42 +95,42 @@
 
 public class CreditCardPayment : Payment {
     public override void ProcessPayment() {
-        Console.WriteLine(\"Processing credit card...\");
+        Console.WriteLine("Processing credit card...");
     }
 }</code></pre>
-    <h4>3. Inheritance – \"Reuse and extend\"</h4>
+    <h4>3. Inheritance – "Reuse and extend"</h4>
     <p>Create new classes that reuse behavior from existing ones.</p>
     <pre
         class='line-numbers'><code class='language-csharp'>public class Animal {
-    public void Eat() => Console.WriteLine(\"Eating...\");
+    public void Eat() => Console.WriteLine("Eating...");
 }
 
 public class Dog : Animal {
-    public void Bark() => Console.WriteLine(\"Barking...\");
+    public void Bark() => Console.WriteLine("Barking...");
 }</code></pre>
-    <h4>4. Polymorphism – \"Same action, different forms\"</h4>
+    <h4>4. Polymorphism – "Same action, different forms"</h4>
     <p>Use the same method name but allow different implementations.</p>
     <pre
         class='line-numbers'><code class='language-csharp'>public class Shape {
-    public virtual void Draw() => Console.WriteLine(\"Drawing shape\");
+    public virtual void Draw() => Console.WriteLine("Drawing shape");
 }
 
 public class Circle : Shape {
-    public override void Draw() => Console.WriteLine(\"Drawing circle\");
+    public override void Draw() => Console.WriteLine("Drawing circle");
 }</code></pre>
     <h3>🧪 More Real-World OOP Examples</h3>
     <pre
         class='line-numbers'><code class='language-csharp'>public class Vehicle {
     public string Brand { get; set; }
-    public virtual void Start() => Console.WriteLine(\"Starting vehicle\");
+    public virtual void Start() => Console.WriteLine("Starting vehicle");
 }
 
 public class Car : Vehicle {
-    public override void Start() => Console.WriteLine(\"Starting car\");
+    public override void Start() => Console.WriteLine("Starting car");
 }
 
 public class Motorcycle : Vehicle {
-    public override void Start() => Console.WriteLine(\"Starting motorcycle\");
+    public override void Start() => Console.WriteLine("Starting motorcycle");
 }</code></pre>
     <h3>🛠️ Why It Matters in the Real World</h3>
     <ul>
@@ -207,7 +207,7 @@ public class Motorcycle : Vehicle {
         <tr>
             <td>Polymorphism</td>
             <td>Dynamic behavior</td>
-            <td>A \"play\" button on multiple apps</td>
+            <td>A "play" button on multiple apps</td>
         </tr>
     </table>
     <h3>📢 What’s Next?</h3>

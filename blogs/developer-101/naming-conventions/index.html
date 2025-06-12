@@ -64,8 +64,8 @@
                     <img class="img-fluid mb-2 rounded" src="/assets/images/banners/naming-convention.webp" />
                     <div class="single-post-text my-5">
                         <section>
-    <h1 class=\"mb-3\">Developer 101: Naming Conventions for Variables and Methods</h1>
-    <p class=\"text-muted\">Published by TechWayFit</p>
+    <h1 class="mb-3">Developer 101: Naming Conventions for Variables and Methods</h1>
+    <p class="text-muted">Published by TechWayFit</p>
     <p>Discover the importance of clean, consistent naming conventions in your code. Learn the best practices for naming
         variables and methods in different programming languages. From camelCase to PascalCase, make your code more
         readable and maintainable.</p>
@@ -76,7 +76,7 @@
         <li>Ensures consistency across projects and languages</li>
     </ul>
     <h3>Popular Naming Styles</h3>
-    <table class=\"table table-striped\">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Convention</th>
@@ -117,19 +117,19 @@
     <pre
         class='line-numbers'><code class='language-csharp'><code>// ❌ Bad Examples
 int a = 25;
-string str1 = \"hello\";
+string str1 = "hello";
 bool isIt = true;
 float t1 = 9.8f;
 var tmp = GetData();
 
 // ✅ Good Examples
 int maxRetryCount = 25;
-string userGreeting = \"hello\";
+string userGreeting = "hello";
 bool isEmailVerified = true;
 float gravityConstant = 9.8f;
 var customerList = GetCustomerData();</code></code></pre>
     <h3>👽 Alien Variables — What NOT to Do</h3>
-    <table class=\"table table-bordered\">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Variable Name</th>
@@ -213,15 +213,15 @@ var customerList = GetCustomerData();</code></code></pre>
 }</code></code></pre>
 </section>
 <section>
-    <h3 class=\"mt-5\"> Code Readability in Action: Real Example</h3>
-    <h5 class=\"text-danger mt-4\">❌ Bad Naming Example</h5>
+    <h3 class="mt-5"> Code Readability in Action: Real Example</h3>
+    <h5 class="text-danger mt-4">❌ Bad Naming Example</h5>
     <pre
-        class='line-numbers'><code class='language-csharp'><code class=\"language-csharp\">public class A {
+        class='line-numbers'><code class='language-csharp'><code class="language-csharp">public class A {
     public void Do() {
         var x = Get();
         foreach (var i in x) {
             if (i.f1 > 18 && i.f2 == true) {
-                Console.WriteLine(\"OK\");
+                Console.WriteLine("OK");
             }
         }
     }
@@ -234,16 +234,16 @@ public class B {
     public int f1;
     public bool f2;
 }</code></code></pre>
-    <div class=\"alert alert-warning\"><strong>Problems:</strong> Names like <code>A</code>, <code>x</code>,
+    <div class="alert alert-warning"><strong>Problems:</strong> Names like <code>A</code>, <code>x</code>,
         <code>i</code>, <code>f1</code> are meaningless. It's unclear what the code does.</div>
-    <h5 class=\"text-success mt-4\">✅ Good Naming Example</h5>
+    <h5 class="text-success mt-4">✅ Good Naming Example</h5>
     <pre
-        class='line-numbers'><code class='language-csharp'><code class=\"language-csharp\">public class CustomerService {
+        class='line-numbers'><code class='language-csharp'><code class="language-csharp">public class CustomerService {
     public void PrintAdultVerifiedCustomers() {
         var customers = GetAllCustomers();
         foreach (var customer in customers) {
             if (customer.Age > 18 && customer.IsEmailVerified) {
-                Console.WriteLine(\"OK\");
+                Console.WriteLine("OK");
             }
         }
     }
@@ -256,10 +256,10 @@ public class Customer {
     public int Age;
     public bool IsEmailVerified;
 }</code></code></pre>
-    <div class=\"alert alert-success\"><strong>Why it works:</strong> The method, variables, and class names clearly
+    <div class="alert alert-success"><strong>Why it works:</strong> The method, variables, and class names clearly
         express intent. Anyone reading this can instantly grasp the logic and purpose.</div>
-    <div class=\"alert alert-info mt-4\">💬 Join the discussion on our <a href=\"https://discord.gg/7Z9xjfAS\"
-            target=\"_blank\">TechWayFit Discord</a> to share your naming tips!</div>
+    <div class="alert alert-info mt-4">💬 Join the discussion on our <a href="https://discord.gg/7Z9xjfAS"
+            target="_blank">TechWayFit Discord</a> to share your naming tips!</div>
 </section>
                     </div>
                 </div>
