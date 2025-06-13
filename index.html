@@ -36,7 +36,7 @@
                         </div>
                     </nav>
 					
- 
+
 <header class="page-header-ui page-header-light py-lg-5 bg-light">
     <div class="page-header-ui-content">
         <div class="container px-5">
@@ -62,7 +62,22 @@
             <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
         </svg>
     </div>
-</header> 
+</header>
+<section class="bg-white  py-10">
+    <div class="search-wrapper">
+        <div class="search-bar-group">
+            <select id="category-filter">
+                <option value="">All Categories</option>
+                <option value="blog">Blogs</option>
+                <option value="page">Pages</option>
+                <!-- Add more as needed -->
+            </select>
+            <input type="text" id="search-input" placeholder="Enter keywords..." />
+            <button id="search-button"><i class="fa fa-search"></i></button>
+        </div>
+        <ul id="search-results"></ul>
+    </div>
+</section>
 <section class="bg-white py-10">
     <div class="container px-5">
         <div class="row gx-5 text-center">
@@ -93,7 +108,7 @@
             <img src="/assets/images/cards/tech-that-talks-1.webp" class="card-img-top" alt="Tech That Talks to You" />
     <div class="card-body">       
         <h5 class="card-title">Tech That Talks to You</h5>
-        <p class="card-text">ive into in-depth blogs on modern tools and techniques. Stay sharp with real-world insights and industry trends. Written for developers who think beyond the code.</p>
+        <p class="card-text">Dive into in-depth blogs on modern tools and techniques. Stay sharp with real-world insights and industry trends. Written for developers who think beyond the code.</p>
             <a href="/pages/tech-that-talks" class="btn btn-primary">More Insights</a>
     </div>
 </div>
@@ -102,8 +117,8 @@
         </div>
     </div>
 </section>
-        
-   
+
+
                     <!-- Page Header-->
                     
 <div id="layoutDefault_footer">
@@ -141,5 +156,70 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         
+        
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script>
+        function highlightText(text, keyword) {
+            if (!keyword) return text;
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+        function getFuse(query, data) {
+            const threshold = query.length <= 3 ? 0.6 : 0.3; // more lenient for short words
+            return new Fuse(data, {
+                keys: ['Title', 'Description', 'Category'],
+                threshold: threshold,
+                ignoreLocation: true, // optional: improves matching for short terms
+                minMatchCharLength: 2  // optional: improves accuracy for abbreviations like API, JWT
+            });
+        }
+        let fuse;
+        let allData = [];
+
+        Papa.parse('/search-index.csv', {
+            header: true,
+            download: true,
+            complete: function (results) {
+                allData = results.data;
+
+                fuse = new Fuse(allData, {
+                    keys: ['Title', 'Description', 'Category'],
+                    threshold: 0.3
+                });
+
+                const search = () => {
+                    const query = document.getElementById('search-input').value.trim();
+                    const selectedCategory = document.getElementById('category-filter').value;
+                    const list = document.getElementById('search-results');
+                    if (query.length < 3) {
+                        list.innerHTML = '';
+                        return;
+                    }
+                    let filteredData = allData;
+                    if (selectedCategory) {
+                        filteredData = filteredData.filter(item => item.Category === selectedCategory);
+                    }
+ 
+                    const fuse = getFuse(query, filteredData);
+                    const results = fuse.search(query);
+                    list.innerHTML = results.length
+                        ? results.map(r => `
+          <li class="search-item">
+           <a href="${r.item.Url}" class="result-title">${highlightText(r.item.Title, query)}</a>
+    <small class="result-desc">${highlightText(r.item.Description, query)}</small><br>
+            <span class="category-badge">${r.item.Category}</span>
+          </li>
+        `).join('')
+                        : `<li class="search-item text-muted">No results found.</li>`;
+                };
+
+                document.getElementById('search-input').addEventListener('input', search);
+                document.getElementById('category-filter').addEventListener('change', search);
+            }
+        });
+    </script>
+
+
     </body>
 </html>
