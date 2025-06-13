@@ -7,14 +7,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Developer 101 - TechWayFit Isn&#x2019;t Just About Code. It&#x2019;s About Writing It Right. | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -52,6 +50,7 @@
       </div>
     </aside>
             <div class="col-lg-9">
+                <div class="toc-title"></div>
                 <div class="single-post">
                     <h1>Developer 101 - TechWayFit Isn&#x2019;t Just About Code. It&#x2019;s About Writing It Right.</h1>
                     <p class="lead">TechWayFit isn&#x2019;t about teaching you syntax &#x2014; it&#x2019;s about teaching you how to write code the right way. From naming conventions to structure, this post explains why best practices matter regardless of the language you use. Plus, find handpicked links to trusted programming tutorials across Python, JavaScript, C#, and more. Learn the how elsewhere &#x2014; master the why here.</p>
@@ -80,7 +79,7 @@
     <blockquote>Instead, we ask: <strong>“As a developer, how should you write code that others love to
             maintain?”</strong></blockquote>
     <p>Clean, readable, and reliable code is what sets apart professional developers from just code writers.</p>
-    <h3>🎯 The TechWayFit Philosophy</h3>
+    <h3 class="toc-title">🎯 The TechWayFit Philosophy</h3>
     <ul>
         <li>✅ Code readability and clarity</li>
         <li>✅ Naming conventions that make sense</li>
@@ -89,7 +88,7 @@
         <li>✅ Avoiding over-engineering and technical debt</li>
     </ul>
     <p><em>Coding isn’t just about functionality — it’s about clarity, quality, and collaboration.</em></p>
-    <h3>⚖️ OOP vs FP: Different Styles, Same Best Practices</h3>
+    <h3 class="toc-title">⚖️ OOP vs FP: Different Styles, Same Best Practices</h3>
     <h4>👷‍♂️ Object-Oriented Programming (OOP)</h4>
     <pre
         class='line-numbers'><code class='language-csharp'>public class Invoice {
@@ -105,7 +104,7 @@
         class='line-numbers'><code class='language-csharp'>const applyDiscount = (amount, percent) =>
     amount - (amount * percent / 100);</code></pre>
     <p>✅ Best Practice: Use expressive function names and avoid side effects.</p>
-    <h3>🔄 Best Practices Apply Across Paradigms</h3>
+    <h3 class="toc-title">🔄 Best Practices Apply Across Paradigms</h3>
     <table class='table'>
         <thead>
             <tr>
@@ -142,7 +141,7 @@
             </tr>
         </tbody>
     </table>
-    <h3>🌍 Language Learning References</h3>
+    <h3 class="toc-title">🌍 Language Learning References</h3>
     <table class='table'>
         <thead>
             <tr>
@@ -197,12 +196,12 @@
             </tr>
         </tbody>
     </table>
-    <h3>🧭 Where TechWayFit Fits In</h3>
+    <h3 class="toc-title">🧭 Where TechWayFit Fits In</h3>
     <p>Once you’ve learned how a language works, come back here to learn how to write clean code, structure logic, and
         scale solutions for the real world.</p>
     <blockquote>💡 We’re here to make sure you don’t just <strong>write code</strong> — you <strong>craft
             software</strong>.</blockquote>
-    <h3>✅ Summary</h3>
+    <h3 class="toc-title">✅ Summary</h3>
     <table class='table'>
         <thead>
             <tr>
@@ -234,7 +233,7 @@
                 </div>
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -299,6 +298,9 @@
             </div>
             
         </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         

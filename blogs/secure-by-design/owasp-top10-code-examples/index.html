@@ -7,14 +7,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Secure By Design - The OWASP Top 10 Explained with Real Code Examples | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -52,6 +50,7 @@
       </div>
     </aside>
             <div class="col-lg-9">
+                <div class="toc-title"></div>
                 <div class="single-post">
                     <h1>Secure By Design - The OWASP Top 10 Explained with Real Code Examples</h1>
                     <p class="lead">Explore the OWASP Top 10 security risks with hands-on code examples in C# and Python. Learn how to secure your applications by design, and avoid the most common vulnerabilities.</p>
@@ -109,7 +108,7 @@
     <div class="card h-100 shadow-sm">
       <img src="/assets/images/blogs/secure-by-design/cards/owasp-a01.webp" class="card-img-top" alt="A01: Broken Access Control">
       <div class="card-body">
-        <h5 class="card-title">A01: Broken Access Control</h5>
+        <h5 class="card-title toc-title" >A01: Broken Access Control</h5>
         <p class="card-text">Improper access checks allow users to perform unauthorized actions.</p>
         <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA01" aria-expanded="false" aria-controls="detailsA01">View Details</button>
         <div class="collapse mt-3" id="detailsA01">
@@ -136,7 +135,7 @@ public IActionResult GetAdminData()
     <div class="card h-100 shadow-sm">
       <img src="/assets/images/blogs/secure-by-design/cards/owasp-a02.webp" class="card-img-top" alt="A02: Cryptographic Failures">
       <div class="card-body">
-        <h5 class="card-title">A02: Cryptographic Failures</h5>
+        <h5 class="card-title toc-title">A02: Cryptographic Failures</h5>
         <p class="card-text">Sensitive data isn’t properly protected using encryption or hashing.</p>
         <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA02" aria-expanded="false" aria-controls="detailsA02">View Details</button>
         <div class="collapse mt-3" id="detailsA02">
@@ -164,7 +163,7 @@ public IActionResult GetAdminData()
   <div class="card h-100 shadow-sm">
     <img src="/assets/images/blogs/secure-by-design/cards/owasp-a03.webp" class="card-img-top" alt="A03: Injection">
     <div class="card-body">
-      <h5 class="card-title">A03: Injection</h5>
+      <h5 class="card-title toc-title">A03: Injection</h5>
       <p class="card-text">Malicious input can trick the system into executing unintended commands or queries.</p>
       <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA03" aria-expanded="false" aria-controls="detailsA03">View Details</button>
       <div class="collapse mt-3" id="detailsA03">
@@ -195,7 +194,7 @@ public IActionResult GetAdminData()
     <div class="card h-100 shadow-sm">
       <img src="/assets/images/blogs/secure-by-design/cards/owasp-a04.webp" class="card-img-top" alt="A04: Insecure Design">
       <div class="card-body">
-        <h5 class="card-title">A04: Insecure Design</h5>
+        <h5 class="card-title toc-title">A04: Insecure Design</h5>
         <p class="card-text">Lack of secure design patterns and controls in the system architecture.</p>
         <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA04" aria-expanded="false" aria-controls="detailsA04">View Details</button>
         <div class="collapse mt-3" id="detailsA04">
@@ -227,7 +226,7 @@ public IActionResult TransferFunds(decimal amount, int accountId)
   <div class="card h-100 shadow-sm">
     <img src="/assets/images/blogs/secure-by-design/cards/owasp-a05.webp" class="card-img-top" alt="A05: Security Misconfiguration">
     <div class="card-body">
-      <h5 class="card-title">A05: Security Misconfiguration</h5>
+      <h5 class="card-title toc-title">A05: Security Misconfiguration</h5>
       <p class="card-text">Misconfigured settings, headers, or unused services create vulnerabilities.</p>
       <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA05" aria-expanded="false" aria-controls="detailsA05">View Details</button>
       <div class="collapse mt-3" id="detailsA05">
@@ -256,7 +255,7 @@ else
   <div class="card h-100 shadow-sm">
     <img src="/assets/images/blogs/secure-by-design/cards/owasp-a06.webp" class="card-img-top" alt="A06: Vulnerable and Outdated Components">
     <div class="card-body">
-      <h5 class="card-title">A06: Vulnerable and Outdated Components</h5>
+      <h5 class="card-title toc-title">A06: Vulnerable and Outdated Components</h5>
       <p class="card-text">Using old or insecure software libraries exposes applications to known attacks.</p>
       <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA06" aria-expanded="false" aria-controls="detailsA06">View Details</button>
       <div class="collapse mt-3" id="detailsA06">
@@ -278,7 +277,7 @@ else
   <div class="card h-100 shadow-sm">
     <img src="/assets/images/blogs/secure-by-design/cards/owasp-a07.webp" class="card-img-top" alt="A07: Identification and Authentication Failures">
     <div class="card-body">
-      <h5 class="card-title">A07: Identification and Authentication Failures</h5>
+      <h5 class="card-title toc-title">A07: Identification and Authentication Failures</h5>
       <p class="card-text">Weak or missing authentication can lead to unauthorized access or impersonation.</p>
       <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA07" aria-expanded="false" aria-controls="detailsA07">View Details</button>
       <div class="collapse mt-3" id="detailsA07">
@@ -303,7 +302,7 @@ options.Lockout.MaxFailedAccessAttempts = 5;</code></pre>
   <div class="card h-100 shadow-sm">
     <img src="/assets/images/blogs/secure-by-design/cards/owasp-a08.webp" class="card-img-top" alt="A08: Software and Data Integrity Failures">
     <div class="card-body">
-      <h5 class="card-title">A08: Software and Data Integrity Failures</h5>
+      <h5 class="card-title toc-title">A08: Software and Data Integrity Failures</h5>
       <p class="card-text">Assuming data or software is trustworthy without validation.</p>
       <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA08" aria-expanded="false" aria-controls="detailsA08">View Details</button>
       <div class="collapse mt-3" id="detailsA08">
@@ -325,7 +324,7 @@ options.Lockout.MaxFailedAccessAttempts = 5;</code></pre>
   <div class="card h-100 shadow-sm">
     <img src="/assets/images/blogs/secure-by-design/cards/owasp-a09.webp" class="card-img-top" alt="A09: Security Logging and Monitoring Failures">
     <div class="card-body">
-      <h5 class="card-title">A09: Security Logging and Monitoring Failures</h5>
+      <h5 class="card-title toc-title">A09: Security Logging and Monitoring Failures</h5>
       <p class="card-text">Lack of logging and monitoring delays breach detection and response.</p>
       <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA09" aria-expanded="false" aria-controls="detailsA09">View Details</button>
       <div class="collapse mt-3" id="detailsA09">
@@ -354,7 +353,7 @@ options.Lockout.MaxFailedAccessAttempts = 5;</code></pre>
   <div class="card h-100 shadow-sm">
     <img src="/assets/images/blogs/secure-by-design/cards/owasp-a10.webp" class="card-img-top" alt="A10: Server-Side Request Forgery (SSRF)">
     <div class="card-body">
-      <h5 class="card-title">A10: Server-Side Request Forgery (SSRF)</h5>
+      <h5 class="card-title toc-title">A10: Server-Side Request Forgery (SSRF)</h5>
       <p class="card-text">Allows attackers to make the server send requests to unintended destinations.</p>
       <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA10" aria-expanded="false" aria-controls="detailsA10">View Details</button>
       <div class="collapse mt-3" id="detailsA10">
@@ -383,7 +382,7 @@ return Ok(result);</code></pre>
                 </div>
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -448,6 +447,9 @@ return Ok(result);</code></pre>
             </div>
             
         </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         

@@ -7,14 +7,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Secure Authentication: OAuth2, OpenID, JWTs | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -52,6 +50,7 @@
       </div>
     </aside>
             <div class="col-lg-9">
+                <div class="toc-title"></div>
                 <div class="single-post">
                     <h1>Secure Authentication: OAuth2, OpenID, JWTs</h1>
                     <p class="lead">Master secure authentication with OAuth2, OpenID Connect, and JWTs. Learn the correct patterns and ASP.NET Core examples to prevent auth-related vulnerabilities.</p>
@@ -79,7 +78,7 @@
   <p>Authentication is the foundation of application security. As we build modern applications that connect with APIs, third-party services, and mobile clients, ensuring proper identity verification becomes critical. Misconfigured authentication can expose user data, leak credentials, and open doors for unauthorized access.</p>
 
   
-  <h2>🔍 Authentication vs Authorization</h2>
+  <h2 class="toc-title">🔍 Authentication vs Authorization</h2>
   <p>Many developers confuse <strong>authentication</strong> and <strong>authorization</strong>. Authentication confirms the user is who they say they are. Authorization defines what the authenticated user is allowed to do within the system. Mistaking one for the other can lead to privilege escalation vulnerabilities.</p>
   <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/auth-vs-authz.webp" alt="Authentication vs Authorization visual" class="img-fluid mb-4" />
   <h4>❌ Insecure Example</h4>
@@ -90,7 +89,7 @@ public IActionResult SecureData() => Ok("Everyone with token can see this");</co
   <pre><code class="language-csharp">[Authorize(Roles = "Admin")]
 public IActionResult SecureData() => Ok("Only admins can see this");</code></pre>
 
-  <h2>🔑 OAuth2 Explained</h2>
+  <h2 class="toc-title">🔑 OAuth2 Explained</h2>
   <p>OAuth2 is an open standard for access delegation, commonly used for token-based authorization. It enables applications to access user data without sharing credentials, using flows like Authorization Code or Client Credentials. Misusing OAuth2 can expose tokens or allow impersonation.</p>
   <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/oauth2-flow.webp" alt="OAuth2 Authorization Code Flow Diagram" class="img-fluid mb-4" />
   <h4>❌ Insecure Example</h4>
@@ -114,7 +113,7 @@ httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer static_token");</c
     options.SaveTokens = true;
 });</code></pre>
 
-  <h2>🗾 OpenID Connect</h2>
+  <h2 class="toc-title">🗾 OpenID Connect</h2>
   <p>OpenID Connect (OIDC) extends OAuth2 to add identity verification using ID tokens. These tokens help applications confirm the user's identity in a standardized, secure manner. If implemented incorrectly, malicious tokens could be accepted without validation.</p>
   <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/oidc-flow.webp" alt="OpenID Connect Flow Diagram" class="img-fluid mb-4" />
   <h4>❌ Insecure Example</h4>
@@ -139,7 +138,7 @@ var payload = JWT.Decode(idToken); // Without validation</code></pre>
     options.Scope.Add("profile");
 });</code></pre>
 
-  <h2>🔐 JSON Web Tokens (JWTs)</h2>
+  <h2 class="toc-title">🔐 JSON Web Tokens (JWTs)</h2>
   <p>JWTs are compact, URL-safe tokens used to securely transmit information. They enable stateless authentication across microservices and APIs. JWTs must be properly signed and validated to avoid forgery or replay attacks.</p>
   <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/jwt-anatomy.webp" alt="JWT Anatomy Diagram" class="img-fluid mb-4" />
   <h4>❌ Insecure Example</h4>
@@ -170,7 +169,7 @@ services.AddAuthentication("Bearer")
         };
     });</code></pre>
 
-  <h2>⚠️ Common Implementation Mistakes</h2>
+  <h2 class="toc-title">⚠️ Common Implementation Mistakes</h2>
   <p>Even when using secure technologies, improper implementation can result in serious vulnerabilities. Avoid these common pitfalls:</p>
   <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/auth-mistakes.webp" alt="Authentication Mistakes Visual" class="img-fluid mb-4" />
   <ul>
@@ -189,7 +188,7 @@ localStorage.setItem("token", accessToken);</code></pre>
     options.Cookie.SameSite = SameSiteMode.Strict;
 });</code></pre>
 
-  <h2>🧰 Best Practices Checklist</h2>
+  <h2 class="toc-title">🧰 Best Practices Checklist</h2>
   <p>Follow these best practices when implementing secure authentication:</p>
   <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/auth-checklist.webp" alt="Auth Checklist Infographic" class="img-fluid mb-4" />
   <ul>
@@ -211,7 +210,7 @@ app.MapGet("/profile", [Authorize] (ClaimsPrincipal user) =>
     return Results.Json(new { Name = user.Identity.Name });
 });</code></pre>
 
-  <h2>📄 Real-World Breaches</h2>
+  <h2 class="toc-title">📄 Real-World Breaches</h2>
   <p>High-profile breaches underscore the importance of getting authentication right:</p>
   <ul>
     <li><strong>Facebook (2018)</strong>: Access tokens leaked via “View As” feature. <em>Lesson: Minimize token scope and lifetime.</em></li>
@@ -220,7 +219,7 @@ app.MapGet("/profile", [Authorize] (ClaimsPrincipal user) =>
   </ul>
   <!-- <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/breach-stories.webp" alt="Breach incidents timeline infographic" class="img-fluid mb-4" /> -->
 
-  <h2>🔗 Conclusion</h2>
+  <h2 class="toc-title">🔗 Conclusion</h2>
   <p>Secure authentication is no longer optional. Implement OAuth2 for authorization, OpenID Connect for identity, and JWTs for stateless tokens — but do it right. The smallest misconfiguration can lead to major breaches.</p>
 
   <p><strong>Explore more:</strong> <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/" target="_blank">OWASP A01 - Broken Access Control</a></p>
@@ -230,7 +229,7 @@ app.MapGet("/profile", [Authorize] (ClaimsPrincipal user) =>
                 </div>
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -295,6 +294,9 @@ app.MapGet("/profile", [Authorize] (ClaimsPrincipal user) =>
             </div>
             
         </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         

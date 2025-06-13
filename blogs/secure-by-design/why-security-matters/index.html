@@ -7,14 +7,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Secure By Design - Why Security Matters | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -52,6 +50,7 @@
       </div>
     </aside>
             <div class="col-lg-9">
+                <div class="toc-title"></div>
                 <div class="single-post">
                     <h1>Secure By Design - Why Security Matters</h1>
                     <p class="lead">Security is no longer optional&#x2014;it&#x27;s foundational. This post explores why security is critical by examining real-world breaches like Equifax, Target, and SolarWinds. Learn how these incidents happened, what went wrong, and how developers can adopt a security-first mindset from the start.</p>
@@ -75,14 +74,14 @@
                     <div class="single-post-text my-5">
                         <section>
 
-    <h2>Introduction: The High Stakes of Software Security</h2>
+    <h2 class="toc-title">Introduction: The High Stakes of Software Security</h2>
     <p>
         Security is foundational, not optional. Developers, not just IT security teams, are responsible for preventing
         breaches that can cost millions and shatter trust. From misconfigurations to outdated libraries, small gaps can
         have devastating consequences.
     </p>
 
-    <h2>The Cost of Ignorance: Real-World Breach Stories</h2>
+    <h2 class="toc-title">The Cost of Ignorance: Real-World Breach Stories</h2>
 
     <img src="/assets/images/blogs/secure-by-design/cards/security-breaches-timeline.webp"
         alt="Timeline of Real-World Security Breaches" class="img-fluid mb-3" />
@@ -194,7 +193,7 @@
         </table>
     </div>
 
-    <h2>Common Causes of Breaches & How to Prevent Them</h2>
+    <h2 class="toc-title">Common Causes of Breaches & How to Prevent Them</h2>
     <table class="table table-bordered mt-4">
         <thead class="thead-light">
             <tr>
@@ -244,12 +243,12 @@
         </tbody>
     </table>
 
-    <h2>How Developers Can Make a Difference</h2>
+    <h2 class="toc-title">How Developers Can Make a Difference</h2>
 
     <img src="/assets/images/blogs/secure-by-design/cards/developer-security-checklist.webp"
         alt="Developer Security Checklist" class="img-fluid mb-3" />
 
-    <h2>How Developers Make a Difference – Real-World Examples</h2>
+    <h2 class="toc-title">How Developers Make a Difference – Real-World Examples</h2>
 
     <table class="table table-bordered mt-4">
         <thead class="thead-light">
@@ -297,7 +296,7 @@
     </table>
 
 
-    <h2>Conclusion</h2>
+    <h2 class="toc-title">Conclusion</h2>
     <p>
         Security belongs to everyone—not just the security team. These breach stories
         underscore how simple flaws can escalate into large-scale incidents. Stay tuned
@@ -358,7 +357,7 @@
                 </div>
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -423,6 +422,9 @@
             </div>
             
         </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         

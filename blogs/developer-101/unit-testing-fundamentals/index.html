@@ -7,14 +7,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Developer 101: Unit Testing Fundamentals | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -52,6 +50,7 @@
       </div>
     </aside>
             <div class="col-lg-9">
+                <div class="toc-title"></div>
                 <div class="single-post">
                     <h1>Developer 101: Unit Testing Fundamentals</h1>
                     <p class="lead">Learn what makes code testable, how to write effective unit tests using xUnit, unittest, or pytest, and avoid common pitfalls like hidden dependencies or flaky tests.</p>
@@ -77,7 +76,7 @@
 
   <p>Unit tests are the foundation of reliable software development. They allow developers to make changes with confidence, support CI/CD automation, and catch bugs early in the development cycle. Yet many developers either skip writing tests or misunderstand their purpose—especially when it comes to mocking, test structure, and flaky behavior.</p>
 
-  <h2>🔍 What Is a Unit Test?</h2>
+  <h2 class="toc-title">🔍 What Is a Unit Test?</h2>
   <p>A unit test verifies the behavior of a small, isolated piece of code—usually a single function or method—without relying on external systems like databases, file systems, or APIs.</p>
   <p><strong>What does "unit" mean?</strong> A <em>unit</em> refers to the smallest testable part of an application, such as a method, function, or class. It’s the individual building block of your code logic.</p>
   <p>Effective unit tests target these isolated units to validate business logic without crossing module boundaries or introducing side effects.</p>
@@ -95,7 +94,7 @@
   <p><strong>Think of it this way:</strong> If your function fails a unit test, the issue is with your code logic, not with external dependencies. Integration test failures could stem from issues in interaction between multiple layers.</p>
   <p><strong>Think of it this way:</strong> If your function fails a unit test, the issue is with your code logic, not with external dependencies.</p>
 
-  <h2>🧱 Arrange – Act – Assert (AAA Pattern)</h2>
+  <h2 class="toc-title">🧱 Arrange – Act – Assert (AAA Pattern)</h2>
   <p>This is a common pattern for structuring tests:</p>
   <ul>
     <li><strong>Arrange:</strong> Set up the test data and environment</li>
@@ -133,7 +132,7 @@ if __name__ == '__main__':
     unittest.main()
   </pre>
 
-  <h2>🧪 Using Test Frameworks</h2>
+  <h2 class="toc-title">🧪 Using Test Frameworks</h2>
   <p><strong>xUnit</strong> is a popular testing framework for .NET developers. It integrates easily with Visual Studio and supports attributes like <code>[Fact]</code> and <code>[Theory]</code>.</p>
   <p><strong>pytest</strong> and <strong>unittest</strong> are two widely-used testing libraries in Python. Pytest offers a simpler syntax and better plugin support.</p>
 
@@ -144,7 +143,7 @@ def test_multiply():
     assert calc.multiply(2, 5) == 10
   </pre>
 
-  <h2>🧰 Mocking Dependencies</h2>
+  <h2 class="toc-title">🧰 Mocking Dependencies</h2>
   <p>Mocking is used to replace real dependencies (like databases or APIs) with controlled stand-ins.</p>
 
   <h3>🔁 C# Mocking with Moq</h3>
@@ -161,7 +160,7 @@ repo = MagicMock()
 repo.get_user_by_id.return_value = { 'id': 1, 'name': 'Alice' }
   </pre>
 
-  <h2>📊 Test Coverage and Flaky Tests</h2>
+  <h2 class="toc-title">📊 Test Coverage and Flaky Tests</h2>
   <div class="row">
     <div class="col-md-6">
    <p><strong>Code coverage</strong> shows how much of your source code runs during automated tests. It helps you find parts of your code that aren’t being tested. While high coverage is good, it doesn’t guarantee quality—assertions still need to be meaningful. Aim for strong tests that check important logic and edge cases. Tools like <code>coverlet</code> (.NET) and <code>coverage.py</code> (Python) help track coverage and can be used in CI pipelines.</p>
@@ -179,7 +178,7 @@ repo.get_user_by_id.return_value = { 'id': 1, 'name': 'Alice' }
 
   <p><strong>Flaky tests</strong> pass sometimes and fail at other times—often due to timing issues, reliance on shared state, or asynchronous bugs. Treat them as high-priority bugs!</p>
   
-  <h2>🛠 How to Write Testable Code</h2>
+  <h2 class="toc-title">🛠 How to Write Testable Code</h2>
   <p>Writing testable code starts with design. If your code is difficult to test, chances are it’s tightly coupled, has too many responsibilities, or relies too much on global state.</p>
 
   <h3>✅ Testable Code Patterns</h3>
@@ -257,7 +256,7 @@ class AuthService:
   </pre>
   <p>This version allows injecting a mock database in tests, improving testability.</p>
 
-  <h2>💡 Best Practices</h2>
+  <h2 class="toc-title">💡 Best Practices</h2>
   <ul>
     <li>Keep tests isolated and fast</li>
     <li>Use descriptive test names: <code>ShouldReturnSum_WhenValidInput</code></li>
@@ -267,7 +266,7 @@ class AuthService:
     <li>Refactor your code to be more testable when needed</li>
   </ul>
 
-  <h2>🎯 Conclusion</h2>
+  <h2 class="toc-title">🎯 Conclusion</h2>
   <p>Unit testing helps ensure your code works as intended, simplifies debugging, and enables continuous delivery. Start small, focus on good structure, and adopt tools and patterns that scale with your project. Most importantly, write code that is easy to test—your future self will thank you.</p>
 
   <p>Stay tuned for more Developer 101 lessons—only on <a href="https://www.techwayfit.com">TechWayFit</a>.</p>
@@ -277,7 +276,7 @@ class AuthService:
                 </div>
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -342,6 +341,9 @@ class AuthService:
             </div>
             
         </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         

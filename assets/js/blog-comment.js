@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!tocContainer) return;
 
   const tocList = tocContainer.querySelector('.toc-list');
-  const headings = document.querySelectorAll('h2'); // Use '.section-title' if preferred
+  const headings = document.querySelectorAll('.toc-title'); // Use '.toc-title' if preferred
 
   headings.forEach((heading, index) => {
     if (!heading.id) {
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.href = '#' + heading.id;
-    a.textContent = heading.textContent;
+    a.textContent = heading.textContent || '🏠 Home';
     li.appendChild(a);
     tocList.appendChild(li);
   });

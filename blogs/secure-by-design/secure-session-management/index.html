@@ -7,14 +7,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Secure By Design: Secure Session Management for Web and Mobile Apps | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -52,6 +50,7 @@
       </div>
     </aside>
             <div class="col-lg-9">
+                <div class="toc-title"></div>
                 <div class="single-post">
                     <h1>Secure By Design: Secure Session Management for Web and Mobile Apps</h1>
                     <p class="lead">Learn how to manage sessions securely across web and mobile apps. Discover best practices, real-world breach examples, and secure code in ASP.NET Core.</p>
@@ -76,7 +75,7 @@
                         
 <section class="blog-detail">
  
-  <h2>🔐 Why Session Management Matters</h2>
+  <h2 class="toc-title">🔐 Why Session Management Matters</h2>
   <p>Session management is a cornerstone of secure web and mobile applications. Sessions keep users authenticated after login, often using cookies or tokens. Poor session handling can allow attackers to impersonate users, hijack sessions, or bypass authentication entirely.</p>
 <p>So, session is how a system “remembers” a user after they authenticate.Think of it like this: You log into a site → the server creates a session → it stores this session ID (often in a cookie or header token) → every time you interact again, your browser or app includes that session info so the server knows it’s you.</p>
 <img src="/assets/images/blogs/secure-by-design/banners/session-management.webp" alt="Session Management Overview" class="img-fluid">
@@ -93,7 +92,7 @@
 </section>
   
   <section>
-  <h2>⚠️ Real-World Breaches</h2>
+  <h2 class="toc-title">⚠️ Real-World Breaches</h2>
 
   <div class="breach-case">
     <h3>🔓 Uber 2022: Social Engineering + Token Abuse</h3>
@@ -131,7 +130,7 @@
   </div>
 </section>
 
-  <h2>✅ Core Best Practices (With Examples)</h2>
+  <h2 class="toc-title">✅ Core Best Practices (With Examples)</h2>
   <h3>1. Use Strong, Unpredictable Session IDs</h3>
   <p>Session IDs should be randomly generated and long enough to resist brute-force attacks. Avoid sequential or predictable formats.</p>
   <pre><code class="language-csharp">// ASP.NET Core does this by default when using cookie authentication
@@ -163,7 +162,7 @@ options.Cookie.SameSite = SameSiteMode.Strict; // Block CSRF</code></pre>
 // Don't do: HttpContext.Session.SetString("Password", user.Password);</code></pre>
 
   <section>
-    <h2>📱 Mobile Considerations</h2>
+    <h2 class="toc-title">📱 Mobile Considerations</h2>
   <ul>
     <li><strong>Use access + refresh tokens:</strong> Avoid long-lived sessions; rotate tokens securely.</li>
     <li><strong>Store tokens securely:</strong> Use Keychain (iOS) or Keystore (Android).</li>
@@ -195,7 +194,7 @@ secureStorage.remove('refresh_token');
 await api.revokeToken(refreshToken);</code></pre>
   </section>
 <section>
-    <h2>🔍 Web vs Mobile Session Handling</h2>
+    <h2 class="toc-title">🔍 Web vs Mobile Session Handling</h2>
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
@@ -225,7 +224,7 @@ await api.revokeToken(refreshToken);</code></pre>
   </table>
 </div>
 </section>
-  <h2>🛠 Tools and Implementation Options</h2>
+  <h2 class="toc-title">🛠 Tools and Implementation Options</h2>
   <ul>
     <li><strong>Distributed session stores:</strong> Redis, SQL Server, or cloud-managed caches for scaling.</li>
     <li><strong>Session audits:</strong> Track active sessions, IP, device, and expiration metadata.</li>
@@ -233,7 +232,7 @@ await api.revokeToken(refreshToken);</code></pre>
     <li><strong>Token introspection endpoints:</strong> Useful for validating tokens in mobile apps.</li>
   </ul>
 
-  <h2>🧠 Final Tips</h2>
+  <h2 class="toc-title">🧠 Final Tips</h2>
   <ul>
     <li>Always destroy session data on logout using <code>HttpContext.SignOutAsync()</code>.</li>
     <li>Notify users of new logins from unrecognized devices (e.g., via email).</li>
@@ -250,7 +249,7 @@ await api.revokeToken(refreshToken);</code></pre>
                 </div>
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -315,6 +314,9 @@ await api.revokeToken(refreshToken);</code></pre>
             </div>
             
         </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         

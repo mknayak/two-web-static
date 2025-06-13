@@ -7,14 +7,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Developer 101 - Encapsulation vs Abstraction | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -52,6 +50,7 @@
       </div>
     </aside>
             <div class="col-lg-9">
+                <div class="toc-title"></div>
                 <div class="single-post">
                     <h1>Developer 101 - Encapsulation vs Abstraction</h1>
                     <p class="lead">Explore the key differences between encapsulation and abstraction in object-oriented programming. Learn through real-world analogies, examples, and code how these principles promote clean, secure, and scalable software design.</p>
@@ -74,11 +73,9 @@
                    
                     <div class="single-post-text my-5">
                         <section>
-    <h1 class="mb-3">Developer 101: Encapsulation vs Abstraction</h1>
-    <p class="text-muted">Published by TechWayFit</p>
     <p>Encapsulation and abstraction are two essential principles of object-oriented programming. This blog demystifies
         them using real-life analogies, code examples, and clear distinctions.</p>
-    <h3>What is Encapsulation?</h3>
+    <h3 class="toc-title">What is Encapsulation?</h3>
     <p>Encapsulation is the process of hiding the internal state and requiring all interaction to be performed through
         an object's methods.</p>
     <pre
@@ -93,14 +90,14 @@
         return balance;
     }
 }</code></pre>
-    <h3>What is Abstraction?</h3>
+    <h3 class="toc-title">What is Abstraction?</h3>
     <p>Abstraction hides complexity by exposing only the essential features of an object or system.</p>
     <pre
         class='line-numbers'><code class='language-csharp'>public abstract class Vehicle {
     abstract void start();
     abstract void stop();
 }</code></pre>
-    <h3>Real-World Analogies</h3>
+    <h3 class="toc-title">Real-World Analogies</h3>
     <ul>
         <li><strong>Encapsulation:</strong> A medicine capsule hides bitter contents inside.</li>
         <li><strong>Abstraction:</strong> A car steering wheel lets you control the car without understanding engine
@@ -169,14 +166,14 @@ public class MyATM : ATM {
             </tr>
         </tbody>
     </table>
-    <h3>Interview Q&A</h3>
+    <h3 class="toc-title">Interview Q&A</h3>
     <ul>
         <li><strong>Q:</strong> Can abstraction exist without encapsulation?<br><strong>A:</strong> Not typically.
             Encapsulation is foundational to abstraction.</li>
         <li><strong>Q:</strong> When to use an interface?<br><strong>A:</strong> When you need to define behavior
             without implementation details.</li>
     </ul>
-    <h3>Summary</h3>
+    <h3 class="toc-title">Summary</h3>
     <ul>
         <li>Encapsulation protects internal state via access control.</li>
         <li>Abstraction simplifies usage by exposing only what is essential.</li>
@@ -187,7 +184,7 @@ public class MyATM : ATM {
                 </div>
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -252,6 +249,9 @@ public class MyATM : ATM {
             </div>
             
         </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         
