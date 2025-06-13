@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Sitemap: https://www.techwayfit.com/sitemap.xml
-# Algolia-Crawler-Verif: 283630F6326E0597 
+# Algolia-Crawler-Verif: 283630F6326E0597
