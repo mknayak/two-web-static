@@ -10,6 +10,7 @@
         <link href="/assets/css/twf-styles.css" rel="stylesheet" />
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+    <link rel="stylesheet" href="/assets/css/blog.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
@@ -40,9 +41,17 @@
 					
 
 <section class="bg-light py-10">
+      
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-10 col-xl-10">
+            <!-- TOC Sidebar -->
+    <aside class="col-lg-3 d-none d-lg-block">
+      <div id="toc" class="toc-container d-none">
+        <strong class="mb-2 d-block">🧭 On this page</strong>
+        <ul class="toc-list"></ul>
+      </div>
+    </aside>
+            <div class="col-lg-9">
                 <div class="single-post">
                     <h1>Secure By Design: Secure Session Management for Web and Mobile Apps</h1>
                     <p class="lead">Learn how to manage sessions securely across web and mobile apps. Discover best practices, real-world breach examples, and secure code in ASP.NET Core.</p>
@@ -56,14 +65,16 @@
                             </div>
                         </div>
                         <div>
-                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
                                 <i class="fab fa-discord"></i> Join our Discord
                             </a>
                         </div>
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/session-management-banner.webp" />
+                   
                     <div class="single-post-text my-5">
-                        <section class="blog-detail">
+                        
+<section class="blog-detail">
  
   <h2>🔐 Why Session Management Matters</h2>
   <p>Session management is a cornerstone of secure web and mobile applications. Sessions keep users authenticated after login, often using cookies or tokens. Poor session handling can allow attackers to impersonate users, hijack sessions, or bypass authentication entirely.</p>
@@ -231,7 +242,8 @@ await api.revokeToken(refreshToken);</code></pre>
   </ul>
 
   <hr>
-  <p><strong>Coming next:</strong> Secure Configuration Management – Preventing defaults and misconfigurations.</p>
+  <p><strong>Series:</strong> <a href="/blogs/groups/secure-by-design">Secure by Design</a> → Next: <a href="/blogs/secure-by-design/secure-config-management">Secure Config Management</a></p>
+
 </section>
 
                     </div>

@@ -117,3 +117,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadComments(); // Initial load
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const tocContainer = document.getElementById('toc');
+  if (!tocContainer) return;
+
+  const tocList = tocContainer.querySelector('.toc-list');
+  const headings = document.querySelectorAll('h2,h3'); // Use '.section-title' if preferred
+
+  headings.forEach((heading, index) => {
+    if (!heading.id) {
+      heading.id = 'section-' + index;
+    }
+
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + heading.id;
+    a.textContent = heading.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Reveal ToC only after it's built
+  if (headings.length > 0) {
+    tocContainer.classList.remove('d-none');
+tocContainer.classList.add('visible', 'd-block');
+  }
+
+  // ScrollSpy behavior
+  const links = tocList.querySelectorAll('a');
+  const sections = [...links].map(link => document.querySelector(link.getAttribute('href')));
+
+  function highlightLink() {
+    let index = sections.findIndex(section =>
+      section.getBoundingClientRect().top > 0
+    );
+    if (index === -1) index = sections.length - 1;
+    if (index > 0) index -= 1;
+
+    links.forEach(link => link.classList.remove('active'));
+    if (sections[index]) {
+      const activeLink = tocList.querySelector(`a[href="#${sections[index].id}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  }
+
+  document.addEventListener('scroll', highlightLink);
+  highlightLink();
+});
