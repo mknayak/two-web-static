@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Secure By Design - The OWASP Top 10 Explained with Real Code Examples | TechWayFit</title>
+        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-10">
+                <div class="single-post">
+                    <h1>Secure By Design - The OWASP Top 10 Explained with Real Code Examples</h1>
+                    <p class="lead">Explore the OWASP Top 10 security risks with hands-on code examples in C# and Python. Learn how to secure your applications by design, and avoid the most common vulnerabilities.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/11/2025 7:00:00 AM &middot;
+                                    6 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/owasp-top10-secure-by-design.webp" />
+                    <div class="single-post-text my-5">
+                          <style>
+   .rule-tile { cursor: pointer; transition: 0.3s ease; margin-bottom: 1rem; }
+  .rule-tile:hover { background-color: #f0f4ff; }
+  .rule-details { display: none; margin-top: 1rem; }
+
+  .card.h-100 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-img-top {
+    height: 250px;
+    object-fit: cover;
+    padding: 5px;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  .card-body .btn {
+    margin-top: auto;
+  }
+  </style>
+<section>
+    <p>The <a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10</a> outlines the most critical web application security risks. Each one is a window into how modern systems are compromised—and how you can prevent it. Below, we break down each risk with real ASP.NET Core code examples and suggest mitigation strategies.</p>
+  </section>
+
+   <section class="row g-4" id="owaspTiles">
+  <div class="col-md-6 ">
+    <div class="card h-100 shadow-sm">
+      <img src="/assets/images/blogs/secure-by-design/cards/owasp-a01.webp" class="card-img-top" alt="A01: Broken Access Control">
+      <div class="card-body">
+        <h5 class="card-title">A01: Broken Access Control</h5>
+        <p class="card-text">Improper access checks allow users to perform unauthorized actions.</p>
+        <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA01" aria-expanded="false" aria-controls="detailsA01">View Details</button>
+        <div class="collapse mt-3" id="detailsA01">
+          <p><strong>What is it?</strong><br>When users can access resources or perform actions they shouldn’t be allowed to. This often includes horizontal or vertical privilege escalation and missing role validations.</p>
+          <p><strong>Why it matters:</strong><br>Attackers may gain access to sensitive data or unauthorized features, compromising confidentiality and control.</p>
+          <p><strong>Real-world Example:</strong><br>Instagram’s developer API allowed access to user contact info via incremental user IDs without access control.</p>
+          <pre class="language-csharp"><code>[HttpGet("/admin/data")]
+public IActionResult GetAdminData()
+{
+    return Ok("Sensitive admin data");
+}</code></pre>
+          <pre class="language-csharp"><code>[Authorize(Roles = "Admin")]
+[HttpGet("/admin/data")]
+public IActionResult GetAdminData()
+{
+    return Ok("Sensitive admin data");
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 ">
+    <div class="card h-100 shadow-sm">
+      <img src="/assets/images/blogs/secure-by-design/cards/owasp-a02.webp" class="card-img-top" alt="A02: Cryptographic Failures">
+      <div class="card-body">
+        <h5 class="card-title">A02: Cryptographic Failures</h5>
+        <p class="card-text">Sensitive data isn’t properly protected using encryption or hashing.</p>
+        <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA02" aria-expanded="false" aria-controls="detailsA02">View Details</button>
+        <div class="collapse mt-3" id="detailsA02">
+          <p><strong>What is it?</strong><br>Cryptographic failures occur when sensitive data is not properly protected in transit or at rest. This includes using weak algorithms, failing to encrypt data, or improperly storing passwords.</p>
+          <p><strong>Why it matters:</strong><br>Data breaches can expose personal, financial, or system data. Attackers may intercept unencrypted data or crack weak password hashes.</p>
+          <p><strong>Real-world Example:</strong><br>In 2019, Facebook admitted storing hundreds of millions of user passwords in plaintext, accessible to employees.</p>
+          <pre class="language-csharp"><code>public void Register(string username, string password)
+{
+    var user = new User { Username = username, Password = password };
+    _context.Users.Add(user);
+    _context.SaveChanges();
+}</code></pre>
+          <pre class="language-csharp"><code>public void Register(string username, string password)
+{
+    var hashedPassword = _passwordHasher.HashPassword(null, password);
+    var user = new User { Username = username, Password = hashedPassword };
+    _context.Users.Add(user);
+    _context.SaveChanges();
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+     <div class="col-md-6 ">
+  <div class="card h-100 shadow-sm">
+    <img src="/assets/images/blogs/secure-by-design/cards/owasp-a03.webp" class="card-img-top" alt="A03: Injection">
+    <div class="card-body">
+      <h5 class="card-title">A03: Injection</h5>
+      <p class="card-text">Malicious input can trick the system into executing unintended commands or queries.</p>
+      <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA03" aria-expanded="false" aria-controls="detailsA03">View Details</button>
+      <div class="collapse mt-3" id="detailsA03">
+        <p><strong>What is it?</strong><br>Injection occurs when untrusted input is executed as part of a command or query. SQL injection is the most well-known example.</p>
+        <p><strong>Why it matters:</strong><br>Attackers can steal, modify, or delete data and potentially gain control of the application or host.</p>
+        <p><strong>Real-world Example:</strong><br>The 2017 Equifax breach was partly due to an injection vulnerability in Apache Struts, exposing sensitive data of over 140 million Americans.</p>
+        <h6>🚨 Vulnerable Example (SQL Injection)</h6>
+        <pre class="language-csharp"><code>public IActionResult Search(string email)
+{
+    var sql = $"SELECT * FROM Users WHERE Email = '{email}'";
+    var users = _context.Users.FromSqlRaw(sql).ToList();
+    return Ok(users);
+}</code></pre>
+        <h6>✅ Remediated Example</h6>
+        <pre class="language-csharp"><code>public IActionResult Search(string email)
+{
+    var users = _context.Users
+        .Where(u => u.Email == email)
+        .ToList();
+    return Ok(users);
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="col-md-6 ">
+    <div class="card h-100 shadow-sm">
+      <img src="/assets/images/blogs/secure-by-design/cards/owasp-a04.webp" class="card-img-top" alt="A04: Insecure Design">
+      <div class="card-body">
+        <h5 class="card-title">A04: Insecure Design</h5>
+        <p class="card-text">Lack of secure design patterns and controls in the system architecture.</p>
+        <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA04" aria-expanded="false" aria-controls="detailsA04">View Details</button>
+        <div class="collapse mt-3" id="detailsA04">
+          <p><strong>What is it?</strong><br>Security flaws resulting from missing or inadequate design patterns. Often a result of skipping threat modeling, misuse case analysis, or not defining security controls early in SDLC.</p>
+          <p><strong>Why it matters:</strong><br>Once in production, insecure design is hard to mitigate without major refactoring. Prevention is far cheaper than remediation.</p>
+          <p><strong>Real-world Example:</strong><br>Many API endpoints remain vulnerable due to assumptions made during initial design stages, including open-by-default configurations without auth checks.</p>
+          <h6>🚨 Vulnerable Example (No Security Consideration)</h6>
+          <pre class="language-csharp"><code>[HttpPost("/transfer")]
+public IActionResult TransferFunds(decimal amount, int accountId)
+{
+    _bank.Transfer(amount, accountId);
+    return Ok("Transferred");
+}</code></pre>
+          <h6>✅ Remediated Example</h6>
+          <pre class="language-csharp"><code>[Authorize]
+[HttpPost("/transfer")]
+public IActionResult TransferFunds(decimal amount, int accountId)
+{
+    var userId = GetUserId();
+    if (!_bank.CanAccessAccount(userId, accountId)) return Forbid();
+    _bank.Transfer(amount, accountId);
+    return Ok("Transferred");
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="col-md-6 ">
+  <div class="card h-100 shadow-sm">
+    <img src="/assets/images/blogs/secure-by-design/cards/owasp-a05.webp" class="card-img-top" alt="A05: Security Misconfiguration">
+    <div class="card-body">
+      <h5 class="card-title">A05: Security Misconfiguration</h5>
+      <p class="card-text">Misconfigured settings, headers, or unused services create vulnerabilities.</p>
+      <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA05" aria-expanded="false" aria-controls="detailsA05">View Details</button>
+      <div class="collapse mt-3" id="detailsA05">
+        <p><strong>What is it?</strong><br>Occurs when default settings are insecure, unnecessary features are enabled, or configurations are inconsistent across environments.</p>
+        <p><strong>Why it matters:</strong><br>These flaws are easy to exploit and often lead to full system compromise.</p>
+        <p><strong>Real-world Example:</strong><br>In 2017, Uber exposed private GitHub credentials that led to unauthorized S3 access due to misconfigured access controls.</p>
+        <h6>🚨 Vulnerable Example</h6>
+        <pre class="language-csharp"><code>// Startup.cs
+app.UseDeveloperExceptionPage();</code></pre>
+        <h6>✅ Remediated Example</h6>
+        <pre class="language-csharp"><code>if (env.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 ">
+  <div class="card h-100 shadow-sm">
+    <img src="/assets/images/blogs/secure-by-design/cards/owasp-a06.webp" class="card-img-top" alt="A06: Vulnerable and Outdated Components">
+    <div class="card-body">
+      <h5 class="card-title">A06: Vulnerable and Outdated Components</h5>
+      <p class="card-text">Using old or insecure software libraries exposes applications to known attacks.</p>
+      <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA06" aria-expanded="false" aria-controls="detailsA06">View Details</button>
+      <div class="collapse mt-3" id="detailsA06">
+        <p><strong>What is it?</strong><br>Using libraries, frameworks, or components with known vulnerabilities can introduce risks even if your code is secure.</p>
+        <p><strong>Why it matters:</strong><br>Attackers often scan for known CVEs and exploit unpatched components. You’re only as strong as your weakest dependency.</p>
+        <p><strong>Real-world Example:</strong><br>The infamous Log4Shell vulnerability (CVE-2021-44228) in Log4j affected thousands of applications using an outdated logging library.</p>
+        <h6>🚨 Vulnerable Example</h6>
+        <pre class="language-csharp"><code>// Outdated NuGet package
+&lt;PackageReference Include="Newtonsoft.Json" Version="9.0.1" /&gt;</code></pre>
+        <h6>✅ Remediated Example</h6>
+        <pre class="language-csharp"><code>// Updated to secure version
+&lt;PackageReference Include="Newtonsoft.Json" Version="13.0.3" /&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 ">
+  <div class="card h-100 shadow-sm">
+    <img src="/assets/images/blogs/secure-by-design/cards/owasp-a07.webp" class="card-img-top" alt="A07: Identification and Authentication Failures">
+    <div class="card-body">
+      <h5 class="card-title">A07: Identification and Authentication Failures</h5>
+      <p class="card-text">Weak or missing authentication can lead to unauthorized access or impersonation.</p>
+      <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA07" aria-expanded="false" aria-controls="detailsA07">View Details</button>
+      <div class="collapse mt-3" id="detailsA07">
+        <p><strong>What is it?</strong><br>Flaws in identity verification, authentication logic, or session management, allowing attackers to compromise accounts or impersonate users.</p>
+        <p><strong>Why it matters:</strong><br>These vulnerabilities lead to account takeovers, privilege escalations, and impersonation attacks.</p>
+        <p><strong>Real-world Example:</strong><br>Slack suffered from an authentication bug in 2022 that exposed hashed passwords in telemetry due to poor session token logic.</p>
+        <h6>🚨 Vulnerable Example</h6>
+        <pre class="language-csharp"><code>public IActionResult Login(string user, string pass)
+{
+    var result = _auth.TryLogin(user, pass);
+    return result ? Ok("Logged in") : Unauthorized();
+}</code></pre>
+        <h6>✅ Remediated Example</h6>
+        <pre class="language-csharp"><code>options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+options.Lockout.MaxFailedAccessAttempts = 5;</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 ">
+  <div class="card h-100 shadow-sm">
+    <img src="/assets/images/blogs/secure-by-design/cards/owasp-a08.webp" class="card-img-top" alt="A08: Software and Data Integrity Failures">
+    <div class="card-body">
+      <h5 class="card-title">A08: Software and Data Integrity Failures</h5>
+      <p class="card-text">Assuming data or software is trustworthy without validation.</p>
+      <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA08" aria-expanded="false" aria-controls="detailsA08">View Details</button>
+      <div class="collapse mt-3" id="detailsA08">
+        <p><strong>What is it?</strong><br>Assuming software updates, CI/CD artifacts, or external data are safe without verification or integrity checks.</p>
+        <p><strong>Why it matters:</strong><br>Attackers can inject malicious code or tamper with update mechanisms, as seen in software supply chain attacks.</p>
+        <p><strong>Real-world Example:</strong><br>The SolarWinds attack injected malware into signed software updates, impacting thousands of companies.</p>
+        <h6>🚨 Vulnerable Example</h6>
+        <pre class="language-csharp"><code>// Unverified script include
+&lt;script src="https://cdn.example.com/lib.js"&gt; &lt;/script&gt;</code></pre>
+        <h6>✅ Remediated Example</h6>
+        <pre class="language-csharp"><code>&lt;script src="https://cdn.example.com/lib.js"
+  integrity="sha384-abc123" crossorigin="anonymous"&gt &lt;/script&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 ">
+  <div class="card h-100 shadow-sm">
+    <img src="/assets/images/blogs/secure-by-design/cards/owasp-a09.webp" class="card-img-top" alt="A09: Security Logging and Monitoring Failures">
+    <div class="card-body">
+      <h5 class="card-title">A09: Security Logging and Monitoring Failures</h5>
+      <p class="card-text">Lack of logging and monitoring delays breach detection and response.</p>
+      <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA09" aria-expanded="false" aria-controls="detailsA09">View Details</button>
+      <div class="collapse mt-3" id="detailsA09">
+        <p><strong>What is it?</strong><br>Failure to log security events, monitor suspicious activity, or generate alerts can hinder breach detection and response.</p>
+        <p><strong>Why it matters:</strong><br>Without proper monitoring, incidents can remain undetected for weeks or months, increasing damage.</p>
+        <p><strong>Real-world Example:</strong><br>Equifax's 2017 breach went undetected for over two months due to lack of effective logging and alerting systems.</p>
+        <h6>🚨 Vulnerable Example</h6>
+        <pre class="language-csharp"><code>try {
+    DoSomething();
+} catch (Exception) {
+    // Ignored
+}</code></pre>
+        <h6>✅ Remediated Example</h6>
+        <pre class="language-csharp"><code>try {
+    DoSomething();
+} catch (Exception ex) {
+    _logger.LogError(ex, "Unexpected error");
+    throw;
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6 ">
+  <div class="card h-100 shadow-sm">
+    <img src="/assets/images/blogs/secure-by-design/cards/owasp-a10.webp" class="card-img-top" alt="A10: Server-Side Request Forgery (SSRF)">
+    <div class="card-body">
+      <h5 class="card-title">A10: Server-Side Request Forgery (SSRF)</h5>
+      <p class="card-text">Allows attackers to make the server send requests to unintended destinations.</p>
+      <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#detailsA10" aria-expanded="false" aria-controls="detailsA10">View Details</button>
+      <div class="collapse mt-3" id="detailsA10">
+        <p><strong>What is it?</strong><br>SSRF vulnerabilities occur when an app fetches a URL controlled by the user, allowing attackers to reach internal services.</p>
+        <p><strong>Why it matters:</strong><br>Attackers can scan internal networks, access metadata services, or abuse trust relationships within cloud environments.</p>
+        <p><strong>Real-world Example:</strong><br>The 2019 Capital One breach exploited SSRF to retrieve AWS metadata, leading to credential leakage.</p>
+        <h6>🚨 Vulnerable Example</h6>
+        <pre class="language-csharp"><code>public async Task<IActionResult> Fetch(string url)
+{
+    var result = await _http.GetStringAsync(url); // Unsafe
+    return Ok(result);
+}</code></pre>
+        <h6>✅ Remediated Example</h6>
+        <pre class="language-csharp"><code>if (!url.StartsWith("https://api.trusted.com"))
+    return BadRequest("Invalid URL");
+
+var result = await _http.GetStringAsync(url);
+return Ok(result);</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+                    </div>
+                </div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3">Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="/privacy-policy">Privacy Policy</a>
+                                &middot;
+                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+
+
+    </body>
+</html>

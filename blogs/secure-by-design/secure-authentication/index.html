@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Secure Authentication: OAuth2, OpenID, JWTs | TechWayFit</title>
+        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-10">
+                <div class="single-post">
+                    <h1>Secure Authentication: OAuth2, OpenID, JWTs</h1>
+                    <p class="lead">Master secure authentication with OAuth2, OpenID Connect, and JWTs. Learn the correct patterns and ASP.NET Core examples to prevent auth-related vulnerabilities.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/11/2025 6:00:00 PM &middot;
+                                    6 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/secure-auth.webp" />
+                    <div class="single-post-text my-5">
+                        <section class="blog-detail"> 
+
+  <h2>🔐 Introduction</h2>
+  <p>Authentication is the foundation of application security. As we build modern applications that connect with APIs, third-party services, and mobile clients, ensuring proper identity verification becomes critical. Misconfigured authentication can expose user data, leak credentials, and open doors for unauthorized access.</p>
+
+  
+  <h2>🔍 Authentication vs Authorization</h2>
+  <p>Many developers confuse <strong>authentication</strong> and <strong>authorization</strong>. Authentication confirms the user is who they say they are. Authorization defines what the authenticated user is allowed to do within the system. Mistaking one for the other can lead to privilege escalation vulnerabilities.</p>
+  <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/auth-vs-authz.webp" alt="Authentication vs Authorization visual" class="img-fluid mb-4" />
+  <h4>❌ Insecure Example</h4>
+  <pre><code class="language-csharp">// No role-based check
+[Authorize]
+public IActionResult SecureData() => Ok("Everyone with token can see this");</code></pre>
+  <h4>✅ Secure Example</h4>
+  <pre><code class="language-csharp">[Authorize(Roles = "Admin")]
+public IActionResult SecureData() => Ok("Only admins can see this");</code></pre>
+
+  <h2>🔑 OAuth2 Explained</h2>
+  <p>OAuth2 is an open standard for access delegation, commonly used for token-based authorization. It enables applications to access user data without sharing credentials, using flows like Authorization Code or Client Credentials. Misusing OAuth2 can expose tokens or allow impersonation.</p>
+  <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/oauth2-flow.webp" alt="OAuth2 Authorization Code Flow Diagram" class="img-fluid mb-4" />
+  <h4>❌ Insecure Example</h4>
+  <pre><code class="language-csharp">// Using hardcoded token and no OAuth flow
+httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer static_token");</code></pre>
+  <h4>✅ Secure Example</h4>
+  <pre><code class="language-csharp">services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "OAuthProvider";
+})
+.AddCookie("Cookies")
+.AddOAuth("OAuthProvider", options =>
+{
+    options.ClientId = Configuration["OAuth:ClientId"];
+    options.ClientSecret = Configuration["OAuth:ClientSecret"];
+    options.CallbackPath = new PathString("/signin-oauth");
+
+    options.AuthorizationEndpoint = "https://provider.com/oauth/authorize";
+    options.TokenEndpoint = "https://provider.com/oauth/token";
+    options.SaveTokens = true;
+});</code></pre>
+
+  <h2>🗾 OpenID Connect</h2>
+  <p>OpenID Connect (OIDC) extends OAuth2 to add identity verification using ID tokens. These tokens help applications confirm the user's identity in a standardized, secure manner. If implemented incorrectly, malicious tokens could be accepted without validation.</p>
+  <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/oidc-flow.webp" alt="OpenID Connect Flow Diagram" class="img-fluid mb-4" />
+  <h4>❌ Insecure Example</h4>
+  <pre><code class="language-csharp">// Just trusting any ID token without validating claims
+var idToken = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+var payload = JWT.Decode(idToken); // Without validation</code></pre>
+  <h4>✅ Secure Example</h4>
+  <pre><code class="language-csharp">services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+})
+.AddCookie()
+.AddOpenIdConnect("oidc", options =>
+{
+    options.Authority = "https://login.example.com";
+    options.ClientId = "client_id";
+    options.ClientSecret = "secret";
+    options.ResponseType = "code";
+    options.SaveTokens = true;
+    options.Scope.Add("openid");
+    options.Scope.Add("profile");
+});</code></pre>
+
+  <h2>🔐 JSON Web Tokens (JWTs)</h2>
+  <p>JWTs are compact, URL-safe tokens used to securely transmit information. They enable stateless authentication across microservices and APIs. JWTs must be properly signed and validated to avoid forgery or replay attacks.</p>
+  <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/jwt-anatomy.webp" alt="JWT Anatomy Diagram" class="img-fluid mb-4" />
+  <h4>❌ Insecure Example</h4>
+  <pre><code class="language-csharp">// WARNING: This is NOT secure
+services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = false,
+            ValidateIssuerSigningKey = false
+        };
+    });</code></pre>
+  <h4>✅ Secure Example</h4>
+  <pre><code class="language-csharp">services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = "https://login.example.com";
+        options.Audience = "api1";
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true
+        };
+    });</code></pre>
+
+  <h2>⚠️ Common Implementation Mistakes</h2>
+  <p>Even when using secure technologies, improper implementation can result in serious vulnerabilities. Avoid these common pitfalls:</p>
+  <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/auth-mistakes.webp" alt="Authentication Mistakes Visual" class="img-fluid mb-4" />
+  <ul>
+    <li>Storing tokens in localStorage</li>
+    <li>Using HS256 for public clients</li>
+    <li>Mixing ID and Access tokens</li>
+  </ul>
+  <h4>❌ Insecure Example</h4>
+  <pre><code class="language-csharp">// Using localStorage to store access token in JS app
+localStorage.setItem("token", accessToken);</code></pre>
+  <h4>✅ Secure Example</h4>
+  <pre><code class="language-csharp">services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.Strict;
+});</code></pre>
+
+  <h2>🧰 Best Practices Checklist</h2>
+  <p>Follow these best practices when implementing secure authentication:</p>
+  <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/auth-checklist.webp" alt="Auth Checklist Infographic" class="img-fluid mb-4" />
+  <ul>
+    <li>✅ Use HTTPS - <code>app.UseHttpsRedirection();</code></li>
+    <li>🔄 Rotate secrets - Use DataProtection APIs</li>
+    <li>⏰ Short-lived tokens - Configure token lifespan</li>
+    <li>🧪 Input validation - Always validate headers and claims</li>
+  </ul>
+
+  <h2>🧑‍💻 Real-World Login Flow</h2>
+  <p>A minimal secure login implementation using JWT or OIDC, enabling authenticated access to protected routes.</p>
+  <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/login-flow.webp" alt="Login flow with claims and token verification" class="img-fluid mb-4" />
+  <h4>✅ Secure Example</h4>
+  <pre><code class="language-csharp">app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapGet("/profile", [Authorize] (ClaimsPrincipal user) =>
+{
+    return Results.Json(new { Name = user.Identity.Name });
+});</code></pre>
+
+  <h2>📄 Real-World Breaches</h2>
+  <p>High-profile breaches underscore the importance of getting authentication right:</p>
+  <ul>
+    <li><strong>Facebook (2018)</strong>: Access tokens leaked via “View As” feature. <em>Lesson: Minimize token scope and lifetime.</em></li>
+    <li><strong>Uber (2016)</strong>: Tokens in GitHub repo were stolen. <em>Lesson: Secure secrets properly.</em></li>
+    <li><strong>Slack (2022)</strong>: Long-lived token reused. <em>Lesson: Always use refresh tokens and short expiry.</em></li>
+  </ul>
+  <!-- <img src="/assets/images/blogs/secure-by-design/cards/secure-auth/breach-stories.webp" alt="Breach incidents timeline infographic" class="img-fluid mb-4" /> -->
+
+  <h2>🔗 Conclusion</h2>
+  <p>Secure authentication is no longer optional. Implement OAuth2 for authorization, OpenID Connect for identity, and JWTs for stateless tokens — but do it right. The smallest misconfiguration can lead to major breaches.</p>
+
+  <p><strong>Explore more:</strong> <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/" target="_blank">OWASP A01 - Broken Access Control</a></p>
+</section>
+
+                    </div>
+                </div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3">Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="/privacy-policy">Privacy Policy</a>
+                                &middot;
+                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+
+
+    </body>
+</html>

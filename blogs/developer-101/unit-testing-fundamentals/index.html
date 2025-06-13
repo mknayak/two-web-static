@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Developer 101: Unit Testing Fundamentals | TechWayFit</title>
+        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-10">
+                <div class="single-post">
+                    <h1>Developer 101: Unit Testing Fundamentals</h1>
+                    <p class="lead">Learn what makes code testable, how to write effective unit tests using xUnit, unittest, or pytest, and avoid common pitfalls like hidden dependencies or flaky tests.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/9/2025 7:00:00 AM &middot;
+                                    5 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/unit-testing-fundamentals.webp" />
+                    <div class="single-post-text my-5">
+                        <div class="blog-detail">
+
+  <p>Unit tests are the foundation of reliable software development. They allow developers to make changes with confidence, support CI/CD automation, and catch bugs early in the development cycle. Yet many developers either skip writing tests or misunderstand their purpose—especially when it comes to mocking, test structure, and flaky behavior.</p>
+
+  <h2>🔍 What Is a Unit Test?</h2>
+  <p>A unit test verifies the behavior of a small, isolated piece of code—usually a single function or method—without relying on external systems like databases, file systems, or APIs.</p>
+  <p><strong>What does "unit" mean?</strong> A <em>unit</em> refers to the smallest testable part of an application, such as a method, function, or class. It’s the individual building block of your code logic.</p>
+  <p>Effective unit tests target these isolated units to validate business logic without crossing module boundaries or introducing side effects.</p>
+  <p><strong>Scope of Unit Testing:</strong></p>
+  <ul>
+    <li>One method or function at a time</li>
+    <li>No external dependencies (use mocks/stubs if needed)</li>
+    <li>Fast execution, often part of pre-commit hooks or CI pipelines</li>
+  </ul>
+  <p><strong>How It Differs from Integration Testing:</strong></p>
+  <ul>
+    <li><strong>Unit Test:</strong> Tests one small unit in isolation, often with mocks and fakes.</li>
+    <li><strong>Integration Test:</strong> Verifies that multiple modules or services work together, using real or test implementations of external components like databases or APIs.</li>
+  </ul>
+  <p><strong>Think of it this way:</strong> If your function fails a unit test, the issue is with your code logic, not with external dependencies. Integration test failures could stem from issues in interaction between multiple layers.</p>
+  <p><strong>Think of it this way:</strong> If your function fails a unit test, the issue is with your code logic, not with external dependencies.</p>
+
+  <h2>🧱 Arrange – Act – Assert (AAA Pattern)</h2>
+  <p>This is a common pattern for structuring tests:</p>
+  <ul>
+    <li><strong>Arrange:</strong> Set up the test data and environment</li>
+    <li><strong>Act:</strong> Call the method or function under test</li>
+    <li><strong>Assert:</strong> Verify the result is what you expect</li>
+  </ul>
+
+  <h3>✅ Example in C# with xUnit</h3>
+  <pre class="language-csharp">
+[Fact]
+public void Add_ReturnsSum()
+{
+    // Arrange
+    var calc = new Calculator();
+
+    // Act
+    var result = calc.Add(2, 3);
+
+    // Assert
+    Assert.Equal(5, result);
+}
+  </pre>
+
+  <h3>✅ Example in Python with unittest</h3>
+  <pre class="language-python">
+import unittest
+
+class CalculatorTest(unittest.TestCase):
+    def test_add(self):
+        calc = Calculator()
+        result = calc.add(2, 3)
+        self.assertEqual(result, 5)
+
+if __name__ == '__main__':
+    unittest.main()
+  </pre>
+
+  <h2>🧪 Using Test Frameworks</h2>
+  <p><strong>xUnit</strong> is a popular testing framework for .NET developers. It integrates easily with Visual Studio and supports attributes like <code>[Fact]</code> and <code>[Theory]</code>.</p>
+  <p><strong>pytest</strong> and <strong>unittest</strong> are two widely-used testing libraries in Python. Pytest offers a simpler syntax and better plugin support.</p>
+
+  <h3>✔ Sample Test with pytest</h3>
+  <pre class="language-python">
+def test_multiply():
+    calc = Calculator()
+    assert calc.multiply(2, 5) == 10
+  </pre>
+
+  <h2>🧰 Mocking Dependencies</h2>
+  <p>Mocking is used to replace real dependencies (like databases or APIs) with controlled stand-ins.</p>
+
+  <h3>🔁 C# Mocking with Moq</h3>
+  <pre class="language-csharp">
+var mockRepo = new Mock<IUserRepository>();
+mockRepo.Setup(r => r.GetUserById(1)).Returns(new User { Id = 1, Name = "Alice" });
+  </pre>
+
+  <h3>🔁 Python Mocking with unittest.mock</h3>
+  <pre class="language-python">
+from unittest.mock import MagicMock
+
+repo = MagicMock()
+repo.get_user_by_id.return_value = { 'id': 1, 'name': 'Alice' }
+  </pre>
+
+  <h2>📊 Test Coverage and Flaky Tests</h2>
+  <div class="row">
+    <div class="col-md-6">
+   <p><strong>Code coverage</strong> shows how much of your source code runs during automated tests. It helps you find parts of your code that aren’t being tested. While high coverage is good, it doesn’t guarantee quality—assertions still need to be meaningful. Aim for strong tests that check important logic and edge cases. Tools like <code>coverlet</code> (.NET) and <code>coverage.py</code> (Python) help track coverage and can be used in CI pipelines.</p>
+ 
+    </div>
+    <div class="col-md-6">
+<div class="text-center my-4">
+    <img src="/assets/images/banners/code-coverage-heatmap.webp" alt="Code Coverage Heatmap" class="img-fluid rounded shadow" style="max-width: 100%; height: auto;" />
+    <p class="text-muted small">Illustration: Visualizing code coverage with green (covered), yellow (partial), and red (uncovered) lines.</p>
+  </div>     
+    </div>
+  </div>
+  
+  
+
+  <p><strong>Flaky tests</strong> pass sometimes and fail at other times—often due to timing issues, reliance on shared state, or asynchronous bugs. Treat them as high-priority bugs!</p>
+  
+  <h2>🛠 How to Write Testable Code</h2>
+  <p>Writing testable code starts with design. If your code is difficult to test, chances are it’s tightly coupled, has too many responsibilities, or relies too much on global state.</p>
+
+  <h3>✅ Testable Code Patterns</h3>
+  <ul>
+    <li><strong>Dependency Injection:</strong> Pass dependencies via constructor or method parameters instead of creating them inside your class.</li>
+    <li><strong>Single Responsibility Principle:</strong> Break complex classes into smaller, focused components.</li>
+    <li><strong>Pure Functions:</strong> Functions that have no side effects and return outputs based only on inputs are easiest to test.</li>
+    <li><strong>Interfaces/Abstractions:</strong> Code against interfaces, not concrete classes, to make mocking easier.</li>
+  </ul>
+
+  <h3>🚫 Anti-Patterns to Avoid</h3>
+  <ul>
+    <li><strong>Static/Global State:</strong> Hard to isolate and reset between tests.</li>
+    <li><strong>Hidden Dependencies:</strong> Using <code>new</code> inside your business logic or database calls in constructors.</li>
+    <li><strong>Too Much Logic in Constructors:</strong> Difficult to control and test object initialization behavior.</li>
+    <li><strong>Mixing Concerns:</strong> Combining UI logic with business or data logic in one class.</li>
+  </ul>
+
+  <h3>🔄 Example: Refactor to Testable Code</h3>
+  <p><strong>❌ Non-Testable Code:</strong></p>
+  <pre class="language-csharp">
+public class OrderService
+{
+    private readonly SqlConnection _connection;
+
+    public OrderService()
+    {
+        _connection = new SqlConnection("...connection string...");
+    }
+
+    public void PlaceOrder(Order order)
+    {
+        // logic using _connection
+    }
+}
+  </pre>
+  <p>This is not testable because the <code>SqlConnection</code> is hardcoded and cannot be mocked.</p>
+
+  <p><strong>✅ Refactored Testable Code:</strong></p>
+  <pre class="language-csharp">
+public class OrderService
+{
+    private readonly IDbConnection _connection;
+
+    public OrderService(IDbConnection connection)
+    {
+        _connection = connection;
+    }
+
+    public void PlaceOrder(Order order)
+    {
+        // logic using _connection
+    }
+}
+  </pre>
+  <p>Now you can inject a mock <code>IDbConnection</code> in your tests.</p>
+
+  <p><strong>✅ Python Example:</strong></p>
+  <pre class="language-python">
+# Non-testable
+class AuthService:
+    def __init__(self):
+        self.db = Database()
+
+    def login(self, username):
+        return self.db.get_user(username)
+
+# Refactored
+class AuthService:
+    def __init__(self, db):
+        self.db = db
+
+    def login(self, username):
+        return self.db.get_user(username)
+  </pre>
+  <p>This version allows injecting a mock database in tests, improving testability.</p>
+
+  <h2>💡 Best Practices</h2>
+  <ul>
+    <li>Keep tests isolated and fast</li>
+    <li>Use descriptive test names: <code>ShouldReturnSum_WhenValidInput</code></li>
+    <li>Test both happy and edge cases</li>
+    <li>Mock only what's necessary</li>
+    <li>Run tests as part of CI/CD pipeline</li>
+    <li>Refactor your code to be more testable when needed</li>
+  </ul>
+
+  <h2>🎯 Conclusion</h2>
+  <p>Unit testing helps ensure your code works as intended, simplifies debugging, and enables continuous delivery. Start small, focus on good structure, and adopt tools and patterns that scale with your project. Most importantly, write code that is easy to test—your future self will thank you.</p>
+
+  <p>Stay tuned for more Developer 101 lessons—only on <a href="https://www.techwayfit.com">TechWayFit</a>.</p>
+</div>
+
+                    </div>
+                </div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3">Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+                    <!-- Page Header-->
+                    
+<div id="layoutDefault_footer">
+                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+                    <div class="container px-5">
+                        <div class="row gx-5">
+                            <div class="col-lg-3">
+                                <div class="footer-brand">Tech Way Fit</div>
+                                <div class="mb-3">Code it Right</Code></div>
+                                <div class="icon-list-social mb-5">
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>                           
+                        </div>
+                        <hr class="my-3" />
+                        <div class="row gx-5 align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+                            <div class="col-md-6 text-md-end small">
+                                <a href="/privacy-policy">Privacy Policy</a>
+                                &middot;
+                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                                <a href="/sitemap.xml">Sitemap</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> 
+                </main>
+            </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+
+
+    </body>
+</html>
