@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Quizs | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: auto;
+            padding-top: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					 
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="single-post">
+                <h1>Secure Authentication API Session Quiz</h1>
+                <p class="lead">Test your knowledge on secure authentication practices, session management, and API security with this quiz. Ideal for developers and security professionals.</p>
+                <div class="d-flex align-items-center justify-content-between mb-5">
+                    <div class="single-post-meta me-4">
+                        <img class="single-post-meta-img" src="/assets/images/cards/secure-authentication.webp" />
+                        <div class="single-post-meta-details">
+                            <div class="single-post-meta-details-name">15 Questions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container quiz-container mb-10">
+    <div id="status" class="text-end text-muted mb-3"></div>
+    <div class="card" id="quizCard">
+        <div class="card-body question-box">
+            <h5 id="question" class="mb-3"></h5>
+            <form id="optionsForm" class="options"></form>
+        </div>
+        <div class="card-footer text-end">
+            <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+
+    <div id="quizResult" class="result text-center mt-4"></div>
+    <div id="reviewSection" class="mt-4"></div>
+</div>
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script>
+        const questionSource = [{"question":"What is the purpose of OAuth2 in modern applications?","options":["Encrypt network traffic","Provide a UI framework","Authorize third-party access without sharing credentials","Generate JWT tokens"],"correctIndex":2},{"question":"Which token type is commonly used with OAuth2 to access resources?","options":["ID token","JWT","Access token","Session cookie"],"correctIndex":2},{"question":"What does OpenID Connect add to OAuth2?","options":["Authorization support","Token encryption","Authentication layer with ID tokens","CORS headers"],"correctIndex":2},{"question":"What should never be stored inside a JWT?","options":["User ID","Roles","Private encryption keys or passwords","Token expiration"],"correctIndex":2},{"question":"What is a recommended way to validate a JWT?","options":["Check only the payload","Ignore expiration","Verify signature and expiration","Trust the token blindly"],"correctIndex":2},{"question":"Why should APIs enforce input validation?","options":["Improve search engine ranking","Prevent runtime errors","Prevent injection and logic attacks","Reduce server CPU usage"],"correctIndex":2},{"question":"Which of the following is a good practice for API key handling?","options":["Store in frontend JavaScript","Send via GET parameter","Store securely and send via HTTPS headers","Hardcode in app source code"],"correctIndex":2},{"question":"What is the benefit of using rate limiting on APIs?","options":["Increases traffic","Improves UI loading speed","Prevents abuse and denial-of-service attacks","Increases search engine traffic"],"correctIndex":2},{"question":"How can you ensure that a client is authenticated in an API call?","options":["Check for a valid access token","Log request IP address","Allow public access","Enable verbose logging"],"correctIndex":0},{"question":"Which HTTP method should be used for sensitive data submission?","options":["GET","POST","HEAD","TRACE"],"correctIndex":1},{"question":"What is session fixation?","options":["A server not expiring sessions properly","Reusing a user\u0027s session ID to hijack a session","Logging user actions incorrectly","A type of XSS attack"],"correctIndex":1},{"question":"Which cookie attribute helps prevent session hijacking via cross-site scripts?","options":["Secure","Path","HttpOnly","Max-Age"],"correctIndex":2},{"question":"Why should session tokens be rotated after login?","options":["To reduce network traffic","To enable faster login","To prevent session fixation","To simplify session reuse"],"correctIndex":2},{"question":"What is a secure practice for session timeout?","options":["No expiration","Expire after days","Expire after inactivity","Keep alive indefinitely"],"correctIndex":2},{"question":"Which attribute ensures that a session cookie is only sent over HTTPS?","options":["Domain","Secure","Path","SameSite"],"correctIndex":1}];
+    </script>
+    <script src="/assets/js/quizs.js"></script>
+
+    </body>
+</html>
