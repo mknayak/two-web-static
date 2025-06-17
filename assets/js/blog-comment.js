@@ -1,7 +1,7 @@
 // blog-comment.js
 
 document.addEventListener('DOMContentLoaded', function () {
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkoD3mplS7jhmlYkl3VyOe8Bj2vozjQygXiOGPiZk3lbgXxAoDXQSfTWseAZ9eZfNd/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWiiuWQJPBKV7T208yIjMjNBbAZACVRhiFjxkx9fGnR2ikpzK_nHR5tVYvaSevnUD-/exec';
   const blogUrl = window.location.href;
   let currentPage = 1;
   const pageSize = 5;
