@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Secure By Design: Security Headers - The Silent Defenders | TechWayFit</title>
+        <title>Security Headers - The Silent Defenders | TechWayFit</title>
         <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
         <link href="/assets/css/blog-min.css" rel="stylesheet" />
          
@@ -48,20 +48,73 @@
 					
 
 <section class="bg-light py-10">
-      
+    
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
             <!-- TOC Sidebar -->
-    <aside class="col-lg-3 d-none d-lg-block">
-      <div id="toc" class="toc-container d-none">
-        <strong class="mb-2 d-block">🧭 On this page</strong>
-        <ul class="toc-list"></ul>
-      </div>
-    </aside>
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
             <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/threat-modeling">Threat Modeling &#x2013; Design with Risk in Mind</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
+</div>
+
                 <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Secure By Design: Security Headers - The Silent Defenders</h1>
+                    <h1>Security Headers - The Silent Defenders</h1>
                     <p class="lead">Learn how HTTP response headers like CSP, HSTS, and X-Frame-Options act as silent defenders against XSS, clickjacking, and data leaks. Includes real-world examples and ASP.NET Core middleware setup.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
@@ -79,7 +132,7 @@
                         </div>
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/security-headers-banner.webp" />
-                   
+
                     <div class="single-post-text my-5">
                         <p>In the world of web security, prevention often begins at the HTTP response level. Security headers, though often
   overlooked, act as silent defenders—guiding browsers on how to behave when handling content and ensuring safer
@@ -360,6 +413,60 @@
 
                     </div>
                 </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/threat-modeling">Threat Modeling &#x2013; Design with Risk in Mind</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
+</div>
+
                 <hr class="my-5" />
                 <div class="container mt-5">
                     <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
@@ -374,7 +481,8 @@
                             <textarea class="form-control" id="commentText" rows="3" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Comment</button>
-                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment! Comment will be moderated before it appears On TechWayFit.</div>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
                     </form>
                 </div>
                 <div class="container mt-5">
@@ -388,7 +496,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 </section>
 
 

@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Logging Like a Pro | TechWayFit</title>
+        <title>Introduction to Design Patterns | TechWayFit</title>
         <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
         <link href="/assets/css/blog-min.css" rel="stylesheet" />
          
@@ -107,22 +107,22 @@
 </style>
 
 <div class="blog-nav">
-        <a class="prev" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
-        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
-        <a class="next" href="/blogs/developer-101/unit-testing-fundamentals">Unit Testing Fundamentals</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/factory-pattern">Factory Pattern</a>
 </div>
 
                 <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Logging Like a Pro</h1>
-                    <p class="lead">Master the art of logging with this Developer 101 guide. Learn log levels, structured logging, real-world examples, and tools like Serilog and Python logging module.</p>
+                    <h1>Introduction to Design Patterns</h1>
+                    <p class="lead">Kickstart your journey into reusable software architecture with this introduction to design patterns, types, principles, and real-world analogies.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Tech Buddy</div>
-                                <div class="single-post-meta-details-date">6/9/2025 8:00:00 AM &middot;
-                                    4 min read</div>
+                                <div class="single-post-meta-details-date">6/18/2025 3:00:00 PM &middot;
+                                    6 min read</div>
                             </div>
                         </div>
                         <div>
@@ -131,87 +131,154 @@
                             </a>
                         </div>
                     </div>
-                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/logging-best-practices.webp" />
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/intro-banner.webp" />
 
                     <div class="single-post-text my-5">
-                         
-  <h2 class="toc-title">Why Logging Matters</h2>
-  <p>Effective logging is essential for debugging, monitoring, and auditing. It helps uncover issues in production and ensures traceability of actions in your applications.</p>
+                        
+<p class="lead">Design patterns are foundational building blocks of robust, scalable, and maintainable software. Understanding them can elevate your development skills from good to great.</p>
 
-  <h2>What Makes a Good Log Message</h2>
-  <pre><code class="language-csharp">// Good
-_log.Info("User login successful: userId=1234");
+<hr />
 
-// Bad
-_log.Info("Something happened");
-  </code></pre>
+<h2 class="toc-title">🔍 What Are Design Patterns?</h2>
+<p>Design patterns are general, reusable solutions to common problems that occur in software design. These are not copy-paste code blocks but abstract templates that help structure your thinking and architecture when solving similar issues repeatedly.</p>
 
-  <h2 class="toc-title">Log Levels Explained</h2>
-  <table class="table table-bordered">
-    <tr><th>Level</th><th>Purpose</th><th>When to Use</th></tr>
-    <tr><td>DEBUG</td><td>Internal dev info</td><td>Tracing logic, flow</td></tr>
-    <tr><td>INFO</td><td>High-level events</td><td>User login, request received</td></tr>
-    <tr><td>WARN</td><td>Unexpected but non-breaking</td><td>Retry attempt, fallback used</td></tr>
-    <tr><td>ERROR</td><td>Application failure</td><td>DB not reachable, exception thrown</td></tr>
-    <tr><td>FATAL</td><td>System critical failure</td><td>Service crash</td></tr>
-  </table>
+<p>First popularized by the book <strong>"Design Patterns: Elements of Reusable Object-Oriented Software"</strong> by the Gang of Four (GoF), patterns provide a proven methodology to handle common software challenges in a clean, consistent way.</p>
 
-  <h2>Structured vs Unstructured Logging</h2>
-  <pre class="language-javascript"><code>// Structured
-{
-  "timestamp": "2025-06-09T08:00:00Z",
-  "level": "INFO",
-  "message": "User logged in",
-  "userId": "1234"
-}
+<blockquote>
+💡 <strong>Think of design patterns as engineering best practices.</strong> They don't dictate exact code—but they show the <em>right way</em> to structure it.
+</blockquote>
 
-// Unstructured
-User logged in successfully with ID 1234
-  </code></pre>
+<h2 class="toc-title">🎯 Why Do Design Patterns Matter?</h2>
+<ul>
+  <li>✅ Improve code <strong>readability and modularity</strong></li>
+  <li>✅ Enhance <strong>maintainability</strong> and <strong>extensibility</strong></li>
+  <li>✅ Facilitate <strong>team collaboration</strong> through shared vocabulary</li>
+  <li>✅ Provide <strong>scalable blueprints</strong> for solving recurring problems</li>
+</ul>
 
-  <h2>Logging in C# with Serilog</h2>
-  <pre><code class="language-csharp">Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .WriteTo.Console()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
+<h2 class="toc-title">🏗️ Types of Design Patterns</h2>
 
-Log.Information("Application Started");
-  </code></pre>
+<h3>1. Creational Patterns</h3>
+<ul>
+  <li><strong>Factory Method:</strong> Delegates object creation to subclasses.</li>
+  <li><strong>Singleton:</strong> Ensures a class has only one instance.</li>
+  <li><strong>Builder:</strong> Constructs complex objects step-by-step.</li>
+  <li><strong>Prototype:</strong> Clones existing objects without coupling to their classes.</li>
+</ul>
 
-  <h2>Logging in Python</h2>
-  <pre><code class="language-python">import logging
+<h3>2. Structural Patterns</h3>
+<ul>
+  <li><strong>Adapter:</strong> Converts one interface into another that clients expect.</li>
+  <li><strong>Decorator:</strong> Adds responsibilities to objects dynamically.</li>
+  <li><strong>Proxy:</strong> Provides a surrogate for another object to control access.</li>
+</ul>
 
-logging.basicConfig(level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s')
+<h3>3. Behavioral Patterns</h3>
+<ul>
+  <li><strong>Observer:</strong> Lets objects subscribe and react to events.</li>
+  <li><strong>Strategy:</strong> Enables selecting an algorithm at runtime.</li>
+  <li><strong>Command:</strong> Encapsulates a request as an object.</li>
+</ul>
 
-logging.info("Service started")
-  </code></pre>
+<h2 class="toc-title">🧭 Principles That Complement Patterns</h2>
 
-  <h2 class="toc-title">Real-World Logging Examples</h2>
-  <pre><code class="language-csharp">// C# Bad
-_log.Error("Exception occurred");
+<h3>🧱 SOLID</h3>
+<ol>
+  <li>Single Responsibility Principle</li>
+  <li>Open/Closed Principle</li>
+  <li>Liskov Substitution Principle</li>
+  <li>Interface Segregation Principle</li>
+  <li>Dependency Inversion Principle</li>
+</ol>
 
-// C# Good
-_log.Error(ex, "Payment processing failed for OrderId={OrderId}", orderId);
-  </code></pre>
+<h3>🔁 DRY – Don't Repeat Yourself</h3>
+<p>Avoid duplication. Reuse code wherever possible.</p>
 
-  <pre><code class="language-python"># Python Bad
-logging.warning("Something is wrong")
+<h3>🤷 YAGNI – You Ain’t Gonna Need It</h3>
+<p>Don’t implement functionality until it is necessary. Avoid overengineering.</p>
 
-# Python Good
-logging.warning("Payment delay detected for user_id=%s", user_id)
-  </code></pre>
+<h2 class="toc-title">🔧 Real-World Analogy: Design Patterns as Power Tools</h2>
+<p>Imagine you're assembling furniture. Without patterns, you're using a manual screwdriver for every task. With patterns, you're using power tools—faster, efficient, and purpose-built.</p>
 
-  <h2 class="toc-title">Anti-Patterns to Avoid</h2>
-  <ul>
-    <li>❌ Logging passwords, tokens, or PII</li>
-    <li>❌ Logging stack traces without context</li>
-    <li>❌ Overusing INFO/ERROR for all logs</li>
-    <li>❌ Ignoring structured logs in favor of raw text</li>
-  </ul>
+<h2 class="toc-title">🧑‍💻 Sample Scenario: Without vs. With Pattern</h2>
 
-  <p><strong>Stay tuned for quiz and downloadable guide!</strong></p>
+<h4>🚫 Without Pattern (C#)</h4>
+<pre><code class="language-csharp">
+if (type == "file")
+    new FileLogger().Log(message);
+else if (type == "db")
+    new DbLogger().Log(message);
+</code></pre>
+
+<h4>✅ With Strategy Pattern (C#)</h4>
+<pre><code class="language-csharp">
+ILogger logger = LoggerFactory.Create(type);
+logger.Log(message);
+</code></pre>
+
+<h4>✅ Strategy Pattern (Python)</h4>
+<pre><code class="language-python">
+def logger_factory(log_type):
+    if log_type == "file":
+        return FileLogger()
+    elif log_type == "db":
+        return DBLogger()
+
+logger = logger_factory("file")
+logger.log("message")
+</code></pre>
+<h2 class="toc-title">🛠️ Real-World Applications of Design Patterns</h2>
+<p>On <strong>TechWayFit</strong>, we compare design patterns to power tools: you don’t reinvent the wheel each time—you reach for the right tool to do the job efficiently. In real-world projects, patterns act as strategic instruments to solve recurring problems in a <strong>consistent</strong>, <strong>scalable</strong>, and <strong>maintainable</strong> way.</p>
+
+<h3>1. 📄 Streamlining Object Creation with Creational Patterns</h3>
+<p>Suppose your application generates different document types like PDF, Word, or HTML. Instead of writing `if-else` logic to instantiate each type, a <strong>Factory Pattern</strong> decouples the instantiation logic. This allows you to add new document types by extending the factory—no changes to existing logic needed.</p>
+
+<pre><code class="language-csharp">
+// Factory usage example
+IDocument doc = DocumentFactory.Create("PDF");
+doc.Generate();
+</code></pre>
+
+<h3>2. 🎨 Improving Code Organization with Structural Patterns</h3>
+<p>In a UI framework, you may want to add features like scrollbars, shadows, or borders dynamically. The <strong>Decorator Pattern</strong> enables you to wrap these features around core UI elements without modifying their internal logic, keeping code both <em>modular</em> and <em>extensible</em>.</p>
+
+<pre><code class="language-python">
+base_component = TextBox()
+decorated = ShadowDecorator(ScrollBarDecorator(base_component))
+decorated.render()
+</code></pre>
+
+<h3>3. 📡 Managing Behavior with Behavioral Patterns</h3>
+<p>In chat or messaging apps, the <strong>Observer Pattern</strong> ensures chat UIs update in real time. When a message arrives, it’s broadcast to all registered listeners without tightly coupling the broadcaster to UI windows.</p>
+
+<pre><code class="language-csharp">
+chatServer.Register(chatWindow1);
+chatServer.Register(chatWindow2);
+chatServer.NewMessage("Hey!");
+</code></pre>
+
+<h3>4. 🧠 Scaling Collaboration Through Shared Vocabulary</h3>
+<p>Using patterns like <strong>Strategy</strong> for interchangeable algorithms (e.g., sorting, compression, payment processors) allows teams to collaborate more effectively. Everyone understands what’s happening because they share the same architectural language, reducing onboarding time and debugging effort.</p>
+
+<pre><code class="language-python">
+processor = get_payment_strategy("stripe")
+processor.charge(user, amount)
+</code></pre>
+
+<p>✅ <strong>Conclusion:</strong> Patterns don’t just make the code “fancier”—they make it <strong>cleaner, extendable, testable, and future-proof</strong>.</p>
+
+<h2 class="toc-title">📚 Recommended Resources</h2>
+<ul>
+  <li><a href="https://refactoring.guru/design-patterns" target="_blank">Refactoring Guru</a></li>
+  <li><a href="https://www.oreilly.com/library/view/head-first-design/0596007124/" target="_blank">Head First Design Patterns</a></li>
+</ul>
+
+<h2 class="toc-title">📌 What's Next?</h2>
+<p>In the next post, we’ll explore three must-know patterns: <strong>Factory, Strategy, and Observer</strong>. With real-world scenarios and C#/Python code, you’ll see them come to life.</p>
+
+<hr />
+<p class="text-muted">Part of the <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a> series by <strong>TechWayFit</strong>.</p>
+
                     </div>
                 </div>
                 
@@ -263,9 +330,9 @@ logging.warning("Payment delay detected for user_id=%s", user_id)
 </style>
 
 <div class="blog-nav">
-        <a class="prev" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
-        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
-        <a class="next" href="/blogs/developer-101/unit-testing-fundamentals">Unit Testing Fundamentals</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/factory-pattern">Factory Pattern</a>
 </div>
 
                 <hr class="my-5" />

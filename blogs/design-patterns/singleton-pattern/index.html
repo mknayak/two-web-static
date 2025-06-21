@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Logging Like a Pro | TechWayFit</title>
+        <title>Singleton Pattern | TechWayFit</title>
         <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
         <link href="/assets/css/blog-min.css" rel="stylesheet" />
          
@@ -107,22 +107,22 @@
 </style>
 
 <div class="blog-nav">
-        <a class="prev" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
-        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
-        <a class="next" href="/blogs/developer-101/unit-testing-fundamentals">Unit Testing Fundamentals</a>
+        <a class="prev" href="/blogs/design-patterns/factory-pattern">Factory Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
 </div>
 
                 <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Logging Like a Pro</h1>
-                    <p class="lead">Master the art of logging with this Developer 101 guide. Learn log levels, structured logging, real-world examples, and tools like Serilog and Python logging module.</p>
+                    <h1>Singleton Pattern</h1>
+                    <p class="lead">Master the Singleton Pattern with step-by-step explanations, C# and Python code, real-world use cases, and common pitfalls. Learn how to manage shared instances the right way.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Tech Buddy</div>
-                                <div class="single-post-meta-details-date">6/9/2025 8:00:00 AM &middot;
-                                    4 min read</div>
+                                <div class="single-post-meta-details-date">6/20/2025 3:00:00 PM &middot;
+                                    10 min read</div>
                             </div>
                         </div>
                         <div>
@@ -131,87 +131,199 @@
                             </a>
                         </div>
                     </div>
-                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/logging-best-practices.webp" />
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/singleton-pattern-banner.webp" />
 
                     <div class="single-post-text my-5">
-                         
-  <h2 class="toc-title">Why Logging Matters</h2>
-  <p>Effective logging is essential for debugging, monitoring, and auditing. It helps uncover issues in production and ensures traceability of actions in your applications.</p>
+                        <article class="blog-post container px-5 py-5">
 
-  <h2>What Makes a Good Log Message</h2>
-  <pre><code class="language-csharp">// Good
-_log.Info("User login successful: userId=1234");
 
-// Bad
-_log.Info("Something happened");
-  </code></pre>
+  <h2 class="toc-title">1. Introduction</h2>
+  <p>
+    The Singleton Pattern is one of the most well-known creational design patterns. It restricts a class to a single
+    instance and provides a global access point to it.
+    It's useful when exactly one object is needed to coordinate actions across a system.
+  </p>
 
-  <h2 class="toc-title">Log Levels Explained</h2>
-  <table class="table table-bordered">
-    <tr><th>Level</th><th>Purpose</th><th>When to Use</th></tr>
-    <tr><td>DEBUG</td><td>Internal dev info</td><td>Tracing logic, flow</td></tr>
-    <tr><td>INFO</td><td>High-level events</td><td>User login, request received</td></tr>
-    <tr><td>WARN</td><td>Unexpected but non-breaking</td><td>Retry attempt, fallback used</td></tr>
-    <tr><td>ERROR</td><td>Application failure</td><td>DB not reachable, exception thrown</td></tr>
-    <tr><td>FATAL</td><td>System critical failure</td><td>Service crash</td></tr>
-  </table>
-
-  <h2>Structured vs Unstructured Logging</h2>
-  <pre class="language-javascript"><code>// Structured
-{
-  "timestamp": "2025-06-09T08:00:00Z",
-  "level": "INFO",
-  "message": "User logged in",
-  "userId": "1234"
-}
-
-// Unstructured
-User logged in successfully with ID 1234
-  </code></pre>
-
-  <h2>Logging in C# with Serilog</h2>
-  <pre><code class="language-csharp">Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .WriteTo.Console()
-    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
-
-Log.Information("Application Started");
-  </code></pre>
-
-  <h2>Logging in Python</h2>
-  <pre><code class="language-python">import logging
-
-logging.basicConfig(level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s')
-
-logging.info("Service started")
-  </code></pre>
-
-  <h2 class="toc-title">Real-World Logging Examples</h2>
-  <pre><code class="language-csharp">// C# Bad
-_log.Error("Exception occurred");
-
-// C# Good
-_log.Error(ex, "Payment processing failed for OrderId={OrderId}", orderId);
-  </code></pre>
-
-  <pre><code class="language-python"># Python Bad
-logging.warning("Something is wrong")
-
-# Python Good
-logging.warning("Payment delay detected for user_id=%s", user_id)
-  </code></pre>
-
-  <h2 class="toc-title">Anti-Patterns to Avoid</h2>
+  <h2 class="toc-title">2. Why Use Singleton?</h2>
+  <p>Instead of duplicating shared logic like logging or configuration across classes, a Singleton centralizes it —
+    allowing safe, lazy, and efficient reuse.</p>
+  <h2 class="toc-title">3. Key Features of Singleton</h2>
   <ul>
-    <li>❌ Logging passwords, tokens, or PII</li>
-    <li>❌ Logging stack traces without context</li>
-    <li>❌ Overusing INFO/ERROR for all logs</li>
-    <li>❌ Ignoring structured logs in favor of raw text</li>
+    <li>Only one instance exists throughout the application lifecycle</li>
+    <li>Provides a global point of access to that instance</li>
+    <li>Can be lazy-loaded (created only when needed)</li>
+    <li>Often implemented with thread safety in mind</li>
+  </ul>
+  <h2 class="toc-title">4. Step-by-Step Guide to Implementing Singleton in C#</h2>
+
+  <h3>Step 1: Define a private constructor</h3>
+  <p>This prevents other classes from using <code>new</code> to create instances.</p>
+
+  <h3>Step 2: Create a static field to hold the instance</h3>
+  <p>This is where the one-and-only instance will be stored.</p>
+
+  <h3>Step 3: Provide a static property to access the instance</h3>
+  <p>This property lazily initializes the instance if it's not already created.</p>
+
+
+  <h2 class="toc-title">Singleton in Practice: Code Comparison</h2>
+
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'singleton-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'singleton-py')">Python</button>
+    </div>
+    <div id="singleton-cs" class="tab-content active">
+      <pre><code class="language-csharp">
+public class Logger
+{
+    private static Logger _instance;
+    private Logger() {}
+
+    public static Logger Instance => _instance ??= new Logger();
+
+    public void Log(string message)
+    {
+        Console.WriteLine($"[LOG] {message}");
+    }
+}
+        </code></pre>
+    </div>
+    <div id="singleton-py" class="tab-content">
+      <pre><code class="language-python">
+class SingletonMeta(type):
+    _instance = None
+
+    def __call__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__call__(*args, **kwargs)
+        return cls._instance
+
+class Logger(metaclass=SingletonMeta):
+    def log(self, message):
+        print(f"[LOG] {message}")
+        </code></pre>
+    </div>
+  </div>
+ <h2 class="toc-title">5. Making it Thread-Safe</h2>
+    <p>Use <code>Lazy&lt;T&gt;</code> to ensure the instance is safely created even in multithreaded environments:</p>
+   <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'singleton-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'singleton-py')">Python</button>
+    </div>
+    <div id="singleton-cs" class="tab-content active">
+      <pre><code class="language-csharp">
+public class Config
+{
+    private static readonly Lazy<Config> _instance = new(() => new Config());
+
+    public static Config Instance => _instance.Value;
+
+    private Config() 
+    {
+        // Load configuration from a file or environment
+    }
+}
+        </code></pre>
+    </div>
+    <div id="singleton-py" class="tab-content">
+      <pre><code class="language-python">
+class SingletonMeta(type):
+    _instance = None
+
+    def __call__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__call__(*args, **kwargs)
+        return cls._instance
+
+class Logger(metaclass=SingletonMeta):
+    def log(self, message):
+        print(f"[LOG] {message}")
+
+# Usage
+logger1 = Logger()
+logger2 = Logger()
+print(logger1 is logger2)  # True
+        </code></pre>
+    </div>
+  </div>
+
+
+
+  <h2 class="toc-title">4. Benefits</h2>
+  <ul>
+    <li>✅ Centralized shared logic : <p>Since the Singleton ensures there's only one instance of a class (like a logger or config manager), all logic related to that functionality is centralized in that single object. This prevents scattered implementations and promotes consistency across the application.</p></li>
+    <li>✅ Memory-efficient (one instance): <p>Instead of creating new objects repeatedly, the Singleton reuses a single instance. This reduces memory overhead — especially helpful for heavy or frequently used components like caches or device managers.</p></li>
+    <li>✅ Lazy-loading friendly: <p>As shown in both the C# and Python examples, Singletons can be implemented with lazy initialization — creating the instance only when it’s first needed. This boosts performance by avoiding unnecessary allocation during app startup.</p></li>
+    <li>✅ Easy to implement in OOP: <p>The blog gives step-by-step OOP implementations in C# and Python. With just a private constructor, a static instance field, and an accessor method, you get a reusable Singleton. It’s approachable even for those new to design patterns.</p></li>
   </ul>
 
-  <p><strong>Stay tuned for quiz and downloadable guide!</strong></p>
+  <h2 class="toc-title">5. Pitfalls</h2>
+  <ul>
+    <li>❌ Hidden global state: <p>Since Singletons offer global access, they behave like global variables. That makes their state available everywhere, which can introduce subtle bugs or side effects — especially in larger applications. It becomes harder to track where and how the state changes across your app, breaking encapsulation and making debugging trickier.</p></li>
+    <li>❌ Difficult to test without interfaces or DI: <p>If a Singleton is tightly coupled into your classes (i.e., not injected or abstracted), unit testing becomes painful. You can’t easily swap it out with a mock. The blog even suggests that dependency injection or interface abstraction can mitigate this — which ties directly into your "Summary" point about improving testability.</p></li>
+    <li>❌ Can become a “God Object”: <p>If developers keep stuffing more logic into the Singleton — configuration, logging, caching, etc. — it starts doing too much. This violates the Single Responsibility Principle and makes the class overly complex and hard to maintain. Your page wisely cautions against this, encouraging restraint and focus in Singleton responsibilities.</p></li>
+  </ul>
+
+  <h2 class="toc-title">6. Real-World Use Cases</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Context</th>
+        <th>Why Singleton?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Logger</td>
+        <td>Centralized logging across app</td>
+      </tr>
+      <tr>
+        <td>Configuration</td>
+        <td>Load once, access everywhere</td>
+      </tr>
+      <tr>
+        <td>Theme Manager</td>
+        <td>App-wide consistency</td>
+      </tr>
+      <tr>
+        <td>Cache</td>
+        <td>Reuse in-memory data store</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="toc-title">7. UML Diagram</h2>
+  <p><em>(Insert: Class with private constructor + static method/property returning instance)</em></p>
+
+  <h2 class="toc-title">8. Quiz: Test Yourself</h2>
+  <p><strong>Q:</strong> What is the primary purpose of Singleton?</p>
+  <ul>
+    <li>A. Avoid inheritance</li>
+    <li>B. Enable multiple logger formats</li>
+    <li><strong>C. Guarantee one shared instance ✅</strong></li>
+    <li>D. Allow constructor injection</li>
+  </ul>
+
+  <h2 class="toc-title">9. Summary</h2>
+  <p>
+    Singleton is useful when you need one and only one instance to coordinate global behavior. It's powerful but should
+    be used with caution.
+    Always weigh testability and encapsulation before applying it blindly.
+  </p>
+
+  <blockquote>
+    <strong>🔜 Next:</strong> Builder Pattern – Construct complex objects step-by-step
+  </blockquote>
+
+  <h2 class="toc-title">10. Related Blogs</h2>
+  <ul>
+    <li><a href="/blogs/design-patterns/factory-pattern">Factory Pattern</a></li>
+    <li><a href="/blogs/developer-101/solid-principles">SOLID Principles</a></li>
+    <li><a href="/blogs/developer-101/dependency-injection">Dependency Injection</a></li>
+  </ul>
+</article>
                     </div>
                 </div>
                 
@@ -263,9 +375,9 @@ logging.warning("Payment delay detected for user_id=%s", user_id)
 </style>
 
 <div class="blog-nav">
-        <a class="prev" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
-        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
-        <a class="next" href="/blogs/developer-101/unit-testing-fundamentals">Unit Testing Fundamentals</a>
+        <a class="prev" href="/blogs/design-patterns/factory-pattern">Factory Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
 </div>
 
                 <hr class="my-5" />

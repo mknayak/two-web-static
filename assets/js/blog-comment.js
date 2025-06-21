@@ -1,4 +1,15 @@
 // blog-comment.js
+    function showTab(button, id) {
+      const tabs = button.closest('.code-tabs');
+      const contents = tabs.querySelectorAll('.tab-content');
+      const buttons = tabs.querySelectorAll('button');
+
+      contents.forEach(content => content.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      tabs.querySelector(`#${id}`).classList.add('active');
+      button.classList.add('active');
+    }
 
 document.addEventListener('DOMContentLoaded', function () {
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWiiuWQJPBKV7T208yIjMjNBbAZACVRhiFjxkx9fGnR2ikpzK_nHR5tVYvaSevnUD-/exec';
