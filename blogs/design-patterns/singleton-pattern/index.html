@@ -205,9 +205,9 @@ class Logger(metaclass=SingletonMeta):
         </code></pre>
     </div>
   </div>
- <h2 class="toc-title">5. Making it Thread-Safe</h2>
-    <p>Use <code>Lazy&lt;T&gt;</code> to ensure the instance is safely created even in multithreaded environments:</p>
-   <div class="code-tabs">
+  <h2 class="toc-title">5. Making it Thread-Safe</h2>
+  <p>Use <code>Lazy&lt;T&gt;</code> to ensure the instance is safely created even in multithreaded environments:</p>
+  <div class="code-tabs">
     <div class="tab-buttons">
       <button onclick="showTab(this, 'singleton-cs')" class="active">C#</button>
       <button onclick="showTab(this, 'singleton-py')">Python</button>
@@ -253,17 +253,41 @@ print(logger1 is logger2)  # True
 
   <h2 class="toc-title">4. Benefits</h2>
   <ul>
-    <li>✅ Centralized shared logic : <p>Since the Singleton ensures there's only one instance of a class (like a logger or config manager), all logic related to that functionality is centralized in that single object. This prevents scattered implementations and promotes consistency across the application.</p></li>
-    <li>✅ Memory-efficient (one instance): <p>Instead of creating new objects repeatedly, the Singleton reuses a single instance. This reduces memory overhead — especially helpful for heavy or frequently used components like caches or device managers.</p></li>
-    <li>✅ Lazy-loading friendly: <p>As shown in both the C# and Python examples, Singletons can be implemented with lazy initialization — creating the instance only when it’s first needed. This boosts performance by avoiding unnecessary allocation during app startup.</p></li>
-    <li>✅ Easy to implement in OOP: <p>The blog gives step-by-step OOP implementations in C# and Python. With just a private constructor, a static instance field, and an accessor method, you get a reusable Singleton. It’s approachable even for those new to design patterns.</p></li>
+    <li>✅ Centralized shared logic : <p>Since the Singleton ensures there's only one instance of a class (like a logger
+        or config manager), all logic related to that functionality is centralized in that single object. This prevents
+        scattered implementations and promotes consistency across the application.</p>
+    </li>
+    <li>✅ Memory-efficient (one instance): <p>Instead of creating new objects repeatedly, the Singleton reuses a single
+        instance. This reduces memory overhead — especially helpful for heavy or frequently used components like caches
+        or device managers.</p>
+    </li>
+    <li>✅ Lazy-loading friendly: <p>As shown in both the C# and Python examples, Singletons can be implemented with lazy
+        initialization — creating the instance only when it’s first needed. This boosts performance by avoiding
+        unnecessary allocation during app startup.</p>
+    </li>
+    <li>✅ Easy to implement in OOP: <p>The blog gives step-by-step OOP implementations in C# and Python. With just a
+        private constructor, a static instance field, and an accessor method, you get a reusable Singleton. It’s
+        approachable even for those new to design patterns.</p>
+    </li>
   </ul>
 
   <h2 class="toc-title">5. Pitfalls</h2>
   <ul>
-    <li>❌ Hidden global state: <p>Since Singletons offer global access, they behave like global variables. That makes their state available everywhere, which can introduce subtle bugs or side effects — especially in larger applications. It becomes harder to track where and how the state changes across your app, breaking encapsulation and making debugging trickier.</p></li>
-    <li>❌ Difficult to test without interfaces or DI: <p>If a Singleton is tightly coupled into your classes (i.e., not injected or abstracted), unit testing becomes painful. You can’t easily swap it out with a mock. The blog even suggests that dependency injection or interface abstraction can mitigate this — which ties directly into your "Summary" point about improving testability.</p></li>
-    <li>❌ Can become a “God Object”: <p>If developers keep stuffing more logic into the Singleton — configuration, logging, caching, etc. — it starts doing too much. This violates the Single Responsibility Principle and makes the class overly complex and hard to maintain. Your page wisely cautions against this, encouraging restraint and focus in Singleton responsibilities.</p></li>
+    <li>❌ Hidden global state: <p>Since Singletons offer global access, they behave like global variables. That makes
+        their state available everywhere, which can introduce subtle bugs or side effects — especially in larger
+        applications. It becomes harder to track where and how the state changes across your app, breaking encapsulation
+        and making debugging trickier.</p>
+    </li>
+    <li>❌ Difficult to test without interfaces or DI: <p>If a Singleton is tightly coupled into your classes (i.e., not
+        injected or abstracted), unit testing becomes painful. You can’t easily swap it out with a mock. The blog even
+        suggests that dependency injection or interface abstraction can mitigate this — which ties directly into your
+        "Summary" point about improving testability.</p>
+    </li>
+    <li>❌ Can become a “God Object”: <p>If developers keep stuffing more logic into the Singleton — configuration,
+        logging, caching, etc. — it starts doing too much. This violates the Single Responsibility Principle and makes
+        the class overly complex and hard to maintain. Your page wisely cautions against this, encouraging restraint and
+        focus in Singleton responsibilities.</p>
+    </li>
   </ul>
 
   <h2 class="toc-title">6. Real-World Use Cases</h2>
@@ -298,31 +322,30 @@ print(logger1 is logger2)  # True
   <p><em>(Insert: Class with private constructor + static method/property returning instance)</em></p> -->
 
   <h2 class="toc-title">8. Quiz: Test Yourself</h2>
-  <p><strong>Q:</strong> What is the primary purpose of Singleton?</p>
-  <ul>
-    <li>A. Avoid inheritance</li>
-    <li>B. Enable multiple logger formats</li>
-    <li><strong>C. Guarantee one shared instance ✅</strong></li>
-    <li>D. Allow constructor injection</li>
-  </ul>
+  <div class='question-container' data-questions='quiz-single-pattern' data-secret-key='SingletonPattern'
+    data-welcome-message='Check your understanding on "Singleton Pattern"' data-complete-message=''>
+    <script type='text/plain'
+      data-quiz-id='quiz-single-pattern'>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</script>
+    </div>
 
-  <h2 class="toc-title">9. Summary</h2>
-  <p>
-    Singleton is useful when you need one and only one instance to coordinate global behavior. It's powerful but should
-    be used with caution.
-    Always weigh testability and encapsulation before applying it blindly.
-  </p>
+    <h2 class="toc-title">9. Summary</h2>
+    <p>
+      Singleton is useful when you need one and only one instance to coordinate global behavior. It's powerful but
+      should
+      be used with caution.
+      Always weigh testability and encapsulation before applying it blindly.
+    </p>
 
-  <blockquote>
-    <strong>🔜 Next:</strong> Builder Pattern – Construct complex objects step-by-step
-  </blockquote>
+    <blockquote>
+      <strong>🔜 Next:</strong> Builder Pattern – Construct complex objects step-by-step
+    </blockquote>
 
-  <h2 class="toc-title">10. Related Blogs</h2>
-  <ul>
-    <li><a href="/blogs/design-patterns/factory-pattern">Factory Pattern</a></li>
-    <li><a href="/blogs/developer-101/solid-principles">SOLID Principles</a></li>
-    <li><a href="/blogs/developer-101/dependency-injection">Dependency Injection</a></li>
-  </ul>
+    <h2 class="toc-title">10. Related Blogs</h2>
+    <ul>
+      <li><a href="/blogs/design-patterns/factory-pattern">Factory Pattern</a></li>
+      <li><a href="/blogs/developer-101/solid-principles">SOLID Principles</a></li>
+      <li><a href="/blogs/developer-101/dependency-injection">Dependency Injection</a></li>
+    </ul>
 </article>
                     </div>
                 </div>
