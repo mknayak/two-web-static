@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Builder Pattern | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/singleton-pattern">Singleton Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns-in-practice/prototype-pattern">Prototype Pattern</a>
+</div>
+
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Builder Pattern</h1>
+                    <p class="lead">Understand the Builder Pattern with detailed examples, C# and Python source code, and real-world use cases. Learn to construct complex objects step by step with ease.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/22/2025 3:00:00 PM &middot;
+                                    8 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/builder-pattern-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section class="blog-content">
+  <h1>🧱 Builder Pattern – Step-by-Step Construction</h1>
+  <p>The <strong>Builder Pattern</strong> is a <strong>creational design pattern</strong> that allows step-by-step construction of complex objects. It separates the construction of a complex object from its representation so the same construction process can create different representations.</p>
+
+  <h2 class="toc-title">🧩 When to Use</h2>
+  <ul>
+    <li>When object creation involves many steps or optional fields.</li>
+    <li>When you need different representations of an object (e.g., HTML vs JSON).</li>
+    <li>When constructors become overloaded with many parameters.</li>
+  </ul>
+
+  <h2>🔊 Example 1: Building a Meal (Burger, Drink, etc.)</h2>
+  <p><strong>Problem:</strong> You want to build a meal that may contain different items like burger, drink, fries, etc. Using constructors gets messy.</p>
+  <p><strong>Solution:</strong> Use Builder to add items step by step.</p>
+
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'builder-meal-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'builder-meal-py')">Python</button>
+    </div>
+    <div id="builder-meal-cs" class="tab-content active">
+      <pre><code class="language-csharp">
+public class Meal
+{
+    public string Main { get; set; }
+    public string Drink { get; set; }
+    public string Side { get; set; }
+
+    public override string ToString() =>
+        $"Main: {Main}, Drink: {Drink}, Side: {Side}";
+}
+
+public class MealBuilder
+{
+    private Meal meal = new Meal();
+
+    public MealBuilder AddMain(string main)
+    {
+        meal.Main = main;
+        return this;
+    }
+
+    public MealBuilder AddDrink(string drink)
+    {
+        meal.Drink = drink;
+        return this;
+    }
+
+    public MealBuilder AddSide(string side)
+    {
+        meal.Side = side;
+        return this;
+    }
+
+    public Meal Build() => meal;
+}
+
+// Usage
+var meal = new MealBuilder()
+              .AddMain("Burger")
+              .AddDrink("Coke")
+              .AddSide("Fries")
+              .Build();
+
+Console.WriteLine(meal);
+      </code></pre>
+    </div>
+    <div id="builder-meal-py" class="tab-content">
+      <pre><code class="language-python">
+class Meal:
+    def __init__(self):
+        self.main = None
+        self.drink = None
+        self.side = None
+
+    def __str__(self):
+        return f"Main: {self.main}, Drink: {self.drink}, Side: {self.side}"
+
+class MealBuilder:
+    def __init__(self):
+        self.meal = Meal()
+
+    def add_main(self, main):
+        self.meal.main = main
+        return self
+
+    def add_drink(self, drink):
+        self.meal.drink = drink
+        return self
+
+    def add_side(self, side):
+        self.meal.side = side
+        return self
+
+    def build(self):
+        return self.meal
+
+# Usage
+meal = MealBuilder().add_main("Burger").add_drink("Coke").add_side("Fries").build()
+print(meal)
+      </code></pre>
+    </div>
+  </div>
+
+  <h2>🧱 Example 2: Director with Multiple Builders</h2>
+  <p><strong>Scenario:</strong> You want to create <em>different types of houses</em> using the same steps — foundation, walls, roof.</p>
+
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'builder-house-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'builder-house-py')">Python</button>
+    </div>
+    <div id="builder-house-cs" class="tab-content active">
+      <pre><code class="language-csharp">
+public class House
+{
+    public string Foundation { get; set; }
+    public string Walls { get; set; }
+    public string Roof { get; set; }
+
+    public override string ToString() => 
+        $"Foundation: {Foundation}, Walls: {Walls}, Roof: {Roof}";
+}
+
+public abstract class HouseBuilder
+{
+    protected House house = new House();
+    public abstract void BuildFoundation();
+    public abstract void BuildWalls();
+    public abstract void BuildRoof();
+    public House GetResult() => house;
+}
+
+public class WoodenHouseBuilder : HouseBuilder
+{
+    public override void BuildFoundation() => house.Foundation = "Wood Poles";
+    public override void BuildWalls() => house.Walls = "Wood Panels";
+    public override void BuildRoof() => house.Roof = "Wooden Shingles";
+}
+
+public class Director
+{
+    public void Construct(HouseBuilder builder)
+    {
+        builder.BuildFoundation();
+        builder.BuildWalls();
+        builder.BuildRoof();
+    }
+}
+
+// Usage
+var builder = new WoodenHouseBuilder();
+var director = new Director();
+director.Construct(builder);
+Console.WriteLine(builder.GetResult());
+      </code></pre>
+    </div>
+    <div id="builder-house-py" class="tab-content">
+      <pre><code class="language-python">
+class House:
+    def __init__(self):
+        self.foundation = None
+        self.walls = None
+        self.roof = None
+
+    def __str__(self):
+        return f"Foundation: {self.foundation}, Walls: {self.walls}, Roof: {self.roof}"
+
+class HouseBuilder:
+    def __init__(self):
+        self.house = House()
+
+    def build_foundation(self): pass
+    def build_walls(self): pass
+    def build_roof(self): pass
+
+    def get_result(self):
+        return self.house
+
+class WoodenHouseBuilder(HouseBuilder):
+    def build_foundation(self):
+        self.house.foundation = "Wood Poles"
+
+    def build_walls(self):
+        self.house.walls = "Wood Panels"
+
+    def build_roof(self):
+        self.house.roof = "Wooden Shingles"
+
+class Director:
+    def construct(self, builder):
+        builder.build_foundation()
+        builder.build_walls()
+        builder.build_roof()
+
+# Usage
+builder = WoodenHouseBuilder()
+director = Director()
+director.construct(builder)
+print(builder.get_result())
+      </code></pre>
+    </div>
+  </div>
+
+  <h2 class="toc-title">📌 Key Points</h2>
+  <table>
+    <tr><th>Feature</th><th>Description</th></tr>
+    <tr><td>Pattern Type</td><td>Creational</td></tr>
+    <tr><td>Key Participants</td><td>Builder, Product, Director</td></tr>
+    <tr><td>Fluent Interface</td><td>Improves readability by chaining methods</td></tr>
+    <tr><td>Benefit</td><td>Separate construction from representation</td></tr>
+  </table>
+
+  <h2 class="toc-title">🧪 Quiz: Test Your Understanding</h2>
+ <div class='question-container'     
+                     data-questions='quiz-builder-pattern'
+                     data-secret-key='TechWayFitSecret'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='quiz-builder-pattern'>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</script>
+                </div>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/singleton-pattern">Singleton Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns-in-practice/prototype-pattern">Prototype Pattern</a>
+</div>
+
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+
+    </body>
+</html>

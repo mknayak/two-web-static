@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Prototype Pattern | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/builder-pattern">Builder Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
+</div>
+
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Prototype Pattern</h1>
+                    <p class="lead">Master object cloning with the Prototype Pattern. Understand shallow vs. deep copy, and implement it in real-world scenarios using C# and Python.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/24/2025 8:00:00 PM &middot;
+                                    8 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/prototype-pattern-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+      <p><strong>Excerpt:</strong> Learn how the Prototype Pattern simplifies object creation by cloning existing instances. Explore real-world use cases, practical examples in C# and Python, and discover how to implement deep vs. shallow copies effectively.</p>
+
+  <h2>What is the Prototype Pattern?</h2>
+  <p>The Prototype Pattern is a creational design pattern that allows you to create new objects by copying an existing object (the prototype).
+    Rather than building a new object from the ground up (which can be resource-intensive or complex), the Prototype Pattern lets you start with a pre-existing object—a prototype—and simply clone it to produce new instances. This is especially useful when the original object is already properly configured or has a specific internal state you want to preserve or slightly modify.
+
+</p><p>The page builds on this by showing how this pattern works in programming languages like C# and Python, using practical examples such as cloning an Employee object. It also emphasizes why this approach is valuable: it saves setup time, supports dynamic behavior (e.g. runtime customization), and keeps your code DRY (Don’t Repeat Yourself).
+    , rather than instantiating new ones from scratch.</p>
+
+  <h2>Shallow vs. Deep Copy</h2>
+  <p><strong>Shallow Copy:</strong> This duplicates the object’s outer structure but not its inner layers. So, if the object contains nested or referenced objects (like lists or other objects), those aren’t truly copied—they're just shared between the original and the copy. Any changes made to those nested parts will show up in both.<br></p> 
+ <p>   <strong>Deep Copy:</strong> This goes further. It duplicates not just the top-level object, but everything it references, recursively. That means the original and the copy are completely independent, even in their nested components.</p>
+<h2> Code Example</h2>
+<p>Here’s how you can implement shallow and deep copies in C# and Python:</p>   
+<div class="code-tabs">
+  <div class="tab-buttons">
+    <button onclick="showTab(this, 'copy-cs')" class="active">C#</button>
+    <button onclick="showTab(this, 'copy-py')">Python</button>
+  </div>
+
+  <div id="copy-cs" class="tab-content active">
+    <pre><code class="language-csharp">
+// Shallow Copy
+public class Address {
+    public string City;
+}
+
+public class Person {
+    public string Name;
+    public Address Address;
+
+    public Person ShallowCopy() {
+        return (Person)this.MemberwiseClone();
+    }
+}
+
+// Deep Copy
+public class Person {
+    public string Name;
+    public Address Address;
+
+    public Person DeepCopy() {
+        return new Person {
+            Name = this.Name,
+            Address = new Address { City = this.Address.City }
+        };
+    }
+}
+
+public class Address {
+    public string City;
+}
+
+// Usage
+var original = new Person { Name = "Alice", Address = new Address { City = "Paris" } };
+var shallow = original.ShallowCopy();
+shallow.Address.City = "London"; // Affects original
+
+var deep = original.DeepCopy();
+deep.Address.City = "Tokyo"; // Does not affect original
+    </code></pre>
+  </div>
+
+  <div id="copy-py" class="tab-content">
+    <pre><code class="language-python">
+import copy
+
+class Address:
+    def __init__(self, city):
+        self.city = city
+
+class Person:
+    def __init__(self, name, address):
+        self.name = name
+        self.address = address
+
+# Shallow Copy
+original = Person(\"Alice\", Address(\"Paris\"))
+shallow = copy.copy(original)
+shallow.address.city = \"London\"  # Affects original
+
+# Deep Copy
+deep = copy.deepcopy(original)
+deep.address.city = \"Tokyo\"  # Does not affect original
+    </code></pre>
+  </div>
+</div>
+
+
+  <h2>Use Cases</h2>
+  <ul>
+    <li>Game development: Clone characters or weapons with custom attributes.</li>
+    <li>Document editors: Duplicate formatted content.</li>
+    <li>Enterprise apps: Clone preconfigured objects.</li>
+  </ul>
+
+  <h2>Code Examples</h2>
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'singleton-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'singleton-py')">Python</button>
+    </div>
+    <div id="singleton-cs" class="tab-content active">
+      <pre><code class="language-csharp">
+// Prototype interface
+public interface IPrototype {
+    IPrototype Clone();
+}
+
+// Concrete prototype
+public class Employee : IPrototype {
+    public string Name;
+    public string Role;
+
+    public Employee(string name, string role) {
+        Name = name;
+        Role = role;
+    }
+
+    public IPrototype Clone() {
+        return new Employee(Name, Role);
+    }
+        </code></pre>
+    </div>
+    <div id="singleton-py" class="tab-content">
+      <pre><code class="language-python">
+import copy
+
+class Employee:
+    def __init__(self, name, role):
+        self.name = name
+        self.role = role
+
+    def clone(self):
+        return copy.deepcopy(self)
+
+emp1 = Employee("Alice", "Engineer")
+emp2 = emp1.clone()
+        </code></pre>
+    </div>
+  </div>
+
+  <h2>Pros and Cons</h2>
+  <ul>
+    <li><strong>✅ Pros:</strong> <ul><li>Faster object creation: If setting up an object involves multiple steps, dependencies, or heavy computation, cloning an existing one can save significant time and resources.
+
+</li><li>Keeps code DRY (Don’t Repeat Yourself): By reusing a well-configured prototype, you avoid redundant initialization code, making your implementation cleaner and more maintainable.</li></ul></li>
+    <li><strong>❌ Cons:</strong> 
+    <ul>
+        <li>Complexity: Implementing deep copies can be tricky, especially with complex object graphs or circular references.</li>
+        <li>Memory overhead: Cloning large objects can consume more memory, especially if many copies are made.</li>
+        <li>Not suitable for all scenarios: If the object’s state is highly dynamic or context-dependent, cloning may not be appropriate.</li>
+    </ul>
+    
+    </li>
+  </ul>
+
+  <h2>Pattern Comparison</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr><th>Pattern</th><th>Key Idea</th><th>When to Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Factory</td><td>Creates new instances</td><td>Encapsulate object creation logic</td></tr>
+      <tr><td>Builder</td><td>Step-by-step construction</td><td>Complex configuration logic</td></tr>
+      <tr><td>Prototype</td><td>Cloning objects</td><td>Want to avoid rebuilding state from scratch</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Conclusion</h2>
+  <p>Use the Prototype Pattern when object creation is expensive, and you need many similar instances. It's especially helpful for runtime flexibility and dynamic systems like editors or simulation environments.</p>
+
+</section>
+                    </div>
+                </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/builder-pattern">Builder Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="end" href="/blogs">Return to Blog Series</a>
+</div>
+
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+
+    </body>
+</html>

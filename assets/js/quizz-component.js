@@ -44,13 +44,13 @@ function renderQuiz(container, quizData, welcome, completion) {
   card.className = 'card shadow p-4';
   container.appendChild(card);
 
-  const heading = document.createElement('h5');
-  heading.className = 'mb-3 text-primary';
-  heading.textContent = welcome || 'Welcome!';
-  card.appendChild(heading);
+  // const heading = document.createElement('h5');
+  // heading.className = 'text-primary';
+  // heading.textContent = welcome || 'Welcome!';
+  // card.appendChild(heading);
 
   const qTitle = document.createElement('h6');
-  qTitle.className = 'mb-3';
+  qTitle.className = 'my-1';
   card.appendChild(qTitle);
 
   const optionBox = document.createElement('div');
