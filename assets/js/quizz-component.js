@@ -140,14 +140,14 @@ function renderQuiz(container, quizData, welcome, completion) {
     score = 0;
     loadQuestion();
     resultBox.classList.add('d-none');
-    heading.classList.remove('d-none');
+   // heading.classList.remove('d-none');
     qTitle.classList.remove('d-none');
     optionBox.classList.remove('d-none');
     navBox.classList.remove('d-none');
   };
 
   function showResult() {
-    heading.classList.add('d-none');
+  //  heading.classList.add('d-none');
     qTitle.classList.add('d-none');
     optionBox.classList.add('d-none');
     navBox.classList.add('d-none');

@@ -161,43 +161,50 @@
 <h2 class="toc-title">🏗️ Types of Design Patterns</h2>
 
 <h3>1. Creational Patterns</h3>
+<p>These patterns deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. They help control which classes are instantiated and how.</p>
 <ul>
-  <li><strong>Factory Method:</strong> Delegates object creation to subclasses.</li>
-  <li><strong>Singleton:</strong> Ensures a class has only one instance.</li>
-  <li><strong>Builder:</strong> Constructs complex objects step-by-step.</li>
-  <li><strong>Prototype:</strong> Clones existing objects without coupling to their classes.</li>
+  <li><strong>Factory Method:</strong> Delegates the creation logic to subclasses. It's like ordering a drink—you ask for “coffee,” and the barista decides how to make it.</li>
+  <li><strong>Singleton:</strong> Ensures a class has only one instance across the system—commonly used for things like logging services or database connections.</li>
+  <li><strong>Builder:</strong> Constructs complex objects step-by-step, offering more control over the creation process. Imagine assembling a burger with exactly the ingredients you want.</li>
+  <li><strong>Prototype:</strong> Creates objects by copying existing ones, which is useful when creating a new instance is costly or complex.</li>
 </ul>
 
 <h3>2. Structural Patterns</h3>
+<p>These patterns deal with object composition, helping to define how objects and classes can be combined to form larger structures. They simplify the design by identifying simple ways to realize relationships between entities.</p>
 <ul>
-  <li><strong>Adapter:</strong> Converts one interface into another that clients expect.</li>
-  <li><strong>Decorator:</strong> Adds responsibilities to objects dynamically.</li>
-  <li><strong>Proxy:</strong> Provides a surrogate for another object to control access.</li>
+  <li><strong>Adapter:</strong> This acts like a translator. When two classes have incompatible interfaces but need to work together, the adapter steps in and reshapes one interface into a form that the client expects. For example, if your app expects a render() method but the external component only offers draw(), an adapter can bridge that gap.</li>
+  <li><strong>Decorator:</strong> Think of this as dynamic enhancement. You can wrap an object with new features—like adding shadows, borders, or scrollbars to a UI component—without modifying the core object itself. It lets you layer functionality in a flexible way, perfect for user interface toolkits or extending behavior at runtime.</li>
+  <li><strong>Proxy:</strong> This acts as a substitute or gatekeeper. Whether it's controlling access to expensive resources, adding lazy-loading, logging requests, or enforcing security checks, the proxy stands in front of the real object to intercept and manage interactions.</li>
 </ul>
 
 <h3>3. Behavioral Patterns</h3>
+<p>These patterns focus on communication between objects, defining how they interact and collaborate. They help in managing complex control flows and responsibilities.</p>
+<p>Behavioral patterns are all about how objects communicate and collaborate. They help in managing complex control flows and responsibilities, making your code more flexible and easier to maintain.</p>
 <ul>
-  <li><strong>Observer:</strong> Lets objects subscribe and react to events.</li>
-  <li><strong>Strategy:</strong> Enables selecting an algorithm at runtime.</li>
-  <li><strong>Command:</strong> Encapsulates a request as an object.</li>
+  <li><strong>Observer:</strong> Perfect for scenarios where multiple parts of your app need to stay in sync without being tightly coupled. For instance, in a chat app, multiple UI windows need to update whenever a new message arrives. The Observer pattern allows these windows to “subscribe” to message updates. When a new message comes in, it's broadcast to all registered windows automatically—kind of like a digital group chat notification system.</li>
+  <li><strong>Strategy:</strong> Gives your application the flexibility to switch between different algorithms or behaviors at runtime. Imagine choosing between Stripe or PayPal for processing payments. Instead of hardcoding the logic, the Strategy pattern allows you to swap out one implementation for another without changing the core workflow—just plug and play.</li>
+  <li><strong>Command:</strong> This wraps a request (like “save this file” or “undo this action”) into an object. Why? Because it decouples the invoker from the executor, making it easier to queue, log, or even undo actions later. Think of it as placing an order at a restaurant—the waiter (invoker) doesn’t care how the kitchen prepares your dish; they just pass along the request.</li>
 </ul>
 
 <h2 class="toc-title">🧭 Principles That Complement Patterns</h2>
 
 <h3>🧱 SOLID</h3>
 <ol>
-  <li>Single Responsibility Principle</li>
-  <li>Open/Closed Principle</li>
-  <li>Liskov Substitution Principle</li>
-  <li>Interface Segregation Principle</li>
-  <li>Dependency Inversion Principle</li>
+  <li><strong>Single Responsibility Principle (SRP):</strong> Every class or module should have one job and one job only. If a class is managing both data validation and database access, it's doing too much. SRP nudges you to separate concerns, making code easier to debug and update.</li>
+  <li><strong>Open/Closed Principle (OCP):</strong> Code should be open for extension but closed for modification. In other words, you should be able to add new features (e.g., a new payment gateway) without changing existing classes. The Strategy Pattern showcased earlier in the article ties directly into this.</li>
+  <li><strong>Liskov Substitution Principle (LSP):</strong> If class B is a subtype of class A, it should behave in a way that doesn't surprise or break the expectations of A. Think of replacing a Bird object with a Penguin—if the method expects flying behavior, LSP is violated. This keeps polymorphism safe and logical.</li>
+  <li><strong>Interface Segregation Principle (ISP):</strong> Don’t force a class to implement methods it doesn’t use. Instead, split large interfaces into more specific ones. For instance, a Printer interface shouldn't demand a fax() method if your class only handles scanning and printing.</li>
+  <li><strong>Dependency Inversion Principle (DIP):</strong> High-level modules (like your app logic) shouldn't depend on low-level modules (like concrete database classes). Instead, both should rely on abstractions. This promotes flexibility—allowing you to swap dependencies (e.g., change the logging mechanism) without rewriting core functionality.</li>
 </ol>
 
 <h3>🔁 DRY – Don't Repeat Yourself</h3>
-<p>Avoid duplication. Reuse code wherever possible.</p>
+<p><strong>DRY (Don't Repeat Yourself)</strong> as a foundational software design principle that complements design patterns and SOLID thinking. While patterns help solve structural or behavioral challenges, DRY zooms in on a core productivity mantra: <strong>eliminate unnecessary duplication</strong> to reduce maintenance overhead and improve clarity.</p>
+<p>
+  DRY encourages you to <strong>centralize logic</strong>, <strong>structure reusable components</strong>, and <strong>abstract repeated processes</strong> into shared functions or classes. Whether it’s hardcoded validation checks repeated across modules or duplicated layout markup in a UI, following DRY means refactoring such redundancy into a single source of truth.
+</p>
 
 <h3>🤷 YAGNI – You Ain’t Gonna Need It</h3>
-<p>Don’t implement functionality until it is necessary. Avoid overengineering.</p>
+<p><strong>YAGNI (You Ain’t Gonna Need It)</strong> is presented as a guiding principle to keep your development lean and purposeful. It reminds developers not to implement features just in case—only build what’s actually required.</p>
 
 <h2 class="toc-title">🔧 Real-World Analogy: Design Patterns as Power Tools</h2>
 <p>Imagine you're assembling furniture. Without patterns, you're using a manual screwdriver for every task. With patterns, you're using power tools—faster, efficient, and purpose-built.</p>
