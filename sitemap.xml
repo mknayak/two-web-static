@@ -2,241 +2,259 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.techwayfit.com/</loc>
-    <lastmod>2025-06-26T17:21:42.6868133Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.319967Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs</loc>
-    <lastmod>2025-06-26T17:21:42.6868152Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.319967Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/about</loc>
-    <lastmod>2025-06-26T17:21:42.6868154Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.319967Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/contact-us</loc>
-    <lastmod>2025-06-26T17:21:42.6868157Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.319968Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/groups/developer-101</loc>
-    <lastmod>2025-06-26T17:21:42.6870342Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320026Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/groups/secure-by-design</loc>
-    <lastmod>2025-06-26T17:21:42.6870347Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320026Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/groups/design-patterns-in-practice</loc>
-    <lastmod>2025-06-26T17:21:42.687035Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320027Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/welcome-to-twf</loc>
-    <lastmod>2025-06-26T17:21:42.6874107Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320146Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/naming-conventions</loc>
-    <lastmod>2025-06-26T17:21:42.6874112Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320146Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/not-just-code</loc>
-    <lastmod>2025-06-26T17:21:42.6874115Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320146Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/oops-concepts</loc>
-    <lastmod>2025-06-26T17:21:42.6874118Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320146Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/encapsulation-vs-abstraction</loc>
-    <lastmod>2025-06-26T17:21:42.687412Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320146Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/comments-and-documentation</loc>
-    <lastmod>2025-06-26T17:21:42.6874123Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320146Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/version-control</loc>
-    <lastmod>2025-06-26T17:21:42.6874156Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320146Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/logging-best-practices</loc>
-    <lastmod>2025-06-26T17:21:42.687416Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320147Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/unit-testing-fundamentals</loc>
-    <lastmod>2025-06-26T17:21:42.6874162Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320147Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/developer-101/conclusion</loc>
-    <lastmod>2025-06-26T17:21:42.6874165Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320147Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/why-security-matters</loc>
-    <lastmod>2025-06-26T17:21:42.6874169Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320147Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/owasp-top10-code-examples</loc>
-    <lastmod>2025-06-26T17:21:42.6874171Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320147Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/secure-authentication</loc>
-    <lastmod>2025-06-26T17:21:42.6874173Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320147Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/secure-api-design</loc>
-    <lastmod>2025-06-26T17:21:42.6874176Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320147Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/secure-session-management</loc>
-    <lastmod>2025-06-26T17:21:42.6874178Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320148Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/threat-modeling</loc>
-    <lastmod>2025-06-26T17:21:42.687418Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320148Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/security-headers</loc>
-    <lastmod>2025-06-26T17:21:42.6874182Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320148Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/secure-by-design/secure-by-design-roadmap</loc>
-    <lastmod>2025-06-26T17:21:42.6874184Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320148Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/design-patterns/introduction-to-design-patterns</loc>
-    <lastmod>2025-06-26T17:21:42.6874187Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320148Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/design-patterns/factory-pattern</loc>
-    <lastmod>2025-06-26T17:21:42.6874189Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320149Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/design-patterns/singleton-pattern</loc>
-    <lastmod>2025-06-26T17:21:42.6874191Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320149Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/design-patterns/builder-pattern</loc>
-    <lastmod>2025-06-26T17:21:42.6874193Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320149Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/design-patterns-in-practice/prototype-pattern</loc>
-    <lastmod>2025-06-26T17:21:42.6874242Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320149Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/blogs/design-patterns/adapter-pattern</loc>
-    <lastmod>2025-06-26T17:21:42.6874245Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320149Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.techwayfit.com/blogs/design-patterns/decorator-pattern</loc>
+    <lastmod>2025-07-01T16:12:55.320149Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.techwayfit.com/blogs/design-patterns/proxy-pattern</loc>
+    <lastmod>2025-07-01T16:12:55.320149Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.techwayfit.com/blogs/design-patterns/proxy-decorator-adapter-comparison</loc>
+    <lastmod>2025-07-01T16:12:55.32015Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/quizs/developer-101/set-1</loc>
-    <lastmod>2025-06-26T17:21:42.6876345Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320192Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/quizs/developer-101/set-2</loc>
-    <lastmod>2025-06-26T17:21:42.6876349Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320192Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/quizs/security/owasp-top-10</loc>
-    <lastmod>2025-06-26T17:21:42.6876354Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320192Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/quizs/security/secure-authentication-api-session</loc>
-    <lastmod>2025-06-26T17:21:42.6876356Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320192Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/pages/code-with-confidence</loc>
-    <lastmod>2025-06-26T17:21:42.6878032Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320231Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/pages/buy-or-build</loc>
-    <lastmod>2025-06-26T17:21:42.6878036Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320231Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/pages/tech-that-talks</loc>
-    <lastmod>2025-06-26T17:21:42.6878039Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320231Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/sitemap.xml</loc>
-    <lastmod>2025-06-26T17:21:42.6878043Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320231Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.techwayfit.com/robots.txt</loc>
-    <lastmod>2025-06-26T17:21:42.6878046Z</lastmod>
+    <lastmod>2025-07-01T16:12:55.320231Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

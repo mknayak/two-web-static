@@ -13,11 +13,11 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Learn how to write meaningful comments and documentation in your code. Explore best practices, real-world scenarios, and examples from Python and C# to improve your code clarity and maintainability." />
-        <meta property='og:title' content='Comments and Documentation'/>
-        <meta property='og:image' content='/assets/images/banners/comments-documentation.webp'/>
-        <meta property='og:description' content='Learn how to write meaningful comments and documentation in your code. Explore best practices, real-world scenarios, and examples from Python and C# to improve your code clarity and maintainability.'/> 
-        <title>Comments and Documentation | TechWayFit</title>
+        <meta name="description" content="Understand how the Proxy Pattern provides a surrogate to control access to real objects, allowing for behavior like access control, lazy loading, and logging. Includes C#/Python examples, UML, and real-world use cases." />
+        <meta property='og:title' content='Proxy Pattern: Control Access and Enhance Behavior'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/proxy-pattern-banner.webp'/>
+        <meta property='og:description' content='Understand how the Proxy Pattern provides a surrogate to control access to real objects, allowing for behavior like access control, lazy loading, and logging. Includes C#/Python examples, UML, and real-world use cases.'/> 
+        <title>Proxy Pattern: Control Access and Enhance Behavior | TechWayFit</title>
         <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
         <link href="/assets/css/blog-min.css" rel="stylesheet" />
          
@@ -109,22 +109,22 @@
 </style>
 
 <div class="blog-nav">
-        <a class="prev" href="/blogs/developer-101/encapsulation-vs-abstraction">Encapsulation vs Abstraction</a>
-        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
-        <a class="next" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
+        <a class="prev" href="/blogs/design-patterns/decorator-pattern">Decorator Pattern: Enhancing Behavior Dynamically</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/proxy-decorator-adapter-comparison">Proxy vs Decorator vs Adapter: Choose the Right Pattern</a>
 </div>
 
                 <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Comments and Documentation</h1>
-                    <p class="lead">Learn how to write meaningful comments and documentation in your code. Explore best practices, real-world scenarios, and examples from Python and C# to improve your code clarity and maintainability.</p>
+                    <h1>Proxy Pattern: Control Access and Enhance Behavior</h1>
+                    <p class="lead">Understand how the Proxy Pattern provides a surrogate to control access to real objects, allowing for behavior like access control, lazy loading, and logging. Includes C#/Python examples, UML, and real-world use cases.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Tech Buddy</div>
-                                <div class="single-post-meta-details-date">04-Jun, 2025 &middot;
-                                    4 min read</div>
+                                <div class="single-post-meta-details-date">29-Jun, 2025 &middot;
+                                    8 min read</div>
                             </div>
                         </div>
                         <div>
@@ -133,172 +133,183 @@
                             </a>
                         </div>
                     </div>
-                    <img class="img-fluid mb-2 rounded" src="/assets/images/banners/comments-documentation.webp" />
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/proxy-pattern-banner.webp" />
 
                     <div class="single-post-text my-5">
-                        <section>
-    <p>Writing good code is only part of the job. Making it understandable for your teammates — and for your future self
-        — is equally important. Comments and documentation play a vital role in making your codebase maintainable,
-        readable, and collaborative.</p>
-    <h2 class="toc-title">Types of Comments</h2>
-    <ul>
-        <li><strong>Inline Comments:</strong> Placed on the same line as code, they explain a specific logic.</li>
-        <li><strong>Block Comments:</strong> Span multiple lines, used to explain complex logic or sections.</li>
-        <li><strong>TODO/FIXME Notes:</strong> Indicate pending work or known issues.</li>
-    </ul>
-    <h2 class="toc-title">Best Practices</h2>
-    <ul>
-        <li>Don’t state the obvious — write comments that add value.</li>
-        <li>Keep comments short, but informative.</li>
-        <li>Update comments when the code changes.</li>
-        <li>Use a consistent style and tone.</li>
-    </ul>
-    <h2>Commenting Examples</h2>
-    <h3>C#</h3>
-    <pre><code class="language-csharp">// Bad: Too obvious
-int total = 0; // Set total to 0
+                        <p>The Proxy Pattern belongs to the structural design pattern family, which focuses on how objects are composed to form
+    larger structures.
 
-// Good: Adds context
-int total = 0; // Initialize total to accumulate cart item prices
+    It introduces a "surrogate" or placeholder object—called the Proxy—that stands in for a RealSubject (the actual
+    object doing the work).</p>
 
-// TODO: Handle discounts in future</code></pre>
-    <h3>Python</h3>
-    <pre><code class="language-python"># Bad: Redundant
-count = 0  # Count is zero
+<h2 class="toc-title">📌 Intent</h2>
+<p>The proxy controls interaction with the real object and can add new behavior <strong>without changing the real
+        object’s code</strong>—perfect when:
+</p>
+<ul>
+    <li>
+        You need access control (e.g. only admins allowed to perform certain actions)</li>
+    <li>
+        You want to implement lazy loading (create the real object only when it’s actually needed)</li>
+    <li>
+        You’re adding features like logging, caching, or monitoring without polluting the original class
+    </li>
+</ul>
 
-# Good: Clarifies purpose
-count = 0  # Number of users currently online
 
-# FIXME: This needs optimization for large datasets</code></pre>
-    <h2 class="toc-title">Docstrings and Documentation</h2>
-    <p>Docstrings are embedded documentation for functions, classes, and modules. Use them to describe purpose,
-        parameters, and return values.</p>
-    <h3>Python Docstring</h3>
-    <pre><code class="language-python">def add(a, b):
-    """Add two numbers and return the result.
+<h2 class="toc-title">🔍 Use Cases</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Scenario</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Remote Proxy</td>
+        <td>Represents an object in another address space</td>
+    </tr>
+    <tr>
+        <td>Virtual Proxy</td>
+        <td>Delays creation of expensive objects</td>
+    </tr>
+    <tr>
+        <td>Protection Proxy</td>
+        <td>Controls access based on user roles</td>
+    </tr>
+    <tr>
+        <td>Smart Reference Proxy</td>
+        <td>Adds behavior like logging, caching</td>
+    </tr>
+</table>
 
-    Args:
-        a (int): First number.
-        b (int): Second number.
+<h2 class="toc-title">📐 UML Structure</h2>
+<p><img class="max-100" src="/assets/images/blogs/design-patterns/proxy-pattern-uml_sm.webp"></p>
 
-    Returns:
-        int: Sum of a and b.
-    """
-    return a + b</code></pre>
-    <h3>C# XML Documentation</h3>
-    <pre><code class="language-csharp">/// <summary>
-/// Adds two integers and returns the result.
-/// </summary>
-/// <param name="a">First integer</param>
-/// <param name="b">Second integer</param>
-/// <returns>Sum of a and b</returns>
-public int Add(int a, int b)
-{
-    return a + b;
-}</code></pre>
-    <h2 class="toc-title">External Documentation</h2>
-    <ul>
-        <li><strong>README:</strong> Explain project structure, dependencies, and usage.</li>
-        <li><strong>Wiki or Notion:</strong> Maintain detailed project architecture, workflows, and design decisions.
-        </li>
-        <li><strong>API Docs:</strong> Auto-generated using tools like Swagger, JSDoc, or Sphinx.</li>
-    </ul>
-    <h2>Bad Code Readability – Real-World Problems</h2>
-    <p>Unreadable code leads to confusion, delays, and bugs — especially for support teams maintaining the code under
-        pressure. Without clear comments or structure, even a simple issue can take hours to debug.</p>
-    <h3>❌ Poorly Commented Code (C#)</h3>
-    <pre><code class="language-csharp">public void C(int x) {
-    if (x == 1) { P(); } else { Q(); }
-}</code></pre>
-    <ul>
-        <li>Method and variable names are meaningless.</li>
-        <li>No indication of what <code>P()</code> or <code>Q()</code> do.</li>
-        <li>Support team has no clue what behavior to expect.</li>
-    </ul>
-    <h3>✅ Refactored and Documented Version (C#)</h3>
-    <pre><code class="language-csharp">/// <summary>
-/// Processes user request based on priority flag.
-/// </summary>
-/// <param name="priorityFlag">1 = high priority</param>
-public void ProcessRequest(int priorityFlag) {
-    if (priorityFlag == 1) {
-        HandleUrgentRequest();
-    } else {
-        HandleStandardRequest();
+<h2 class="toc-title">💻 Code Examples</h2>
+<div class="code-tabs">
+    <div class="tab-buttons">
+        <button onclick="showTab(this,'csharp')" class="active">C#</button>
+        <button onclick="showTab(this,'python')">Python</button>
+    </div>
+
+    <div id="csharp" class="tab-content active">
+        <pre><code class="language-csharp">public interface IBankAccount {
+    void Withdraw(double amount);
+}
+
+public class RealBankAccount : IBankAccount {
+    public void Withdraw(double amount) {
+        Console.WriteLine($"Withdrew {amount} successfully.");
+    }
+}
+
+public class BankAccountProxy : IBankAccount {
+    private RealBankAccount _realAccount = new RealBankAccount();
+    private string _role;
+
+    public BankAccountProxy(string role) {
+        _role = role;
+    }
+
+    public void Withdraw(double amount) {
+        if (_role == "admin") _realAccount.Withdraw(amount);
+        else Console.WriteLine("Access Denied.");
     }
 }</code></pre>
-    <h3>❌ Poorly Written Code (Python)</h3>
-    <pre><code class="language-python">def c(x):
-    if x == 0:
-        t()
-    else:
-        y()</code></pre>
-    <ul>
-        <li>Function and method names are cryptic.</li>
-        <li>No comments or docstrings to explain the logic.</li>
-        <li>Debugging becomes trial-and-error.</li>
-    </ul>
-    <h3>✅ Improved Version (Python)</h3>
-    <pre><code class="language-python">def process_login(user_status):
-    """Processes login based on user status.
+    </div>
 
-    Args:
-        user_status (int): 0 for guest, 1 for registered user.
-    """
-    if user_status == 0:
-        handle_guest_login()
-    else:
-        handle_registered_user()</code></pre>
-    <h2 class="toc-title">Support Team Impact</h2>
+    <div id="python" class="tab-content">
+        <pre><code class="language-python">from abc import ABC, abstractmethod
+
+class IBankAccount(ABC):
+    @abstractmethod
+    def withdraw(self, amount): pass
+
+class RealBankAccount(IBankAccount):
+    def withdraw(self, amount):
+        print(f"Withdrew {amount} successfully.")
+
+class BankAccountProxy(IBankAccount):
+    def __init__(self, role):
+        self._real_account = RealBankAccount()
+        self._role = role
+
+    def withdraw(self, amount):
+        if self._role == "admin":
+            self._real_account.withdraw(amount)
+        else:
+            print("Access Denied.")</code></pre>
+    </div>
+</div>
+<h2 class="toc-title">🌐 Real-World Examples</h2>
+<div class="section">
+    <h3>Lazy Loading in Entity Framework</h3>
     <ul>
-        <li><strong>Delayed Fixes:</strong> Time is wasted understanding what the code is supposed to do.</li>
-        <li><strong>Incorrect Fixes:</strong> Misinterpretation of logic can lead to introducing new bugs.</li>
-        <li><strong>Lower Morale:</strong> Developers dread working on unclear legacy code.</li>
-        <li><strong>Poor Handover:</strong> Code transitions become chaotic when developers leave.</li>
+      <li><strong>What it is:</strong> A form of the <em>Virtual Proxy</em>.</li>
+      <li><strong>How it works:</strong> Related data is represented by a proxy but not fetched from the database until needed.</li>
+      <li><strong>Why it matters:</strong> Improves performance by avoiding unnecessary object creation until it's accessed.</li>
     </ul>
-    <h2>Real-World Bugs Caused by Poor Documentation</h2>
-    <h3>🧨 Scenario 1: Misunderstood Business Logic (C#)</h3>
-    <pre><code class="language-csharp">// Original developer assumed business hours end at 6 PM.
-if (DateTime.Now.Hour < 18)
-    SendNotification();</code></pre>
-    <p>Notifications were sent after hours. Policy had changed but comments didn't reflect that.</p>
-    <h3>Fix:</h3>
-    <pre><code class="language-csharp">// Business hours updated as of Jan 2025 policy
-if (DateTime.Now.Hour < 17)
-    SendNotification();</code></pre>
-    <h3>🧨 Scenario 2: Silent Failures Due to Assumptions (Python)</h3>
-    <pre><code class="language-python">def calculate_discount(user_type):
-    if user_type == 'premium':
-        return 0.20
-    return None</code></pre>
-    <h3>Fix:</h3>
-    <pre><code class="language-python">def calculate_discount(user_type):
-    """Returns discount rate for known user types."""
-    if user_type == 'premium':
-        return 0.20
-    elif user_type == 'standard':
-        return 0.10
-    raise ValueError("Unknown user type")</code></pre>
-    <h3>🧨 Scenario 3: Unclear API Response Mapping (C#)</h3>
-    <pre><code class="language-csharp">// Mistook business code for HTTP code
-if (response.status_code == 200)
-    ApproveRequest();</code></pre>
-    <h3>Fix:</h3>
-    <pre><code class="language-csharp">// 100 = success; 200 = validation error, etc.
-if (response.status_code == 100)
-    ApproveRequest();</code></pre>
-    <h3>🧨 Scenario 4: Hidden Calculation Logic (Python)</h3>
-    <pre><code class="language-python"># Monthly interest
-interest = principal * 0.015</code></pre>
-    <p>Hardcoded value caused miscalculations after interest rate changes.</p>
-    <h3>Fix:</h3>
-    <pre><code class="language-python">monthly_interest_rate = get_config("interest_rate")
-interest = principal * monthly_interest_rate</code></pre>
-    <h2 class="toc-title">Conclusion</h2>
-    <p>Don’t leave your future self (or your teammates) in the dark. Clean, meaningful comments and documentation are a
-        hallmark of professional development. When done right, they reduce bugs, speed up onboarding, and make
-        everyone’s life easier.</p>
-</section>
+  </div>
+
+  <div class="section">
+    <h3>Spring AOP Proxies</h3>
+    <ul>
+      <li><strong>What it is:</strong> An example of a <em>Smart Proxy</em> in the Spring Framework.</li>
+      <li><strong>How it works:</strong> Uses dynamic proxies to inject behavior like logging or transactions around core business logic.</li>
+      <li><strong>Why it matters:</strong> Adds behavior transparently without changing the actual business classes.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Python Decorators as Smart Proxies</h3>
+    <ul>
+      <li><strong>What it is:</strong> Decorators act as <em>Smart Proxies</em> by wrapping functions/methods.</li>
+      <li><strong>How it works:</strong> A decorator intercepts a function call to insert behaviors like caching or access control.</li>
+      <li><strong>Why it matters:</strong> Keeps code modular and extensible without modifying the original function.</li>
+    </ul>
+  </div>
+
+<h2 class="toc-title">✅ Advantages</h2>
+<ul>
+    <li>Access control and behavior extension</li>
+    <li>Can add logging, caching without modifying the subject</li>
+</ul>
+
+<h2 class="toc-title">⚠️ Disadvantages</h2>
+<ul>
+    <li>Increased complexity</li>
+    <li>Too many proxies may clutter design</li>
+</ul>
+
+<h2 class="toc-title">📊 Summary Table</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Feature</th>
+        <th>Proxy Pattern</th>
+    </tr>
+    <tr>
+        <td>Purpose</td>
+        <td>Control access / add behavior</td>
+    </tr>
+    <tr>
+        <td>Types</td>
+        <td>Remote, Virtual, Protection, Smart</td>
+    </tr>
+    <tr>
+        <td>Key Concept</td>
+        <td>Surrogate object delegates or filters actions</td>
+    </tr>
+    <tr>
+        <td>UML Components</td>
+        <td>Subject, RealSubject, Proxy</td>
+    </tr>
+</table>
+
+<h2 class="toc-title">🧠 Quiz Preview</h2>
+<p>Test your understanding of the Proxy Pattern with our interactive quiz on TechWayFit!</p>
+
+<h2>🔗 Further Reading</h2>
+<p>Explore more design patterns and their applications in our <a href="/blogs/design-patterns/">Design Patterns
+        Series</a>.</p>
                     </div>
                 </div>
                 
@@ -350,9 +361,9 @@ interest = principal * monthly_interest_rate</code></pre>
 </style>
 
 <div class="blog-nav">
-        <a class="prev" href="/blogs/developer-101/encapsulation-vs-abstraction">Encapsulation vs Abstraction</a>
-        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
-        <a class="next" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
+        <a class="prev" href="/blogs/design-patterns/decorator-pattern">Decorator Pattern: Enhancing Behavior Dynamically</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/proxy-decorator-adapter-comparison">Proxy vs Decorator vs Adapter: Choose the Right Pattern</a>
 </div>
 
                 <hr class="my-5" />
