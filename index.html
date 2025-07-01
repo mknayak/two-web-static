@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" content="Welcome to TechWayFit, your go-to source for tech insights, tutorials, and resources. Explore our latest blogs and discover reusable components to enhance your projects." />
+        <meta property='og:title' content='Home Page'/>
+        <meta property='og:image' content='/assets/images/home-banner.webp'/>
+        <meta property='og:description' content='Welcome to TechWayFit, your go-to source for tech insights, tutorials, and resources. Explore our latest blogs and discover reusable components to enhance your projects.'/> 
         <title>Home Page | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -36,7 +46,7 @@
                         </div>
                     </nav>
 					
- 
+
 <header class="page-header-ui page-header-light py-lg-5 bg-light">
     <div class="page-header-ui-content">
         <div class="container px-5">
@@ -44,11 +54,10 @@
                 <div class="col-lg-7">
                     <h1 class="page-header-ui-title">Welcome to TechWayFit &#x2014; Built by Developers, for Developers.</h1>
                     <p class="page-header-ui-text mb-5">Empowering your tech journey with expert insights, coding best practices, and ready-to-use digital solutions.</p>
-                    <a class="btn btn-primary fw-500 me-2">
+                    <a class="btn btn-primary fw-500 me-2" href="/blogs">
                         Explore Now
                         <i class="ms-2" data-feather="arrow-right"></i>
                     </a>
-                    <a class="btn btn-primary-soft text-primary fw-500" href="#!">Learn More</a>
                 </div>
                 <div class="col-lg-4 d-none d-lg-block"><img class="img-fluid ps-xl-5" src="assets/images/banners/home-right.webp" />
                 </div>
@@ -62,84 +71,172 @@
             <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
         </svg>
     </div>
-</header> 
+</header>
+
+
+
 <section class="bg-white py-10">
+<div class="container px-5">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h2 class="mb-0">Latest Blogs</h2>        
+    </div>
+     <div class="row gx-5 mb-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <a class="card lift h-100" href="/blogs/design-patterns/proxy-decorator-adapter-comparison">
+                    <div class="card-flag card-flag-dark card-flag-top-right">Design Patterns</div>
+                    <img class="card-img-top" src="/assets/images/blogs/design-patterns/banners/proxy-decorator-adapter-comparison.webp" alt="Proxy vs Decorator vs Adapter: Choose the Right Pattern">
+                    <div class="card-body">
+                        <h3 class="text-default mb-0">Proxy vs Decorator vs Adapter: Choose the Right Pattern</h3>
+                        <div class="small text-gray-800 fw-400">
+                            Confused between Proxy, Decorator, and Adapter? This blog compares their intent, use cases, and differences with real-world examples and guidance on when to use each.
+                        </div>
+                        <div class="small text-gray-500">Pulished on 7/1/2025 1:00:00&#x202F;PM</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <a class="card lift h-100" href="/blogs/design-patterns/proxy-pattern">
+                    <div class="card-flag card-flag-dark card-flag-top-right">Design Patterns</div>
+                    <img class="card-img-top" src="/assets/images/blogs/design-patterns/banners/proxy-pattern-banner.webp" alt="Proxy Pattern: Control Access and Enhance Behavior">
+                    <div class="card-body">
+                        <h3 class="text-default mb-0">Proxy Pattern: Control Access and Enhance Behavior</h3>
+                        <div class="small text-gray-800 fw-400">
+                            Understand how the Proxy Pattern provides a surrogate to control access to real objects, allowing for behavior like access control, lazy loading, and logging. Includes C#/Python examples, UML, and real-world use cases.
+                        </div>
+                        <div class="small text-gray-500">Pulished on 7/1/2025 10:00:00&#x202F;AM</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <a class="card lift h-100" href="/blogs/design-patterns/decorator-pattern">
+                    <div class="card-flag card-flag-dark card-flag-top-right">Design Patterns</div>
+                    <img class="card-img-top" src="/assets/images/blogs/design-patterns/banners/decorator-pattern-banner.webp" alt="Decorator Pattern: Enhancing Behavior Dynamically">
+                    <div class="card-body">
+                        <h3 class="text-default mb-0">Decorator Pattern: Enhancing Behavior Dynamically</h3>
+                        <div class="small text-gray-800 fw-400">
+                            Learn how the Decorator Pattern allows behavior extension without modifying code. Includes C# and Python examples, UML, real-world use cases, and pros &amp; cons.
+                        </div>
+                        <div class="small text-gray-500">Pulished on 7/1/2025 9:00:00&#x202F;AM</div>
+                    </div>
+                </a>
+            </div>
+</div>
+</div>
+</section>
+
+<section class="bg-white py-5">
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Featured Components</h2>
+        <p class="text-center mb-0">
+            Explore Our Reusable Components Discover modular, production-ready tools built to scale with your application. Streamline your workflow and focus on what matters—shipping great software.
+Want a variation with a stronger tone, or geared toward a specific use case like UI, APIs, or security modules? I’ve got a few in the queue. Just say the word.
+        </p>
+    </div>
     <div class="container px-5">
         <div class="row gx-5 text-center">
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="card card-default">
-            <img src="/assets/images/cards/code-with-confidence.webp" class="card-img-top" alt="Code with Confidence" />
-    <div class="card-body">       
-        <h5 class="card-title">Code with Confidence</h5>
-        <p class="card-text">Learn to write clean, efficient, and scalable code.Discover proven design patterns and architecture tips.Build software that lasts and performs under pressure.</p>
-            <a href="/pages/code-with-confidence" class="btn btn-primary">Explore Guidelines</a>
+                
+<a href="/pages/code-with-confidence" class="text-decoration-none">
+  <div class="card code-card border-0 overflow-hidden position-relative" style="max-width: 350px; border-radius: 12px;">
+    <img src="/assets/images/cards/code-with-confidence.webp" class="card-img" alt="Code with Confidence" />
+
+    <div class="code-card-overlay d-flex flex-column justify-content-center text-center px-3 py-4">
+      <div class="bg-white p-3 rounded shadow text-dark overlay-content">
+        <h5 class="fw-bold mb-2">Code with Confidence</h5>
+        <p class="mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+         Learn to write clean, efficient, and scalable code.Discover proven design patterns and architecture tips.Build software that lasts and performs under pressure.
+        </p>
+        <span class="btn btn-primary">Explore Guidelines</span>
+      </div>
     </div>
-</div>
+  </div>
+</a>
 
             </div>
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="card card-default">
-            <img src="/assets/images/cards/build-smarter.webp" class="card-img-top" alt="Buy or Build Smarter" />
-    <div class="card-body">       
-        <h5 class="card-title">Buy or Build Smarter</h5>
-        <p class="card-text">Access plug-and-play digital solutions crafted by experts. Cut dev time with pre-built templates and utilities. Focus on innovation while we handle the groundwork.</p>
-            <a href="/pages/buy-or-build" class="btn btn-primary">Visit Marketplace</a>
+                
+<a href="/pages/buy-or-build" class="text-decoration-none">
+  <div class="card code-card border-0 overflow-hidden position-relative" style="max-width: 350px; border-radius: 12px;">
+    <img src="/assets/images/cards/build-smarter.webp" class="card-img" alt="Buy or Build Smarter" />
+
+    <div class="code-card-overlay d-flex flex-column justify-content-center text-center px-3 py-4">
+      <div class="bg-white p-3 rounded shadow text-dark overlay-content">
+        <h5 class="fw-bold mb-2">Buy or Build Smarter</h5>
+        <p class="mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+         Access plug-and-play digital solutions crafted by experts. Cut dev time with pre-built templates and utilities. Focus on innovation while we handle the groundwork.
+        </p>
+        <span class="btn btn-primary">Visit Marketplace</span>
+      </div>
     </div>
-</div>
+  </div>
+</a>
 
             </div>
             <div class="col-lg-4">
-                <div class="card card-default">
-            <img src="/assets/images/cards/tech-that-talks-1.webp" class="card-img-top" alt="Tech That Talks to You" />
-    <div class="card-body">       
-        <h5 class="card-title">Tech That Talks to You</h5>
-        <p class="card-text">ive into in-depth blogs on modern tools and techniques. Stay sharp with real-world insights and industry trends. Written for developers who think beyond the code.</p>
-            <a href="/pages/tech-that-talks" class="btn btn-primary">More Insights</a>
+                
+<a href="/pages/tech-that-talks" class="text-decoration-none">
+  <div class="card code-card border-0 overflow-hidden position-relative" style="max-width: 350px; border-radius: 12px;">
+    <img src="/assets/images/cards/tech-that-talks-1.webp" class="card-img" alt="Tech That Talks to You" />
+
+    <div class="code-card-overlay d-flex flex-column justify-content-center text-center px-3 py-4">
+      <div class="bg-white p-3 rounded shadow text-dark overlay-content">
+        <h5 class="fw-bold mb-2">Tech That Talks to You</h5>
+        <p class="mb-3" style="font-size: 0.9rem; line-height: 1.5;">
+         Dive into in-depth blogs on modern tools and techniques. Stay sharp with real-world insights and industry trends. Written for developers who think beyond the code.
+        </p>
+        <span class="btn btn-primary">More Insights</span>
+      </div>
     </div>
-</div>
+  </div>
+</a>
 
             </div>
         </div>
     </div>
 </section>
-        
-   
-                    <!-- Page Header-->
-                    
-<div id="layoutDefault_footer">
-                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-                    <div class="container px-5">
-                        <div class="row gx-5">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">Tech Way Fit</div>
-                                <div class="mb-3">Code it Right</Code></div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>                           
-                        </div>
-                        <hr class="my-3" />
-                        <div class="row gx-5 align-items-center">
-                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-                            <div class="col-md-6 text-md-end small">
-                                <a href="/privacy-policy">Privacy Policy</a>
-                                &middot;
-                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                                <a href="/sitemap.xml">Sitemap</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div> 
+
+
+               
                 </main>
             </div>
-            
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
         </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         
+        
+   
+
     </body>
 </html>

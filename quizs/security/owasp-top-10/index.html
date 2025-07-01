@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" />
+        <meta property='og:title' content='Quizs'/>
+        <meta property='og:image'/>
+        <meta property='og:description'/> 
+        <title>Quizs | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: auto;
+            padding-top: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					 
+<section class="bg-light py-10">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="single-post">
+                <h1>OWASP Top 10 Quiz</h1>
+                <p class="lead">Test your knowledge of the OWASP Top 10 security risks with this comprehensive quiz. Ideal for developers, security professionals, and anyone interested in web application security.</p>
+                <div class="d-flex align-items-center justify-content-between mb-5">
+                    <div class="single-post-meta me-4">
+                        <img class="single-post-meta-img" src="/assets/images/cards/owasp-top-10.webp" />
+                        <div class="single-post-meta-details">
+                            <div class="single-post-meta-details-name">20 Questions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container quiz-container mb-10">
+    <div id="status" class="text-end text-muted mb-3"></div>
+    <div class="card" id="quizCard">
+        <div class="card-body question-box">
+            <h5 id="question" class="mb-3"></h5>
+            <form id="optionsForm" class="options"></form>
+        </div>
+        <div class="card-footer text-end">
+            <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+
+    <div id="quizResult" class="result text-center mt-4"></div>
+    <div id="reviewSection" class="mt-4"></div>
+</div>
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script>
+        const questionSource = [{"question":"What type of bug might occur due to hardcoding configuration values like interest rates directly in code?","options":["Compilation failure","Runtime memory overflow","Misaligned UI layout","Business logic failure after policy changes"],"correctIndex":3},{"question":"Which OWASP category includes flaws like SQL injection and command injection?","options":["A01: Broken Access Control","A02: Cryptographic Failures","A03: Injection","A04: Insecure Design"],"correctIndex":2},{"question":"What OWASP risk occurs when applications expose administrative endpoints without proper restrictions?","options":["A01: Broken Access Control","A05: Security Misconfiguration","A09: Logging and Monitoring Failures","A04: Insecure Design"],"correctIndex":0},{"question":"Which OWASP risk involves using weak or outdated cryptographic algorithms?","options":["A02: Cryptographic Failures","A06: Vulnerable Components","A09: Logging and Monitoring","A07: Identification and Authentication Failures"],"correctIndex":0},{"question":"How can you prevent Injection attacks?","options":["Use GET instead of POST","Sanitize and validate all inputs","Allow user-generated SQL statements","Avoid using database transactions"],"correctIndex":1},{"question":"Which OWASP risk category includes flaws in session expiration or logout mechanisms?","options":["A10: SSRF","A07: Identification and Authentication Failures","A08: Software Integrity Failures","A03: Injection"],"correctIndex":1},{"question":"What OWASP category covers risks due to insecure deserialization?","options":["A05: Security Misconfiguration","A01: Broken Access Control","A08: Software and Data Integrity Failures","A03: Injection"],"correctIndex":2},{"question":"Why is it risky to store passwords in plain text?","options":["Increases CPU usage","Violates open source license","Can expose sensitive data during a breach","Breaks unit testing"],"correctIndex":2},{"question":"What is the best way to ensure secure session management?","options":["Use long usernames","Regenerate session ID on login","Disable cookies","Use GET for login forms"],"correctIndex":1},{"question":"Which risk involves relying on components with known vulnerabilities?","options":["A06: Vulnerable and Outdated Components","A01: Broken Access Control","A09: Logging Failures","A10: SSRF"],"correctIndex":0},{"question":"What type of bug might occur due to hardcoding configuration values like interest rates directly in code?","options":["Compilation failure","Runtime memory overflow","Misaligned UI layout","Business logic failure after policy changes"],"correctIndex":3},{"question":"Which OWASP category includes flaws like SQL injection and command injection?","options":["A01: Broken Access Control","A02: Cryptographic Failures","A03: Injection","A04: Insecure Design"],"correctIndex":2},{"question":"What OWASP risk occurs when applications expose administrative endpoints without proper restrictions?","options":["A01: Broken Access Control","A05: Security Misconfiguration","A09: Logging and Monitoring Failures","A04: Insecure Design"],"correctIndex":0},{"question":"Which OWASP risk involves using weak or outdated cryptographic algorithms?","options":["A02: Cryptographic Failures","A06: Vulnerable Components","A09: Logging and Monitoring","A07: Identification and Authentication Failures"],"correctIndex":0},{"question":"How can you prevent Injection attacks?","options":["Use GET instead of POST","Sanitize and validate all inputs","Allow user-generated SQL statements","Avoid using database transactions"],"correctIndex":1},{"question":"Which OWASP risk category includes flaws in session expiration or logout mechanisms?","options":["A10: SSRF","A07: Identification and Authentication Failures","A08: Software Integrity Failures","A03: Injection"],"correctIndex":1},{"question":"What OWASP category covers risks due to insecure deserialization?","options":["A05: Security Misconfiguration","A01: Broken Access Control","A08: Software and Data Integrity Failures","A03: Injection"],"correctIndex":2},{"question":"Why is it risky to store passwords in plain text?","options":["Increases CPU usage","Violates open source license","Can expose sensitive data during a breach","Breaks unit testing"],"correctIndex":2},{"question":"What is the best way to ensure secure session management?","options":["Use long usernames","Regenerate session ID on login","Disable cookies","Use GET for login forms"],"correctIndex":1},{"question":"Which risk involves relying on components with known vulnerabilities?","options":["A06: Vulnerable and Outdated Components","A01: Broken Access Control","A09: Logging Failures","A10: SSRF"],"correctIndex":0}];
+    </script>
+    <script src="/assets/js/quizs.js"></script>
+
+    </body>
+</html>

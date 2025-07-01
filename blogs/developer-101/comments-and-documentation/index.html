@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Developer 101 - Mastering Comments and Documentation | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <meta name="description" content="Learn how to write meaningful comments and documentation in your code. Explore best practices, real-world scenarios, and examples from Python and C# to improve your code clarity and maintainability." />
+        <meta property='og:title' content='Comments and Documentation'/>
+        <meta property='og:image' content='/assets/images/banners/comments-documentation.webp'/>
+        <meta property='og:description' content='Learn how to write meaningful comments and documentation in your code. Explore best practices, real-world scenarios, and examples from Python and C# to improve your code clarity and maintainability.'/> 
+        <title>Comments and Documentation | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -40,42 +50,103 @@
 					
 
 <section class="bg-light py-10">
+    
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-10 col-xl-10">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/developer-101/encapsulation-vs-abstraction">Encapsulation vs Abstraction</a>
+        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
+        <a class="next" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
+</div>
+
+                <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Developer 101 - Mastering Comments and Documentation</h1>
+                    <h1>Comments and Documentation</h1>
                     <p class="lead">Learn how to write meaningful comments and documentation in your code. Explore best practices, real-world scenarios, and examples from Python and C# to improve your code clarity and maintainability.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Tech Buddy</div>
-                                <div class="single-post-meta-details-date">6/4/2025 12:48:08 PM &middot;
+                                <div class="single-post-meta-details-date">6/4/2025 12:48:08&#x202F;PM &middot;
                                     4 min read</div>
                             </div>
                         </div>
                         <div>
-                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
                                 <i class="fab fa-discord"></i> Join our Discord
                             </a>
                         </div>
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/banners/comments-documentation.webp" />
+
                     <div class="single-post-text my-5">
                         <section>
-    <h1 class="mb-3">Developer 101: Mastering Comments and Documentation</h1>
-    <p class="text-muted">Published by TechWayFit</p>
     <p>Writing good code is only part of the job. Making it understandable for your teammates — and for your future self
         — is equally important. Comments and documentation play a vital role in making your codebase maintainable,
         readable, and collaborative.</p>
-    <h2>Types of Comments</h2>
+    <h2 class="toc-title">Types of Comments</h2>
     <ul>
         <li><strong>Inline Comments:</strong> Placed on the same line as code, they explain a specific logic.</li>
         <li><strong>Block Comments:</strong> Span multiple lines, used to explain complex logic or sections.</li>
         <li><strong>TODO/FIXME Notes:</strong> Indicate pending work or known issues.</li>
     </ul>
-    <h2>Best Practices</h2>
+    <h2 class="toc-title">Best Practices</h2>
     <ul>
         <li>Don’t state the obvious — write comments that add value.</li>
         <li>Keep comments short, but informative.</li>
@@ -99,7 +170,7 @@ count = 0  # Count is zero
 count = 0  # Number of users currently online
 
 # FIXME: This needs optimization for large datasets</code></pre>
-    <h2>Docstrings and Documentation</h2>
+    <h2 class="toc-title">Docstrings and Documentation</h2>
     <p>Docstrings are embedded documentation for functions, classes, and modules. Use them to describe purpose,
         parameters, and return values.</p>
     <h3>Python Docstring</h3>
@@ -125,7 +196,7 @@ public int Add(int a, int b)
 {
     return a + b;
 }</code></pre>
-    <h2>External Documentation</h2>
+    <h2 class="toc-title">External Documentation</h2>
     <ul>
         <li><strong>README:</strong> Explain project structure, dependencies, and usage.</li>
         <li><strong>Wiki or Notion:</strong> Maintain detailed project architecture, workflows, and design decisions.
@@ -178,7 +249,7 @@ public void ProcessRequest(int priorityFlag) {
         handle_guest_login()
     else:
         handle_registered_user()</code></pre>
-    <h2>Support Team Impact</h2>
+    <h2 class="toc-title">Support Team Impact</h2>
     <ul>
         <li><strong>Delayed Fixes:</strong> Time is wasted understanding what the code is supposed to do.</li>
         <li><strong>Incorrect Fixes:</strong> Misinterpretation of logic can lead to introducing new bugs.</li>
@@ -223,16 +294,70 @@ interest = principal * 0.015</code></pre>
     <h3>Fix:</h3>
     <pre><code class="language-python">monthly_interest_rate = get_config("interest_rate")
 interest = principal * monthly_interest_rate</code></pre>
-    <h2>Conclusion</h2>
+    <h2 class="toc-title">Conclusion</h2>
     <p>Don’t leave your future self (or your teammates) in the dark. Clean, meaningful comments and documentation are a
         hallmark of professional development. When done right, they reduce bugs, speed up onboarding, and make
         everyone’s life easier.</p>
 </section>
                     </div>
                 </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/developer-101/encapsulation-vs-abstraction">Encapsulation vs Abstraction</a>
+        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
+        <a class="next" href="/blogs/developer-101/version-control">Version Control Like a Pro</a>
+</div>
+
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -244,7 +369,8 @@ interest = principal * monthly_interest_rate</code></pre>
                             <textarea class="form-control" id="commentText" rows="3" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Comment</button>
-                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
                     </form>
                 </div>
                 <div class="container mt-5">
@@ -258,47 +384,50 @@ interest = principal * monthly_interest_rate</code></pre>
             </div>
         </div>
     </div>
-
+    </div>
 </section>
 
 
 
-                    <!-- Page Header-->
-                    
-<div id="layoutDefault_footer">
-                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-                    <div class="container px-5">
-                        <div class="row gx-5">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">Tech Way Fit</div>
-                                <div class="mb-3">Code it Right</Code></div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>                           
-                        </div>
-                        <hr class="my-3" />
-                        <div class="row gx-5 align-items-center">
-                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-                            <div class="col-md-6 text-md-end small">
-                                <a href="/privacy-policy">Privacy Policy</a>
-                                &middot;
-                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                                <a href="/sitemap.xml">Sitemap</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div> 
+               
                 </main>
             </div>
-            
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
         </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
+        
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <!-- Language Support (Add as needed) -->
@@ -307,7 +436,9 @@ interest = principal * monthly_interest_rate</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
     <script src="/assets/js/tiles.js"></script>
     <script src="/assets/js/blog-comment.js"></script>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
 
     </body>
 </html>

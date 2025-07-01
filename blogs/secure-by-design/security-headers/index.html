@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Learn how HTTP response headers like CSP, HSTS, and X-Frame-Options act as silent defenders against XSS, clickjacking, and data leaks. Includes real-world examples and ASP.NET Core middleware setup." />
+        <meta property='og:title' content='Security Headers - The Silent Defenders'/>
+        <meta property='og:image' content='/assets/images/blogs/secure-by-design/banners/security-headers-banner.webp'/>
+        <meta property='og:description' content='Learn how HTTP response headers like CSP, HSTS, and X-Frame-Options act as silent defenders against XSS, clickjacking, and data leaks. Includes real-world examples and ASP.NET Core middleware setup.'/> 
+        <title>Security Headers - The Silent Defenders | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/threat-modeling">Threat Modeling &#x2013; Design with Risk in Mind</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/secure-by-design-roadmap">Wrapping Up &#x2B; Your Roadmap Forward</a>
+</div>
+
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Security Headers - The Silent Defenders</h1>
+                    <p class="lead">Learn how HTTP response headers like CSP, HSTS, and X-Frame-Options act as silent defenders against XSS, clickjacking, and data leaks. Includes real-world examples and ASP.NET Core middleware setup.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/16/2025 9:00:00&#x202F;AM &middot;
+                                    8 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/security-headers-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <p>In the world of web security, prevention often begins at the HTTP response level. Security headers, though often
+  overlooked, act as silent defenders—guiding browsers on how to behave when handling content and ensuring safer
+  interactions for users.</p>
+
+<section id="toc-title">
+  <h1>🛡️ Security Headers: The Silent Defenders of Web Protection</h1>
+  <p>Cyber threats evolve constantly, and even the strongest applications can be vulnerable without proper browser
+    security enforcement. This is where <strong>security headers</strong> come in—a crucial but often overlooked defense
+    mechanism that prevents attacks like <em>Cross-Site Scripting (XSS), clickjacking, and SSL stripping</em>.</p>
+
+  <p>Security headers act as silent guardians, enforcing security policies across browsers to protect users and ensure
+    safer interactions. In this guide, we'll explore:</p>
+
+  <ul>
+    <li>What security headers are and why they matter</li>
+    <li>Key headers that enhance web security</li>
+    <li>How to implement them in <strong>ASP.NET Core</strong></li>
+    <li>Real-world examples where security headers could have prevented breaches</li>
+  </ul>
+
+  <p>By the end, you'll be equipped with practical steps to fortify your application against common web attacks.</p>
+</section>
+
+<h2 class="toc-title">🧱 Essential Security Headers and Their Purpose</h2>
+
+<section id="csp">
+  <h2>1. 🔒 Content-Security-Policy (CSP)</h2>
+  <p>
+    <strong>Purpose:</strong> CSP prevents <em>Cross-Site Scripting (XSS)</em> and other injection attacks
+    by defining which sources the browser can trust for loading scripts, images, and styles.
+  </p>
+  <p>
+    <strong>Why It Matters:</strong> Attackers often inject malicious scripts into compromised forms or third-party
+    resources.
+    CSP ensures that only explicitly approved sources can execute, drastically reducing security risks.
+  </p>
+  <p>
+    <strong>Example Attack:</strong> A user submits a comment containing a hidden script.
+  <ul>
+    <li>⚠️ <em>Without CSP:</em> The browser executes the injected script, leading to data theft or unauthorized
+      actions.</li>
+    <li>✅ <em>With CSP:</em> The script is blocked unless its source is whitelisted.</li>
+  </ul>
+  </p>
+  <pre class="language-javascript"><code>Content-Security-Policy: default-src 'self'; script-src 'self' https://trustedcdn.com;</code>
+    </pre>
+</section>
+<section id="hsts">
+  <h2>2. 🔐 Strict-Transport-Security (HSTS)</h2>
+  <p>
+    <strong>Purpose:</strong> Enforces HTTPS by instructing browsers to reject insecure HTTP connections,
+    ensuring all future requests are securely encrypted.
+  </p>
+  <p>
+    <strong>Why It Matters:</strong> Attackers can intercept HTTP traffic using <em>SSL stripping</em>,
+    forcing users onto an unprotected version of your site. HSTS prevents this by making HTTPS mandatory,
+    shielding users from downgrade attacks.
+  </p>
+  <p>
+    <strong>Example Attack Scenario:</strong>
+  <ul>
+    <li>⚠️ <em>Without HSTS:</em> A user types <code>http://example.com</code>, allowing attackers to downgrade the
+      connection.</li>
+    <li>✅ <em>With HSTS:</em> The browser automatically upgrades to <code>https://example.com</code>, keeping data
+      secure.</li>
+  </ul>
+  </p>
+  <pre class="language-javascript">
+<code>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload;</code>
+    </pre>
+</section>
+
+<section id="x-frame-options">
+  <h2>3. 🛡️ X-Frame-Options</h2>
+  <p>
+    <strong>Purpose:</strong> Prevents the page from being embedded in an <code>iframe</code>, protecting users from
+    <em>clickjacking attacks</em>.
+  </p>
+  <p>
+    <strong>Why It Matters:</strong> Malicious websites can overlay deceptive content on top of your page, tricking
+    users into clicking hidden buttons.
+    This can lead to unintended actions like unauthorized purchases or data theft.
+  </p>
+  <p>
+    <strong>Example Attack Scenario:</strong>
+  <ul>
+    <li>⚠️ <em>Without X-Frame-Options:</em> A user visits a compromised site that embeds your login page in an
+      invisible <code>iframe</code>,
+      tricking them into entering credentials.</li>
+    <li>✅ <em>With X-Frame-Options:</em> The browser prevents your page from being loaded inside an <code>iframe</code>,
+      stopping the attack.</li>
+  </ul>
+  </p>
+  <pre class="language-javascript">
+<code>X-Frame-Options: DENY</code>
+    </pre>
+</section>
+
+<section id="x-content-type-options">
+  <h2>4. 🛑 X-Content-Type-Options</h2>
+  <p>
+    <strong>Purpose:</strong> Ensures that browsers strictly follow the declared <em>MIME type</em>, preventing them
+    from guessing file formats.
+  </p>
+  <p>
+    <strong>Why It Matters:</strong> Some browsers attempt to <em>“sniff”</em> the content type of files,
+    which can result in dangerous misinterpretations. For example, a plain text file could be mistaken as executable
+    JavaScript,
+    allowing an attacker to inject malicious scripts.
+  </p>
+  <p>
+    <strong>Example Attack Scenario:</strong>
+  <ul>
+    <li>⚠️ <em>Without X-Content-Type-Options:</em> A user uploads a harmless `.txt` file, but the browser treats it as
+      an executable script due to MIME sniffing.</li>
+    <li>✅ <em>With X-Content-Type-Options:</em> The browser strictly follows the declared type, preventing unintended
+      execution.</li>
+  </ul>
+  </p>
+  <pre class="language-javascript">
+<code>X-Content-Type-Options: nosniff</code>
+    </pre>
+</section>
+
+<section id="referrer-policy">
+  <h2>5. 🔍 Referrer-Policy</h2>
+  <p>
+    <strong>Purpose:</strong> Controls how much referrer information is sent when a user navigates between pages,
+    preventing sensitive data leaks.
+  </p>
+  <p>
+    <strong>Why It Matters:</strong> Websites often include referrer headers, exposing source URLs to external sites.
+    Without proper control, this can unintentionally reveal sensitive paths, parameters, or authentication tokens to
+    third-party domains.
+  </p>
+  <p>
+    <strong>Example Data Leak Scenario:</strong>
+  <ul>
+    <li>⚠️ <em>Without Referrer-Policy:</em> When a user clicks a link, the full referrer URL—including query
+      parameters—may be exposed.</li>
+    <li>✅ <em>With Referrer-Policy:</em> Only the origin (e.g., <code>https://example.com</code>) is sent when
+      navigating across domains, protecting sensitive data.</li>
+  </ul>
+  </p>
+  <pre class="language-javascript">
+<code>Referrer-Policy: strict-origin-when-cross-origin</code>
+    </pre>
+</section>
+
+
+<section id="permissions-policy">
+  <h2>6. ⚙️ Permissions-Policy</h2>
+  <p>
+    <strong>Purpose:</strong> Limits access to browser features like <em>camera, microphone, geolocation, and
+      others</em>,
+    ensuring only explicitly allowed functions are accessible.
+  </p>
+  <p>
+    <strong>Why It Matters:</strong> Websites can request access to sensitive user data, sometimes without direct user
+    interaction.
+    Restricting unnecessary permissions reduces the <em>attack surface</em>, preventing unauthorized access and
+    enhancing privacy.
+  </p>
+  <p>
+    <strong>Example Attack Scenario:</strong>
+  <ul>
+    <li>⚠️ <em>Without Permissions-Policy:</em> A compromised ad or embedded script silently accesses the user's
+      microphone.</li>
+    <li>✅ <em>With Permissions-Policy:</em> The browser prevents unauthorized feature access unless explicitly allowed.
+    </li>
+  </ul>
+  </p>
+  <pre class="language-javascript">
+<code>Permissions-Policy: geolocation=(), microphone=()</code>
+    </pre>
+</section>
+
+
+<h2 class="toc-title">⚙️ How to Implement Security Headers in ASP.NET Core.</h2>
+<p>You can add these headers using middleware in ASP.NET Core:</p>
+<pre><code class="language-csharp">app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'");
+    context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+    context.Response.Headers.Add("X-Frame-Options", "DENY");
+    context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+    context.Response.Headers.Add("Referrer-Policy", "strict-origin-when-cross-origin");
+    context.Response.Headers.Add("Permissions-Policy", "geolocation=(), microphone=()");
+    await next();
+});</code></pre>
+
+<section id="british-airways-breach">
+  <h2 class="toc-title">💳 Real-World Incident: British Airways Breach</h2>
+  <p>
+    <strong>The Attack:</strong> In 2018, British Airways suffered a **major data breach**, where attackers injected
+    **malicious scripts** into their website.
+    These scripts silently captured user payment information, sending it to an external server.
+  </p>
+  <p>
+    <strong>The Root Cause:</strong> The absence of a **proper Content Security Policy (CSP)** allowed external scripts
+    to execute unchecked,
+    enabling attackers to steal sensitive data. If CSP had been correctly implemented, browsers would have blocked
+    unauthorized scripts.
+  </p>
+  <p>
+    <strong>The Consequences:</strong> The breach led to the exposure of thousands of customers' financial details and
+    resulted in a **£183 million fine** under **GDPR regulations**.
+  </p>
+  <p>
+    <strong>Key Takeaway:</strong> Security headers like **CSP** act as a silent defense against script injection
+    attacks.
+    Organizations must enforce **strict whitelisting** of trusted sources to prevent similar incidents.
+  </p>
+</section>
+
+
+<section id="testing-tools">
+  <h2 class="toc-title">🧪 Testing and Tools</h2>
+  <p>
+    Before deploying security headers, it’s crucial to test their effectiveness.
+    These tools help you validate configurations and spot misconfigurations.
+  </p>
+  <ul>
+    <li>🔍 <strong><a href="https://securityheaders.com" target="_blank">SecurityHeaders.com</a></strong> – Instantly
+      analyze your site's security headers.</li>
+    <li>🛠️ <strong>Browser DevTools</strong> – Check response headers under the <em>Network</em> tab.</li>
+    <li>🔏 <strong><a href="https://owasp.org/www-project-secure-headers/" target="_blank">OWASP Secure Headers
+          Project</a></strong> – Detailed recommendations and best practices.</li>
+  </ul>
+  <p>
+    Regular testing ensures that security headers remain properly configured,
+    preventing vulnerabilities and improving resilience against web-based attacks.
+  </p>
+</section>
+
+
+<section id="security-checklist">
+    <h2 class="toc-title">✅ Final Security Checklist</h2>
+    <p>
+        Before deploying, run through this checklist to confirm your security headers are properly configured:
+    </p>
+    <ul>
+        <li>✅ <strong>Content-Security-Policy (CSP):</strong> Defined for scripts, images, and media?</li>
+        <li>✅ <strong>Strict-Transport-Security (HSTS):</strong> Enforced to ensure HTTPS-only connections?</li>
+        <li>✅ <strong>X-Frame-Options:</strong> Iframe embedding blocked to prevent clickjacking?</li>
+        <li>✅ <strong>X-Content-Type-Options:</strong> MIME sniffing disabled to prevent misinterpretations?</li>
+        <li>✅ <strong>Referrer-Policy:</strong> Applied to limit exposure of sensitive URLs?</li>
+        <li>✅ <strong>Permissions-Policy:</strong> Feature restrictions set (geolocation, microphone, etc.)?</li>
+    </ul>
+    <p>
+        Ensuring these headers are correctly implemented strengthens your site's defenses 
+        against common web threats while improving privacy and security.
+    </p>
+</section>
+
+
+<hr />
+<section id="conclusion">
+    <h2  class="toc-title">🔐 Wrapping Up: Security Headers—Your Silent Defenders</h2>
+    <p>
+        While developers focus on writing secure code, <strong>security headers</strong> serve as a crucial 
+        last line of defense, preventing attacks like <em>XSS, clickjacking, SSL stripping, and content-type sniffing</em>.
+    </p>
+    <p>
+        By implementing <strong>CSP, HSTS, X-Frame-Options, and other security headers</strong>, 
+        you enhance both user safety and compliance with modern security standards.
+    </p>
+    <p>
+        Remember: Even the most well-built applications can be compromised if browsers aren’t guided on how to handle content securely. 
+        Adopt these headers today to **fortify your web application** against common threats and ensure a safer browsing experience.
+    </p>
+    <p>
+        Want to test your implementation? Head over to <a href="https://securityheaders.com" target="_blank">SecurityHeaders.com</a> 
+        to validate your setup!
+    </p>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/threat-modeling">Threat Modeling &#x2013; Design with Risk in Mind</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/secure-by-design-roadmap">Wrapping Up &#x2B; Your Roadmap Forward</a>
+</div>
+
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+
+    </body>
+</html>

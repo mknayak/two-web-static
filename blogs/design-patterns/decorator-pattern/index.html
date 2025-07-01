@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Learn how the Decorator Pattern allows behavior extension without modifying code. Includes C# and Python examples, UML, real-world use cases, and pros &amp; cons." />
+        <meta property='og:title' content='Decorator Pattern: Enhancing Behavior Dynamically'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/decorator-pattern-banner.webp'/>
+        <meta property='og:description' content='Learn how the Decorator Pattern allows behavior extension without modifying code. Includes C# and Python examples, UML, real-world use cases, and pros &amp; cons.'/> 
+        <title>Decorator Pattern: Enhancing Behavior Dynamically | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/adapter-pattern">Adapter Pattern: Making Incompatible Interfaces Work Together</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/proxy-pattern">Proxy Pattern: Control Access and Enhance Behavior</a>
+</div>
+
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Decorator Pattern: Enhancing Behavior Dynamically</h1>
+                    <p class="lead">Learn how the Decorator Pattern allows behavior extension without modifying code. Includes C# and Python examples, UML, real-world use cases, and pros &amp; cons.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">7/1/2025 9:00:00&#x202F;AM &middot;
+                                    7 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/decorator-pattern-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <p>The Decorator Pattern is a structural design pattern, meaning it focuses on how objects are composed to form larger
+    structures. Its superpower lies in allowing new behavior to be added to individual objects at runtime—without
+    modifying their existing code. Instead of inheritance, it uses composition by wrapping objects in "decorator"
+    classes.</p>
+
+<h2 class="toc-title">🧠 When to Use</h2>
+This pattern shines when:
+<ul>
+    <li>You want to extend functionality without altering existing classes. </li>
+    <li>You need to add responsibilities dynamically and transparently, without affecting other objects.</li>
+    <li>You want to avoid the limitations of subclassing, such as deep inheritance trees.</li>
+    <li>You want to combine behaviors in a flexible way, allowing for dynamic composition of behaviors.</li>
+    <li>You want to adhere to the Open/Closed Principle, meaning classes should be open for extension but closed for
+        modification.</li>
+</ul>
+
+<h2 class="toc-title">📌 Key Characteristics</h2>
+<ul>
+    <li>Uses composition over inheritance.</li>
+    <li>Allows behavior to be added dynamically at runtime.</li>
+    <li>Can be stacked to combine multiple behaviors.</li>
+    <li>Adheres to the Single Responsibility Principle by allowing each decorator to focus on a specific behavior.</li>
+</ul>
+<h2 class="toc-title">🔧 UML Diagram</h2>
+<p>[UML diagram placeholder: Component -&gt; ConcreteComponent, Decorator (wraps Component) -&gt; ConcreteDecorator]</p>
+
+<h2 class="toc-title">💻 Code Example</h2>
+<div class="code-tabs">
+    <div class="tab-buttons">
+        <button onclick="showTab(this, 'csharp')" class="active">C#</button>
+        <button onclick="showTab(this, 'python')">Python</button>
+    </div>
+
+    <div id="csharp" class="tab-content active">
+        <pre><code class="language-csharp">// Component
+public interface INotifier {
+    void Send(string message);
+}
+
+// Concrete Component
+public class EmailNotifier : INotifier {
+    public void Send(string message) {
+        Console.WriteLine("Sending Email: " + message);
+    }
+}
+
+// Base Decorator
+public class NotifierDecorator : INotifier {
+    protected INotifier wrappee;
+    public NotifierDecorator(INotifier notifier) {
+        this.wrappee = notifier;
+    }
+    public virtual void Send(string message) {
+        wrappee.Send(message);
+    }
+}
+
+// Concrete Decorator
+public class SMSNotifier : NotifierDecorator {
+    public SMSNotifier(INotifier notifier) : base(notifier) {}
+    public override void Send(string message) {
+        base.Send(message);
+        Console.WriteLine("Sending SMS: " + message);
+    }
+}
+
+// Usage
+INotifier notifier = new SMSNotifier(new EmailNotifier());
+notifier.Send("Hello World!");</code></pre>
+    </div>
+
+    <div id="python" class="tab-content">
+        <pre><code class="language-python"># Component
+class Notifier:
+    def send(self, message):
+        pass
+
+# Concrete Component
+class EmailNotifier(Notifier):
+    def send(self, message):
+        print(f"Sending Email: {message}")
+
+# Base Decorator
+class NotifierDecorator(Notifier):
+    def __init__(self, wrappee):
+        self.wrappee = wrappee
+
+    def send(self, message):
+        self.wrappee.send(message)
+
+# Concrete Decorator
+class SMSNotifier(NotifierDecorator):
+    def send(self, message):
+        super().send(message)
+        print(f"Sending SMS: {message}")
+
+# Usage
+notifier = SMSNotifier(EmailNotifier())
+notifier.send("Hello World!")</code></pre>
+    </div>
+</div>
+<div>
+    <h2>🎁 How It Works</h2>
+    You create a base component interface or class (e.g., <code>INotifier</code>) and concrete implementations (e.g.,
+    <code>EmailNotifier</code>). To add new behaviors, you use decorator classes that wrap the original object and add
+    their own enhancements before or after delegating to it.
+
+    For instance, <code>EmailNotifier</code> sends an email.<code>SMSNotifier</code> wraps <code>EmailNotifier</code>
+    and also sends an SMS—extending the behavior.
+
+    📦 So now, calling <code>Send()</code> on the <code>SMSNotifier</code> still sends the email via the wrapped
+    <code>EmailNotifier</code>, plus the SMS.
+</div>
+
+<h2 class="toc-title">🍕 Another Example: Pizza Toppings with Decorator</h2>
+<div class="code-tabs">
+    <div class="tab-buttons">
+        <button onclick="showTab(this, 'pizza-csharp')" class="active">C#</button>
+        <button onclick="showTab(this, 'pizza-python')">Python</button>
+    </div>
+
+    <div id="pizza-csharp" class="tab-content active">
+        <pre><code class="language-csharp">// Component
+public interface IPizza
+{
+    string GetDescription();
+    double GetCost();
+}
+
+// Concrete Component
+public class Margherita : IPizza
+{
+    public string GetDescription() => "Margherita";
+    public double GetCost() => 5.00;
+}
+
+// Base Decorator
+public abstract class ToppingDecorator : IPizza
+{
+    protected IPPizza _pizza;
+
+    public ToppingDecorator(IPPizza pizza)
+    {
+        _pizza = pizza;
+    }
+
+    public virtual string GetDescription() => _pizza.GetDescription();
+    public virtual double GetCost() => _pizza.GetCost();
+}
+
+// Concrete Decorators
+public class Cheese : ToppingDecorator
+{
+    public Cheese(IPPizza pizza) : base(pizza) { }
+
+    public override string GetDescription() => base.GetDescription() + ", Cheese";
+    public override double GetCost() => base.GetCost() + 1.25;
+}
+
+public class Olives : ToppingDecorator
+{
+    public Olives(IPPizza pizza) : base(pizza) { }
+
+    public override string GetDescription() => base.GetDescription() + ", Olives";
+    public override double GetCost() => base.GetCost() + 0.75;
+}
+
+// Usage
+var pizza = new Cheese(new Olives(new Margherita()));
+Console.WriteLine(pizza.GetDescription()); // Output: Margherita, Olives, Cheese
+Console.WriteLine($"Total: ${pizza.GetCost()}"); // Output: Total: $7.0</code></pre>
+    </div>
+
+    <div id="pizza-python" class="tab-content">
+        <pre><code class="language-python">from abc import ABC, abstractmethod
+
+# Component
+class Pizza(ABC):
+    @abstractmethod
+    def get_description(self):
+        pass
+
+    @abstractmethod
+    def get_cost(self):
+        pass
+
+# Concrete Component
+class Margherita(Pizza):
+    def get_description(self):
+        return "Margherita"
+
+    def get_cost(self):
+        return 5.00
+
+# Base Decorator
+class ToppingDecorator(Pizza):
+    def __init__(self, pizza):
+        self._pizza = pizza
+
+    def get_description(self):
+        return self._pizza.get_description()
+
+    def get_cost(self):
+        return self._pizza.get_cost()
+
+# Concrete Decorators
+class Cheese(ToppingDecorator):
+    def get_description(self):
+        return super().get_description() + ", Cheese"
+
+    def get_cost(self):
+        return super().get_cost() + 1.25
+
+class Olives(ToppingDecorator):
+    def get_description(self):
+        return super().get_description() + ", Olives"
+
+    def get_cost(self):
+        return super().get_cost() + 0.75
+
+# Usage
+pizza = Cheese(Olives(Margherita()))
+print(pizza.get_description())  # Output: Margherita, Olives, Cheese
+print(f"Total: ${pizza.get_cost():.2f}")  # Output: Total: $7.00</code></pre>
+    </div>
+
+</div>
+<div class="note">
+    <strong>Note:</strong> Decorators can be stacked, allowing multiple behaviors to be combined dynamically.
+</div>
+<div class="note">
+    <strong>Tip:</strong> Use decorators when you need to add responsibilities to objects without modifying their code.
+</div>
+<h2 class="toc-title">🌍 Real-World Examples</h2>
+<ul>
+    <li><strong>UI Frameworks:</strong> Adding scrollbars, borders, or shadows to elements.
+        <p>Example: In a GUI library, you can wrap a button with a border decorator to add a border without changing the
+            button's code.</p>
+    </li>
+    <li><strong>Java IO:</strong> BufferedReader wraps FileReader for extra behavior.
+        <p>Example: In Java, <code>BufferedReader</code> wraps <code>FileReader</code> to add buffering capabilities,
+            improving performance.</p>
+    </li>
+    <li><strong>Security:</strong> Adding logging, validation, or access control dynamically.
+        <p>Example: In a web application, you can wrap a service with a security decorator to log access attempts or
+            validate user permissions before executing the service's methods.</p>
+    </li>
+</ul>
+
+<h2>⚖️ Pros and Cons of the Decorator Pattern</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr style="background-color: #f0f0f0;">
+            <th>✅ Pros</th>
+            <th>❌ Cons</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Supports Open/Closed Principle – extend behavior without modifying original code.</td>
+            <td>Can result in a large number of small classes that are hard to manage.</td>
+        </tr>
+        <tr>
+            <td>Allows dynamic composition of behaviors at runtime.</td>
+            <td>Nested decorators can make debugging more complex due to call stack layering.</td>
+        </tr>
+        <tr>
+            <td>Reduces the need for deep inheritance hierarchies.</td>
+            <td>Understanding object behavior may require tracing through multiple layers.</td>
+        </tr>
+        <tr>
+            <td>Provides greater flexibility than subclassing for feature extension.</td>
+            <td>Decorators must match the component interface exactly, which may be restrictive.</td>
+        </tr>
+        <tr>
+            <td>Allows combining multiple concerns (e.g., logging, security, caching) in a modular way.</td>
+            <td>If not managed well, can introduce performance overhead with many wrappers.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 class="toc-title">📊 Decorator vs Inheritance</h2>
+<p>“Decorator allows combining behavior in a flexible way without the rigidity of inheritance trees”—is a concise way of
+    capturing the key distinction between the Decorator Pattern and classical inheritance.</p>
+<p>
+<ul>
+    <li> Inheritance builds new behavior by creating subclasses. But this can lead to deep, rigid “inheritance trees”
+        where every variation requires a new subclass.</li>
+
+    <li>Decorator Pattern, on the other hand, uses composition: it wraps objects in layers (decorators), each adding
+        some behavior. This avoids bloated inheritance chains.</li>
+</ul>
+</p>
+<p>
+    🧱 Why Decorators Are More Flexible
+<ul>
+    <li>You can add or change behavior at runtime by simply wrapping an object in one or more decorators.</li>
+
+    <li>Behaviors are modular and reusable. You can stack decorators in different combinations to create exactly the
+        functionality you need—like adding ingredients to a pizza 🍕.</li>
+
+    <li>This aligns with the Open/Closed Principle: systems are open for extension but closed for modification.</li>
+</ul>
+</p>
+<p>
+    🆚 Inheritance: The Rigidity Problem
+<ul>
+    <li>In inheritance, if you want an object that sends both emails and SMS, you’d have to subclass in a specific
+        way—or worse, create multiple hybrids.</li>
+
+    <li>In decorators, you’d just wrap an EmailNotifier with an SMSNotifier. Simple. Reversible. Swappable.</li>
+</ul>
+</p>
+
+<h2 class="toc-title">🧪 Try This!</h2>
+<p>Can you add another decorator to send messages via Slack? Try extending the chain!</p>
+
+<h2 class="toc-title">❓ Quiz</h2>
+<p>Test your understanding of the Decorator Pattern: </p>
+<div class='question-container' data-questions='decorator-pattern' data-secret-key='TechWayFitQuiz'
+    data-welcome-message='' data-complete-message=''>
+    <script type='text/plain'
+        data-quiz-id='decorator-pattern'>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</script>
+</div>
+<h2 class="toc-title">📚 Conclusion</h2>
+<p>The Decorator Pattern is a powerful tool for adding functionality to objects dynamically. It promotes flexibility and
+    adheres to key design principles like the Open/Closed Principle. By using decorators, you can create complex
+    behaviors without the pitfalls of deep inheritance hierarchies.</p>
+<h2>🔗 What's Next?</h2>
+<p>Stay tuned for our next design pattern: <strong>Proxy Pattern – Control Access and Enhance Behavior</strong></p>
+                    </div>
+                </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/adapter-pattern">Adapter Pattern: Making Incompatible Interfaces Work Together</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/proxy-pattern">Proxy Pattern: Control Access and Enhance Behavior</a>
+</div>
+
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+
+    </body>
+</html>

@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" />
+        <meta property='og:title' content='Blog Groups'/>
+        <meta property='og:image'/>
+        <meta property='og:description'/> 
         <title>Blog Groups | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -35,90 +45,240 @@
                             </div>
                         </div>
                     </nav>
-					<header class="page-header-ui page-header-ui-dark bg-gradient-primary-to-secondary">
-    <div class="page-header-ui-content pt-10">
-        <div class="container px-5 text-center">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h1 class="page-header-ui-title mb-3">Blog Groups</h1>
-                    <p class="page-header-ui-text">Dive into categorized collections of expert-led blogs designed to sharpen your development skills, best practices, and architecture mindset.</p>
+					<header class="page-header-ui page-header-ui-dark bg-white">
+  <div class="page-header-ui-content">
+    <div class="container px-5 ">
+      <div class="row gx-5 justify-content-center">
+        <div class="col-lg-8">
+          <h1 class="text-center">Search TechWayFit Blogs</h1>
+          <section>
+            <div class="search-wrapper">
+              <div class="search-bar-group">
+                <select id="category-filter">
+                  <option value="">All Categories</option>
+                  <option value="blog">Blogs</option>
+                  <option value="page">Pages</option>
+                  <!-- Add more as needed -->
+                </select>
+                <input type="text" id="search-input" placeholder="Enter keywords..." />
+                <button id="search-button"><i class="fa fa-search"></i></button>
+              </div>
+              <ul id="search-results"></ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    
+
+    <!-- Features List -->
+    <div class="container mb-5">
+      <div class="row text-center justify-content-center g-4">
+
+        <!-- Card 1: Actionable Insights -->
+        <div class="col-12 col-md-4">
+          <div class="card h-100 border-0 shadow-sm py-4 px-3">
+            <div class="mb-2 fs-3">🎯</div>
+            <h6 class="fw-bold text-danger mb-1">Actionable insights</h6>
+            <p class="text-muted small">and best practices</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Interactive Learning -->
+        <div class="col-12 col-md-4">
+          <div class="card h-100 border-0 shadow-sm py-4 px-3">
+            <div class="mb-2 fs-3">🧠</div>
+            <h6 class="fw-bold text-primary mb-1">Interactive learning</h6>
+            <p class="text-muted small">with real-world examples</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Surprise Quizzes -->
+        <div class="col-12 col-md-4">
+          <div class="card h-100 border-0 shadow-sm py-4 px-3">
+            <div class="mb-2 fs-3">❓</div>
+            <h6 class="fw-bold text-warning mb-1">Surprise quizzes</h6>
+            <p class="text-muted small">to test and reinforce your knowledge</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <div class="text-center mb-3">
+      <h2 class="fw-bold">
+        🔍 Explore Blog Series
+      </h2>
+      <p class="fs-5">
+        Dive into expertly crafted blog collections that blend <strong>technical depth</strong> with
+        <strong>engaging visuals</strong> and <strong>practical guidance</strong>. Whether you're refining your coding
+        fundamentals or embedding security from the ground up, each series delivers:
+      </p>
+    </div>
+
+      <div class="card d-flex flex-md-row flex-column p-4 shadow-sm mb-4 rounded-3">
+        <img src="/assets/images/cards/group-deveoper-101.webp" class="img-fluid mb-3 mb-md-0 me-md-4" style="max-width: 300px;" alt="Developer 101 Image">
+
+        <div class="flex-fill">
+          <h2 class="fw-bold text-dark mb-2">Developer 101: Mastering the Fundamentals</h2>
+          
+          <div class="badge bg-primary text-white mb-2">10 Blogs</div>
+          <div class="badge bg-secondary text-white mb-2">2 Interactive Quizs </div>
+          <p class="text-muted">
+            Kickstart your software journey with the Developer 101 series by TechWayFit. From writing clean code to mastering object-oriented programming principles, each blog in this collection equips you with practical insights, best practices, and hands-on examples to build a solid development foundation. Ideal for beginners and professionals looking to sharpen their coding mindset.
+          </p>
+          <a href="/blogs/groups/developer-101" class="btn btn-outline-secondary mt-2">
+            Explore Developer 101 Blogs
+          </a>
+        </div>
+      </div>
+      <div class="card d-flex flex-md-row flex-column p-4 shadow-sm mb-4 rounded-3">
+        <img src="/assets/images/blogs/secure-by-design/group_200x133.webp" class="img-fluid mb-3 mb-md-0 me-md-4" style="max-width: 300px;" alt="Developer 101 Image">
+
+        <div class="flex-fill">
+          <h2 class="fw-bold text-dark mb-2">Secure from Line One: Embedding Security in Dev Culture</h2>
+          
+          <div class="badge bg-primary text-white mb-2">8 Blogs</div>
+          <div class="badge bg-secondary text-white mb-2">2 Interactive Quizs </div>
+          <p class="text-muted">
+            Secure By Design is a series by TechWayFit that empowers developers to integrate security into every layer of the development lifecycle. Covering OWASP threats, secure authentication, secrets management, and automated security testing, it provides practical strategies and examples to build resilient software.
+          </p>
+          <a href="/blogs/groups/secure-by-design" class="btn btn-outline-secondary mt-2">
+            Explore Secure By Design Blogs
+          </a>
+        </div>
+      </div>
+      <div class="card d-flex flex-md-row flex-column p-4 shadow-sm mb-4 rounded-3">
+        <img src="/assets/images/blogs/design-patterns/group_banner-top.webp" class="img-fluid mb-3 mb-md-0 me-md-4" style="max-width: 300px;" alt="Developer 101 Image">
+
+        <div class="flex-fill">
+          <h2 class="fw-bold text-dark mb-2">Design Patterns in Practice</h2>
+          
+          <div class="badge bg-primary text-white mb-2">9 Blogs</div>
+          <div class="badge bg-secondary text-white mb-2">0 Interactive Quizs </div>
+          <p class="text-muted">
+            Master the art of writing scalable and maintainable code with &#x27;Design Patterns in Practice.&#x27; This series demystifies core software design patterns using real-world examples in C# and Python. Learn SOLID principles, spot anti-patterns, and gain practical insights for modern development.
+          </p>
+          <a href="/blogs/groups/design-patterns-in-practice" class="btn btn-outline-secondary mt-2">
+            Explore Design Patterns Blogs
+          </a>
+        </div>
+      </div>
+
+  </div>
+</section>
+
+
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="svg-border-rounded text-white">
-        <!-- Rounded SVG Border-->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
-            fill="currentColor">
-            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
-        </svg>
-    </div>
-</header>
-<section class="bg-white py-10">
-    <div class="container px-5">
-        <div class="row gx-5">
-            
-                   <div class="col-md-6 col-xl-4 mb-5">
-                    <a class="card post-preview lift h-100"  href="/blogs/groups/developer-101" >
-                                <div class="card-body">
-                                    <img class="card-team-img mb-3 img-max-100" src="/assets/images/cards/group-deveoper-101.webp"
-                                        alt="..." />
-                                    <div class="card-team-name"><strong>Developer 101: Mastering the Fundamentals</strong></div>
-                                    <div class="card-team-position mb-3">10 Blogs</div>
-                                    <p class="small mb-0">Kickstart your software journey with the Developer 101 series by TechWayFit. From writing clean code to mastering object-oriented programming principles, each blog in this collection equips you with practical insights, best practices, and hands-on examples to build a solid development foundation. Ideal for beginners and professionals looking to sharpen their coding mindset.</p>
-                                </div>
-                        </a>
-                    </div>
-                   <div class="col-md-6 col-xl-4 mb-5">
-                    <a class="card post-preview lift h-100"  href="/blogs/groups/secure-by-design" >
-                                <div class="card-body">
-                                    <img class="card-team-img mb-3 img-max-100" src="/assets/images/blogs/secure-by-design/group_200x133.webp"
-                                        alt="..." />
-                                    <div class="card-team-name"><strong>Secure from Line One: Embedding Security in Dev Culture</strong></div>
-                                    <div class="card-team-position mb-3">4 Blogs</div>
-                                    <p class="small mb-0">Secure By Design is a series by TechWayFit that empowers developers to integrate security into every layer of the development lifecycle. Covering OWASP threats, secure authentication, secrets management, and automated security testing, it provides practical strategies and examples to build resilient software.</p>
-                                </div>
-                        </a>
-                    </div>
-            
-        </div> 
-</section>
-                    <!-- Page Header-->
-                    
-<div id="layoutDefault_footer">
-                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-                    <div class="container px-5">
-                        <div class="row gx-5">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">Tech Way Fit</div>
-                                <div class="mb-3">Code it Right</Code></div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>                           
-                        </div>
-                        <hr class="my-3" />
-                        <div class="row gx-5 align-items-center">
-                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-                            <div class="col-md-6 text-md-end small">
-                                <a href="/privacy-policy">Privacy Policy</a>
-                                &middot;
-                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                                <a href="/sitemap.xml">Sitemap</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div> 
-                </main>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
             </div>
-            
         </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
         
+        
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script>
+    function highlightText(text, keyword) {
+      if (!keyword) return text;
+      const regex = new RegExp(`(${keyword})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+    function getFuse(query, data) {
+      const threshold = query.length <= 3 ? 0.6 : 0.3; // more lenient for short words
+      return new Fuse(data, {
+        keys: ['Title', 'Description', 'Category'],
+        threshold: threshold,
+        ignoreLocation: true, // optional: improves matching for short terms
+        minMatchCharLength: 2  // optional: improves accuracy for abbreviations like API, JWT
+      });
+    }
+    let fuse;
+    let allData = [];
+
+    Papa.parse('/search-index.csv', {
+      header: true,
+      download: true,
+      complete: function (results) {
+        allData = results.data;
+
+        fuse = new Fuse(allData, {
+          keys: ['Title', 'Description', 'Category'],
+          threshold: 0.3
+        });
+
+        const search = () => {
+          const query = document.getElementById('search-input').value.trim();
+          const selectedCategory = document.getElementById('category-filter').value;
+          const list = document.getElementById('search-results');
+          if (query.length < 3) {
+            list.innerHTML = '';
+            return;
+          }
+          let filteredData = allData;
+          if (selectedCategory) {
+            filteredData = filteredData.filter(item => item.Category === selectedCategory);
+          }
+
+          const fuse = getFuse(query, filteredData);
+          const results = fuse.search(query).slice(0, 5);
+          list.innerHTML = results.length
+            ? results.map(r => `
+                    <li class="search-item">
+                     <a href="${r.item.Url}" class="result-title">${highlightText(r.item.Title, query)}</a>
+              <small class="result-desc">${highlightText(r.item.Description, query)}</small><br>
+                      <span class="category-badge">${r.item.Category}</span>
+                    </li>
+                  `).join('')
+            : `<li class="search-item text-muted">No results found.</li>`;
+        };
+
+        document.getElementById('search-input').addEventListener('input', search);
+        document.getElementById('category-filter').addEventListener('change', search);
+      }
+    });
+  </script>
+
     </body>
 </html>

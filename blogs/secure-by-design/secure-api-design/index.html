@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Secure By Design: Building Secure APIs from Day One | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <meta name="description" content="Learn how to design, build, and secure your APIs with best practices in authentication, rate limiting, validation, and more. Part of TechWayFit&#x27;s Secure By Design series." />
+        <meta property='og:title' content='Building Secure APIs from Day One'/>
+        <meta property='og:image' content='/assets/images/blogs/secure-by-design/banners/api-security.webp'/>
+        <meta property='og:description' content='Learn how to design, build, and secure your APIs with best practices in authentication, rate limiting, validation, and more. Part of TechWayFit&#x27;s Secure By Design series.'/> 
+        <title>Building Secure APIs from Day One | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -40,110 +50,179 @@
 					
 
 <section class="bg-light py-10">
+    
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-10 col-xl-10">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/secure-authentication">Secure Authentication: OAuth2, OpenID, JWTs</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/secure-session-management">Secure Session Management for Web and Mobile Apps</a>
+</div>
+
+                <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Secure By Design: Building Secure APIs from Day One</h1>
+                    <h1>Building Secure APIs from Day One</h1>
                     <p class="lead">Learn how to design, build, and secure your APIs with best practices in authentication, rate limiting, validation, and more. Part of TechWayFit&#x27;s Secure By Design series.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Tech Buddy</div>
-                                <div class="single-post-meta-details-date">6/12/2025 10:00:00 AM &middot;
+                                <div class="single-post-meta-details-date">6/12/2025 10:00:00&#x202F;AM &middot;
                                     10 min read</div>
                             </div>
                         </div>
                         <div>
-                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
                                 <i class="fab fa-discord"></i> Join our Discord
                             </a>
                         </div>
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/api-security.webp" />
+
                     <div class="single-post-text my-5">
                         <section>
-    <h1>Secure By Design: Building Secure APIs from Day One</h1>
-    <p>APIs are the backbone of modern applications. As more systems expose their functionality through APIs, attackers
-        increasingly exploit poorly secured endpoints. In this guide, we explore how to build secure APIs using
-        real-world practices and ASP.NET Core examples.</p>
+  <h1>Secure By Design: Building Secure APIs from Day One</h1>
+  <p>APIs are the backbone of modern applications. As more systems expose their functionality through APIs, attackers
+    increasingly exploit poorly secured endpoints. In this guide, we explore how to build secure APIs using
+    real-world practices and ASP.NET Core examples.</p>
 
-    <h2>Why API Security Matters</h2>
-    <table class="table table-bordered table-striped fs-6">
-  <thead>
-    <tr>
-      <th>Incident</th>
-      <th>Vulnerability</th>
-      <th>Description</th>
-      <th>Impact on Organization</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Facebook (2018)</td>
-      <td>Access Token Exposure</td>
-      <td>A flaw in the “View As” feature allowed attackers to steal session tokens via the video uploader component. These tokens could be used to impersonate users without logging in.</td>
-      <td>Exposed ~50 million accounts; triggered global scrutiny; regulatory investigations in the EU and US; significantly damaged user trust and led to tightened platform security policies.</td>
-    </tr>
-    <tr>
-      <td>Venmo</td>
-      <td>Unprotected Public API</td>
-      <td>The API allowed access to public transaction feeds without rate limiting or authentication, enabling mass scraping of users’ payment activity, including sender, receiver, and notes.</td>
-      <td>Raised serious privacy concerns; journalists demonstrated large-scale scraping; Venmo updated its settings interface but delayed implementing stronger technical controls.</td>
-    </tr>
-    <tr>
-      <td>Panera Bread</td>
-      <td>Unauthenticated Data Access</td>
-      <td>Customer information—including names, emails, phone numbers, and birthdays—was accessible via an unprotected API endpoint without any form of authentication or authorization.</td>
-      <td>Estimated exposure of over 37 million records; delayed incident response worsened reputational damage; served as a key industry example of failure in basic API hygiene and disclosure practices.</td>
-    </tr>
-  </tbody>
-</table>
+  <h2 class="toc-title">🔐 Why API Security Matters</h2>
+  <table class="table table-bordered table-striped fs-6">
+    <thead>
+      <tr>
+        <th>Incident</th>
+        <th>Vulnerability</th>
+        <th>Description</th>
+        <th>Impact on Organization</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Facebook (2018)</td>
+        <td>Access Token Exposure</td>
+        <td>A flaw in the “View As” feature allowed attackers to steal session tokens via the video uploader component.
+          These tokens could be used to impersonate users without logging in.</td>
+        <td>Exposed ~50 million accounts; triggered global scrutiny; regulatory investigations in the EU and US;
+          significantly damaged user trust and led to tightened platform security policies.</td>
+      </tr>
+      <tr>
+        <td>Venmo</td>
+        <td>Unprotected Public API</td>
+        <td>The API allowed access to public transaction feeds without rate limiting or authentication, enabling mass
+          scraping of users’ payment activity, including sender, receiver, and notes.</td>
+        <td>Raised serious privacy concerns; journalists demonstrated large-scale scraping; Venmo updated its settings
+          interface but delayed implementing stronger technical controls.</td>
+      </tr>
+      <tr>
+        <td>Panera Bread</td>
+        <td>Unauthenticated Data Access</td>
+        <td>Customer information—including names, emails, phone numbers, and birthdays—was accessible via an unprotected
+          API endpoint without any form of authentication or authorization.</td>
+        <td>Estimated exposure of over 37 million records; delayed incident response worsened reputational damage;
+          served as a key industry example of failure in basic API hygiene and disclosure practices.</td>
+      </tr>
+    </tbody>
+  </table>
 
 
-    <h2>Common API Vulnerabilities</h2>
-    APIs are often targeted due to their accessibility and the sensitive data they handle. Here are some common
-    vulnerabilities:
-    <div>
-        <h3>1. Excessive Data Exposure</h3>
-        <p>APIs sometimes return more data than necessary. Attackers can exploit this to access sensitive information.
-            This
-            is a common pitfall in API development where an endpoint returns entire objects—like full user
-            profiles—instead
-            of just the data actually needed by the client.</p>
-        <pre><code class="language-csharp">// 🛑 Insecure: Returns entire user object
+  <h2 class="toc-title">🛡️ Common API Vulnerabilities</h2>
+  APIs are often targeted due to their accessibility and the sensitive data they handle. Here are some common
+  vulnerabilities:
+  <div>
+    <h3>1. Excessive Data Exposure</h3>
+    <p>APIs sometimes return more data than necessary. Attackers can exploit this to access sensitive information.
+      This
+      is a common pitfall in API development where an endpoint returns entire objects—like full user
+      profiles—instead
+      of just the data actually needed by the client.</p>
+    <pre><code class="language-csharp">// 🛑 Insecure: Returns entire user object
         return Ok(userService.GetUser(id));</code></pre>
-        <p>In the insecure code snippet, the API returns the full User object directly from the service layer. This
-            might seem convenient, but it risks exposing sensitive fields like passwords, internal IDs, or metadata
-            unintentionally.</p>
-        <pre><code class="language-csharp">// ✅ Secure: Return only required fields via DTO
+    <p>In the insecure code snippet, the API returns the full User object directly from the service layer. This
+      might seem convenient, but it risks exposing sensitive fields like passwords, internal IDs, or metadata
+      unintentionally.</p>
+    <pre><code class="language-csharp">// ✅ Secure: Return only required fields via DTO
         return Ok(new UserDto { Name = user.Name, Email = user.Email });</code></pre>
-        <p> This pattern explicitly controls what gets serialized and returned, typically through a lightweight class
-            like UserDto that holds only the fields the UI requires. Not only does this minimize risk, but it keeps your
-            response payloads lean and purpose-driven.
-            In essence, it’s about being intentional with data exposure—show only what the client truly needs, and
-            nothing more. This principle not only enhances security but also helps reduce payload size and improves
-            maintainability.
-        </p>
-    </div>
-    <div>
-        <h3>2. Broken Object-Level Authorization (BOLA)</h3>
-        <p>APIs often expose object IDs (like user or order IDs) without validating ownership, allowing attackers to
-            access others' data. This is one of the most common and dangerous API flaws: Broken Object-Level
-            Authorization (BOLA). It happens when APIs expose object identifiers—like <code>orderId</code>,
-            <code>userId</code>, or <code>invoiceId</code> , but
-            fail to confirm whether the requester is authorized to access that object.
-        </p>
-        <pre><code class="language-csharp">// 🛑 Insecure: No ownership check
+    <p> This pattern explicitly controls what gets serialized and returned, typically through a lightweight class
+      like UserDto that holds only the fields the UI requires. Not only does this minimize risk, but it keeps your
+      response payloads lean and purpose-driven.
+      In essence, it’s about being intentional with data exposure—show only what the client truly needs, and
+      nothing more. This principle not only enhances security but also helps reduce payload size and improves
+      maintainability.
+    </p>
+  </div>
+  <div>
+    <h3>2. Broken Object-Level Authorization (BOLA)</h3>
+    <p>APIs often expose object IDs (like user or order IDs) without validating ownership, allowing attackers to
+      access others' data. This is one of the most common and dangerous API flaws: Broken Object-Level
+      Authorization (BOLA). It happens when APIs expose object identifiers—like <code>orderId</code>,
+      <code>userId</code>, or <code>invoiceId</code> , but
+      fail to confirm whether the requester is authorized to access that object.
+    </p>
+    <pre><code class="language-csharp">// 🛑 Insecure: No ownership check
             [HttpGet("/orders/{id}")]
             public IActionResult GetOrder(int id) => Ok(orderService.GetById(id));</code></pre>
-        <p>The API simply retrieves and returns the order object without verifying if the current user owns it. That
-            means an attacker could manipulate the URL
-            <code>(e.g., /orders/12345)</code> and potentially access someone else's data—a textbook case of insecure
-            direct object reference (IDOR).
-        </p>
-        <pre><code class="language-csharp">// ✅ Secure: Check if user owns the order
+    <p>The API simply retrieves and returns the order object without verifying if the current user owns it. That
+      means an attacker could manipulate the URL
+      <code>(e.g., /orders/12345)</code> and potentially access someone else's data—a textbook case of insecure
+      direct object reference (IDOR).
+    </p>
+    <pre><code class="language-csharp">// ✅ Secure: Check if user owns the order
             [HttpGet("/orders/{id}")]
             public IActionResult GetOrder(int id)
             {
@@ -151,167 +230,187 @@
                 if (order.UserId != GetCurrentUserId()) return Forbid();
                 return Ok(order);
             }</code></pre>
-        <p>Now, unless the UserId on the order matches the ID of the logged-in user, access is denied. This is exactly
-            the kind of defensive pattern the Secure By Design guide emphasizes.</p>
-        You’ll often find BOLA risks in APIs that expose predictable ID patterns without authentication gates—like
-        <code>/users/3 </code>or <code>/invoices/5.</code> By combining predictable routing with missing access
-        controls, attackers don’t even need complex exploits; they just enumerate IDs.</p>
-    </div>
-    <div>
-        <h3>3. Lack of Input Validation</h3>
-        <p>Without input validation, APIs are prone to injection attacks, such as SQL injection or XSS. This is a
-            foundational API security principle: <string>never trust user input</string>. When an API accepts
-            unvalidated or unsanitized input—like a search query or form field—it opens the door to injection attacks.
-            These might include:
-        <ul>
-            <li><strong>SQL injection</strong>, where attackers inject SQL commands to manipulate the database (e.g.,
-                <code>'; DROP TABLE Users;--</code>)
-            </li>
-            <li><strong>Cross-Site Scripting (XSS)</strong>, where scripts are injected to run in browsers, potentially
-                stealing user data or tokens</li>
-        </ul>
-        </p>
-        <pre><code class="language-csharp">// 🛑 Insecure: Blindly accepts input
+    <p>Now, unless the UserId on the order matches the ID of the logged-in user, access is denied. This is exactly
+      the kind of defensive pattern the Secure By Design guide emphasizes.</p>
+    You’ll often find BOLA risks in APIs that expose predictable ID patterns without authentication gates—like
+    <code>/users/3 </code>or <code>/invoices/5.</code> By combining predictable routing with missing access
+    controls, attackers don’t even need complex exploits; they just enumerate IDs.</p>
+  </div>
+  <div>
+    <h3>3. Lack of Input Validation</h3>
+    <p>Without input validation, APIs are prone to injection attacks, such as SQL injection or XSS. This is a
+      foundational API security principle: <string>never trust user input</string>. When an API accepts
+      unvalidated or unsanitized input—like a search query or form field—it opens the door to injection attacks.
+      These might include:
+    <ul>
+      <li><strong>SQL injection</strong>, where attackers inject SQL commands to manipulate the database (e.g.,
+        <code>'; DROP TABLE Users;--</code>)
+      </li>
+      <li><strong>Cross-Site Scripting (XSS)</strong>, where scripts are injected to run in browsers, potentially
+        stealing user data or tokens</li>
+    </ul>
+    </p>
+    <pre><code class="language-csharp">// 🛑 Insecure: Blindly accepts input
 public IActionResult Search(string query) => db.Search(query);</code></pre>
-        <p>In this insecure example, the API directly uses the <code>query</code> parameter in a database search without
-            validating or sanitizing it. An attacker could pass a malicious string that executes harmful SQL commands or
-            scripts.</p>
-        <pre><code class="language-csharp">// ✅ Secure: Validate and sanitize input
+    <p>In this insecure example, the API directly uses the <code>query</code> parameter in a database search without
+      validating or sanitizing it. An attacker could pass a malicious string that executes harmful SQL commands or
+      scripts.</p>
+    <pre><code class="language-csharp">// ✅ Secure: Validate and sanitize input
 public IActionResult Search([FromQuery] string query)
 {
     if (string.IsNullOrWhiteSpace(query)) return BadRequest();
     return Ok(db.Search(Sanitize(query)));
 }</code></pre>
-        <p>In the secure version, the API checks
-        <ul>
-            <li>
-                <code>string.IsNullOrWhiteSpace(query)</code> ensures that only meaningful input proceeds
-            </li>
-            <li>
-                <code>Sanitize(query)</code> is a method that cleans the input, removing or escaping potentially
-                dangerous characters
-            </li>
-        </ul>
-        </p>
-        <p>Always validate input against a schema or set of rules, and use libraries that automatically handle
-            sanitization for you. This is a core principle of Secure By Design—never trust data from outside your
-            system.
-        </p>
-    </div>
-    <section class="vulnerability">
-        <h3>4. No Rate Limiting or Abuse Protection</h3>
-        <p>
-            Without rate limiting, attackers can brute-force or flood your APIs with requests, leading to
-            denial-of-service (DoS). This is a classic availability threat: APIs without rate limiting or abuse
-            protection are like open doors with no bouncer—anyone can walk in, and in large enough numbers, they can
-            knock the entire system offline.
-        </p>
-        <p>When you don’t set limits, attackers can:
-        <ul>
-            <li>Brute-force login or auth endpoints (e.g. guessing passwords or tokens at scale)</li>
-            <li>Flood your API with requests, overwhelming backend services—an easy route to a denial-of-service (DoS)
-            </li>
-        </ul>
-        To prevent that, we can follow two practical defenses:</p>
-        <div class="code-snippet">
-            <h4>✅ 1. Rate Limiting Middleware</h4>
-            <pre><code class="language-csharp">// Use ASP.NET Core Rate Limiting middleware
+    <p>In the secure version, the API checks
+    <ul>
+      <li>
+        <code>string.IsNullOrWhiteSpace(query)</code> ensures that only meaningful input proceeds
+      </li>
+      <li>
+        <code>Sanitize(query)</code> is a method that cleans the input, removing or escaping potentially
+        dangerous characters
+      </li>
+    </ul>
+    </p>
+    <p>Always validate input against a schema or set of rules, and use libraries that automatically handle
+      sanitization for you. This is a core principle of Secure By Design—never trust data from outside your
+      system.
+    </p>
+  </div>
+  <section class="vulnerability">
+    <h3>4. No Rate Limiting or Abuse Protection</h3>
+    <p>
+      Without rate limiting, attackers can brute-force or flood your APIs with requests, leading to
+      denial-of-service (DoS). This is a classic availability threat: APIs without rate limiting or abuse
+      protection are like open doors with no bouncer—anyone can walk in, and in large enough numbers, they can
+      knock the entire system offline.
+    </p>
+    <p>When you don’t set limits, attackers can:
+    <ul>
+      <li>Brute-force login or auth endpoints (e.g. guessing passwords or tokens at scale)</li>
+      <li>Flood your API with requests, overwhelming backend services—an easy route to a denial-of-service (DoS)
+      </li>
+    </ul>
+    To prevent that, we can follow two practical defenses:</p>
+    <div class="code-snippet">
+      <h4>✅ 1. Rate Limiting Middleware</h4>
+      <pre><code class="language-csharp">// Use ASP.NET Core Rate Limiting middleware
 app.UseRateLimiter(new RateLimiterOptions {
     PermitLimit = 100,
     QueueLimit = 10
 });
     </code></pre>
-        </div>
+    </div>
 
-        <p>
-           <h4>✅ 2.API Gateway Enforcement:</h4>
-           It also recommends external enforcement through gateways like Azure API Management or AWS API Gateway, where you can:
-<ul>
-                <li>Set usage quotas per user or IP</li>
-                <li>Define burst limits to absorb spikes safely</li>
-                <li>Block suspicious IP ranges</li>
-            </ul>
-        </p>
-        <p>            Together, these strategies help insulate your APIs from both targeted attacks and accidental overloads—critical for uptime, scalability, and basic fairness among clients.
-        </p>
-    </section>
+    <p>
+    <h4>✅ 2.API Gateway Enforcement:</h4>
+    It also recommends external enforcement through gateways like Azure API Management or AWS API Gateway, where you
+    can:
+    <ul>
+      <li>Set usage quotas per user or IP</li>
+      <li>Define burst limits to absorb spikes safely</li>
+      <li>Block suspicious IP ranges</li>
+    </ul>
+    </p>
+    <p> Together, these strategies help insulate your APIs from both targeted attacks and accidental overloads—critical
+      for uptime, scalability, and basic fairness among clients.
+    </p>
+  </section>
 
 
 
-    <h2><u>Design-Time Security Principles</u></h2>
-These guidelines align with the page’s broader philosophy: secure your APIs by design, not by reacting to breaches later.
-<ul>
-    <li><strong>1. Minimize surface area:</strong> Expose only the endpoints that are absolutely necessary. Every extra endpoint increases your attack surface. For example, avoid generic "get all" endpoints unless truly needed.</li>
-    <li><strong>2. Validate all input at the edge:</strong> Validate and sanitize all incoming data as soon as it enters your system—ideally at the API gateway or controller level. This blocks common attacks like SQL injection and XSS.</li>
-    <li><strong>3. Don’t expose internal identifiers:</strong> Use GUIDs or slugs instead of sequential IDs. This prevents attackers from easily guessing valid object references, reducing risks like BOLA (Broken Object-Level Authorization).</li>
-    <li><strong>4. Principle of least privilege:</strong> Grant each API client or user only the permissions they need—nothing more. Use role-based or claims-based authorization to enforce this.</li>
-    <li><strong>5. Fail securely:</strong> When errors occur, return generic error messages and avoid leaking stack traces or sensitive details in API responses.</li>
-    <li><strong>6. Secure defaults:</strong> APIs should be secure by default—require authentication, use HTTPS, and deny access unless explicitly allowed.</li>
-</ul>
-<section>
-  <h2>Authentication & Authorization</h2>
+  <h2 class="toc-title">🧪 Design-Time Security Principles</h2>
+  These guidelines align with the page’s broader philosophy: secure your APIs by design, not by reacting to breaches
+  later.
+  <ul>
+    <li><strong>1. Minimize surface area:</strong> Expose only the endpoints that are absolutely necessary. Every extra
+      endpoint increases your attack surface. For example, avoid generic "get all" endpoints unless truly needed.</li>
+    <li><strong>2. Validate all input at the edge:</strong> Validate and sanitize all incoming data as soon as it enters
+      your system—ideally at the API gateway or controller level. This blocks common attacks like SQL injection and XSS.
+    </li>
+    <li><strong>3. Don’t expose internal identifiers:</strong> Use GUIDs or slugs instead of sequential IDs. This
+      prevents attackers from easily guessing valid object references, reducing risks like BOLA (Broken Object-Level
+      Authorization).</li>
+    <li><strong>4. Principle of least privilege:</strong> Grant each API client or user only the permissions they
+      need—nothing more. Use role-based or claims-based authorization to enforce this.</li>
+    <li><strong>5. Fail securely:</strong> When errors occur, return generic error messages and avoid leaking stack
+      traces or sensitive details in API responses.</li>
+    <li><strong>6. Secure defaults:</strong> APIs should be secure by default—require authentication, use HTTPS, and
+      deny access unless explicitly allowed.</li>
+  </ul>
+  <section>
+    <h2 class="toc-title">🚦 Authentication & Authorization</h2>
 
-  <h3>Why It Matters</h3>
-  <p>
-    The surrounding content presents real-world failures (like Facebook’s token leak or Panera’s exposed customer data) as a warning. Without strong auth controls, even well-coded APIs can become gaping vulnerabilities.
-  </p>
+    <h3>Why It Matters</h3>
+    <p>
+      The surrounding content presents real-world failures (like Facebook’s token leak or Panera’s exposed customer
+      data) as a warning. Without strong auth controls, even well-coded APIs can become gaping vulnerabilities.
+    </p>
 
-  <h3>What It’s Saying</h3>
+    <h3>What It’s Saying</h3>
 
-  <h4>Use OAuth2 and Token-Based Access</h4>
-  <p>
-    The guide recommends modern, token-based mechanisms (like OAuth2 or JWT) rather than session-based or cookie authentication. These tokens include <em>defined scopes</em> (what the token can access) and <em>lifetimes</em> (when it expires), limiting potential misuse.
-  </p>
+    <h4>Use OAuth2 and Token-Based Access</h4>
+    <p>
+      The guide recommends modern, token-based mechanisms (like OAuth2 or JWT) rather than session-based or cookie
+      authentication. These tokens include <em>defined scopes</em> (what the token can access) and <em>lifetimes</em>
+      (when it expires), limiting potential misuse.
+    </p>
 
-  <h4>Compare the Two Code Samples:</h4>
+    <h4>Compare the Two Code Samples:</h4>
 
-  <h5>🔓 Insecure:</h5>
-  <pre><code class="language-csharp">
+    <h5>🔓 Insecure:</h5>
+    <pre><code class="language-csharp">
 [HttpGet("/orders")]
 public IActionResult GetOrders() => Ok(orderService.GetAll());
   </code></pre>
-  <p>
-    This endpoint allows anyone to hit <code>/orders</code>—no login, no access control. An attacker or script could grab every order with no friction.
-  </p>
+    <p>
+      This endpoint allows anyone to hit <code>/orders</code>—no login, no access control. An attacker or script could
+      grab every order with no friction.
+    </p>
 
-  <h5>🔐 Secure:</h5>
-  <pre><code class="language-csharp">
+    <h5>🔐 Secure:</h5>
+    <pre><code class="language-csharp">
 [Authorize(Roles = "Admin")]
 [HttpGet("/orders")]
 public IActionResult GetOrders() => Ok(orderService.GetAll());
   </code></pre>
-  <p>
-    This version requires the caller to be authenticated and have an <code>"Admin"</code> role. That’s role-based access control (RBAC) in action—only users with the right authority can access sensitive functions.
-  </p>
+    <p>
+      This version requires the caller to be authenticated and have an <code>"Admin"</code> role. That’s role-based
+      access control (RBAC) in action—only users with the right authority can access sensitive functions.
+    </p>
 
-  <p>
-    This example fits neatly into the page’s broader approach: <strong>lock down APIs by default</strong>, exposing only what’s needed, to who truly needs it.
-  </p>
-</section>
+    <p>
+      This example fits neatly into the page’s broader approach: <strong>lock down APIs by default</strong>, exposing
+      only what’s needed, to who truly needs it.
+    </p>
+  </section>
 
 
-    <section>
-  <h2>Input Validation & Output Encoding</h2>
+  <section>
+    <h2 class="toc-title">🧰 Input Validation & Output Encoding</h2>
 
-  <h3>Why This Matters</h3>
-  <p>
-    Without input validation, APIs are vulnerable to classic attacks like SQL injection, XSS, or even simple data corruption.
-    The guide references real-world examples to emphasize that <strong>blind trust in user data</strong> is a major risk.
-  </p>
+    <h3>Why This Matters</h3>
+    <p>
+      Without input validation, APIs are vulnerable to classic attacks like SQL injection, XSS, or even simple data
+      corruption.
+      The guide references real-world examples to emphasize that <strong>blind trust in user data</strong> is a major
+      risk.
+    </p>
 
-  <h3>What’s Happening in the Code</h3>
+    <h3>What’s Happening in the Code</h3>
 
-  <h4>🛑 Insecure Version</h4>
-  <pre><code class="language-csharp">
+    <h4>🛑 Insecure Version</h4>
+    <pre><code class="language-csharp">
 public IActionResult CreateUser(User user) => userService.Save(user);
   </code></pre>
-  <p>
-    This implementation accepts user input as-is and immediately passes it to the business logic layer. There’s no validation,
-    allowing malformed or malicious data to slip through unchecked.
-  </p>
+    <p>
+      This implementation accepts user input as-is and immediately passes it to the business logic layer. There’s no
+      validation,
+      allowing malformed or malicious data to slip through unchecked.
+    </p>
 
-  <h4>✅ Secure Version</h4>
-  <pre><code class="language-csharp">
+    <h4>✅ Secure Version</h4>
+    <pre><code class="language-csharp">
 public class UserDto
 {
     [Required]
@@ -332,88 +431,98 @@ public IActionResult CreateUser([FromBody] UserDto userDto)
     return Ok(userService.Save(userDto));
 }
   </code></pre>
-  <p>
-    This version:
+    <p>
+      This version:
     <ul>
-      <li>Defines explicit rules for <code>Name</code>, <code>Email</code>, and <code>Age</code> using attributes like <code>[Required]</code> and <code>[EmailAddress]</code>.</li>
+      <li>Defines explicit rules for <code>Name</code>, <code>Email</code>, and <code>Age</code> using attributes like
+        <code>[Required]</code> and <code>[EmailAddress]</code>.</li>
       <li>Validates incoming data via <code>ModelState.IsValid</code> before processing it.</li>
       <li>Rejects bad input early with a <code>400 Bad Request</code> response.</li>
     </ul>
-  </p>
+    </p>
 
-  <p>
-    This aligns with the guide’s emphasis on treating all input as untrusted and validating it at the boundary. It also ensures downstream components receive well-formed data.
-  </p>
-</section>
-<section>
-  <h2>Rate Limiting & Abuse Protection</h2>
+    <p>
+      This aligns with the guide’s emphasis on treating all input as untrusted and validating it at the boundary. It
+      also ensures downstream components receive well-formed data.
+    </p>
+  </section>
+  <section>
+    <h2>Rate Limiting & Abuse Protection</h2>
 
-  <h3>Why It Matters</h3>
-  <p>
-    Without rate limiting, even legitimate endpoints can become dangerous. The page highlights risks such as brute-force login attempts,
-    bot-driven scraping, or flooding APIs to trigger denial-of-service (DoS) conditions. To prevent this, <strong>limiting access by volume and frequency is critical</strong>.
-  </p>
+    <h3>Why It Matters</h3>
+    <p>
+      Without rate limiting, even legitimate endpoints can become dangerous. The page highlights risks such as
+      brute-force login attempts,
+      bot-driven scraping, or flooding APIs to trigger denial-of-service (DoS) conditions. To prevent this,
+      <strong>limiting access by volume and frequency is critical</strong>.
+    </p>
 
-  <h3>What’s the Code Doing?</h3>
-  <pre><code class="language-csharp">
+    <h3>What’s the Code Doing?</h3>
+    <pre><code class="language-csharp">
 app.UseRateLimiter(new RateLimiterOptions {
     PermitLimit = 100,  // max 100 requests per minute
     QueueLimit = 10     // buffer 10 before rejecting
 });
   </code></pre>
-  <p>
-    This middleware enforces throttling by:
+    <p>
+      This middleware enforces throttling by:
     <ul>
       <li><strong>Capping request volume</strong> (100 per minute in this case)</li>
       <li><strong>Queuing minor bursts</strong> (up to 10 extra requests)</li>
       <li><strong>Denying overflow</strong> once the buffer is full</li>
     </ul>
-  </p>
+    </p>
 
-  <h3>Recommended Enhancements</h3>
-  <p>
-    The guide suggests pairing middleware with <em>API gateway rules</em> for a more robust shield. Example configuration with Azure API Management:
-  </p>
+    <h3>Recommended Enhancements</h3>
+    <p>
+      The guide suggests pairing middleware with <em>API gateway rules</em> for a more robust shield. Example
+      configuration with Azure API Management:
+    </p>
 
-  <pre><code class="language-xml">
+    <pre><code class="language-xml">
 <!-- In Azure API Management policy -->
 &lt;rate-limit-by-key calls="100" renewal-period="60"&gt;
   &lt;key value="@(context.Request.IpAddress)" /&gt;
 &lt;/rate-limit-by-key&gt;
   </code></pre>
 
-  <p>
-    This enforces a per-IP limit of 100 calls per minute. You can also scope by client ID, subscription key, or token claims. Benefits:
+    <p>
+      This enforces a per-IP limit of 100 calls per minute. You can also scope by client ID, subscription key, or token
+      claims. Benefits:
     <ul>
       <li>Prevents overuse before reaching backend services</li>
       <li>Supports custom rate strategies per API or operation</li>
       <li>Enables real-time abuse mitigation and analytics</li>
     </ul>
-  </p>
+    </p>
 
-  <p>
-    Together, these form a layered defense—<em>middleware handles local enforcement</em>, while the API gateway manages edge-level control.
-    The page calls this a "Secure by Design" approach: defending APIs before threats manifest.
-  </p>
-</section>
-<section>
-  <h2>Logging & Monitoring</h2>
+    <p>
+      Together, these form a layered defense—<em>middleware handles local enforcement</em>, while the API gateway
+      manages edge-level control.
+      The page calls this a "Secure by Design" approach: defending APIs before threats manifest.
+    </p>
+  </section>
+  <section>
+    <h2>Logging & Monitoring</h2>
 
-  <h3>Why It Matters</h3>
-  <p>
-    Logging is a critical part of API observability and security. The guide highlights how <strong>the absence of meaningful logs leads to blind spots during incidents</strong>,
-    while poor logging hygiene can expose sensitive data. Striking the right balance is key.
-  </p>
+    <h3>Why It Matters</h3>
+    <p>
+      Logging is a critical part of API observability and security. The guide highlights how <strong>the absence of
+        meaningful logs leads to blind spots during incidents</strong>,
+      while poor logging hygiene can expose sensitive data. Striking the right balance is key.
+    </p>
 
-  <h3>Best Practices from the Guide</h3>
-  <ul>
-    <li><strong>Use structured logging</strong> tools like <code>Serilog</code> or <code>Seq</code> to produce searchable, consistent log output.</li>
-    <li><strong>Attach correlation IDs</strong> to every request to trace activity across services.</li>
-    <li><strong>Never log PII, passwords, or secrets</strong>—logs should help you investigate issues, not create new security holes.</li>
-  </ul>
+    <h3>Best Practices from the Guide</h3>
+    <ul>
+      <li><strong>Use structured logging</strong> tools like <code>Serilog</code> or <code>Seq</code> to produce
+        searchable, consistent log output.</li>
+      <li><strong>Attach correlation IDs</strong> to every request to trace activity across services.</li>
+      <li><strong>Never log PII, passwords, or secrets</strong>—logs should help you investigate issues, not create new
+        security holes.</li>
+    </ul>
 
-  <h3>Code Sample: Secure Logging in ASP.NET Core (Serilog)</h3>
-  <pre><code class="language-csharp">
+    <h3>Code Sample: Secure Logging in ASP.NET Core (Serilog)</h3>
+    <pre><code class="language-csharp">
 // In Program.cs
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -443,105 +552,114 @@ public IActionResult Login(LoginRequest req)
 }
   </code></pre>
 
-  <p>
-    This example shows how to:
+    <p>
+      This example shows how to:
     <ul>
       <li>Use structured logs with enriched metadata</li>
       <li>Log meaningful user actions and trace IDs</li>
       <li>Completely avoid logging sensitive payloads like passwords</li>
     </ul>
-  </p>
+    </p>
 
-  <p>
-    The page concludes that smart logging is part of securing APIs “by design”—<em>collect what you need to detect and respond, never more</em>.
-  </p>
-</section>
-<section>
-  <h2>Secure API Versioning</h2>
+    <p>
+      The page concludes that smart logging is part of securing APIs “by design”—<em>collect what you need to detect and
+        respond, never more</em>.
+    </p>
+  </section>
+  <section>
+    <h2 class="toc-title">📊 Secure API Versioning</h2>
 
-  <h3>Why This Matters</h3>
-  <p>
-    As APIs grow, it's natural to roll out v2, v3, and beyond. But older versions often remain in use by internal tools or clients. 
-    The guide warns that <strong>unmonitored legacy APIs become prime targets for attackers</strong>—especially if security patches or controls aren’t maintained.
-  </p>
+    <h3>Why This Matters</h3>
+    <p>
+      As APIs grow, it's natural to roll out v2, v3, and beyond. But older versions often remain in use by internal
+      tools or clients.
+      The guide warns that <strong>unmonitored legacy APIs become prime targets for attackers</strong>—especially if
+      security patches or controls aren’t maintained.
+    </p>
 
-  <h3>Key Recommendations</h3>
-  <ul>
-    <li><strong>Protect older versions until deprecated safely</strong>: Apply auth, rate limiting, and logging to all supported versions.</li>
-    <li><strong>Avoid breaking changes</strong>: Design updates to be backward-compatible and gentle to adopt.</li>
-    <li><strong>Patch across versions</strong>: Backport critical fixes to every active version to prevent patch gaps.</li>
-  </ul>
+    <h3>Key Recommendations</h3>
+    <ul>
+      <li><strong>Protect older versions until deprecated safely</strong>: Apply auth, rate limiting, and logging to all
+        supported versions.</li>
+      <li><strong>Avoid breaking changes</strong>: Design updates to be backward-compatible and gentle to adopt.</li>
+      <li><strong>Patch across versions</strong>: Backport critical fixes to every active version to prevent patch gaps.
+      </li>
+    </ul>
 
-  <h3>Sample Compatibility & Deprecation Matrix</h3>
-  <table class="table fs-6 table-sm table-bordered">
-    <thead>
-      <tr>
-        <th>Version</th>
-        <th>Status</th>
-        <th>Auth</th>
-        <th>Rate Limit</th>
-        <th>Logging</th>
-        <th>Security Patching</th>
-        <th>Deprecation Timeline</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>v1</td>
-        <td>Legacy</td>
-        <td>✅</td>
-        <td>✅</td>
-        <td>Limited</td>
-        <td>✅ Backported</td>
-        <td>Phase-out: Q4 2025</td>
-      </tr>
-      <tr>
-        <td>v2</td>
-        <td>Active</td>
-        <td>✅</td>
-        <td>✅</td>
-        <td>✅</td>
-        <td>✅</td>
-        <td>Sunset planned Q2 2026</td>
-      </tr>
-      <tr>
-        <td>v3</td>
-        <td>Current</td>
-        <td>✅</td>
-        <td>✅</td>
-        <td>✅ + Telemetry</td>
-        <td>✅</td>
-        <td>N/A</td>
-      </tr>
-    </tbody>
-  </table>
+    <h3>Sample Compatibility & Deprecation Matrix</h3>
+    <table class="table fs-6 table-sm table-bordered">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Status</th>
+          <th>Auth</th>
+          <th>Rate Limit</th>
+          <th>Logging</th>
+          <th>Security Patching</th>
+          <th>Deprecation Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>v1</td>
+          <td>Legacy</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Limited</td>
+          <td>✅ Backported</td>
+          <td>Phase-out: Q4 2025</td>
+        </tr>
+        <tr>
+          <td>v2</td>
+          <td>Active</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Sunset planned Q2 2026</td>
+        </tr>
+        <tr>
+          <td>v3</td>
+          <td>Current</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅ + Telemetry</td>
+          <td>✅</td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
 
-  
-</section>
-<section>
-  <h2>Tools for API Security Testing</h2>
 
-  <h3>Why This Matters</h3>
-  <p>
-    Building secure APIs is just the start—testing them regularly ensures your defenses actually work. 
-    The guide encourages adopting attacker-mindset tools to proactively uncover vulnerabilities before they’re exploited.
-  </p>
+  </section>
+  <section>
+    <h2 class="toc-title">📝 Tools for API Security Testing</h2>
 
-  <h3>Recommended Tools</h3>
-  <ul>
-    <li>
-      <strong>OWASP ZAP:</strong> A free and powerful scanner that detects API vulnerabilities like injection flaws, broken authentication, and misconfigured headers.
-      Ideal for integration in CI/CD pipelines or staging environments.
-    </li>
-    <li>
-      <strong>Postman Security Scans:</strong> Built into Postman, these scans test API collections for misconfigured security, overly permissive responses, or missing headers—all within a familiar dev workflow.
-    </li>
-    <li>
-      <strong>Swagger/OpenAPI Security Annotations:</strong> Embed auth schemes directly into your API specification to guide tools and gateways. For example:
-    </li>
-  </ul>
+    <h3>Why This Matters</h3>
+    <p>
+      Building secure APIs is just the start—testing them regularly ensures your defenses actually work.
+      The guide encourages adopting attacker-mindset tools to proactively uncover vulnerabilities before they’re
+      exploited.
+    </p>
 
-  <pre><code class="language-yaml">
+    <h3>Recommended Tools</h3>
+    <ul>
+      <li>
+        <strong>OWASP ZAP:</strong> A free and powerful scanner that detects API vulnerabilities like injection flaws,
+        broken authentication, and misconfigured headers.
+        Ideal for integration in CI/CD pipelines or staging environments.
+      </li>
+      <li>
+        <strong>Postman Security Scans:</strong> Built into Postman, these scans test API collections for misconfigured
+        security, overly permissive responses, or missing headers—all within a familiar dev workflow.
+      </li>
+      <li>
+        <strong>Swagger/OpenAPI Security Annotations:</strong> Embed auth schemes directly into your API specification
+        to guide tools and gateways. For example:
+      </li>
+    </ul>
+
+    <pre><code class="language-yaml">
 components:
   securitySchemes:
     bearerAuth:
@@ -553,38 +671,98 @@ security:
   - bearerAuth: []
   </code></pre>
 
-  <p>
-    This not only documents your API’s requirements clearly but also allows automated tools to simulate authenticated requests,
-    strengthening your test coverage and onboarding experience.
-  </p>
-
- 
-</section>
+    <p>
+      This not only documents your API’s requirements clearly but also allows automated tools to simulate authenticated
+      requests,
+      strengthening your test coverage and onboarding experience.
+    </p>
 
 
-    <h2>Conclusion</h2>
-   <section>
-  <h2>🔒 Securing APIs is not optional—it’s foundational. From validating inputs to enforcing strong authentication and rate limiting, API security must be considered from design through deployment. Secure your APIs by default, not by patching after a breach.</h2>
+  </section>
 
-  <ul style="list-style: none; padding-left: 0;">
-    <li>✅ <strong>Validate all inputs</strong> — Never trust client data without validation and sanitization.</li>
-    <li>✅ <strong>Enforce authentication & authorization</strong> — Use OAuth2, scoped tokens, and role checks.</li>
-    <li>✅ <strong>Apply rate limiting</strong> — Throttle traffic via middleware and API gateways to prevent abuse.</li>
-    <li>✅ <strong>Log securely</strong> — Use structured logging with request IDs, and never log PII or secrets.</li>
-    <li>✅ <strong>Protect all versions</strong> — Maintain security across API versions until they’re properly deprecated.</li>
-    <li>🧪 <strong>Test proactively</strong> — Use tools like OWASP ZAP, Postman, and OpenAPI annotations to catch flaws early.</li>
-  </ul>
 
-  <p><em>Built securely from design to deployment. Don't wait for a breach—lock it down by default.</em></p>
+  <h2 class="toc-title">📌 Conclusion</h2>
+  <section>
+    <h2>🔒 Securing APIs is not optional—it’s foundational. From validating inputs to enforcing strong authentication
+      and rate limiting, API security must be considered from design through deployment. Secure your APIs by default,
+      not by patching after a breach.</h2>
 
-</section>
+    <ul style="list-style: none; padding-left: 0;">
+      <li>✅ <strong>Validate all inputs</strong> — Never trust client data without validation and sanitization.</li>
+      <li>✅ <strong>Enforce authentication & authorization</strong> — Use OAuth2, scoped tokens, and role checks.</li>
+      <li>✅ <strong>Apply rate limiting</strong> — Throttle traffic via middleware and API gateways to prevent abuse.
+      </li>
+      <li>✅ <strong>Log securely</strong> — Use structured logging with request IDs, and never log PII or secrets.</li>
+      <li>✅ <strong>Protect all versions</strong> — Maintain security across API versions until they’re properly
+        deprecated.</li>
+      <li>🧪 <strong>Test proactively</strong> — Use tools like OWASP ZAP, Postman, and OpenAPI annotations to catch
+        flaws early.</li>
+    </ul>
+
+    <p><em>Built securely from design to deployment. Don't wait for a breach—lock it down by default.</em></p>
+
+  </section>
 
 </section>
                     </div>
                 </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/secure-authentication">Secure Authentication: OAuth2, OpenID, JWTs</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/secure-session-management">Secure Session Management for Web and Mobile Apps</a>
+</div>
+
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -596,7 +774,8 @@ security:
                             <textarea class="form-control" id="commentText" rows="3" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Comment</button>
-                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
                     </form>
                 </div>
                 <div class="container mt-5">
@@ -610,47 +789,50 @@ security:
             </div>
         </div>
     </div>
-
+    </div>
 </section>
 
 
 
-                    <!-- Page Header-->
-                    
-<div id="layoutDefault_footer">
-                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-                    <div class="container px-5">
-                        <div class="row gx-5">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">Tech Way Fit</div>
-                                <div class="mb-3">Code it Right</Code></div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>                           
-                        </div>
-                        <hr class="my-3" />
-                        <div class="row gx-5 align-items-center">
-                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-                            <div class="col-md-6 text-md-end small">
-                                <a href="/privacy-policy">Privacy Policy</a>
-                                &middot;
-                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                                <a href="/sitemap.xml">Sitemap</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div> 
+               
                 </main>
             </div>
-            
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
         </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
+        
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <!-- Language Support (Add as needed) -->
@@ -659,7 +841,9 @@ security:
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
     <script src="/assets/js/tiles.js"></script>
     <script src="/assets/js/blog-comment.js"></script>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
 
     </body>
 </html>

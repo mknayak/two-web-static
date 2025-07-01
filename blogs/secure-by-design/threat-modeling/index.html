@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Discover how threat modeling helps you identify risks early and design secure software from the ground up using frameworks like STRIDE." />
+        <meta property='og:title' content='Threat Modeling &#x2013; Design with Risk in Mind'/>
+        <meta property='og:image' content='/assets/images/blogs/secure-by-design/banners/threat-modeling-banner.webp'/>
+        <meta property='og:description' content='Discover how threat modeling helps you identify risks early and design secure software from the ground up using frameworks like STRIDE.'/> 
+        <title>Threat Modeling &#x2013; Design with Risk in Mind | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/secure-session-management">Secure Session Management for Web and Mobile Apps</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/security-headers">Security Headers - The Silent Defenders</a>
+</div>
+
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Threat Modeling &#x2013; Design with Risk in Mind</h1>
+                    <p class="lead">Discover how threat modeling helps you identify risks early and design secure software from the ground up using frameworks like STRIDE.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/16/2025 9:00:00&#x202F;AM &middot;
+                                    10 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/threat-modeling-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section class="blog-post">
+  <h1>Secure by Design: Threat Modeling – Design with Risk in Mind</h1>
+  <p class="lead">Proactively identifying threats before they become exploits is the cornerstone of secure software design. This post introduces Threat Modeling and how it helps developers build defensible systems from day one.</p>
+
+  <h2 class="toc-title">🔍 Why Threat Modeling Matters</h2>
+  <p>Security isn't something you bolt on at the end—it's something you build in. Threat modeling allows developers and architects to answer the question: <strong>"What can go wrong?"</strong> early in the lifecycle. Microsoft famously incorporated it into their Security Development Lifecycle (SDL), drastically reducing vulnerabilities in Windows and Azure services.</p>
+
+  <h2 class="toc-title">🧠 What is Threat Modeling?</h2>
+  <p>Threat modeling is a structured process to identify and mitigate potential threats to a system. It’s most effective during design but valuable at any stage. The primary goal is to think like an attacker and design defenses before writing a single line of code.</p>
+
+  <h2 class="toc-title">🛠️ Key Steps in Threat Modeling</h2>
+  <ul>
+    <li><strong>Identify Security Objectives</strong>: What are we protecting?</li>
+    <li><strong>Create an Architecture Diagram</strong>: Visualize data flows and trust boundaries.</li>
+    <li><strong>Decompose the Application</strong>: Understand components, inputs, and outputs.</li>
+    <li><strong>Identify Threats (STRIDE)</strong>: Use threat categorization frameworks.</li>
+    <li><strong>Assess Risks</strong>: Prioritize using DREAD or CVSS.</li>
+    <li><strong>Mitigate</strong>: Implement defenses or compensating controls.</li>
+    <li><strong>Review and Iterate</strong>: Threat models must evolve.</li>
+  </ul>
+
+  <h2 class="toc-title">🧠 STRIDE and Friends: Comparing Popular Threat Modeling Frameworks</h2>
+<p>While <strong>STRIDE</strong> is the most widely used framework for identifying threats in software design, it's often used alongside—or compared with—other frameworks. Here's a breakdown of STRIDE and its “friends.”</p>
+
+<ul>
+  <li>
+    <strong>STRIDE (Microsoft):</strong> A mnemonic-based model that categorizes six types of security threats:
+    <ul>
+      <li><strong>S</strong>poofing – impersonating users</li>
+      <li><strong>T</strong>ampering – modifying data/code</li>
+      <li><strong>R</strong>epudiation – denying actions</li>
+      <li><strong>I</strong>nformation Disclosure – leaking data</li>
+      <li><strong>D</strong>enial of Service – degrading service</li>
+      <li><strong>E</strong>levation of Privilege – gaining unauthorized access</li>
+    </ul>
+    <p>Great for developers during architecture and design phases.</p>
+  </li>
+
+  <li>
+    <strong>PASTA (Process for Attack Simulation and Threat Analysis):</strong> A risk-centric, 7-stage threat modeling methodology that aligns with business impact.
+    <ul>
+      <li>Starts with business objectives</li>
+      <li>Simulates realistic attacks</li>
+      <li>Quantifies risk to prioritize remediation</li>
+    </ul>
+    <p>Ideal for organizations that want to tie threat modeling to business risk and compliance.</p>
+  </li>
+
+  <li>
+    <strong>LINDDUN (Privacy-Focused):</strong> A privacy threat modeling framework focused on data protection and GDPR-like regulations.
+    <ul>
+      <li><strong>L</strong>inkability</li>
+      <li><strong>I</strong>dentifiability</li>
+      <li><strong>N</strong>on-repudiation</li>
+      <li><strong>D</strong>etectability</li>
+      <li><strong>D</strong>isclosure of information</li>
+      <li><strong>U</strong>nauthorized actions</li>
+      <li><strong>N</strong>on-compliance</li>
+    </ul>
+    <p>Best suited for applications handling sensitive or personal data (e.g., healthcare, finance).</p>
+  </li>
+
+  <li>
+    <strong>OCTAVE (Operationally Critical Threat, Asset, and Vulnerability Evaluation):</strong> Developed by CERT, this is a strategic, organization-level model.
+    <ul>
+      <li>Focuses on identifying critical assets</li>
+      <li>Includes organizational processes and policy review</li>
+      <li>Evaluates risk posture and cultural readiness</li>
+    </ul>
+    <p>Great for large enterprises aligning security with governance.</p>
+  </li>
+
+  <li>
+    <strong>VAST (Visual, Agile, and Simple Threat Modeling):</strong> Designed for scalability and integration into Agile/DevOps pipelines.
+    <ul>
+      <li>Uses application and operational threat modeling</li>
+      <li>Supports automation and CI/CD workflows</li>
+    </ul>
+    <p>Useful for teams practicing DevSecOps and looking to scale modeling across many teams.</p>
+  </li>
+
+  <li>
+    <strong>Trike:</strong> A risk-based model that focuses on user-defined acceptable risk levels.
+    <ul>
+      <li>Builds a risk matrix for each asset and actor</li>
+      <li>Maps actions and access levels</li>
+    </ul>
+    <p>Best for systems with complex access control and policy requirements.</p>
+  </li>
+</ul>
+
+<h3>📊 Framework Comparison Summary</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Framework</th>
+      <th>Focus</th>
+      <th>Best For</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>STRIDE</strong></td>
+      <td>Design-level threats</td>
+      <td>Developers, architects</td>
+    </tr>
+    <tr>
+      <td><strong>PASTA</strong></td>
+      <td>Business risk + attack simulation</td>
+      <td>Security and risk teams</td>
+    </tr>
+    <tr>
+      <td><strong>LINDDUN</strong></td>
+      <td>Privacy & compliance threats</td>
+      <td>Apps handling personal data</td>
+    </tr>
+    <tr>
+      <td><strong>OCTAVE</strong></td>
+      <td>Organizational risk posture</td>
+      <td>Enterprise security planning</td>
+    </tr>
+    <tr>
+      <td><strong>VAST</strong></td>
+      <td>Scalable threat modeling</td>
+      <td>DevSecOps, CI/CD environments</td>
+    </tr>
+    <tr>
+      <td><strong>Trike</strong></td>
+      <td>Risk-based access modeling</td>
+      <td>Complex permissions systems</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <h2 class="toc-title">💣 Real-World Breaches and How Threat Modeling Could Help</h2>
+  <ul>
+    <li><strong>Capital One (2019):</strong> Firewall misconfiguration exposed 100M+ records. A threat model would have identified SSRF risk in AWS metadata access.</li>
+    <li><strong>Zoom (2020):</strong> URL spoofing flaw allowed attackers to mimic Zoom domains. Threat modeling could have flagged this during input/output trust boundary analysis.</li>
+  </ul>
+
+<h2 class="toc-title">🚀 Threat Modeling in Agile & DevSecOps</h2>
+<p>Traditional threat modeling practices—often done during waterfall design phases—don't scale well in modern Agile and DevSecOps environments. Teams today iterate rapidly, deploy frequently, and embrace shift-left principles. To stay effective, threat modeling must evolve from a one-time compliance checklist to a <strong>continuous, collaborative, and lightweight practice.</strong></p>
+
+<h3>⚡ Challenges in Agile Environments</h3>
+<ul>
+  <li>Short sprints leave little time for formal security reviews</li>
+  <li>Architecture evolves rapidly, often without centralized diagrams</li>
+  <li>Security teams are outnumbered by developers</li>
+</ul>
+
+<h3>✅ Adapting Threat Modeling for Agile</h3>
+<p>Agile teams can embed threat modeling without slowing delivery by adopting these approaches:</p>
+
+<ul>
+  <li><strong>Just-in-time Modeling:</strong> Conduct quick, focused threat modeling sessions during backlog grooming or sprint planning—especially for new epics or major changes.</li>
+  <li><strong>Story-driven Modeling:</strong> Add security considerations directly into user stories and acceptance criteria. Example: “As a user, I want to reset my password <em>without exposing my email or account status</em>.”</li>
+  <li><strong>Collaborative Whiteboarding:</strong> Use lightweight tools (e.g., Miro, Threat Dragon) to map out components and trust boundaries in live team sessions.</li>
+</ul>
+
+<h3>🔄 Continuous Threat Modeling in DevSecOps</h3>
+<p>DevSecOps extends Agile by tightly integrating security into the software delivery pipeline. Here's how threat modeling fits in:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Phase</th>
+      <th>Threat Modeling Activity</th>
+      <th>Tools / Tactics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Design</td>
+      <td>Identify assets, data flows, trust boundaries</td>
+      <td>Threat Dragon, Microsoft TMT, DFDs</td>
+    </tr>
+    <tr>
+      <td>Code</td>
+      <td>Embed mitigation patterns in secure code</td>
+      <td>Use of secure frameworks, coding guidelines</td>
+    </tr>
+    <tr>
+      <td>Build</td>
+      <td>Flag changes that affect threat surfaces</td>
+      <td>CI tools checking for architecture diffs</td>
+    </tr>
+    <tr>
+      <td>Test</td>
+      <td>Generate test cases from threat models</td>
+      <td>IriusRisk, custom test scripts</td>
+    </tr>
+    <tr>
+      <td>Deploy</td>
+      <td>Ensure config hardening (e.g., firewall rules)</td>
+      <td>Infrastructure as code (IaC) scanners</td>
+    </tr>
+    <tr>
+      <td>Monitor</td>
+      <td>Validate threat assumptions in production</td>
+      <td>SIEMs, anomaly detection, purple team drills</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>👥 Developer-Led Threat Modeling</h3>
+<p>Security can't scale unless developers own it. Empowering developers with simple checklists and templates makes threat modeling a natural part of their workflow.</p>
+<ul>
+  <li><strong>Threat modeling cards:</strong> Lightweight STRIDE examples tied to dev use cases</li>
+  <li><strong>Security champions:</strong> Appoint 1–2 devs per squad to lead security discussions</li>
+  <li><strong>Security as Code:</strong> Use Git repositories to track threat models and link to stories or epics</li>
+</ul>
+
+<p>With these practices, threat modeling becomes a shared responsibility—not a bottleneck.</p>
+
+
+  <h2 class="toc-title">⚙️ Tooling and Automation</h2>
+<p>Modern threat modeling is supported by a range of tools—some lightweight and open source, others enterprise-grade with deep integrations. Here's a curated list of tools you can start with:</p>
+
+<ul>
+  <li>
+    <strong><a href="https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool" target="_blank" rel="noopener">Microsoft Threat Modeling Tool</a></strong> – A free Windows desktop app that helps developers create data flow diagrams (DFDs) and auto-generates STRIDE-based threats. Great for teams using Microsoft tech stacks.
+  </li>
+  <li>
+    <strong><a href="https://owasp.org/www-project-threat-dragon/" target="_blank" rel="noopener">OWASP Threat Dragon</a></strong> – An open-source, web-based threat modeling tool developed by OWASP. Supports diagramming, threat generation, and GitHub integration. Ideal for agile teams.
+  </li>
+  <li>
+    <strong><a href="https://www.iriusrisk.com/" target="_blank" rel="noopener">IriusRisk</a></strong> – A powerful, commercial threat modeling platform that integrates with Jira, CI/CD pipelines, and architecture diagrams. Offers risk scoring, test case generation, and full DevSecOps support.
+  </li>
+  <li>
+    <strong><a href="https://www.threatmodeler.com/" target="_blank" rel="noopener">ThreatModeler</a></strong> – An enterprise tool that automates threat identification, integrates with AWS and Azure, and helps generate compliance-ready reports.
+  </li>
+  <li>
+    <strong><a href="https://securiCAD.io/" target="_blank" rel="noopener">Foreseeti securiCAD</a></strong> – A modeling and simulation tool that uses attack graphs to evaluate system resilience. Good for complex enterprise environments and infrastructure threat modeling.
+  </li>
+</ul>
+
+<p>Choose a tool based on your needs: lightweight modeling (Threat Dragon), STRIDE automation (Microsoft TMT), or full DevSecOps integration (IriusRisk, ThreatModeler).</p>
+
+
+  <hr class="my-5" />
+<h2>🔧 STRIDE Applied to an ASP.NET Core Endpoint</h2>
+<p>Let's explore how each STRIDE threat category applies to a simple <code>GET /user/profile</code> API, along with examples showing both vulnerable and secure implementations.</p>
+
+<h3>1. Spoofing</h3>
+<p><strong>Vulnerability:</strong> Endpoint allows impersonation by accepting a username as input.</p>
+<pre><code class="language-csharp">[HttpGet("user/profile")]
+public IActionResult GetProfile(string username)
+{
+    var user = _db.Users.FirstOrDefault(u => u.Username == username);
+    return Ok(user);
+}</code></pre>
+<p><strong>Fix:</strong> Use <code>[Authorize]</code> and extract the authenticated username.</p>
+<pre><code class="language-csharp">[Authorize]
+[HttpGet("user/profile")]
+public IActionResult GetProfile()
+{
+    var username = User.Identity?.Name;
+    var user = _db.Users.FirstOrDefault(u => u.Username == username);
+    return Ok(user);
+}</code></pre>
+
+<h3>2. Tampering</h3>
+<p><strong>Vulnerability:</strong> Application does not enforce HTTPS, enabling MITM attacks.</p>
+<pre><code class="language-csharp">services.AddHttpsRedirection(options => {
+    options.HttpsPort = 0; // Disabled
+});</code></pre>
+<p><strong>Fix:</strong> Force HTTPS and HSTS in production.</p>
+<pre><code class="language-csharp">app.UseHttpsRedirection();
+app.UseHsts();</code></pre>
+
+<h3>3. Repudiation</h3>
+<p><strong>Vulnerability:</strong> Changes are not logged, allowing users to deny actions.</p>
+<pre><code class="language-csharp">public IActionResult UpdateProfile(Profile profile)
+{
+    _db.Update(profile);
+    _db.SaveChanges();
+    return Ok();
+}</code></pre>
+<p><strong>Fix:</strong> Add audit logging.</p>
+<pre><code class="language-csharp">public IActionResult UpdateProfile(Profile profile)
+{
+    var actor = User.Identity?.Name;
+    _logger.LogInformation($"User {actor} updated profile at {DateTime.UtcNow}");
+
+    _db.Update(profile);
+    _db.SaveChanges();
+    return Ok();
+}</code></pre>
+
+<h3>4. Information Disclosure</h3>
+<p><strong>Vulnerability:</strong> Full user model is exposed in API response.</p>
+<pre><code class="language-csharp">return Ok(user);</code></pre>
+<p><strong>Fix:</strong> Use a DTO to control what is returned.</p>
+<pre><code class="language-csharp">public class UserDto {
+    public string Name { get; set; }
+    public string Email { get; set; }
+}
+
+return Ok(new UserDto {
+    Name = user.Name,
+    Email = user.Email
+});</code></pre>
+
+<h3>5. Denial of Service (DoS)</h3>
+<p><strong>Vulnerability:</strong> Endpoint lacks validation or throttling.</p>
+<pre><code class="language-csharp">public IActionResult Search(string term)
+{
+    var result = _db.Users.Where(u => u.Name.Contains(term)).ToList();
+    return Ok(result);
+}</code></pre>
+<p><strong>Fix:</strong> Validate and limit input/output.</p>
+<pre><code class="language-csharp">public IActionResult Search(string term)
+{
+    if (string.IsNullOrWhiteSpace(term) || term.Length > 50)
+        return BadRequest("Invalid input");
+
+    var result = _db.Users
+        .Where(u => u.Name.Contains(term))
+        .Take(100)
+        .ToList();
+
+    return Ok(result);
+}</code></pre>
+
+<h3>6. Elevation of Privilege</h3>
+<p><strong>Vulnerability:</strong> Anyone can delete users.</p>
+<pre><code class="language-csharp">[HttpPost("admin/delete-user")]
+public IActionResult DeleteUser(string id)
+{
+    _db.Users.Remove(_db.Users.Find(id));
+    _db.SaveChanges();
+    return Ok();
+}</code></pre>
+<p><strong>Fix:</strong> Require admin role.</p>
+<pre><code class="language-csharp">[Authorize(Roles = "Admin")]
+[HttpPost("admin/delete-user")]
+public IActionResult DeleteUser(string id)
+{
+    _db.Users.Remove(_db.Users.Find(id));
+    _db.SaveChanges();
+    return Ok();
+}</code></pre>
+
+<h3>📊 STRIDE Summary Table</h3>
+<table class="table table-bordered mt-4">
+  <thead class="table-light">
+    <tr>
+      <th>Threat</th>
+      <th>Exploit Example</th>
+      <th>Impact</th>
+      <th>Prevention</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Spoofing</strong></td>
+      <td>Fake username in query string</td>
+      <td>Access another user’s data</td>
+      <td>Use [Authorize] and claims</td>
+    </tr>
+    <tr>
+      <td><strong>Tampering</strong></td>
+      <td>No HTTPS</td>
+      <td>Data modified in transit</td>
+      <td>Use HTTPS + HSTS</td>
+    </tr>
+    <tr>
+      <td><strong>Repudiation</strong></td>
+      <td>No logging of edits</td>
+      <td>No accountability</td>
+      <td>Audit logs</td>
+    </tr>
+    <tr>
+      <td><strong>Information Disclosure</strong></td>
+      <td>Exposes full model</td>
+      <td>Leaks PII or credentials</td>
+      <td>Use DTOs</td>
+    </tr>
+    <tr>
+      <td><strong>DoS</strong></td>
+      <td>No input limits</td>
+      <td>App crash or overload</td>
+      <td>Validate, throttle, limit output</td>
+    </tr>
+    <tr>
+      <td><strong>Elevation of Privilege</strong></td>
+      <td>No role check</td>
+      <td>User escalates to admin</td>
+      <td>[Authorize(Roles="Admin")]</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <h2 class="toc-title">✅ Conclusion</h2>
+  <p>Threat modeling isn't just for security experts—it's a critical practice for developers and architects to embed into the SDLC. By using STRIDE and a risk-first mindset, you can identify issues before attackers do and build secure systems by design.</p>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/secure-by-design/secure-session-management">Secure Session Management for Web and Mobile Apps</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/security-headers">Security Headers - The Silent Defenders</a>
+</div>
+
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+
+    </body>
+</html>

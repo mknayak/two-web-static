@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Developer 101 - Encapsulation vs Abstraction | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <meta name="description" content="Explore the key differences between encapsulation and abstraction in object-oriented programming. Learn through real-world analogies, examples, and code how these principles promote clean, secure, and scalable software design." />
+        <meta property='og:title' content='Encapsulation vs Abstraction'/>
+        <meta property='og:image' content='/assets/images/banners/encapsulation-vs-abstraction.webp'/>
+        <meta property='og:description' content='Explore the key differences between encapsulation and abstraction in object-oriented programming. Learn through real-world analogies, examples, and code how these principles promote clean, secure, and scalable software design.'/> 
+        <title>Encapsulation vs Abstraction | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -40,35 +50,96 @@
 					
 
 <section class="bg-light py-10">
+    
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-10 col-xl-10">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/developer-101/oops-concepts">Mastering OOP Concepts</a>
+        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
+        <a class="next" href="/blogs/developer-101/comments-and-documentation">Comments and Documentation</a>
+</div>
+
+                <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Developer 101 - Encapsulation vs Abstraction</h1>
+                    <h1>Encapsulation vs Abstraction</h1>
                     <p class="lead">Explore the key differences between encapsulation and abstraction in object-oriented programming. Learn through real-world analogies, examples, and code how these principles promote clean, secure, and scalable software design.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Tech Buddy</div>
-                                <div class="single-post-meta-details-date">6/2/2025 10:00:00 AM &middot;
+                                <div class="single-post-meta-details-date">6/2/2025 10:00:00&#x202F;AM &middot;
                                     4 min read</div>
                             </div>
                         </div>
                         <div>
-                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
                                 <i class="fab fa-discord"></i> Join our Discord
                             </a>
                         </div>
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/banners/encapsulation-vs-abstraction.webp" />
+
                     <div class="single-post-text my-5">
                         <section>
-    <h1 class="mb-3">Developer 101: Encapsulation vs Abstraction</h1>
-    <p class="text-muted">Published by TechWayFit</p>
     <p>Encapsulation and abstraction are two essential principles of object-oriented programming. This blog demystifies
         them using real-life analogies, code examples, and clear distinctions.</p>
-    <h3>What is Encapsulation?</h3>
+    <h3 class="toc-title">What is Encapsulation?</h3>
     <p>Encapsulation is the process of hiding the internal state and requiring all interaction to be performed through
         an object's methods.</p>
     <pre
@@ -83,14 +154,14 @@
         return balance;
     }
 }</code></pre>
-    <h3>What is Abstraction?</h3>
+    <h3 class="toc-title">What is Abstraction?</h3>
     <p>Abstraction hides complexity by exposing only the essential features of an object or system.</p>
     <pre
         class='line-numbers'><code class='language-csharp'>public abstract class Vehicle {
     abstract void start();
     abstract void stop();
 }</code></pre>
-    <h3>Real-World Analogies</h3>
+    <h3 class="toc-title">Real-World Analogies</h3>
     <ul>
         <li><strong>Encapsulation:</strong> A medicine capsule hides bitter contents inside.</li>
         <li><strong>Abstraction:</strong> A car steering wheel lets you control the car without understanding engine
@@ -159,14 +230,14 @@ public class MyATM : ATM {
             </tr>
         </tbody>
     </table>
-    <h3>Interview Q&A</h3>
+    <h3 class="toc-title">Interview Q&A</h3>
     <ul>
         <li><strong>Q:</strong> Can abstraction exist without encapsulation?<br><strong>A:</strong> Not typically.
             Encapsulation is foundational to abstraction.</li>
         <li><strong>Q:</strong> When to use an interface?<br><strong>A:</strong> When you need to define behavior
             without implementation details.</li>
     </ul>
-    <h3>Summary</h3>
+    <h3 class="toc-title">Summary</h3>
     <ul>
         <li>Encapsulation protects internal state via access control.</li>
         <li>Abstraction simplifies usage by exposing only what is essential.</li>
@@ -175,9 +246,63 @@ public class MyATM : ATM {
 </section>
                     </div>
                 </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/developer-101/oops-concepts">Mastering OOP Concepts</a>
+        <a class="group" href="/blogs/groups/developer-101">Developer 101: Mastering the Fundamentals</a>
+        <a class="next" href="/blogs/developer-101/comments-and-documentation">Comments and Documentation</a>
+</div>
+
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -189,7 +314,8 @@ public class MyATM : ATM {
                             <textarea class="form-control" id="commentText" rows="3" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Comment</button>
-                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
                     </form>
                 </div>
                 <div class="container mt-5">
@@ -203,47 +329,50 @@ public class MyATM : ATM {
             </div>
         </div>
     </div>
-
+    </div>
 </section>
 
 
 
-                    <!-- Page Header-->
-                    
-<div id="layoutDefault_footer">
-                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-                    <div class="container px-5">
-                        <div class="row gx-5">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">Tech Way Fit</div>
-                                <div class="mb-3">Code it Right</Code></div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>                           
-                        </div>
-                        <hr class="my-3" />
-                        <div class="row gx-5 align-items-center">
-                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-                            <div class="col-md-6 text-md-end small">
-                                <a href="/privacy-policy">Privacy Policy</a>
-                                &middot;
-                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                                <a href="/sitemap.xml">Sitemap</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div> 
+               
                 </main>
             </div>
-            
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
         </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
+        
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <!-- Language Support (Add as needed) -->
@@ -252,7 +381,9 @@ public class MyATM : ATM {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
     <script src="/assets/js/tiles.js"></script>
     <script src="/assets/js/blog-comment.js"></script>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
 
     </body>
 </html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Learn how the Adapter Pattern bridges mismatched interfaces to enable seamless integration. Includes C#, Python examples, UML, and real-world use cases." />
+        <meta property='og:title' content='Adapter Pattern: Making Incompatible Interfaces Work Together'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/adapter-pattern-banner.webp'/>
+        <meta property='og:description' content='Learn how the Adapter Pattern bridges mismatched interfaces to enable seamless integration. Includes C#, Python examples, UML, and real-world use cases.'/> 
+        <title>Adapter Pattern: Making Incompatible Interfaces Work Together | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns-in-practice/prototype-pattern">Prototype Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/decorator-pattern">Decorator Pattern: Enhancing Behavior Dynamically</a>
+</div>
+
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Adapter Pattern: Making Incompatible Interfaces Work Together</h1>
+                    <p class="lead">Learn how the Adapter Pattern bridges mismatched interfaces to enable seamless integration. Includes C#, Python examples, UML, and real-world use cases.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">6/26/2025 9:00:00&#x202F;AM &middot;
+                                    10 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/adapter-pattern-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+    <h2 class="toc-title">Introduction</h2>
+  <p>The Adapter Pattern is all about making incompatible interfaces work together without modifying their source code. Think of it like hiring a translator instead of rewriting someone's thoughts in a different language  or a power plug adapter that lets one interface "fit" into another without modifying either.</p>
+
+
+  <h2 class="toc-title">Intent & Motivation</h2>
+  <ul>
+    <li><strong>Intent:</strong> Convert the interface of a class into another interface clients expect.</li>
+    <li><strong>Use case:</strong> Often used when integrating legacy systems or external libraries.</li>
+  </ul>
+  <p><em>Real-world analogy:</em> Using a USB-C to USB-A adapter to connect modern devices to old laptops.</p>
+
+  <h2 class="toc-title">Real-World Use Cases</h2>
+  <table class="table table-bordered table-striped">
+    <caption>Common Use Cases for the Adapter Pattern</caption>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Use Case</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">Legacy System Integration</td>
+      <td>Legacy Payment Gateway</td>
+      <td>Adapter enables a new app to interface with an old gateway without modifying its API.</td>
+    </tr>
+    <tr>
+      <td>Legacy Database Access Layer</td>
+      <td>Connects a legacy database layer to a modern ORM by translating calls and responses.</td>
+    </tr>
+    <tr>
+      <td>Expose SOAP via REST</td>
+      <td>Wraps SOAP endpoints in a REST interface for modern application compatibility.</td>
+    </tr>
+    <tr>
+      <td>Microsoft Dynamics ↔ SAP via BTP</td>
+      <td>Adapter layer translates data formats and API calls, enabling seamless communication.</td>
+    </tr>
+    <tr>
+      <td rowspan="2">API and Format Bridging</td>
+      <td>Third-party API Integration</td>
+      <td>Adapts an external API with incompatible data formats to match internal expectations.</td>
+    </tr>
+    <tr>
+      <td>XML ↔ JSON Translation</td>
+      <td>Adapter converts XML service responses into JSON to maintain frontend compatibility.</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Hardware & Physical Analogies</td>
+      <td>USB-C to USB-A Adapter</td>
+      <td>Physical adapter enables incompatible ports to connect—like classes with mismatched interfaces.</td>
+    </tr>
+    <tr>
+      <td>Universal Remote Control</td>
+      <td>Translates commands for different devices—similar to adapting method calls in code.</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Enterprise Software Abstractions</td>
+      <td>Logging Framework Adapter</td>
+      <td>Unifies logging calls across diverse libraries with differing interfaces.</td>
+    </tr>
+    <tr>
+      <td>Vendor SDK Wrappers</td>
+      <td>Encapsulates SDK functionality with a consistent internal interface for maintainability.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <h2 class="toc-title">Code Example</h2>
+  <p><strong>Scenario:</strong> Adapting a legacy printer class to a new printer interface.</p>
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'singleton-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'singleton-py')">Python</button>
+    </div>
+    <div id="singleton-cs" class="tab-content active">
+      <pre><code class="language-csharp">
+// Target interface
+public interface IPrinter
+{
+    void Print(string content);
+}
+
+// Adaptee
+public class LegacyPrinter
+{
+    public void PrintText(string text)
+    {
+        Console.WriteLine("Legacy Printer Output: " + text);
+    }
+}
+
+// Adapter
+public class PrinterAdapter : IPrinter
+{
+    private readonly LegacyPrinter _legacyPrinter;
+
+    public PrinterAdapter(LegacyPrinter legacyPrinter)
+    {
+        _legacyPrinter = legacyPrinter;
+    }
+
+    public void Print(string content)
+    {
+        _legacyPrinter.PrintText(content);
+    }
+}
+
+// Client
+public class ReportService
+{
+    private readonly IPrinter _printer;
+
+    public ReportService(IPrinter printer)
+    {
+        _printer = printer;
+    }
+
+    public void Generate()
+    {
+        _printer.Print("Monthly Report Content");
+    }
+}
+        </code></pre>
+    </div>
+    <div id="singleton-py" class="tab-content">
+      <pre><code class="language-python">
+# Target interface
+class Printer:
+    def print(self, content):
+        raise NotImplementedError
+
+# Adaptee
+class LegacyPrinter:
+    def print_text(self, text):
+        print(f"Legacy Printer Output: {text}")
+
+# Adapter
+class PrinterAdapter(Printer):
+    def __init__(self, legacy_printer):
+        self.legacy_printer = legacy_printer
+
+    def print(self, content):
+        self.legacy_printer.print_text(content)
+
+# Client
+class ReportService:
+    def __init__(self, printer):
+        self.printer = printer
+
+    def generate(self):
+        self.printer.print("Monthly Report Content")
+        </code></pre>
+    </div>
+  </div>
+
+ 
+  <h2 class="toc-title">UML Diagram: Adapter Pattern – Legacy Printer Example</h2>
+
+<img src="/assets/images/blogs/design-patterns/adaptor-uml.webp" alt="Adapter Pattern UML Diagram showing IPrinter, NewPrinter, LegacyPrinter, and LegacyPrinterAdaptor" style="max-width:100%; height:auto;" />
+
+<p>This UML diagram illustrates how the <strong>Adapter Pattern</strong> is used to integrate a legacy printing system into a new architecture using a common interface.</p>
+
+<h3>🧩 Components</h3>
+<ul>
+  <li><strong>IPrinter (Interface)</strong><br>
+    Defines a common <code>ColorPrint()</code> and <code>BlackAndWhitePrint()</code> method that all printers must implement. This is the <em>Target Interface</em> expected by the client.</li>
+
+  <li><strong>NewPrinter (Concrete Class)</strong><br>
+    Implements <code>IPrinter</code> directly. Represents a modern, compatible printer.</li>
+
+  <li><strong>LegacyPrinter (Adaptee)</strong><br>
+    An existing legacry printer that supports only <code>BlackAndWhitePrint()</code>. It is not compatible with <code>IPrinter</code>.</li>
+
+  <li><strong>LegacyPrinterAdaptor (Adapter)</strong><br>
+    Implements <code>IPrinter</code> and internally uses a <code>LegacyPrinter</code> instance. Translates <code>ColorPrint()</code> to <code>BlackAndWhitePrint()</code> to bridge compatibility.</li>
+</ul>
+
+<h3>🔄 Flow</h3>
+<ul>
+  <li>The <strong>client</strong> uses the <code>IPrinter</code> interface for loose coupling.</li>
+  <li><strong>NewPrinter</strong> and <strong>LegacyPrinterAdaptor</strong> are interchangeable from the client’s perspective.</li>
+  <li>The adapter makes the <strong>LegacyPrinter</strong> usable without modifying its code.</li>
+</ul>
+
+  
+  <h2 class="toc-title">When to Use the Adapter Pattern</h2>
+  <table class="table table-bordered">
+    <caption>Common Situations for Using the Adapter Pattern</caption>
+    <thead>
+      <tr>
+        <th>Situation</th>
+        <th>Adapter Benefit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Legacy code</td>
+        <td>Wrap old APIs to fit new interface</td>
+      </tr>
+      <tr>
+        <td>Vendor SDKs</td>
+        <td>Align different library interfaces</td>
+      </tr>
+      <tr>
+        <td>Microservices</td>
+        <td>Translate between incompatible contracts</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="toc-title">Pros and Cons</h2>
+  <h3>✅ Pros:</h3>
+  <ul>
+    <li>Promotes reuse of existing code</li>
+    <li>Encapsulates changes in a single class</li>
+    <li>Decouples systems from legacy interfaces</li>
+  </ul>
+
+  <h3>❌ Cons:</h3>
+  <ul>
+    <li>Can add unnecessary layers if overused</li>
+    <li>May hide complexity that should be refactored</li>
+  </ul>
+
+  <h2 class="toc-title">Quiz</h2>
+  <p>Test your understanding of the Adapter Pattern:</p>
+  <div class='question-container'     
+                     data-questions='quiz-adaptor-pattern'
+                     data-secret-key='TechWayFitSecret'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='quiz-adaptor-pattern'>NuNs44Dzo4CF5Hzk8B2npZZ6LU8RFj95XkAacDlaPp9gk4GpjuDUZ4SBANmgP+WviChX8NlrJ43YysoOGAThQ7wkbIyx3j+KvuefhcNg1EEHfi0SYWZ11phgJIojcavide+6Ii+kF7Q/5/Z0+bfSovRfznf2dnTbk3Fe3cdM6rFmujvwxldwQxy9qvgfN89QV1Bsyu/FvsU5osuceEIaA2/zbii7kh7szJu7oWjTmf5vGpc1alrNcV//HfxDnw6EpyrY6Fwq8ytbuXztdOGJq0o0HsmBRvN5Ibn+r5EXwgpb3ccij/3pii/Iq70S/R72lpyoHHlycyWvA5IBTFBF/DLXLH0Cqejd47fgZTITlVdCrGVy34t6mLKy3huwgysAUOfDrqlRPdOpvyhD81jbRHuYvyUZwC0bwaibDNF0WiekVe5adTJYVO7DTcoEc3Cue0dAZL0ufr8/b3zYp90Sh5U0X8eeT5tvRYNjbP+wYT+k6kCsBkiuDjvyezHbQQylUcd6lsC7pAiScDZ1pzcnGcdacFQbeG7cvKZsTN4aiyi6NZvv3jQ1TNxXIWpXapGsWfmu8QdafaZ5Ejn/Xoybpa7jf4sdsOFmNEi9gP3MS4hExV0pYZM38DNFxekLTMCR9SXu3ntL3AIQUOMXjyndZR3ccqy3v/SjUh6RvjTlYYfihbqjVSLjXRjjZvdc9b5oLVH3PQtxNymqI7AlIUHLOP4CNK0WU8FGPyMhkg/6MKAWpLrRjtkd2Xb3/fh8XB3znEUCeTaW/rnBTtS3aCoTgEoy9wn09NBcIoYER1p2Rn42jmZe0I9YyQ2K4pWKO6ru0JU9d4irfmIVZ32tEWdng/KI44rw1JkmXRzaL36pMkZ5am6YgbSVkFJhvhJYIajNw+gwntIjZ2CmRfpv9SoMCL7jcTktj9RjpyMHy+EOawVSkiWXsdXIbogVmRwCdUSwrdeQ/bLSI9vlfIKlfg+TU/LWgjqKK077zW1VrE6ysJwrbJsuTKFUo+b9Rra9PHjHE5zKZD+Z/zc1fWEYTLfYAqdsamniuitxc1k1fbQXSSLAtx2N9SA0OqgULu1flByQUISEajI+32u0Wy/4EDP5qtZA4D7PDO9BFg4EA+gNYGViXQx0PhPMY0ECIKfOMjhLg5VdUCFVlStc0HcHtCKPWen/90VqfqjLqrYohgwjiyoRbIvGY+cc0neGL9l+AEWWxfZIujyHwq3o0qTl96PdWsMzONIG3yXMGsCH4neZtLMZuapdcFEnyne7V/UQh9oxsVNREJXP9wKev5tkWmYMnvEOdUeZ8N8draiQxVdcdKYoDgwpbEzq/6Anhsiu0BuSdHv84ATUITNWSH3Hfvn0YWwjDc65lhHw/TRa1HZd+q7N+g3WTIvcz1rxQUNO3lbAtB4paW+M37EAexP2JXkJ79XYolY7z7bXI+X/XaFiNv9BahfJJFRH8Hp2JLIdrVnztu8LtygaZGanE7WnhvUDrFDP9Jdddm3NC2ql+7wfGxNH4tgBWP3YqSPiuz35u27RSk0hDW5sg67TETabHJLib8j1KxtDkX259kJtvh9DeHiykZhCZN2/u09ZF2+WnAimxebcrX5zi3NQXdNlPNCCebND4JmL6IBb5WQ5/tUC5l3qKLtHZ6VArtBOXa40TZjgYDsn3UUY++ZX2yF0GEhRVZ45MzElgo/mNAiW+ELOS8NQ82I70qlMQ1KjY81FCWM3w9HGbpWMESZUFuYapnTCzY+z24Rfhl6SQMZtVHgbwpzaLORdFYm8tRjgsxIGC02+UxA7swDrCY8RcVsGt7SgUgRPCTeAas3hSeCQ58mUiv4zfesmrXERHYit6SUBzXsGZHAFuO0QUgIxTc79ZXs0Xg8A8ZcmpvIXhrypnoiSkVHrOv6m/KyapoCoXn4DMgjSzydpi5+KKOIhj8EPBUUy9pEnH/e8I6r5W68jgSx8g3MoSbBaiJw0PKZkJR4qO2FpIMiwKVCHrzBYlZzt5pY3ySS5Fi6stLtgzYNO+YmC1+gQVHfxVNMqUTDoaSzVlMApMJwgWRBDrCSlqjebGr+bsegdB6+jYP3sUWgEbd/rh877ZWLi+bRJn2LW2CSAIHtGcxfDz4rOAnFHF9mxcPVUE+kG0EE9WsBiW+oNteXeQ5iJuK80POpX9uvIOj0ydVhNFeuUZ1YTAiv9bvS5XSVBzvS9eFhLuW4n3Y7TQBbPeQFJoRezUTRFb7YGn+coHVX4bP359ogoz28zMYGHyFFppaTqX2A6SUEVbsC0WcQgqrruzDWyQZ184Ughu/J7nFN12U/i1/tFnoTjAyosGa6Fqsi44DJYt0Ia/oHgCL/jr+dsr/MbXuBkO7Ho719IZ+8bbmTfhM+fAwL/+Ql/RxjimPkJPrkwY1atLEvYhyZ6ffLOwG1tWOYiKMMttR1WjtdIWg2WBiYfsXKRRkzXpKKH1E3iprNHDcyJcvNP8unzf5XtJQjESfRzFBp1cFzGL4IteHSGnUFGjGSuMsIOUUuKki3U56c17eC1LPjIOLdOZTf2sAwuCMHmW94t0r9iEUNsaS0Xf3dT8r00cX/psvgxzulTBuViP4WxwZeYztV9Tz8Ab6O3ZereZQYcasW3QwDA8DbRIiPrCFzpbcCE6whTzy52hYTQUQftnkPqmi+FwpGBdX7Qt/2dnVdtg+B7YSEzOibq8FiIiU8I4yFRK856u5Mcg+8ytHwbg8owEe4HP8d78zUeHEskn+U4+UtY9JZgJF4MQv41ZNTjsYs4Vi/ymncmqUS9Uvo1XHS7dzR3c14+DN5CAIYGBTWF7K1vqnpcSE2LybgqsepqYoan/89rQkXbviljWA2Hf2qv1m24sH5VY55i8puS20MlbDePT5HWkkeXh7K/nW8386GAOUati5l3FlG2q/7djWR5jybIaShsg52DRHjbuo+qcQia9i7eFeQv7IBERreP2BMG7BtPCripEN5hSpCHNBcEP/Wih3+X8fmenBPdzne5J3TzY1SD4wr96RhJmUJkWx+4fph6aF8eVsaEj4Vckc51L/iSD37nLRBCw4thgj6jiPJ89pd7BAWe0VvI8ymBKXCXUI3zCBHFj6WlDARxDGUfwbn6HmOM0lY0ibBY6r7c9j6QE4NlWhW1kfxdq88DNFFx8NhfUG4OhwTXY9kcdrdYh/Dh03spU2JtUVsM+8O1rpWly1TgT5sOlVmIXarN5FuNyA8/XrX+bEtNcBzXv109YKilOoFo4aBJcrlVE/3H0NOSS84Go/KyrRqmf9HDqYrxrmaLt0H2QkQezmrWsPgIC6qvssZrS5PM1tRqJ7dFFIqij3dB4FFBE3udtK+7yds5mzWrWmSRaBjP1X49bR1dBvbhKhjIh3CaJkfRbY69C2t/EM36Mvc/sLBRHRpaRLC+U9yCFQz0ushm44dE34WRiVYgFWE14LjMi7p4rvlCky5YiiTfWIN/7qF2iiqMFY6lX2jdnv1hDhTwL9Z6cNg2u2W0jaW6KQdZ8bciU7O1VAITTWDNgs5rhaZ2AGcKtzkKKcflx9BOFAgxwNF/mpSk2++h7hgU/iq55eppUMtvU/xljLFlwR2VMHUE1ZWJ9ASOx1zmgi9LrdHFB5jz8GxyoVRxERDVr4XxNkfhxve86v8lLeG3</script>
+                </div>
+
+  <h2 class="toc-title">Conclusion</h2>
+  <p>The Adapter Pattern is a powerful tool for bridging gaps between old and new systems. It allows systems to evolve without breaking existing code and is especially useful when working with third-party APIs or legacy code.</p>
+  <p>Next up in the series: <strong>Decorator Pattern</strong> – Learn how to dynamically extend behavior without altering the original class.</p>
+
+</section>
+                    </div>
+                </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns-in-practice/prototype-pattern">Prototype Pattern</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/decorator-pattern">Decorator Pattern: Enhancing Behavior Dynamically</a>
+</div>
+
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+
+    </body>
+</html>

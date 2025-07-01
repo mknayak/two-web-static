@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Understand how the Proxy Pattern provides a surrogate to control access to real objects, allowing for behavior like access control, lazy loading, and logging. Includes C#/Python examples, UML, and real-world use cases." />
+        <meta property='og:title' content='Proxy Pattern: Control Access and Enhance Behavior'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/proxy-pattern-banner.webp'/>
+        <meta property='og:description' content='Understand how the Proxy Pattern provides a surrogate to control access to real objects, allowing for behavior like access control, lazy loading, and logging. Includes C#/Python examples, UML, and real-world use cases.'/> 
+        <title>Proxy Pattern: Control Access and Enhance Behavior | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/decorator-pattern">Decorator Pattern: Enhancing Behavior Dynamically</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/proxy-decorator-adapter-comparison">Proxy vs Decorator vs Adapter: Choose the Right Pattern</a>
+</div>
+
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Proxy Pattern: Control Access and Enhance Behavior</h1>
+                    <p class="lead">Understand how the Proxy Pattern provides a surrogate to control access to real objects, allowing for behavior like access control, lazy loading, and logging. Includes C#/Python examples, UML, and real-world use cases.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">7/1/2025 10:00:00&#x202F;AM &middot;
+                                    8 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/proxy-pattern-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <p>The Proxy Pattern belongs to the structural design pattern family, which focuses on how objects are composed to form
+    larger structures.
+
+    It introduces a "surrogate" or placeholder object—called the Proxy—that stands in for a RealSubject (the actual
+    object doing the work).</p>
+
+<h2 class="toc-title">📌 Intent</h2>
+<p>The proxy controls interaction with the real object and can add new behavior <strong>without changing the real
+        object’s code</strong>—perfect when:
+</p>
+<ul>
+    <li>
+        You need access control (e.g. only admins allowed to perform certain actions)</li>
+    <li>
+        You want to implement lazy loading (create the real object only when it’s actually needed)</li>
+    <li>
+        You’re adding features like logging, caching, or monitoring without polluting the original class
+    </li>
+</ul>
+
+
+<h2 class="toc-title">🔍 Use Cases</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Scenario</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Remote Proxy</td>
+        <td>Represents an object in another address space</td>
+    </tr>
+    <tr>
+        <td>Virtual Proxy</td>
+        <td>Delays creation of expensive objects</td>
+    </tr>
+    <tr>
+        <td>Protection Proxy</td>
+        <td>Controls access based on user roles</td>
+    </tr>
+    <tr>
+        <td>Smart Reference Proxy</td>
+        <td>Adds behavior like logging, caching</td>
+    </tr>
+</table>
+
+<h2 class="toc-title">📐 UML Structure</h2>
+<p><img class="max-100" src="/assets/images/blogs/design-patterns/proxy-pattern-uml_sm.webp"></p>
+
+<h2 class="toc-title">💻 Code Examples</h2>
+<div class="code-tabs">
+    <div class="tab-buttons">
+        <button onclick="showTab(this,'csharp')" class="active">C#</button>
+        <button onclick="showTab(this,'python')">Python</button>
+    </div>
+
+    <div id="csharp" class="tab-content active">
+        <pre><code class="language-csharp">public interface IBankAccount {
+    void Withdraw(double amount);
+}
+
+public class RealBankAccount : IBankAccount {
+    public void Withdraw(double amount) {
+        Console.WriteLine($"Withdrew {amount} successfully.");
+    }
+}
+
+public class BankAccountProxy : IBankAccount {
+    private RealBankAccount _realAccount = new RealBankAccount();
+    private string _role;
+
+    public BankAccountProxy(string role) {
+        _role = role;
+    }
+
+    public void Withdraw(double amount) {
+        if (_role == "admin") _realAccount.Withdraw(amount);
+        else Console.WriteLine("Access Denied.");
+    }
+}</code></pre>
+    </div>
+
+    <div id="python" class="tab-content">
+        <pre><code class="language-python">from abc import ABC, abstractmethod
+
+class IBankAccount(ABC):
+    @abstractmethod
+    def withdraw(self, amount): pass
+
+class RealBankAccount(IBankAccount):
+    def withdraw(self, amount):
+        print(f"Withdrew {amount} successfully.")
+
+class BankAccountProxy(IBankAccount):
+    def __init__(self, role):
+        self._real_account = RealBankAccount()
+        self._role = role
+
+    def withdraw(self, amount):
+        if self._role == "admin":
+            self._real_account.withdraw(amount)
+        else:
+            print("Access Denied.")</code></pre>
+    </div>
+</div>
+<h2 class="toc-title">🌐 Real-World Examples</h2>
+<div class="section">
+    <h3>Lazy Loading in Entity Framework</h3>
+    <ul>
+      <li><strong>What it is:</strong> A form of the <em>Virtual Proxy</em>.</li>
+      <li><strong>How it works:</strong> Related data is represented by a proxy but not fetched from the database until needed.</li>
+      <li><strong>Why it matters:</strong> Improves performance by avoiding unnecessary object creation until it's accessed.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Spring AOP Proxies</h3>
+    <ul>
+      <li><strong>What it is:</strong> An example of a <em>Smart Proxy</em> in the Spring Framework.</li>
+      <li><strong>How it works:</strong> Uses dynamic proxies to inject behavior like logging or transactions around core business logic.</li>
+      <li><strong>Why it matters:</strong> Adds behavior transparently without changing the actual business classes.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Python Decorators as Smart Proxies</h3>
+    <ul>
+      <li><strong>What it is:</strong> Decorators act as <em>Smart Proxies</em> by wrapping functions/methods.</li>
+      <li><strong>How it works:</strong> A decorator intercepts a function call to insert behaviors like caching or access control.</li>
+      <li><strong>Why it matters:</strong> Keeps code modular and extensible without modifying the original function.</li>
+    </ul>
+  </div>
+
+<h2 class="toc-title">✅ Advantages</h2>
+<ul>
+    <li>Access control and behavior extension</li>
+    <li>Can add logging, caching without modifying the subject</li>
+</ul>
+
+<h2 class="toc-title">⚠️ Disadvantages</h2>
+<ul>
+    <li>Increased complexity</li>
+    <li>Too many proxies may clutter design</li>
+</ul>
+
+<h2 class="toc-title">📊 Summary Table</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Feature</th>
+        <th>Proxy Pattern</th>
+    </tr>
+    <tr>
+        <td>Purpose</td>
+        <td>Control access / add behavior</td>
+    </tr>
+    <tr>
+        <td>Types</td>
+        <td>Remote, Virtual, Protection, Smart</td>
+    </tr>
+    <tr>
+        <td>Key Concept</td>
+        <td>Surrogate object delegates or filters actions</td>
+    </tr>
+    <tr>
+        <td>UML Components</td>
+        <td>Subject, RealSubject, Proxy</td>
+    </tr>
+</table>
+
+<h2 class="toc-title">🧠 Quiz Preview</h2>
+<p>Test your understanding of the Proxy Pattern with our interactive quiz on TechWayFit!</p>
+
+<h2>🔗 Further Reading</h2>
+<p>Explore more design patterns and their applications in our <a href="/blogs/design-patterns/">Design Patterns
+        Series</a>.</p>
+                    </div>
+                </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="prev" href="/blogs/design-patterns/decorator-pattern">Decorator Pattern: Enhancing Behavior Dynamically</a>
+        <a class="group" href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+        <a class="next" href="/blogs/design-patterns/proxy-decorator-adapter-comparison">Proxy vs Decorator vs Adapter: Choose the Right Pattern</a>
+</div>
+
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+
+    </body>
+</html>

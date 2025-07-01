@@ -1,7 +1,18 @@
 // blog-comment.js
+    function showTab(button, id) {
+      const tabs = button.closest('.code-tabs');
+      const contents = tabs.querySelectorAll('.tab-content');
+      const buttons = tabs.querySelectorAll('button');
+
+      contents.forEach(content => content.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      tabs.querySelector(`#${id}`).classList.add('active');
+      button.classList.add('active');
+    }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkoD3mplS7jhmlYkl3VyOe8Bj2vozjQygXiOGPiZk3lbgXxAoDXQSfTWseAZ9eZfNd/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWiiuWQJPBKV7T208yIjMjNBbAZACVRhiFjxkx9fGnR2ikpzK_nHR5tVYvaSevnUD-/exec';
   const blogUrl = window.location.href;
   let currentPage = 1;
   const pageSize = 5;
@@ -116,4 +127,51 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   loadComments(); // Initial load
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const tocContainer = document.getElementById('toc');
+  if (!tocContainer) return;
+
+  const tocList = tocContainer.querySelector('.toc-list');
+  const headings = document.querySelectorAll('.toc-title'); // Use '.toc-title' if preferred
+
+  headings.forEach((heading, index) => {
+    if (!heading.id) {
+      heading.id = 'section-' + index;
+    }
+
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + heading.id;
+    a.textContent = heading.textContent || '🏠 Home';
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Reveal ToC only after it's built
+  if (headings.length > 0) {
+    tocContainer.classList.remove('d-none');
+tocContainer.classList.add('visible', 'd-block');
+  }
+
+  // ScrollSpy behavior
+  const links = tocList.querySelectorAll('a');
+  const sections = [...links].map(link => document.querySelector(link.getAttribute('href')));
+
+  function highlightLink() {
+    let index = sections.findIndex(section =>
+      section.getBoundingClientRect().top > 0
+    );
+    if (index === -1) index = sections.length - 1;
+    if (index > 0) index -= 1;
+
+    links.forEach(link => link.classList.remove('active'));
+    if (sections[index]) {
+      const activeLink = tocList.querySelector(`a[href="#${sections[index].id}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  }
+
+  document.addEventListener('scroll', highlightLink);
+  highlightLink();
 });

@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Secure By Design - Why Security Matters | TechWayFit</title>
-        <link href="/assets/css/twf-styles.css" rel="stylesheet" />
-        
+        <meta name="description" content="Security is no longer optional&#x2014;it&#x27;s foundational. This post explores why security is critical by examining real-world breaches like Equifax, Target, and SolarWinds. Learn how these incidents happened, what went wrong, and how developers can adopt a security-first mindset from the start." />
+        <meta property='og:title' content='Why Security Matters'/>
+        <meta property='og:image' content='/assets/images/blogs/secure-by-design/banners/why-security-matters.webp'/>
+        <meta property='og:description' content='Security is no longer optional&#x2014;it&#x27;s foundational. This post explores why security is critical by examining real-world breaches like Equifax, Target, and SolarWinds. Learn how these incidents happened, what went wrong, and how developers can adopt a security-first mindset from the start.'/> 
+        <title>Why Security Matters | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog-min.css" rel="stylesheet" />
+         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
 
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -40,39 +50,102 @@
 					
 
 <section class="bg-light py-10">
+    
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-10 col-xl-10">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="end" href="/blogs">Return to Blog Series</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/owasp-top10-code-examples">The OWASP Top 10 Explained with Real Code Examples</a>
+</div>
+
+                <div class="toc-title"></div>
                 <div class="single-post">
-                    <h1>Secure By Design - Why Security Matters</h1>
+                    <h1>Why Security Matters</h1>
                     <p class="lead">Security is no longer optional&#x2014;it&#x27;s foundational. This post explores why security is critical by examining real-world breaches like Equifax, Target, and SolarWinds. Learn how these incidents happened, what went wrong, and how developers can adopt a security-first mindset from the start.</p>
                     <div class="d-flex align-items-center justify-content-between mb-5">
                         <div class="single-post-meta me-4">
                             <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
                             <div class="single-post-meta-details">
                                 <div class="single-post-meta-details-name">Tech Buddy</div>
-                                <div class="single-post-meta-details-date">6/10/2025 10:00:00 AM &middot;
+                                <div class="single-post-meta-details-date">6/10/2025 10:00:00&#x202F;AM &middot;
                                     5 min read</div>
                             </div>
                         </div>
                         <div>
-                            <a href="https://discord.gg/7Z9xjfAS" target="_blank" class="btn btn-outline-primary mt-2">
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
                                 <i class="fab fa-discord"></i> Join our Discord
                             </a>
                         </div>
                     </div>
                     <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/secure-by-design/banners/why-security-matters.webp" />
+
                     <div class="single-post-text my-5">
                         <section>
 
-    <h2>Introduction: The High Stakes of Software Security</h2>
+    <h2 class="toc-title">Introduction: The High Stakes of Software Security</h2>
     <p>
         Security is foundational, not optional. Developers, not just IT security teams, are responsible for preventing
         breaches that can cost millions and shatter trust. From misconfigurations to outdated libraries, small gaps can
         have devastating consequences.
     </p>
 
-    <h2>The Cost of Ignorance: Real-World Breach Stories</h2>
+    <h2 class="toc-title">The Cost of Ignorance: Real-World Breach Stories</h2>
 
     <img src="/assets/images/blogs/secure-by-design/cards/security-breaches-timeline.webp"
         alt="Timeline of Real-World Security Breaches" class="img-fluid mb-3" />
@@ -184,7 +257,7 @@
         </table>
     </div>
 
-    <h2>Common Causes of Breaches & How to Prevent Them</h2>
+    <h2 class="toc-title">Common Causes of Breaches & How to Prevent Them</h2>
     <table class="table table-bordered mt-4">
         <thead class="thead-light">
             <tr>
@@ -234,12 +307,12 @@
         </tbody>
     </table>
 
-    <h2>How Developers Can Make a Difference</h2>
+    <h2 class="toc-title">How Developers Can Make a Difference</h2>
 
     <img src="/assets/images/blogs/secure-by-design/cards/developer-security-checklist.webp"
         alt="Developer Security Checklist" class="img-fluid mb-3" />
 
-    <h2>How Developers Make a Difference – Real-World Examples</h2>
+    <h2 class="toc-title">How Developers Make a Difference – Real-World Examples</h2>
 
     <table class="table table-bordered mt-4">
         <thead class="thead-light">
@@ -287,7 +360,7 @@
     </table>
 
 
-    <h2>Conclusion</h2>
+    <h2 class="toc-title">Conclusion</h2>
     <p>
         Security belongs to everyone—not just the security team. These breach stories
         underscore how simple flaws can escalate into large-scale incidents. Stay tuned
@@ -346,9 +419,63 @@
   -->
                     </div>
                 </div>
+                
+    
+<style>
+.blog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.blog-nav a {
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  flex: 1 1 280px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.blog-nav a.prev,
+.blog-nav a.next {
+  background-color: #f0f8ff;
+  color: #0044cc;
+  border: 1px solid #d0e2ff;
+}
+
+.blog-nav a.group {
+  background-color: #f5e6ff;
+  color: #6f42c1;
+  border: 1px solid #e5d4fa;
+}
+
+.blog-nav a:hover {
+  background-color: #e8f0fe;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.blog-nav a.end {
+  background-color: #e7e9ec;
+  border: 1px solid #cdcecf;
+}
+</style>
+
+<div class="blog-nav">
+        <a class="end" href="/blogs">Return to Blog Series</a>
+        <a class="group" href="/blogs/groups/secure-by-design">Secure from Line One: Embedding Security in Dev Culture</a>
+        <a class="next" href="/blogs/secure-by-design/owasp-top10-code-examples">The OWASP Top 10 Explained with Real Code Examples</a>
+</div>
+
                 <hr class="my-5" />
                 <div class="container mt-5">
-                    <h4 class="mb-3">Leave a Comment</h4>
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
                     <form id="commentForm">
                         <input type="hidden" id="blogUrl" value="" />
                         <div class="mb-3">
@@ -360,7 +487,8 @@
                             <textarea class="form-control" id="commentText" rows="3" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Comment</button>
-                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!</div>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
                     </form>
                 </div>
                 <div class="container mt-5">
@@ -374,47 +502,50 @@
             </div>
         </div>
     </div>
-
+    </div>
 </section>
 
 
 
-                    <!-- Page Header-->
-                    
-<div id="layoutDefault_footer">
-                <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-                    <div class="container px-5">
-                        <div class="row gx-5">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">Tech Way Fit</div>
-                                <div class="mb-3">Code it Right</Code></div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>                           
-                        </div>
-                        <hr class="my-3" />
-                        <div class="row gx-5 align-items-center">
-                            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-                            <div class="col-md-6 text-md-end small">
-                                <a href="/privacy-policy">Privacy Policy</a>
-                                &middot;
-                                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                                <a href="/sitemap.xml">Sitemap</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div> 
+               
                 </main>
             </div>
-            
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
         </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
+        
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <!-- Language Support (Add as needed) -->
@@ -423,7 +554,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
     <script src="/assets/js/tiles.js"></script>
     <script src="/assets/js/blog-comment.js"></script>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
 
     </body>
 </html>
