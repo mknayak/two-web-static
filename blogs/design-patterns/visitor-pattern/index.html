@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Learn how the Visitor Pattern helps you add new operations to existing object structures without modifying their classes. Includes real-world examples, UML, and C#/Python code." />
+        <meta property='og:title' content='Visitor Pattern &#x2013; Add Behavior Without Changing Classes'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/visitor-pattern.webp'/>
+        <meta property='og:description' content='Learn how the Visitor Pattern helps you add new operations to existing object structures without modifying their classes. Includes real-world examples, UML, and C#/Python code.'/> 
+        <title>Visitor Pattern &#x2013; Add Behavior Without Changing Classes | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/state-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/template-method-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/state-pattern"><span aria-hidden="true">&#8592;</span> State Pattern &#x2013; Let Objects Evolve Their Behavior Dynamically</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/template-method-pattern">Template Method Pattern &#x2013; Define the Algorithm Skeleton <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Visitor Pattern &#x2013; Add Behavior Without Changing Classes</h1>
+                    <p class="lead">Learn how the Visitor Pattern helps you add new operations to existing object structures without modifying their classes. Includes real-world examples, UML, and C#/Python code.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">05-Jul, 2025 &middot;
+                                    7 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/visitor-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <p>The Visitor Pattern lets you define new operations on objects without changing their classes. It's perfect for when you have an object structure and want to perform varying operations across its elements.</p>
+
+<h2 class="toc-title">🔧 Problem It Solves</h2>
+<p>
+  Imagine you have a set of different elements (like shapes, document parts, or nodes in a tree) and you want to perform various operations on them—such as rendering, exporting, validation, or analytics. If you add these operations directly to the element classes, the code becomes cluttered and violates the Single Responsibility Principle.
+</p>
+<p>
+  The Visitor Pattern solves this by letting you define new operations in separate visitor classes, keeping element classes clean and focused. Each visitor can implement a different operation, and you can add new visitors without modifying the element classes. This is especially useful when:
+</p>
+<ul>
+  <li>You need to perform unrelated operations across a set of objects with different types.</li>
+  <li>The object structure is stable, but operations on them change or grow frequently.</li>
+  <li>You want to follow the Open/Closed Principle—open for extension, closed for modification.</li>
+</ul>
+<p>
+  For example, in a graphics editor, you might have shapes like <code>Circle</code> and <code>Rectangle</code>. Instead of adding export, print, and area calculation methods to each shape, you create visitors for each operation. This way, adding a new operation is as simple as creating a new visitor.
+</p>
+
+<h2 class="toc-title">🧱 Structure & Participants</h2>
+<ul>
+  <li><strong>Visitor</strong>: Declares visit methods for each type of element.</li>
+  <li><strong>ConcreteVisitor</strong>: Implements the operations for each type.</li>
+  <li><strong>Element</strong>: Accepts a visitor object.</li>
+  <li><strong>ConcreteElement</strong>: Implements accept method.</li>
+  <li><strong>Client</strong>: Runs the operation through visitors.</li>
+</ul>
+
+<h2 class="toc-title">🧭 UML Diagram (Mermaid)</h2>
+<pre><code class="mermaid">
+classDiagram
+    class Visitor {
+        +visitElementA(a: ElementA)
+        +visitElementB(b: ElementB)
+    }
+    class ConcreteVisitor
+    class Element {
+        +accept(v: Visitor)
+    }
+    class ElementA
+    class ElementB
+
+    Visitor <|-- ConcreteVisitor
+    Element <|-- ElementA
+    Element <|-- ElementB
+    ElementA --> Visitor : accept(visitor)
+    ElementB --> Visitor : accept(visitor)
+</code></pre>
+
+<h2 class="toc-title">💻 Code Examples</h2>
+<div class="code-tabs">    
+  <div class="tab-buttons">
+    <button onclick="showTab(this,'csharp')" class="active">C#</button>
+    <button onclick="showTab(this, 'python')">Python</button>
+  </div>
+
+  <div id="csharp" class="tab-content active">
+  <pre><code class="language-csharp">// C# Example
+  interface IIncomeSource {
+    void Accept(IIncomeVisitor visitor);
+}
+
+class SalaryIncome : IIncomeSource {
+    public double GrossIncome { get; set; } = 80000;
+    public void Accept(IIncomeVisitor visitor) => visitor.Visit(this);
+}
+
+class RentalIncome : IIncomeSource {
+    public double MonthlyRent { get; set; } = 2500;
+    public int MonthsRented { get; set; } = 10;
+    public void Accept(IIncomeVisitor visitor) => visitor.Visit(this);
+}
+
+class CapitalGains : IIncomeSource {
+    public double GainAmount { get; set; } = 15000;
+    public bool LongTerm { get; set; } = true;
+    public void Accept(IIncomeVisitor visitor) => visitor.Visit(this);
+}
+interface IIncomeVisitor {
+    void Visit(SalaryIncome salary);
+    void Visit(RentalIncome rental);
+    void Visit(CapitalGains gains);
+}
+
+class TaxCalculatorVisitor : IIncomeVisitor {
+    public void Visit(SalaryIncome salary) =>
+        Console.WriteLine($"Salary Tax: ${salary.GrossIncome * 0.20}");
+
+    public void Visit(RentalIncome rental) {
+        double income = rental.MonthlyRent * rental.MonthsRented;
+        Console.WriteLine($"Rental Tax: ${income * 0.15}");
+    }
+
+    public void Visit(CapitalGains gains) {
+        double rate = gains.LongTerm ? 0.10 : 0.25;
+        Console.WriteLine($"Capital Gains Tax: ${gains.GainAmount * rate}");
+    }
+}
+
+class AuditVisitor : IIncomeVisitor {
+    public void Visit(SalaryIncome salary) =>
+        Console.WriteLine(salary.GrossIncome > 100000
+            ? "High-income salary: audit triggered"
+            : "Salary within normal range");
+
+    public void Visit(RentalIncome rental) =>
+        Console.WriteLine(rental.MonthsRented < 6
+            ? "Low rental activity: audit triggered"
+            : "Rental records are stable");
+
+    public void Visit(CapitalGains gains) =>
+        Console.WriteLine(gains.GainAmount > 50000
+            ? "Large capital gain: audit triggered"
+            : "Capital gains clear");
+}
+class Program {
+    static void Main() {
+        var incomes = new List<IIncomeSource> {
+            new SalaryIncome(),
+            new RentalIncome(),
+            new CapitalGains()
+        };
+
+        IIncomeVisitor taxVisitor = new TaxCalculatorVisitor();
+        IIncomeVisitor auditVisitor = new AuditVisitor();
+
+        Console.WriteLine("--- Tax Calculations ---");
+        incomes.ForEach(i => i.Accept(taxVisitor));
+
+        Console.WriteLine("\n--- Audit Report ---");
+        incomes.ForEach(i => i.Accept(auditVisitor));
+    }
+}
+//Output
+///--- Tax Calculations ---
+//Salary Tax: $16000
+//Rental Tax: $3750
+//Capital Gains Tax: $1500
+
+//--- Audit Report ---
+//Salary within normal range
+//Rental records are stable
+//Capital gains clear
+///
+  </code></pre>
+  </div>
+
+  <div id="python" class="tab-content">
+  <pre><code class="language-python"># Python Example
+  class IncomeSource:
+    def accept(self, visitor):
+        raise NotImplementedError()
+
+class SalaryIncome(IncomeSource):
+    def __init__(self, gross_income=80000):
+        self.gross_income = gross_income
+
+    def accept(self, visitor):
+        visitor.visit_salary(self)
+
+class RentalIncome(IncomeSource):
+    def __init__(self, monthly_rent=2500, months_rented=10):
+        self.monthly_rent = monthly_rent
+        self.months_rented = months_rented
+
+    def accept(self, visitor):
+        visitor.visit_rental(self)
+
+class CapitalGains(IncomeSource):
+    def __init__(self, gain_amount=15000, long_term=True):
+        self.gain_amount = gain_amount
+        self.long_term = long_term
+
+    def accept(self, visitor):
+        visitor.visit_gains(self)
+class IncomeVisitor:
+    def visit_salary(self, salary): pass
+    def visit_rental(self, rental): pass
+    def visit_gains(self, gains): pass
+
+class TaxCalculatorVisitor(IncomeVisitor):
+    def visit_salary(self, salary):
+        print(f"Salary Tax: ${salary.gross_income * 0.20:.2f}")
+
+    def visit_rental(self, rental):
+        income = rental.monthly_rent * rental.months_rented
+        print(f"Rental Tax: ${income * 0.15:.2f}")
+
+    def visit_gains(self, gains):
+        rate = 0.10 if gains.long_term else 0.25
+        print(f"Capital Gains Tax: ${gains.gain_amount * rate:.2f}")
+
+class AuditVisitor(IncomeVisitor):
+    def visit_salary(self, salary):
+        print("High-income salary: audit triggered" if salary.gross_income > 100000 else "Salary within normal range")
+
+    def visit_rental(self, rental):
+        print("Low rental activity: audit triggered" if rental.months_rented < 6 else "Rental records are stable")
+
+    def visit_gains(self, gains):
+        print("Large capital gain: audit triggered" if gains.gain_amount > 50000 else "Capital gains clear")
+if __name__ == "__main__":
+    incomes = [
+        SalaryIncome(),
+        RentalIncome(),
+        CapitalGains()
+    ]
+
+    tax_visitor = TaxCalculatorVisitor()
+    audit_visitor = AuditVisitor()
+
+    print("--- Tax Calculations ---")
+    for income in incomes:
+        income.accept(tax_visitor)
+
+    print("\n--- Audit Report ---")
+    for income in incomes:
+        income.accept(audit_visitor)
+
+
+# Output
+#--- Tax Calculations ---
+#Salary Tax: $16000
+#Rental Tax: $3750
+#Capital Gains Tax: $1500
+
+#--- Audit Report ---
+#Salary within normal range
+#Rental records are stable
+#Capital gains clear
+#
+  </code></pre>
+  </div>
+</div>
+<h2 class="toc-title">📚 Understnad the example</h2>
+<div>
+  <code class="mermaid">
+  classDiagram
+    class IIncomeSource {
+        +accept(visitor: IIncomeVisitor)
+    }
+
+    class SalaryIncome {
+        +gross_income
+        +accept(visitor: IIncomeVisitor)
+    }
+
+    class RentalIncome {
+        +monthly_rent
+        +months_rented
+        +accept(visitor: IIncomeVisitor)
+    }
+
+    class CapitalGains {
+        +gain_amount
+        +long_term
+        +accept(visitor: IIncomeVisitor)
+    }
+
+    IIncomeSource <|-- SalaryIncome
+    IIncomeSource <|-- RentalIncome
+    IIncomeSource <|-- CapitalGains
+
+    class IIncomeVisitor {
+        +visit_salary(salary: SalaryIncome)
+        +visit_rental(rental: RentalIncome)
+        +visit_gains(gains: CapitalGains)
+    }
+
+    class TaxCalculatorVisitor {
+        +visit_salary(SalaryIncome)
+        +visit_rental(RentalIncome)
+        +visit_gains(CapitalGains)
+    }
+
+    class AuditVisitor {
+        +visit_salary(SalaryIncome)
+        +visit_rental(RentalIncome)
+        +visit_gains(CapitalGains)
+    }
+
+    IIncomeVisitor <|-- TaxCalculatorVisitor
+    IIncomeVisitor <|-- AuditVisitor
+
+    SalaryIncome --> IIncomeVisitor : Accepts
+    RentalIncome --> IIncomeVisitor : Accepts
+    CapitalGains --> IIncomeVisitor : Accepts
+</code> 
+<section>
+  <h2>🧠 What This Shows</h2>
+  <ul>
+    <li><code>IIncomeSource</code> is the interface for all income types.</li>
+    <li><code>SalaryIncome</code>, <code>RentalIncome</code>, and <code>CapitalGains</code> implement the interface and define <code>accept</code>.</li>
+    <li>Visitors like <code>TaxCalculatorVisitor</code> and <code>AuditVisitor</code> implement <code>IIncomeVisitor</code> and contain logic for each income class.</li>
+    <li>Each income instance <code>delegates</code> the processing to the visitor using its <code>accept</code> method.</li>
+  </ul>
+</section>
+<section>
+  <p>
+    Want to add a new <code>FraudDetectionVisitor</code> or extend this to support more income types like
+    <code>FreelanceIncome</code> or <code>InvestmentDividends</code>? I can show how the diagram evolves too!
+  </p>
+</section>
+
+</div>
+
+
+<h2 class="toc-title">🌐 Real-World Use Cases</h2>
+<ul>
+  <li>Compilers: Walking syntax trees for code generation or optimization</li>
+  <li>Exporters: Convert document structures to PDF, CSV, HTML</li>
+  <li>UI Toolkits: Apply operations like rendering or event binding</li>
+</ul>
+
+<h2>✅ Pros and ❌ Cons</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>Pros</th>
+    <th>Cons</th>
+  </tr>
+  <tr>
+    <td>
+      Easy to add new operations<br>
+      <small><em>Example:</em> Add a <code>PrintVisitor</code> to print all elements without changing <code>ElementA</code> or <code>ElementB</code>.</small>
+    </td>
+    <td>
+      Hard to add new element types<br>
+      <small><em>Example:</em> Adding <code>ElementC</code> means updating every visitor with a new <code>visit_element_c</code> method.</small>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Separation of concerns<br>
+      <small><em>Example:</em> Business logic stays in visitors, keeping element classes focused and simple.</small>
+    </td>
+    <td>
+      Requires double dispatch setup<br>
+      <small><em>Example:</em> Each element must implement <code>accept(visitor)</code> and call the correct visitor method.</small>
+    </td>
+  </tr>
+</table>
+
+<h2 class="toc-title">🧠 Quiz</h2>
+<div class='question-container'     
+                     data-questions='071DDF977A47406B87E621879715CD41'
+                     data-secret-key='C20590696ED649018BFC7B22F34D3565'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='071DDF977A47406B87E621879715CD41'>UtMpFkykph+sO9l3HrXJdAavz4v4lgB2U2lDVjilmNOs9sMB8G2RclapoeY42c2U6UyfaQZ2f8FiWFZanuZKJX1RFtDOMUiOGqtKBTvnFCYY4k5s3DxZX47e1JbzpeYtsygJrgbK4T6hYDl9kh3QFbJQ1YKw3pbQnMe4zVRkKUVBpvD2L9Lo4eGFzUZRYretP2w1lxzqut3nP83WUvwo0TkBK6uiYVtot+LDlz88AaAPSVTqA3EZxltk7GbR3vTYM54aIqAKjO9cPO5mZOk2Mswt9uExzkL/D80c5RnFRigtKeUb3R5GzXkgzhkml/OkepDD0RoUEBsdDLrspTrRu4dtbj7iVpFw2I09NcnX3zK7ArHn9g5nI1eDg2M1mcO3H3G4TTBgD0xkiC7Y9lvEIVOrLovI8FfX4NdfKHNVVhZGOMyaaKR62Ri1bOPismzkV7agVplSsAaHxgHYzdZVSqAWr4IMvlLe0NhP93m+mPrCeR8Ew+2+YnMEzb+eaK6eEGo/iMlh5uSdhtIpX4Zi4RwJ4VEqEtoemrB+JrzZxvd3aCPZrQgfrZZQBo4OEYN7kS5ajmeRWg/Mr5LSKgXRjunex8rQIwKBRNkxQC6fJA7gRzE1XOpj7Mr2HSGjGWovFlPPuH+y1IAJDb24iRgDqP8rH1+iAB0BhpEO3J9ZxCei6bl+inrbHl+lwS+KvHCfE0UuwxopHB/5G5pjIoNVz/BRPIOMprfuuzrd/qNkKjiHBd5ma+QsG62iRt6pp8qs/w3hZclHC17Uav3cl4uNNiDKHw6qAxFqTvYnjmYzuUNAp8P35zPfFFE5HcATm3Pcx1cxb5pIC8LtCVMJrVyjfhDm4y0nyzqCMdcyJD5mer5G3cbiCPWTQE4eIxa/RFRDf8nki+2bHrFzCBGNkdi9FQ5gELB2hc9oXTBBDDK7fXOjrFwnfme5GzCFV6ikdLH+Eu066CgHg0dB4W7lE1iSicvXD9SHTaNK7ItqVW6iEq0Dqw4pX3UKnnW6gt9LzCNhQJqlOqStHmn/4DUOLv2aHWNYaQOUan/VbkHCspTrRmrD0Tk6cJTFhvaxOYqncivMbEyVPpnEkT48njRpMpHe6YcFTRWNsMYmF0uyK4JULqvmnFWkPO+KlkfK+7z99BxDAKoPOTNBbDRpaRNMMYvX8LeIfy7Ki9w8g6/K3X3WW5gXK6WxkqL3Uum973fr452ciYJ34Orhi/tAfVJg5omRbxydSeCUGZFVzc0qsBmv3OYPJewxoBtuIfKvyJM2/X/UaKDTP2Z1OVH4QQnT/SxGeuG1BAGS8vvb9jwqMr6nZ+gz4sK2kLb3yN5RuHk9lBtEgrkayOZIfvAhQD/6tV6mYVLMAcxkODtYYH0GzLQDxMF2/QriEBku1r4izo4wmS4Ds1Hrtc8dmUt8kxnUXr33PLXGctzJuPJiDwR7TqWnAKUjfJeE58Hv+TzBrK11HWk3ajFkrHAkN1WZbACJIEwiUYSdq9T5i8aRdNE9qayRNYNecMsJYhxdN0dkT/y8jIzn3t7V1KTWpSuLBW88MJNnqESW2mMOW6ykov27pMQOBJPg5pXR7xDp4K8FG8LycESdujBsSciG9Yd8fTU+1Dd7T4XHc9c+A+PyhTlWCqzSyBIhCqQG4niqUM5VM3v2cSbq9nn9hYvd7SEECm08dqrmFrubdppR/QyWFvGEq+QXxTF19bVjJD5ac73M0N+q8T0xpdRow2+9GdpD0wTIPfJRzI3cHn8p4djfvwu38XhS99Id53Lg7D0QkHcs7QB+Ik3YgpGTJAj6LvMTx6c0GgkqIbis4VdcgjMAF65JoZ9tibL2iilpCzLpDLtYotIOSS6whLMT3NRMYEBKIKPdG5Xx5sHpeHHYGYSuK6VoFfbneukRWaM8m1U/1eqRUOFoZyFIPeQoGjQkXtob5HtO9GHjD+Gt1STD/bGQiNdBnMYG4K8Kbzjgc7f+VpusMDH89DCK63xMd4syBc9Vpn/6xMcjrJF+uERErd6OdeWbLvTyVvkb5Igwh4p9BWDHJpKF7Dd8rJDckGhtdlGjfTXMzc6X09C7qCiSbj6TtJRe/EuJFjeErsjJHfkKyZmqp4AO1VObsJu7eR2NgoxQzDPWDH76ZzdU7Avv8hIAq59vwFf1NEYbQE6dHHrMVbOAQNSb7n3Iglcx/UuyYKrtU6eUSmWnt8fq5Lxf4TSp8K+K+3ji2F9hO4WeHfiA7ThyYjNC2SJxfOHBL4eEkEN30TuUDPBET9pCS+SrFnpiyp6Nv7FJPqnI3uk3jAEJS9kXDivDCIF60TgWgagmxVkKfSxltD3zckPbgSNyvfWvPgLslbGvFrRPzaD+a+HWvkzAzc3laQV+b15PQ0H03J15Teg0QRR+6Z2uJhG+/f0CLtCVh92Ym3NQ4p4ZO4/Z2vqdO3lHmupjYwna1j7WvbveIGq99KdedcQQk6dykQjnirUEKrzhfYh1vW4fCZUWNM/oJyxf6pMqie1u+t4Wuf7vJW5hY/rbDgQCZ1+/UoYOvq0beBtjQ1WabjOeoz2FBddliGhe0SQqOaGVuzPdAo1cu6tgQjuX3b8+QrYcGIUTQw4uXyslkdClgLvcAanaUSnZq1tFhGK1VE3mclNp21F1E7ruwdSha12J3F4473yamOL7C8gQcmh8rTbfmlPEYv/a3eRFdd9C0c+vPdLaRIFDEPeSAMEvlUFiiZoSKeZgvx/73LqWLDcFFSPmd8FKhpMpUfy+JKKIBaCsgHFKdM9i2choPank2th4uTs+HoKZ1szO2g/Mdi49KmVjier0EA34rQcU6l6AfI3o5rVkhtILzhUDDxlMFiBcA7vZsVJK6FNrXoFAhGsfQMbt2kHrLPAZll+7Mzq2q77ErlhSr4EJY7pTFWVJ1ZXV456I76tu5Yib80cIiFTRZV05z4NlBPDjVXQ4o+J/6hQkP4Qs8HNhenb+TNXhJFcihXHYlHstibJ2sc6RA9HQTEDtN3rvuStBAmpXkR8wXkGjTRxEAqyK4oSdEONQIgTqN8x5J3+uDVoLg+S/wAUiiDSfu+WvANZp62RU1Ola3iz8FD6JPYepD1JOXHDtWfn9AwGzYwsUL9qXLzC59GYE5m3OVAM1SBctmduTVyuLZYvSkNmkwgTpXs6/Uw+21Rp+0T91qmFF0SSnWmJq7ZO1PuydygE+Q0aFV1MBTBCp0fCnjLD8W0RJlNtxvwLwBIdN7B6zm+TZ7jBFRkgLbdWD9p5swF/D5L42Q3SO67T57pViCbCkumgrJlaR2e0wYzwbYzp7cf/dZM1B/ujLZErazMF7VmmSsqkgzFYgE1x/6LUilSYrM1f2Ba9T94L0LWz0tTUC3Sj1e3FrT8ukKMFHzqRy6ShnQ5mfL9JzpuYtCCoTGOaKBNYQDPEC1jJ/8uQNB3GDpvwfJD3xS5dU6gHkUhvq5BrLEOQW1lZFo8nH8bf3fsuyqjXJwD3MPQgnEg8WOJl3CcynPkVD71AI6TMTFfMpsAOUkaZ1lIy9RuQ920eQKrYfKu77wjsJHgJOPcJ7UNC+VwcVhzD0yhTNwVPQPXIJ8O+4RYG8pXUjzEkJIKWDWXHiqMsYVWGHvkbMK8eC1Te6+CanSYwSG3OlCLQFgMcCo9hoV6M2WJP+0MS5JywH/Z1sPnEAYFoDnSDkWQbzxCNuY3IUH6LgwpRJBn6Px0T3yftA7GF5XrVM/FSeUigasl3BSZtKPK3QB/8q5ae6b30M5UhH9uJiS6tX8uzUIpAi9s42Vklq3Mfzz4YcIHNtINJuMraQTKEplzufss1o0n7wMOeDgDERzBHgrlJzDOUtntY11pchTg28gYld1cxuoWxzFoLjtYKEuSAwoFHgu8eOkQQB4WBLeImuw4/yB6PrPjrd49/nJVhNVpFWpS86SXQt8noZWfScA2ZrZrqDa+7OWcaNpEKaYVQ3m2p/y2uWeGtPyaPtd4YW5v2rJfOVU0Z6XvW8WUW/3f0POGROvTa4yNgMEovFGcvBKfcHyfxoh4JesEHqm1WQoo4soSI7UMUvZQ7vAyEGq06oAgv7q4G4KF/xxvBQwStHAJu51m8Wy0zPqNJKgKQbLFCD86duL1xenuOe0PmUTCEAxTapXyYZ3yNbuvBMwt1kf+tiQwpVngFJrk7UfrSCEOc0YuFBUKHXRSpUWNZED6lqS7K8WIvZCGmCdLKsNgUlCHztrxSH/iUPrCR7z9/jMxq124gCBDT8qCkCWRXoBMQz9zioXw2lv1RZQBboeY8YTheqPiglcu+miSU2QrxFs/TZn/HorR3rUjQS3PBHvFdBpw==</script>
+                </div>
+
+<h2 class="toc-title">🔚 Conclusion</h2>
+<p>The Visitor Pattern is a powerful behavioral pattern for extending behavior without altering existing class structures. Use it when operations are frequently added, but the object structure is stable.</p>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/state-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/template-method-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/state-pattern"><span aria-hidden="true">&#8592;</span> State Pattern &#x2013; Let Objects Evolve Their Behavior Dynamically</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/template-method-pattern">Template Method Pattern &#x2013; Define the Algorithm Skeleton <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

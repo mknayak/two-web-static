@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Command Pattern to encapsulate requests, enable undo/redo, and decouple sender from receiver. Includes real-world use cases and C#/Python examples." />
+        <meta property='og:title' content='Command Pattern: Encapsulate Requests as Objects'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/command-pattern.webp'/>
+        <meta property='og:description' content='Master the Command Pattern to encapsulate requests, enable undo/redo, and decouple sender from receiver. Includes real-world use cases and C#/Python examples.'/> 
+        <title>Command Pattern: Encapsulate Requests as Objects | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/observer-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/chain-of-responsibility-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/observer-pattern"><span aria-hidden="true">&#8592;</span> Observer Pattern: Notify Dependents Automatically</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/chain-of-responsibility-pattern">Chain of Responsibility Pattern: Passing the Buck Gracefully <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Command Pattern: Encapsulate Requests as Objects</h1>
+                    <p class="lead">Master the Command Pattern to encapsulate requests, enable undo/redo, and decouple sender from receiver. Includes real-world use cases and C#/Python examples.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">04-Jul, 2025 &middot;
+                                    9 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/command-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <div class="section">
+    <h2 class="toc-title">What It Is</h2>
+    The Command Pattern turns a request into a standalone object. Instead of calling a method directly (like light.TurnOn()), you wrap that call inside a command object (like new <code>LightOnCommand(light)</code>), which can then be passed around and executed later.
+  </div>
+
+  <div class="section">
+    <h2 class="toc-title">How It Works</h2>
+    <p>The pattern decouples the <strong>Sender</strong> (Invoker) from the <strong>Receiver</strong> of the request.</p>
+    <ol>
+      <li><strong>Client</strong> creates a command object and associates it with a receiver</li>
+      <li><strong>Invoker</strong> stores the command</li>
+      <li><strong>Command</strong> executes the action on the receiver when triggered</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2 class="toc-title">Example</h2>
+    <p>Think of a remote control:</p>
+    <ul>
+      <li>Each button is associated with a <code>Command</code></li>
+      <li>The TV is the <code>Receiver</code></li>
+      <li>The remote is the <code>Invoker</code></li>
+    </ul>
+    <p>This setup allows flexible command handling, like macros or undo/redo actions.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="toc-title">Benefits</h2>
+    <ul>
+      <li>🔁 Undo/redo operations</li>
+      <li>🧱 Decoupled architecture</li>
+      <li>📝 Action logging and queuing</li>
+    </ul>
+  </div>
+  <h2 class="toc-title">🧍 UML Diagram</h2>
+  <pre class="mermaid">
+classDiagram
+  class Command {
+    +execute()
+  }
+  class ConcreteCommand {
+    +execute()
+  }
+  class Receiver {
+    +action()
+  }
+  class Invoker {
+    +setCommand(cmd)
+    +invoke()
+  }
+  class Client
+
+  Command <|-- ConcreteCommand
+  ConcreteCommand --> Receiver
+  Client --> Invoker : sets command
+  Invoker --> Command : calls execute
+  </pre>
+
+  <h2 class="toc-title">💻 Code Examples</h2>
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'command-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'command-py')">Python</button>
+    </div>
+    <div id="command-cs" class="tab-content active">
+      <pre><code class="language-csharp">// Command Interface
+public interface ICommand {
+    void Execute();
+}
+
+// Receiver
+public class Light {
+    public void TurnOn() => Console.WriteLine("Light is ON");
+}
+
+// Concrete Command
+public class LightOnCommand : ICommand {
+    private Light _light;
+    public LightOnCommand(Light light) => _light = light;
+    public void Execute() => _light.TurnOn();
+}
+
+// Invoker
+public class RemoteControl {
+    private ICommand _command;
+    public void SetCommand(ICommand command) => _command = command;
+    public void PressButton() => _command.Execute();
+}
+
+// Client
+public class Program {
+    public static void Main() {
+        Light light = new();
+        ICommand command = new LightOnCommand(light);
+        RemoteControl remote = new();
+        remote.SetCommand(command);
+        remote.PressButton();
+    }
+}</code></pre>
+    </div>
+    <div id="command-py" class="tab-content">
+      <pre><code class="language-python"># Command Interface
+class Command:
+    def execute(self): pass
+
+# Receiver
+class Light:
+    def turn_on(self):
+        print("Light is ON")
+
+# Concrete Command
+class LightOnCommand(Command):
+    def __init__(self, light):
+        self.light = light
+
+    def execute(self):
+        self.light.turn_on()
+
+# Invoker
+class RemoteControl:
+    def set_command(self, command):
+        self.command = command
+
+    def press_button(self):
+        self.command.execute()
+
+# Client
+if __name__ == "__main__":
+    light = Light()
+    command = LightOnCommand(light)
+    remote = RemoteControl()
+    remote.set_command(command)
+    remote.press_button()</code></pre>
+    </div>
+  </div>
+
+  <h2 class="toc-title">🛠️ Real-World Use Cases (with code)</h2>
+
+  <h3>1. GUI Button Triggering Action</h3>
+  <p>Each GUI button can encapsulate a command object. The UI doesn't care what the command does, just that it can invoke it.</p>
+  <pre><code class="language-csharp">// SaveCommand and ExitCommand would implement ICommand and be assigned to different buttons.
+button.SetCommand(new SaveCommand(document));</code></pre>
+
+  <h3>2. Macro Recording</h3>
+  <p>A sequence of commands can be recorded and replayed as macros.</p>
+  <pre><code class="language-csharp">List<ICommand> macro = new();
+macro.Add(new LightOnCommand(light));
+macro.Add(new FanOnCommand(fan));
+foreach (var cmd in macro) cmd.Execute();</code></pre>
+
+  <h3>3. Undo/Redo Support</h3>
+  <p>Commands can store previous state and implement an Undo method.</p>
+  <pre><code class="language-csharp">public interface ICommand {
+    void Execute();
+    void Undo();
+}</code></pre>
+
+  <h3>4. Job Queues or Background Workers</h3>
+  <p>Commands can be queued and processed later (e.g., sending emails, notifications).</p>
+  <pre><code class="language-csharp">Queue<ICommand> queue = new();
+queue.Enqueue(new SendEmailCommand(emailService));
+while (queue.Count > 0) queue.Dequeue().Execute();</code></pre>
+
+  <h2 class="toc-title">✅ Pros (with Explanation)</h2>
+  <ul>
+    <li><strong>Decouples sender and receiver:</strong> The client doesn’t need to know how the command will be executed.</li>
+    <li><strong>Enables queuing and logging:</strong> Commands can be stored and executed later.</li>
+    <li><strong>Supports undoable operations:</strong> Commands can implement undo functionality.</li>
+  </ul>
+
+  <h2 class="toc-title">⚠️ Cons (with Explanation)</h2>
+  <ul>
+    <li><strong>Overhead of creating many classes:</strong> One for each command, which can grow large in complex systems.</li>
+    <li><strong>Can increase complexity:</strong> Especially when commands need to maintain state or support undo.</li>
+  </ul>
+
+  <h2 class="toc-title">🧠 Best Practices</h2>
+  <ul>
+    <li>Use when actions need to be decoupled from triggers (buttons, jobs).</li>
+    <li>Use abstract base classes or interfaces to support undo.</li>
+    <li>Group commands into composite commands for macros.</li>
+  </ul>
+  <h2 class="toc-title">❓ Test your understanding</h2>
+  <div class='question-container'     
+                     data-questions='5D6B9FFA91BF4DD0A25FDB0469111A8C'
+                     data-secret-key='23D4C6595041448B93E771440C5FE10B'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='5D6B9FFA91BF4DD0A25FDB0469111A8C'>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</script>
+                </div>
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/observer-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/chain-of-responsibility-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/observer-pattern"><span aria-hidden="true">&#8592;</span> Observer Pattern: Notify Dependents Automatically</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/chain-of-responsibility-pattern">Chain of Responsibility Pattern: Passing the Buck Gracefully <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

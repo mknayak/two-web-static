@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Observer Pattern to build dynamic, responsive systems that react seamlessly to changes. Dive deep into its UML structure, explore real-world scenarios where it shines, and reinforce your understanding through hands-on C# and Python implementations." />
+        <meta property='og:title' content='Observer Pattern: Notify Dependents Automatically'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/observer-pattern.webp'/>
+        <meta property='og:description' content='Master the Observer Pattern to build dynamic, responsive systems that react seamlessly to changes. Dive deep into its UML structure, explore real-world scenarios where it shines, and reinforce your understanding through hands-on C# and Python implementations.'/> 
+        <title>Observer Pattern: Notify Dependents Automatically | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/strategy-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/command-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/strategy-pattern"><span aria-hidden="true">&#8592;</span> Strategy Pattern: Flexible Algorithms with Clean Separation</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/command-pattern">Command Pattern: Encapsulate Requests as Objects <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Observer Pattern: Notify Dependents Automatically</h1>
+                    <p class="lead">Master the Observer Pattern to build dynamic, responsive systems that react seamlessly to changes. Dive deep into its UML structure, explore real-world scenarios where it shines, and reinforce your understanding through hands-on C# and Python implementations.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">03-Jul, 2025 &middot;
+                                    7 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/observer-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <h2 class="toc-title">📌 Introduction</h2>
+  <section>
+  <h2>🔔 The Observer Pattern – In Depth</h2>
+  <p>
+    The <strong>Observer Pattern</strong> is a behavioral design pattern that creates a <em>one-to-many dependency</em> between a central object (known as the <strong>Subject</strong>) and multiple dependent objects (called <strong>Observers</strong>). When the Subject's state changes, all registered Observers are <strong>automatically notified</strong> and updated. This enables synchronized state without hard-wiring components together.
+  </p>
+  <p>
+    The pattern facilitates a <strong>loosely coupled architecture</strong>—Observers depend only on a common interface, not on the Subject’s internal workings. It’s especially beneficial in dynamic systems where change propagation is essential.
+  </p>
+</section>
+
+<section>
+  <h3>📲 When and Why You’d Use It</h3>
+  <ul>
+    <li><strong>GUI applications:</strong> Buttons triggering multiple response listeners.</li>
+    <li><strong>Live messaging systems:</strong> Broadcasts reaching many clients.</li>
+    <li><strong>Dashboards and analytics:</strong> Real-time data updates across multiple views.</li>
+  </ul>
+</section>
+
+<section>
+  <h3>🧩 Pattern Components</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>Subject</code></td>
+        <td>Maintains a list of Observers and triggers updates using <code>attach</code>, <code>detach</code>, and <code>notify</code> methods.</td>
+      </tr>
+      <tr>
+        <td><code>Observer</code></td>
+        <td>An interface or base class defining an <code>update()</code> method.</td>
+      </tr>
+      <tr>
+        <td><code>ConcreteObserver</code></td>
+        <td>Implements the <code>Observer</code> and defines specific response logic to updates.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section> 
+  <h2 class="toc-title">🔍 Observer Pattern & Design Principles</h2>
+
+  <h3>📌 Dependency Inversion</h3>
+  <p>Observers depend on an abstract interface (like <code>IObserver</code>) rather than concrete implementations. This allows flexibility and modular testing.</p>
+
+  <h3>📌 Open/Closed Principle</h3>
+  <p>The Subject class is open for extension (new Observers can subscribe) but closed for modification. You don't need to touch the Subject's code to support new behaviors.</p>
+
+  <h3>📌 Loose Coupling</h3>
+  <p>Subjects and Observers are only connected by minimal contracts—typically through interfaces. Each can evolve independently, making the system highly extensible and easier to maintain.</p>
+
+  <h3>🧩 UML Diagram (Mermaid)</h3>
+  <div class="mermaid">
+    classDiagram
+      class Subject {
+        +attach(observer)
+        +detach(observer)
+        +notify()
+      }
+
+      class IObserver {
+        +update()
+      }
+
+      class ConcreteObserverA
+      class ConcreteObserverB
+
+      Subject --> IObserver : notifies
+      ConcreteObserverA ..|> IObserver
+      ConcreteObserverB ..|> IObserver
+  </div>
+</section>
+
+<section>
+
+  <h2>⚖️ Observer Pattern Trade-offs with C# Examples</h2>
+
+  <section>
+    <h3>🚨 Performance Overhead with Many Observers</h3>
+    <p>Notifying hundreds of observers synchronously can slow down the system.</p>
+    <pre><code class="language-csharp">// Simulates a heavy update workload
+public class HeavyObserver : IObserver
+{
+    private string _id;
+    public HeavyObserver(string id) => _id = id;
+
+    public void Update(string message)
+    {
+        Thread.Sleep(100); // Simulates load
+        Console.WriteLine($"{_id} processed: {message}");
+    }
+}
+
+var publisher = new NewsPublisher();
+for (int i = 0; i &lt; 100; i++)
+    publisher.Attach(new HeavyObserver($"Observer {i}"));
+publisher.Notify("System broadcast!");</code></pre>
+    <p><strong>Tip:</strong> Offload updates asynchronously or batch them smartly.</p>
+  </section>
+
+  <section>
+    <h3>🎲 Unpredictable Update Order</h3>
+    <p>Update order among observers isn’t guaranteed and may affect dependent logic.</p>
+    <pre><code class="language-csharp">public class OrderedObserver : IObserver
+{
+    private string _name;
+    public OrderedObserver(string name) => _name = name;
+
+    public void Update(string message)
+    {
+        Console.WriteLine($"[{_name}] received: {message}");
+    }
+}
+
+// Attach sequence doesn't ensure notify order
+publisher.Attach(new OrderedObserver("A"));
+publisher.Attach(new OrderedObserver("B"));
+publisher.Notify("Who gets this first?");</code></pre>
+    <p><strong>Tip:</strong> Use priority queues or sorted collections if order matters.</p>
+  </section>
+
+  <section>
+    <h3>🧠 Memory Leaks if Observers Aren’t Detached</h3>
+    <p>If observers are not removed, they remain in memory and can’t be garbage collected.</p>
+    <pre><code class="language-csharp">public class LeakyObserver : IObserver
+{
+    public void Update(string message) => Console.WriteLine($"Leaky got: {message}");
+}
+
+void CreateLeakyScope()
+{
+    var leaky = new LeakyObserver();
+    publisher.Attach(leaky);
+    // leaky goes out of scope, but stays in publisher’s list
+}</code></pre>
+    <p><strong>Tips:</strong> Always call <code>Detach()</code> or use <code>WeakReference&lt;T&gt;</code> to prevent strong retention.</p>
+  </section>
+</section>
+
+
+<section>
+  <h2>📚 Real-World Analogies of the Observer Pattern</h2>
+
+  <h3>📬 Newsletter Subscription</h3>
+  <p>
+    The <strong>Publisher</strong> acts as the <em>Subject</em>, and <strong>Subscribers</strong> represent the <em>Observers</em>.
+    Whenever a new newsletter is released, all subscribers are automatically notified and receive the update.
+    This reflects how Observers in the pattern react to Subject changes.
+  </p>
+
+  <h3>📈 Stock Market Ticker</h3>
+  <p>
+    In this scenario, a <strong>Stock</strong> is the <em>Subject</em>, and <strong>Investors</strong> are the <em>Observers</em>.
+    Any price change in the stock triggers real-time updates to all observers, such as trading apps or dashboards.
+    It's a perfect analogy for live, event-driven notification.
+  </p>
+
+  <h3>📱 Social Media Notifications</h3>
+  <p>
+    Here, a <strong>User</strong> posting content is the <em>Subject</em>, while their <strong>Followers</strong> act as <em>Observers</em>.
+    Whenever the user creates a new post, the platform sends instant notifications to all followers—just like a Subject notifying its Observers.
+  </p>
+</section>
+<h2 class="toc-title">💻 Code Examples</h2>
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this, 'observer-cs')" class="active">C#</button>
+      <button onclick="showTab(this, 'observer-py')">Python</button>
+    </div>
+    <div id="observer-cs" class="tab-content active">
+      <pre><code class="language-csharp">// Observer Interface
+public interface IObserver {
+    void Update(string message);
+}
+
+// Subject Class
+public class NewsPublisher {
+    private List<IObserver> subscribers = new();
+
+    public void Attach(IObserver observer) => subscribers.Add(observer);
+    public void Detach(IObserver observer) => subscribers.Remove(observer);
+    public void Notify(string news) {
+        foreach (var sub in subscribers)
+            sub.Update(news);
+    }
+}
+
+// Concrete Observer
+public class EmailSubscriber : IObserver {
+    private string _name;
+    public EmailSubscriber(string name) => _name = name;
+    public void Update(string message) => Console.WriteLine($"{_name} received: {message}");
+}
+
+// Consuming Application
+public class Program {
+    public static void Main() {
+        var publisher = new NewsPublisher();
+
+        var alice = new EmailSubscriber("Alice");
+        var bob = new EmailSubscriber("Bob");
+
+        publisher.Attach(alice);
+        publisher.Attach(bob);
+
+        publisher.Notify("New edition of Observer Weekly is out!");
+
+        publisher.Detach(alice);
+
+        publisher.Notify("Second edition released.");
+    }
+}</code></pre>
+    </div>
+    <div id="observer-py" class="tab-content">
+      <pre><code class="language-python"># Observer Interface
+class Observer:
+    def update(self, message): pass
+
+# Subject
+class NewsPublisher:
+    def __init__(self):
+        self.subscribers = []
+
+    def attach(self, observer):
+        self.subscribers.append(observer)
+
+    def detach(self, observer):
+        self.subscribers.remove(observer)
+
+    def notify(self, message):
+        for subscriber in self.subscribers:
+            subscriber.update(message)
+
+# Concrete Observer
+class EmailSubscriber(Observer):
+    def __init__(self, name):
+        self.name = name
+
+    def update(self, message):
+        print(f"{self.name} received: {message}")
+
+# Consuming Application
+if __name__ == "__main__":
+    publisher = NewsPublisher()
+
+    alice = EmailSubscriber("Alice")
+    bob = EmailSubscriber("Bob")
+
+    publisher.attach(alice)
+    publisher.attach(bob)
+
+    publisher.notify("New edition of Observer Weekly is out!")
+
+    publisher.detach(alice)
+
+    publisher.notify("Second edition released.")</code></pre>
+    </div>
+  </div>
+
+  <h2 class="toc-title">🛠️ Real-World Use Cases</h2>
+  <ul>
+    <li>GUI Event Handling (e.g., button clicks)</li>
+    <li>Model-View-Controller (MVC) architecture</li>
+    <li>Messaging systems (e.g., pub-sub in RabbitMQ)</li>
+    <li>Logging and auditing tools</li>
+    <li>Live sports score updates in mobile apps</li>
+    <li>Notification services for news and weather alerts</li>
+  </ul>
+
+  <h2 class="toc-title">✅ Pros</h2>
+  <ul>
+    <li>Promotes loose coupling between subject and observers</li>
+    <li>Flexible and scalable for event-driven systems</li>
+  </ul>
+
+  <h2 class="toc-title">⚠️ Cons</h2>
+  <ul>
+    <li>Can lead to memory leaks if observers aren't removed properly</li>
+    <li>Notification sequence is not guaranteed</li>
+  </ul>
+
+  <section>
+  <h2 class="toc-title">💡 Best Practices for Using the Observer Pattern in C#</h2>
+
+  <h3>🔌 Always Detach Observers When No Longer Needed</h3>
+  <p>
+    Observers should be explicitly removed using <code>Detach()</code> when they are no longer interested in receiving updates.
+    Retaining unused observers can lead to unexpected behavior and memory issues.
+  </p>
+
+  <h3>🧠 Use Weak References in .NET to Prevent Memory Leaks</h3>
+  <p>
+    In .NET, consider storing observers as <code>WeakReference&lt;IObserver&gt;</code> inside the Subject. This allows the garbage collector
+    to clean up observers that no longer have strong references elsewhere, preventing unintentional memory retention.
+  </p>
+  <pre><code>private List&lt;WeakReference&lt;IObserver&gt;&gt; observers = new();</code></pre>
+
+  <h3>🔄 Consider <code>IObservable&lt;T&gt;</code> / <code>IObserver&lt;T&gt;</code> in Modern C#</h3>
+  <p>
+    The <code>IObservable&lt;T&gt;</code> and <code>IObserver&lt;T&gt;</code> interfaces from the <strong>System.Reactive</strong> namespace
+    offer a more flexible, built-in approach to the Observer Pattern. They handle subscription and disposal more elegantly, especially for asynchronous and push-based data.
+  </p>
+  <pre><code>IObservable&lt;string&gt; stream = GetNewsFeed();
+IDisposable subscription = stream.Subscribe(observer);
+subscription.Dispose(); // equivalent to Detach()</code></pre>
+</section>
+
+
+  <h2 class="toc-title">❓ Test your understanding</h2>
+ <div class='question-container'     
+                     data-questions='observable-pattern'
+                     data-secret-key='TechWayFitQuiz'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='observable-pattern'>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</script>
+                </div>
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/strategy-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/command-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/strategy-pattern"><span aria-hidden="true">&#8592;</span> Strategy Pattern: Flexible Algorithms with Clean Separation</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/command-pattern">Command Pattern: Encapsulate Requests as Objects <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

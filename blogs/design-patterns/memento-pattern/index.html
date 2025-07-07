@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Learn how the Memento Pattern captures and restores object state without violating encapsulation. Includes real-world examples, UML, and C#/Python code." />
+        <meta property='og:title' content='Memento Pattern &#x2013; Preserving Object State Without Breaking Encapsulation'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/memento-pattern.webp'/>
+        <meta property='og:description' content='Learn how the Memento Pattern captures and restores object state without violating encapsulation. Includes real-world examples, UML, and C#/Python code.'/> 
+        <title>Memento Pattern &#x2013; Preserving Object State Without Breaking Encapsulation | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/iterator-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/interpreter-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/iterator-pattern"><span aria-hidden="true">&#8592;</span> Iterator Pattern &#x2013; Access Elements Without Exposing Structure</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/interpreter-pattern">Interpreter Pattern &#x2013; Building Expression Evaluators and DSLs <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Memento Pattern &#x2013; Preserving Object State Without Breaking Encapsulation</h1>
+                    <p class="lead">Learn how the Memento Pattern captures and restores object state without violating encapsulation. Includes real-world examples, UML, and C#/Python code.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">06-Jul, 2025 &middot;
+                                    6 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/memento-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <!-- Memento Pattern Blog - TechWayFit -->
+<section class="blog-post">
+    <h1>🧠 Memento Pattern – Preserving Object State Without Breaking Encapsulation</h1>
+
+    <p>
+        The <strong>Memento Pattern</strong> is a behavioral design pattern that lets you capture and store an object's
+        internal state
+        without exposing its internals—so you can restore it later. It’s especially useful when implementing features
+        like <em>undo/redo</em>.
+    </p>
+
+    <h2 class="toc-title">📌 Real-World Analogy</h2>
+    <p>
+        Think of the <strong>Undo</strong> feature in a text editor. Every time you type, the editor saves a snapshot
+        (memento) of your content.
+        When you click Undo, it rolls back to a previous state—without the editor knowing how the text is internally
+        managed.
+    </p>
+    <p>
+        Another analogy is saving a game: when you hit "save," the game stores your progress as a memento. If you make a
+        mistake or want to try a different path, you can load the saved state and continue from there, without the game
+        engine exposing all its internal variables or logic.
+    </p>
+    <p>
+        In both cases, the key idea is that the caretaker (the editor or game menu) manages these snapshots, but never
+        inspects or modifies their contents. This preserves encapsulation and keeps the internal workings of the object
+        safe from outside interference.
+    </p>
+
+    <h2 class="toc-title">🧩 When to Use</h2>
+    <ul>
+        <li>You need to implement <strong>Undo/Redo</strong></li>
+        <li>You want to save checkpoints or restore object state</li>
+        <li>You must preserve <strong>encapsulation</strong> of the object</li>
+    </ul>
+
+    <h2 class="toc-title">💡 Structure Overview</h2>
+    <ul>
+        <li><strong>Originator</strong> – The object whose state needs saving</li>
+        <li><strong>Memento</strong> – A snapshot object holding state</li>
+        <li><strong>Caretaker</strong> – Manages mementos without inspecting them</li>
+    </ul>
+
+    <h2>🔧 Code Example</h2>
+    <div class="code-tabs">
+        <div class="tab-buttons">
+            <button onclick="showTab(this,'csharp')" class="active">C#</button>
+            <button onclick="showTab(this, 'python')">Python</button>
+        </div>
+        <div class="tab-content active" id="csharp">
+            <pre><code class="language-csharp">// Memento
+class EditorMemento {
+    public string Content { get; }
+    public EditorMemento(string content) => Content = content;
+}
+
+// Originator
+class TextEditor {
+    public string Content { get; set; }
+    public EditorMemento Save() => new EditorMemento(Content);
+    public void Restore(EditorMemento memento) => Content = memento.Content;
+}
+
+// Caretaker
+class History {
+    private Stack&lt;EditorMemento&gt; history = new();
+    public void Push(EditorMemento m) => history.Push(m);
+    public EditorMemento Pop() => history.Pop();
+}
+</code></pre>
+        </div>
+        <div class="tab-content" id="python">
+            <pre><code class="language-python"># Memento
+class EditorMemento:
+    def __init__(self, content):
+        self._content = content
+    def get_content(self):
+        return self._content
+
+# Originator
+class TextEditor:
+    def __init__(self):
+        self.content = ""
+    def save(self):
+        return EditorMemento(self.content)
+    def restore(self, memento):
+        self.content = memento.get_content()
+
+# Caretaker
+class History:
+    def __init__(self):
+        self._history = []
+    def push(self, memento):
+        self._history.append(memento)
+    def pop(self):
+        return self._history.pop()
+</code></pre>
+        </div>
+    </div>
+
+    <h2 class="toc-title">✅ Pros and ❌ Cons</h2>
+    <table  class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Pros</th>
+                <th>Cons</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Preserves encapsulation – internal state is saved/restored without exposing object internals</td>
+                <td>Can lead to memory overhead – storing many mementos may consume significant resources</td>
+            </tr>
+            <tr>
+                <td>Enables undo/redo features – makes it easy to implement user-friendly history functionality</td>
+                <td>Requires careful state management – improper use can result in inconsistent or invalid states</td>
+            </tr>
+            <tr>
+                <td>Easy to implement – straightforward structure with clear roles (Originator, Memento, Caretaker)</td>
+                <td>May be complex for large objects – deep copying or serializing complex state can be challenging</td>
+            </tr>
+            <tr>
+                <td>Improves reliability – allows safe rollback to previous states in case of errors</td>
+                <td>Potential security risk – sensitive data may be stored in mementos if not handled properly</td>
+            </tr>
+            <tr>
+                <td>Decouples state management – Caretaker manages history without knowing state details</td>
+                <td>Not suitable for all scenarios – may not be efficient for frequently changing or very large states
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="toc-title">🗂 UML Diagram</h2>
+    <div>
+        <pre><code class="mermaid">
+classDiagram
+    class Originator {
+        -state: string
+        +save(): Memento
+        +restore(m: Memento)
+    }
+    class Memento {
+        -state: string
+        +getState(): string
+    }
+    class Caretaker {
+        -mementos: Stack&lt;Memento&gt;
+        +push(m: Memento)
+        +pop(): Memento
+    }
+    Originator --> Memento
+    Caretaker --> Memento
+</code></pre>
+    </div>
+
+    <h2 class="toc-title">Real-World Use Cases</h2>
+    <ul>
+        <li>
+            <strong>IDE Undo/Redo</strong> (e.g., Visual Studio, Notepad++)<br>
+            Every edit operation creates a memento of the document’s state, enabling users to undo or redo changes
+            seamlessly.
+        </li>
+        <li>
+            <strong>Game state snapshotting</strong><br>
+            Games often save checkpoints or allow players to save/load progress. Each save is a memento capturing the
+            game’s state at that moment.
+        </li>
+        <li>
+            <strong>Database restore points</strong><br>
+            Databases can create restore points or backups (mementos) to roll back to a previous state in case of errors
+            or data corruption.
+        </li>
+        <li>
+            <strong>Graphic editors</strong><br>
+            Applications like Photoshop use mementos to let users revert to previous versions of an image after a series
+            of edits.
+        </li>
+        <li>
+            <strong>Form input history</strong><br>
+            Web forms or wizards can use mementos to let users move back and forth between steps without losing entered
+            data.
+        </li>
+    </ul>
+
+    <h2 class="toc-title">🧠 Test your Understnainding</h2>
+    <div class='question-container' data-questions='23FB420AB4FC4453B2B16EB7B50BB023'
+        data-secret-key='DF3D1E9D8CD04F18AAEF583B411A1FFC' data-welcome-message='' data-complete-message=''>
+        <script type='text/plain'
+            data-quiz-id='23FB420AB4FC4453B2B16EB7B50BB023'>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</script>
+    </div>
+
+    <h2 class="toc-title">🔚 Conclusion</h2>
+    <p>
+        The Memento Pattern is a simple yet powerful tool when you need to preserve state while keeping object internals
+        private.
+        It helps bring reliability and user-friendly features like undo/redo into your applications without violating
+        encapsulation.
+    </p>
+</section>
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/iterator-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/interpreter-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/iterator-pattern"><span aria-hidden="true">&#8592;</span> Iterator Pattern &#x2013; Access Elements Without Exposing Structure</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/interpreter-pattern">Interpreter Pattern &#x2013; Building Expression Evaluators and DSLs <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

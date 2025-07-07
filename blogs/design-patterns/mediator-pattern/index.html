@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Use the Mediator Pattern to reduce tight coupling between objects by centralizing communication logic. Includes real-world use cases and C#/Python examples." />
+        <meta property='og:title' content='Mediator Pattern &#x2013; Simplifying Complex Object Communication'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/mediator-pattern.webp'/>
+        <meta property='og:description' content='Use the Mediator Pattern to reduce tight coupling between objects by centralizing communication logic. Includes real-world use cases and C#/Python examples.'/> 
+        <title>Mediator Pattern &#x2013; Simplifying Complex Object Communication | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/chain-of-responsibility-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/state-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/chain-of-responsibility-pattern"><span aria-hidden="true">&#8592;</span> Chain of Responsibility Pattern: Passing the Buck Gracefully</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/state-pattern">State Pattern &#x2013; Let Objects Evolve Their Behavior Dynamically <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Mediator Pattern &#x2013; Simplifying Complex Object Communication</h1>
+                    <p class="lead">Use the Mediator Pattern to reduce tight coupling between objects by centralizing communication logic. Includes real-world use cases and C#/Python examples.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">05-Jul, 2025 &middot;
+                                    7 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/mediator-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                         <p>
+    In software systems, multiple objects often need to communicate with each other. If each object talks directly to every other object, the system becomes tangled and hard to maintain. This is known as <strong>object spaghetti.</strong>
+  </p>
+
+  <p>
+    The <strong>Mediator Pattern</strong> solves this by centralizing communication logic in a <code>mediator</code> object, promoting loose coupling and better maintainability.
+  </p>
+
+  <h2 class="toc-title">👨‍🏫 Intent</h2>
+  <p>Define an object that encapsulates how a set of objects interact. The mediator promotes loose coupling by keeping objects from referring to each other explicitly.</p>
+
+  <h2 class="toc-title">📦 Real-World Analogy</h2>
+  <p>Think of an Air Traffic Controller (Mediator). Planes (Colleagues) do not communicate with each other directly — they all communicate via the ATC, which coordinates safe takeoffs and landings.</p>
+
+  <h2>🧰 UML Diagram</h2> 
+<div class="mermaid">
+classDiagram
+    class Mediator { 
+        + sendMessage(msg: string, sender: Colleague)
+    }
+
+    class ConcreteMediator {
+        + sendMessage(msg: string, sender: Colleague)
+        + registerUser(user: Colleague)
+        - users: List
+    }
+
+    class Colleague { 
+        + send(msg: string)
+        + receive(msg: string)
+    }
+
+    class ColleagueA {
+        + send(msg: string)
+        + receive(msg: string)
+    }
+
+    class ColleagueB {
+        + send(msg: string)
+        + receive(msg: string)
+    }
+
+    Mediator <|.. ConcreteMediator
+    Colleague <|-- ColleagueA
+    Colleague <|-- ColleagueB
+    ColleagueA --> ConcreteMediator : mediator
+    ColleagueB --> ConcreteMediator : mediator
+</div>
+  <h2>💡 When to Use</h2>
+  <ul>
+    <li>When a set of objects communicate in complex but well-defined ways</li>
+    <li>When reusability of objects is difficult due to tight coupling</li>
+    <li>When you want to centralize control logic</li>
+  </ul>
+
+  <h2 class="toc-title">🧪 C# Example</h2>
+<div class="code-tabs">
+    <div class="tab-buttons">
+        <button onclick="showTab(this, 'chain-cs')" class="active">C#</button>
+        <button onclick="showTab(this, 'chain-py')">Python</button>
+    </div>
+
+    <div id="chain-cs" class="tab-content active">
+        <pre><code class="language-csharp">
+// Mediator interface
+public interface IChatMediator {
+    void SendMessage(string message, User user);
+}
+
+// Concrete mediator
+public class ChatRoom : IChatMediator {
+    private List&lt;User&gt; users = new();
+
+    public void RegisterUser(User user) {
+        users.Add(user);
+    }
+
+    public void SendMessage(string message, User sender) {
+        foreach (var user in users) {
+            if (user != sender) {
+                user.Receive(message);
+            }
+        }
+    }
+}
+
+// Colleague
+public class User {
+    private string name;
+    private IChatMediator chatMediator;
+
+    public User(string name, IChatMediator mediator) {
+        this.name = name;
+        this.chatMediator = mediator;
+    }
+
+    public void Send(string message) {
+        chatMediator.SendMessage(message, this);
+    }
+
+    public void Receive(string message) {
+        Console.WriteLine($"{name} received: {message}");
+    }
+}
+    </code></pre>
+  </div>
+
+   <div id="chain-py" class="tab-content">
+        <pre><code class="language-python"> 
+class ChatRoom:
+    def __init__(self):
+        self.users = []
+
+    def register_user(self, user):
+        self.users.append(user)
+
+    def send_message(self, message, sender):
+        for user in self.users:
+            if user != sender:
+                user.receive(message)
+
+class User:
+    def __init__(self, name, mediator):
+        self.name = name
+        self.mediator = mediator
+
+    def send(self, message):
+        self.mediator.send_message(message, self)
+
+    def receive(self, message):
+        print(f"{self.name} received: {message}")
+
+# Usage
+room = ChatRoom()
+alice = User("Alice", room)
+bob = User("Bob", room)
+
+room.register_user(alice)
+room.register_user(bob)
+
+alice.send("Hello Bob!")
+    </code></pre>
+  </div>
+</div>
+
+  <h2 class="toc-title">✅ Benefits</h2>
+  <ul>
+    <li>Reduces direct dependencies between objects</li>
+    <li>Makes it easier to modify or extend interactions</li>
+    <li>Centralized control makes debugging and testing easier</li>
+  </ul>
+
+  <h2>⚠️ Drawbacks</h2>
+  <ul>
+    <li>Mediator can become overly complex if it handles too many interactions</li>
+    <li>Can introduce a performance bottleneck</li>
+  </ul>
+
+  <h2 class="toc-title">🏗 Real-World Use Cases</h2>
+  <ul>
+    <li>Chat room systems</li>
+    <li>UI component interaction coordination (e.g., MVC Controllers)</li>
+    <li>Air Traffic Control systems</li>
+  </ul>
+
+  <h2 class="toc-title">🧠 Quiz Yourself</h2>
+  <p>Test your understanding with our <a href="#">interactive Mediator Pattern quiz</a>.</p>
+<div class='question-container'     
+                     data-questions='15346BD75E7A4320829902268520A08D'
+                     data-secret-key='C3980A7A979D4891883B98D0C224F464'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='15346BD75E7A4320829902268520A08D'>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</script>
+                </div>
+  <h2>📌 Summary</h2>
+  <ul>
+    <li>Mediator pattern reduces object coupling</li>
+    <li>Useful in systems where multiple objects interact in defined ways</li>
+    <li>Encourages clean architecture and better maintainability</li>
+  </ul>
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/chain-of-responsibility-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/state-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/chain-of-responsibility-pattern"><span aria-hidden="true">&#8592;</span> Chain of Responsibility Pattern: Passing the Buck Gracefully</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/state-pattern">State Pattern &#x2013; Let Objects Evolve Their Behavior Dynamically <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

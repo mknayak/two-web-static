@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Strategy Pattern to write flexible and interchangeable algorithms. Explore real-world examples, UML, and C#/Python code in this practical guide." />
+        <meta property='og:title' content='Strategy Pattern: Flexible Algorithms with Clean Separation'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/strategy-pattern.webp'/>
+        <meta property='og:description' content='Master the Strategy Pattern to write flexible and interchangeable algorithms. Explore real-world examples, UML, and C#/Python code in this practical guide.'/> 
+        <title>Strategy Pattern: Flexible Algorithms with Clean Separation | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/proxy-decorator-adapter-comparison"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/observer-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/proxy-decorator-adapter-comparison"><span aria-hidden="true">&#8592;</span> Proxy vs Decorator vs Adapter: Choose the Right Pattern</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/observer-pattern">Observer Pattern: Notify Dependents Automatically <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Strategy Pattern: Flexible Algorithms with Clean Separation</h1>
+                    <p class="lead">Master the Strategy Pattern to write flexible and interchangeable algorithms. Explore real-world examples, UML, and C#/Python code in this practical guide.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">02-Jul, 2025 &middot;
+                                    10 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/strategy-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <h2 class="toc-title">Introduction</h2>
+  <p>
+    The Strategy Pattern is designed to encapsulate a family of algorithms and make them interchangeable at runtime. It enables the algorithm to vary independently from the clients that use it.
+  </p>
+
+  <h2 class="toc-title">What is the Strategy Pattern?</h2>
+  <p><strong>Definition:</strong> Defines a family of algorithms, encapsulates each one, and makes them interchangeable.</p>
+  <ul>
+    <li><strong>Category:</strong> Behavioral</li>
+    <li><strong>Also Known As:</strong> Policy Pattern</li>
+  </ul>
+
+  <h2 class="toc-title">Real-World Analogy</h2>
+  <p>
+    A navigation app that offers routes for walking, driving, and transit—each a separate strategy, selected at runtime.
+  </p>
+
+  <h2 class="toc-title">UML Diagram</h2>
+  <pre>
+Context → delegates to a Strategy interface, implemented by ConcreteStrategyA, ConcreteStrategyB
+
++----------------+        +---------------------+
+|    Context     |<>----->|      IStrategy      |
+|----------------|        |---------------------|
+| - strategy     |        | + Execute()         |
+|----------------|        +---------------------+
+| + SetStrategy()|              
+| + Execute()    |              
++----------------+        
+         | 
+         ↓ 
++------------------+     +------------------+
+|ConcreteStrategyA |     |ConcreteStrategyB |
++------------------+     +------------------+
+  </pre>
+ <h2 class="toc-title">Code Example: Payment Strategy</h2>
+<div class="code-tabs">
+  <div class="tab-buttons">
+    <button onclick="showTab(this, 'payment-cs')" class="active">C#</button>
+    <button onclick="showTab(this, 'payment-py')">Python</button>
+  </div>
+  <div id="payment-cs" class="tab-content active">
+    <pre><code class="language-csharp">
+// Strategy Interface
+public interface IPaymentStrategy
+{
+    void Pay(decimal amount);
+}
+
+// Concrete Strategy A
+public class CreditCardPayment : IPaymentStrategy
+{
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine($"Paid {amount:C} using Credit Card.");
+    }
+}
+
+// Concrete Strategy B
+public class PayPalPayment : IPaymentStrategy
+{
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine($"Paid {amount:C} using PayPal.");
+    }
+}
+
+// Context
+public class PaymentProcessor
+{
+    private IPaymentStrategy _paymentStrategy;
+
+    public void SetStrategy(IPaymentStrategy strategy)
+    {
+        _paymentStrategy = strategy;
+    }
+
+    public void ProcessPayment(decimal amount)
+    {
+        _paymentStrategy.Pay(amount);
+    }
+}
+
+// Client
+public class Program
+{
+    public static void Main()
+    {
+        var processor = new PaymentProcessor();
+
+        processor.SetStrategy(new CreditCardPayment());
+        processor.ProcessPayment(150.00m);
+
+        processor.SetStrategy(new PayPalPayment());
+        processor.ProcessPayment(200.00m);
+    }
+}
+    </code></pre>
+  </div>
+
+  <div id="payment-py" class="tab-content">
+    <pre><code class="language-python">
+from abc import ABC, abstractmethod
+
+class PaymentStrategy(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+class CreditCardPayment(PaymentStrategy):
+    def pay(self, amount):
+        print(f"Paid ${amount:.2f} using Credit Card.")
+
+class PayPalPayment(PaymentStrategy):
+    def pay(self, amount):
+        print(f"Paid ${amount:.2f} using PayPal.")
+
+class PaymentProcessor:
+    def __init__(self, strategy: PaymentStrategy):
+        self._strategy = strategy
+
+    def set_strategy(self, strategy: PaymentStrategy):
+        self._strategy = strategy
+
+    def process_payment(self, amount):
+        self._strategy.pay(amount)
+
+if __name__ == "__main__":
+    processor = PaymentProcessor(CreditCardPayment())
+    processor.process_payment(150.00)
+
+    processor.set_strategy(PayPalPayment())
+    processor.process_payment(200.00)
+    </code></pre>
+  </div>
+</div>
+
+<h2 class="toc-title">Code Example: Sorting Strategy</h2>
+<div class="code-tabs">
+  <div class="tab-buttons">
+    <button onclick="showTab(this, 'sort-cs')" class="active">C#</button>
+    <button onclick="showTab(this, 'sort-py')">Python</button>
+  </div>
+  <div id="sort-cs" class="tab-content active">
+    <pre><code class="language-csharp">
+public interface ISortStrategy
+{
+    void Sort(List<int> list);
+}
+
+public class BubbleSort : ISortStrategy
+{
+    public void Sort(List<int> list)
+    {
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            for (int j = 0; j < list.Count - i - 1; j++)
+            {
+                if (list[j] > list[j + 1])
+                {
+                    int temp = list[j];
+                    list[j] = list[j + 1];
+                    list[j + 1] = temp;
+                }
+            }
+        }
+        Console.WriteLine("Sorted using Bubble Sort: " + string.Join(", ", list));
+    }
+}
+
+public class QuickSort : ISortStrategy
+{
+    public void Sort(List<int> list)
+    {
+        list.Sort(); // Using built-in QuickSort
+        Console.WriteLine("Sorted using Quick Sort: " + string.Join(", ", list));
+    }
+}
+
+public class SortContext
+{
+    private ISortStrategy _sortStrategy;
+
+    public void SetStrategy(ISortStrategy strategy)
+    {
+        _sortStrategy = strategy;
+    }
+
+    public void Sort(List<int> list)
+    {
+        _sortStrategy.Sort(list);
+    }
+}
+
+public class SortExample
+{
+    public static void Main()
+    {
+        var numbers = new List<int> { 5, 3, 8, 4, 2 };
+        var context = new SortContext();
+
+        context.SetStrategy(new BubbleSort());
+        context.Sort(new List<int>(numbers));
+
+        context.SetStrategy(new QuickSort());
+        context.Sort(new List<int>(numbers));
+    }
+}
+    </code></pre>
+  </div>
+
+  <div id="sort-py" class="tab-content">
+    <pre><code class="language-python">
+from abc import ABC, abstractmethod
+
+class SortStrategy(ABC):
+    @abstractmethod
+    def sort(self, data):
+        pass
+
+class BubbleSort(SortStrategy):
+    def sort(self, data):
+        arr = data.copy()
+        for i in range(len(arr)):
+            for j in range(0, len(arr) - i - 1):
+                if arr[j] > arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        print("Sorted using Bubble Sort:", arr)
+
+class QuickSort(SortStrategy):
+    def sort(self, data):
+        arr = sorted(data)
+        print("Sorted using Quick Sort:", arr)
+
+class SortContext:
+    def __init__(self, strategy: SortStrategy):
+        self._strategy = strategy
+
+    def set_strategy(self, strategy: SortStrategy):
+        self._strategy = strategy
+
+    def sort(self, data):
+        self._strategy.sort(data)
+
+if __name__ == "__main__":
+    numbers = [5, 3, 8, 4, 2]
+    context = SortContext(BubbleSort())
+    context.sort(numbers)
+
+    context.set_strategy(QuickSort())
+    context.sort(numbers)
+    </code></pre>
+  </div>
+</div>
+
+
+  <h2 class="toc-title">More Real-World Examples</h2>
+  <h3>1. Compression Algorithm</h3>
+  <p>You can use different strategies for compressing files such as ZIP, RAR, or GZIP.</p>
+  <h3>2. Sorting</h3>
+  <p>Context sets sorting strategy: QuickSort, MergeSort, or BubbleSort, depending on performance needs.</p>
+  <h3>3. Authentication Strategy</h3>
+  <p>Login context supports multiple strategies: LDAP, OAuth, SAML, or custom DB auth.</p>
+  <h3>4. Logging Strategy</h3>
+  <p>Log output can be directed to console, file, or cloud service via interchangeable strategies.</p>
+
+  <h2 class="toc-title">When to Use</h2>
+  <ul>
+    <li>Multiple interchangeable algorithms</li>
+    <li>Eliminating conditionals for algorithm selection</li>
+    <li>Open/Closed Principle compliance</li>
+  </ul>
+
+  <h2 class="toc-title">Pros and Cons</h2>
+  <table class="table table-boardered">
+    <thead>
+      <tr><th>Pros</th><th>Cons</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Easy to switch strategies</td>
+        <td>Increased number of classes</td>
+      </tr>
+      <tr>
+        <td>Adheres to SOLID</td>
+        <td>Client must understand differences</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="toc-title">Real-World Use Cases</h2>
+  <ul>
+    <li>Payment gateways</li>
+    <li>Compression algorithms</li>
+    <li>Input validation</li>
+    <li>Sorting algorithms</li>
+    <li>Authentication methods</li>
+    <li>Logging destinations</li>
+  </ul>
+
+  <h2 class="toc-title">Summary</h2>
+  <p>
+    The Strategy Pattern offers a powerful way to delegate and encapsulate behavior, making your code more flexible, extensible, and maintainable.
+  </p>
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/proxy-decorator-adapter-comparison"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/observer-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/proxy-decorator-adapter-comparison"><span aria-hidden="true">&#8592;</span> Proxy vs Decorator vs Adapter: Choose the Right Pattern</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/observer-pattern">Observer Pattern: Notify Dependents Automatically <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

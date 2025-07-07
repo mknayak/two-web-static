@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Learn how the State Pattern helps objects change behavior dynamically based on internal state. Includes real-world examples, UML, and C#/Python code." />
+        <meta property='og:title' content='State Pattern &#x2013; Let Objects Evolve Their Behavior Dynamically'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/state-pattern.webp'/>
+        <meta property='og:description' content='Learn how the State Pattern helps objects change behavior dynamically based on internal state. Includes real-world examples, UML, and C#/Python code.'/> 
+        <title>State Pattern &#x2013; Let Objects Evolve Their Behavior Dynamically | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/mediator-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/visitor-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/mediator-pattern"><span aria-hidden="true">&#8592;</span> Mediator Pattern &#x2013; Simplifying Complex Object Communication</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/visitor-pattern">Visitor Pattern &#x2013; Add Behavior Without Changing Classes <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>State Pattern &#x2013; Let Objects Evolve Their Behavior Dynamically</h1>
+                    <p class="lead">Learn how the State Pattern helps objects change behavior dynamically based on internal state. Includes real-world examples, UML, and C#/Python code.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">05-Jul, 2025 &middot;
+                                    7 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/state-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <h1>State Pattern: Let Objects Evolve Their Behavior Dynamically</h1>
+
+<p>The State Pattern is a behavioral design pattern that allows an object to alter its behavior when its internal state changes. It appears as if the object changed its class. This pattern is particularly useful when an object must change its behavior at runtime depending on its current state.</p>
+
+<h2 class="toc-title">What is the State Pattern?</h2>
+<p>The State Pattern encapsulates varying behavior for the same object based on its internal state, and delegates state-specific behavior to different state classes. It helps in organizing code that has lots of conditional logic based on the object's state.</p>
+
+<h2 class="toc-title">Real-World Analogy</h2>
+<p>Think of a vending machine. Depending on its state—waiting for selection, dispensing item, or out of service—it behaves differently. The machine's operations are delegated to different internal state objects.</p>
+
+<h2 class="toc-title">Participants</h2>
+<ul>
+  <li><strong>Context</strong>: Maintains an instance of a ConcreteState subclass that defines the current state.</li>
+  <li><strong>State</strong>: Defines the interface for encapsulating behavior associated with a particular state.</li>
+  <li><strong>Concrete States</strong>: Each subclass implements behavior associated with a state of the context.</li>
+</ul>
+
+<h2 class="toc-title">UML Diagram</h2>
+<pre class="mermaid">
+classDiagram
+    class Context {
+        - state: State
+        + Request()
+        + ChangeState(State)
+    }
+
+    class State {
+        &lt;&lt;interface&gt;&gt;
+        + Handle(Context)
+    }
+
+    class ConcreteStateA {
+        + Handle(Context)
+    }
+
+    class ConcreteStateB {
+        + Handle(Context)
+    }
+
+    Context --> State
+    State <|.. ConcreteStateA
+    State <|.. ConcreteStateB
+</pre>
+
+<h2 class="toc-title">Implementation</h2>
+<div class="code-tabs">
+  <div class="tab-buttons">
+    <button onclick="showTab(this, 'chain-cs')" class="active">C#</button>
+    <button onclick="showTab(this, 'chain-py')">Python</button>
+  </div>
+
+  <div id="chain-cs" class="tab-content active">
+    <pre><code class="language-csharp">// State Interface
+public interface IState {
+    void Handle(Context context);
+}
+
+// Concrete State A
+public class ConcreteStateA : IState {
+    public void Handle(Context context) {
+        Console.WriteLine("State A: Switching to State B");
+        context.ChangeState(new ConcreteStateB());
+    }
+}
+
+// Concrete State B
+public class ConcreteStateB : IState {
+    public void Handle(Context context) {
+        Console.WriteLine("State B: Switching to State A");
+        context.ChangeState(new ConcreteStateA());
+    }
+}
+
+// Context
+public class Context {
+    private IState _state;
+
+    public Context(IState state) {
+        _state = state;
+    }
+
+    public void ChangeState(IState state) {
+        _state = state;
+    }
+
+    public void Request() {
+        _state.Handle(this);
+    }
+}</code></pre>
+  </div>
+
+  <div id="chain-py" class="tab-content">
+    <pre><code class="language-python">from abc import ABC, abstractmethod
+
+class State(ABC):
+    @abstractmethod
+    def handle(self, context):
+        pass
+
+class ConcreteStateA(State):
+    def handle(self, context):
+        print("State A: Switching to State B")
+        context.change_state(ConcreteStateB())
+
+class ConcreteStateB(State):
+    def handle(self, context):
+        print("State B: Switching to State A")
+        context.change_state(ConcreteStateA())
+
+class Context:
+    def __init__(self, state):
+        self._state = state
+
+    def change_state(self, state):
+        self._state = state
+
+    def request(self):
+        self._state.handle(self)</code></pre>
+  </div>
+</div>
+
+<h2 class="toc-title">Use Cases</h2>
+<ul>
+  <li>Media players: Play, Pause, Stop states</li>
+  <li>Network connections: Connected, Disconnected, Connecting</li>
+  <li>UI Workflows or Page Navigation</li>
+</ul>
+<h2 class="toc-title">More Examples (C#)</h2>
+<div class="code-tabs">
+  <div class="tab-buttons">
+    <button onclick="showTab(this, 'example1')" class="active">Media Player</button>
+    <button onclick="showTab(this, 'example2')">Order Service</button>
+  </div>
+    <div id="example1" class="tab-content active">
+        <pre><code class="language-csharp">
+public interface IPlayerState
+{
+    void Play(MediaPlayer player);
+    void Pause(MediaPlayer player);
+    void Stop(MediaPlayer player);
+}
+
+public class PlayingState : IPlayerState
+{
+    public void Play(MediaPlayer player) => Console.WriteLine("Already playing.");
+    public void Pause(MediaPlayer player)
+    {
+        Console.WriteLine("Pausing playback.");
+        player.ChangeState(new PausedState());
+    }
+    public void Stop(MediaPlayer player)
+    {
+        Console.WriteLine("Stopping playback.");
+        player.ChangeState(new StoppedState());
+    }
+}
+
+public class PausedState : IPlayerState
+{
+    public void Play(MediaPlayer player)
+    {
+        Console.WriteLine("Resuming playback.");
+        player.ChangeState(new PlayingState());
+    }
+    public void Pause(MediaPlayer player) => Console.WriteLine("Already paused.");
+    public void Stop(MediaPlayer player)
+    {
+        Console.WriteLine("Stopping from pause.");
+        player.ChangeState(new StoppedState());
+    }
+}
+
+public class StoppedState : IPlayerState
+{
+    public void Play(MediaPlayer player)
+    {
+        Console.WriteLine("Starting playback.");
+        player.ChangeState(new PlayingState());
+    }
+    public void Pause(MediaPlayer player) => Console.WriteLine("Can't pause. Not playing.");
+    public void Stop(MediaPlayer player) => Console.WriteLine("Already stopped.");
+}
+
+public class MediaPlayer
+{
+    private IPlayerState _state;
+    public MediaPlayer() => _state = new StoppedState();
+    public void ChangeState(IPlayerState state) => _state = state;
+    public void Play() => _state.Play(this);
+    public void Pause() => _state.Pause(this);
+    public void Stop() => _state.Stop(this);
+}
+
+// Usage
+// var player = new MediaPlayer();
+// player.Play();  // Starting playback.
+// player.Pause(); // Pausing playback.
+// player.Stop();  // Stopping from pause.
+            </code>
+        </pre>  
+    </div>  
+    <div id="example2" class="tab-content">
+        <pre><code class="language-csharp">
+public interface IOrderState
+{
+    void Next(Order order);
+    void Cancel(Order order);
+}
+
+public class NewOrderState : IOrderState
+{
+    public void Next(Order order)
+    {
+        Console.WriteLine("Order paid.");
+        order.ChangeState(new PaidOrderState());
+    }
+    public void Cancel(Order order)
+    {
+        Console.WriteLine("Order cancelled.");
+        order.ChangeState(new CancelledOrderState());
+    }
+}
+
+public class PaidOrderState : IOrderState
+{
+    public void Next(Order order)
+    {
+        Console.WriteLine("Order shipped.");
+        order.ChangeState(new ShippedOrderState());
+    }
+    public void Cancel(Order order)
+    {
+        Console.WriteLine("Cannot cancel, already paid.");
+    }
+}
+
+public class ShippedOrderState : IOrderState
+{
+    public void Next(Order order)
+    {
+        Console.WriteLine("Order delivered.");
+        order.ChangeState(new DeliveredOrderState());
+    }
+    public void Cancel(Order order)
+    {
+        Console.WriteLine("Cannot cancel, already shipped.");
+    }
+}
+
+public class DeliveredOrderState : IOrderState
+{
+    public void Next(Order order) => Console.WriteLine("Order already delivered.");
+    public void Cancel(Order order) => Console.WriteLine("Cannot cancel, already delivered.");
+}
+
+public class CancelledOrderState : IOrderState
+{
+    public void Next(Order order) => Console.WriteLine("Order is cancelled.");
+    public void Cancel(Order order) => Console.WriteLine("Order is already cancelled.");
+}
+
+public class Order
+{
+    private IOrderState _state;
+    public Order() => _state = new NewOrderState();
+    public void ChangeState(IOrderState state) => _state = state;
+    public void Next() => _state.Next(this);
+    public void Cancel() => _state.Cancel(this);
+}
+
+// Usage
+// var order = new Order();
+// order.Next();   // Order paid.
+// order.Next();   // Order shipped.
+// order.Cancel(); // Cannot cancel, already shipped.
+            </code>
+        </pre>  
+    </div>
+</div>
+
+<h2 class="toc-title">Benefits</h2>
+<ul>
+    <li><strong>Organizes code related to particular states in separate classes:</strong>
+        <span>The State Pattern encourages you to create a separate class for each possible state of an object. This means all the logic and behavior for a specific state is grouped together, making the code easier to read and maintain. For example, if you have a Document that can be in "Draft", "Moderation", or "Published" states, each state would have its own class</span>
+    </li>
+    <li><strong>Makes state transitions explicit and easier to manage</strong>
+    <span>Instead of using lots of if or switch statements to check the current state and decide what to do, the State Pattern lets the object change its state by switching to a different state class. This makes transitions clear and centralizes the logic for moving from one state to another, reducing bugs and confusion.</span></li>
+    <li><strong>Improves maintainability and scalability:</strong>
+    <span>
+        By separating state-specific logic, it becomes much easier to add new states or modify existing ones without affecting unrelated code. This modular approach means you can scale your application or make changes with less risk of introducing errors elsewhere.
+    </span></li>
+</ul>
+
+<h2 class="toc-title">Drawbacks</h2>
+<ul>
+    <li>
+        <strong>Can lead to a large number of classes:</strong>
+        <span>
+            Each state is typically implemented as a separate class. For objects with many possible states, this can result in a proliferation of classes, making the codebase harder to navigate and increasing maintenance overhead.
+        </span>
+    </li>
+    <li>
+        <strong>Increased complexity if states are trivial:</strong>
+        <span>
+            If the behavior differences between states are minimal, using the State Pattern may introduce unnecessary abstraction and complexity. In such cases, simple conditional logic might be more appropriate and easier to understand.
+        </span>
+    </li>
+    <li>
+        <strong>State transitions can be harder to trace:</strong>
+        <span>
+            Since state transitions are encapsulated within state classes, it may be less obvious how and when transitions occur, especially in large systems. This can make debugging and understanding the flow of state changes more challenging.
+        </span>
+    </li>
+    <li>
+        <strong>Potential for tight coupling between Context and State classes:</strong>
+        <span>
+            The Context class must be aware of all possible state classes to switch between them, which can lead to tight coupling and reduce flexibility if not managed carefully.
+        </span>
+    </li>
+</ul>
+
+<h2 class="toc-title">Conclusion</h2>
+<p>The State Pattern is an excellent way to manage complex state-dependent behavior. By encapsulating state-specific logic into individual classes, your system becomes easier to maintain, extend, and test. It brings clarity to how state transitions occur and allows objects to behave differently based on their internal state.</p>
+
+<h2 class="toc-title">Test Your Knowledge</h2>
+<div class='question-container'     
+                     data-questions='346395CBE7F14D648004F71398C1B0C3'
+                     data-secret-key='C9C68B057FF34A0289201B65CB96F2D1'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='346395CBE7F14D648004F71398C1B0C3'>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</script>
+                </div>
+ 
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/mediator-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/visitor-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/mediator-pattern"><span aria-hidden="true">&#8592;</span> Mediator Pattern &#x2013; Simplifying Complex Object Communication</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/visitor-pattern">Visitor Pattern &#x2013; Add Behavior Without Changing Classes <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

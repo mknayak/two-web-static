@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Explore how the Iterator Pattern enables sequential access to elements in a collection without exposing its internal structure. Includes real-world examples, UML, and C#/Python code." />
+        <meta property='og:title' content='Iterator Pattern &#x2013; Access Elements Without Exposing Structure'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/iterator-pattern.webp'/>
+        <meta property='og:description' content='Explore how the Iterator Pattern enables sequential access to elements in a collection without exposing its internal structure. Includes real-world examples, UML, and C#/Python code.'/> 
+        <title>Iterator Pattern &#x2013; Access Elements Without Exposing Structure | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/template-method-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/memento-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/template-method-pattern"><span aria-hidden="true">&#8592;</span> Template Method Pattern &#x2013; Define the Algorithm Skeleton</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/memento-pattern">Memento Pattern &#x2013; Preserving Object State Without Breaking Encapsulation <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Iterator Pattern &#x2013; Access Elements Without Exposing Structure</h1>
+                    <p class="lead">Explore how the Iterator Pattern enables sequential access to elements in a collection without exposing its internal structure. Includes real-world examples, UML, and C#/Python code.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">06-Jul, 2025 &middot;
+                                    6 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/iterator-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                         
+
+
+<section>
+  <h2 class="toc-title">🌀 The Iterator Pattern: Seamless Traversal without Exposure</h2>
+  <p>
+    The <strong>Iterator Pattern</strong> is a core behavioral design pattern that enables sequential access to the elements of a collection—<em>without revealing its internal structure</em>.
+    Rather than tying client code to how a collection stores its data, the pattern abstracts away the traversal logic. 
+    This allows the client to focus solely on what to do with each element, not how to get to the next one.
+  </p>
+
+  <h3>📺 Real-world Analogy</h3>
+  <p>
+    Think of using a <strong>TV remote</strong>: you press “Next” or “Previous” to browse channels. 
+    You don’t need to know how those channels are stored or indexed—just that each press moves you forward or backward. 
+    That’s iteration in action, without exposure.
+  </p>
+
+  <h3>🧠 Why Use the Iterator Pattern?</h3>
+<ul>
+    <li>
+        🔍 <strong>Encapsulation</strong>:
+        <p>
+            The iterator hides the internal structure of the collection, so you can change how data is stored without affecting client code.
+        </p>
+        <pre><code class="language-csharp">
+// Client doesn't know if _names is a List, Array, etc.
+IIterator&lt;string&gt; iterator = nameCollection.CreateIterator();
+while (iterator.HasNext())
+{
+        Console.WriteLine(iterator.Next());
+}
+        </code></pre>
+    </li>
+    <li>
+        🔁 <strong>Decouples traversal from collection</strong>:
+        <p>
+            Client code can iterate over a collection without knowing its implementation details.
+        </p>
+        <pre><code class="language-csharp">
+// Traversal logic is in the iterator, not in the collection
+IIterator&lt;string&gt; iterator = nameCollection.CreateIterator();
+while (iterator.HasNext())
+{
+        var name = iterator.Next();
+        // Do something with name
+}
+        </code></pre>
+    </li>
+    <li>
+        🔄 <strong>Flexibility</strong>:
+        <p>
+            You can add support for different iteration modes (reverse, filtering, etc.) by creating new iterator classes.
+        </p>
+        <pre><code class="language-csharp">
+// Example: Reverse iterator
+class ReverseNameIterator : IIterator&lt;string&gt;
+{
+        private readonly List&lt;string&gt; _names;
+        private int _position;
+        public ReverseNameIterator(List&lt;string&gt; names)
+        {
+                _names = names;
+                _position = _names.Count - 1;
+        }
+        public bool HasNext() =&gt; _position &gt;= 0;
+        public string Next() =&gt; _names[_position--];
+}
+        </code></pre>
+    </li>
+    <li>
+        👥 <strong>Multiple iterators at once</strong>:
+        <p>
+            You can have several iterators on the same collection, each with its own state.
+        </p>
+        <pre><code class="language-csharp">
+// Two iterators traversing independently
+var iterator1 = nameCollection.CreateIterator();
+var iterator2 = nameCollection.CreateIterator();
+Console.WriteLine(iterator1.Next()); // Alice
+Console.WriteLine(iterator2.Next()); // Alice
+Console.WriteLine(iterator1.Next()); // Bob
+        </code></pre>
+    </li>
+</ul>
+
+  <h3>💡 In Practice</h3>
+  <p>
+    Most modern programming languages provide built-in iterator mechanisms:
+    <ul>
+      <li><code>foreach</code> in <strong>C#</strong></li>
+      <li><code>for...of</code> in <strong>JavaScript</strong></li>
+      <li><code>for ... in</code> and <code>__iter__</code> in <strong>Python</strong></li>
+    </ul>
+    But sometimes, these default approaches aren’t enough. When dealing with trees, graphs, or non-linear structures, 
+    implementing a custom iterator offers full control and adaptability.
+  </p>
+
+  <h3>🌳 When You'll Want to Implement It Yourself</h3>
+  <ul>
+    <li>Traversing <strong>non-linear structures</strong> like DOM trees or graphs</li>
+    <li>Supporting <strong>custom ordering</strong> or <strong>element filtering</strong></li>
+    <li>Maintaining <strong>stateful iteration</strong> across async or paged data sources</li>
+  </ul>
+</section>
+
+
+<h2 class="toc-title">Problem it Solves</h2>
+<ul>
+  <li>Collections often have complex internal representations.</li>
+  <li>Client code may be tightly coupled with traversal logic.</li>
+  <li>Difficult to implement multiple traversal strategies (e.g., forward, reverse, filtered).</li>
+</ul>
+
+<h2 class="toc-title">Intent</h2>
+<blockquote>
+  Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.  
+</blockquote>
+
+<h2>Structure</h2>
+<pre><code class="mermaid">
+classDiagram
+    class Iterator {
+        +hasNext()
+        +next()
+    }
+    class ConcreteIterator {
+        -collection
+        -position
+        +hasNext()
+        +next()
+    }
+    class Aggregate {
+        +createIterator()
+    }
+    class ConcreteAggregate {
+        -items
+        +createIterator()
+    }
+
+    Aggregate <|-- ConcreteAggregate
+    Iterator <|-- ConcreteIterator
+    ConcreteAggregate --> ConcreteIterator
+</code></pre>
+
+<h2>When to Use</h2>
+<ul>
+  <li>When you need to access elements of a collection without exposing its internal details.</li>
+  <li>When you want multiple or customizable traversal strategies.</li>
+</ul>
+
+<h2 class="toc-title">💻 Code Examples</h2>
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this,'csharp')" class="active">C#</button>
+      <button onclick="showTab(this, 'python')">Python</button>
+    </div>
+  <div class="tab-content active" id="csharp">
+<pre><code class="language-csharp">// C# Iterator Pattern Example
+interface IIterator<T>
+{
+    bool HasNext();
+    T Next();
+}
+
+class NameIterator : IIterator<string>
+{
+    private readonly List<string> _names;
+    private int _position = 0;
+
+    public NameIterator(List<string> names)
+    {
+        _names = names;
+    }
+
+    public bool HasNext() => _position < _names.Count;
+
+    public string Next() => _names[_position++];
+}
+
+class NameCollection
+{
+    private List<string> _names = new List<string> { "Alice", "Bob", "Charlie" };
+
+    public IIterator<string> CreateIterator() => new NameIterator(_names);
+}</code></pre>
+  </div>
+  <div class="tab-content" id="python">
+<pre><code class="language-python"># Python Iterator Pattern Example
+class NameIterator:
+    def __init__(self, names):
+        self._names = names
+        self._index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._index < len(self._names):
+            result = self._names[self._index]
+            self._index += 1
+            return result
+        else:
+            raise StopIteration()
+
+names = ["Alice", "Bob", "Charlie"]
+iterator = NameIterator(names)
+for name in iterator:
+    print(name)</code></pre>
+  </div>
+</div>
+
+<h2 class="toc-title">Pros and Cons</h2>
+<ul>
+  <li><strong>✅ Pros:</strong> Encapsulates traversal logic, supports multiple iterators, improves code readability</li>
+  <li><strong>⚠️ Cons:</strong> Adds extra classes, external iterators can be more verbose</li>
+</ul>
+
+<h2 class="toc-title">Real-World Use Cases</h2>
+<ul>
+  <li>Database cursor iteration</li>
+  <li>Pagination over APIs</li>
+  <li>Custom UI components navigating tab groups or menu items</li>
+</ul>
+<h2 class="toc-title">🧠 Test your Understnainding</h2>
+<div class='question-container'     
+                     data-questions='27AA9E6C7480465A8A3C41E2088FBA1F'
+                     data-secret-key='13E47592F8C9405E9E33606BFC6ABC5E'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='27AA9E6C7480465A8A3C41E2088FBA1F'>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</script>
+                </div>
+<h2 class="toc-title">🔚 Conclusion</h2>
+<p>The Iterator Pattern helps build clean, maintainable code by decoupling the collection structure from the traversal mechanism. Whether you're writing your own data structures or working with APIs, knowing how iterators work gives you an elegant way to control access to elements.</p>
+
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/template-method-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/memento-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/template-method-pattern"><span aria-hidden="true">&#8592;</span> Template Method Pattern &#x2013; Define the Algorithm Skeleton</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/memento-pattern">Memento Pattern &#x2013; Preserving Object State Without Breaking Encapsulation <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Learn how the Interpreter Pattern helps evaluate expressions and define grammar for simple languages. Includes real-world examples, UML, and C#/Python code." />
+        <meta property='og:title' content='Interpreter Pattern &#x2013; Building Expression Evaluators and DSLs'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/interpreter-pattern.webp'/>
+        <meta property='og:description' content='Learn how the Interpreter Pattern helps evaluate expressions and define grammar for simple languages. Includes real-world examples, UML, and C#/Python code.'/> 
+        <title>Interpreter Pattern &#x2013; Building Expression Evaluators and DSLs | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/memento-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/conclusion">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/memento-pattern"><span aria-hidden="true">&#8592;</span> Memento Pattern &#x2013; Preserving Object State Without Breaking Encapsulation</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/conclusion">Conclusion: Your Design Patterns Journey <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Interpreter Pattern &#x2013; Building Expression Evaluators and DSLs</h1>
+                    <p class="lead">Learn how the Interpreter Pattern helps evaluate expressions and define grammar for simple languages. Includes real-world examples, UML, and C#/Python code.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">06-Jul, 2025 &middot;
+                                    8 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/interpreter-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section class="blog-section">
+  <h1>Interpreter Pattern</h1>
+  <p class="intro">
+    The Interpreter Pattern provides a way to evaluate language grammar or expressions. It is used to define a representation of grammar along with an interpreter that uses the representation to interpret sentences in the language.
+  </p>
+
+  <h2 class="toc-title">🧩 What is the Interpreter Pattern?</h2>
+  <p>
+    The Interpreter Pattern is a behavioral design pattern that specifies how to evaluate sentences in a language. It defines a grammar for a simple language and uses an interpreter to process statements of that language.
+  </p>
+
+  <h2 class="toc-title">🎯 Real-World Analogy</h2>
+  <p>
+    Think of a calculator parsing a mathematical expression like <code>"2 + 3 - 1"</code>. Each number and operation has meaning, and the system understands how to compute it by interpreting each token based on grammar rules.
+  </p>
+
+  <h2 class="toc-title">📊 UML Diagram</h2>
+  <pre class="mermaid">
+classDiagram
+    class AbstractExpression {
+      &lt;&lt;interface>>
+      + interpret(context)
+    }
+    class TerminalExpression {
+      + interpret(context)
+    }
+    class NonTerminalExpression {
+      + interpret(context)
+    }
+    class Context {
+      + input
+      + output
+    }
+
+    AbstractExpression <|-- TerminalExpression
+    AbstractExpression <|-- NonTerminalExpression
+  </pre>
+
+  <h2 class="toc-title">🏗️ Structure and Participants</h2>
+<ul>
+    <li>
+        <strong>Context:</strong> 
+        Holds the information that is global to the interpreter. This typically includes the input string or data to be parsed and any output or state needed during interpretation.
+    </li>
+    <li>
+        <strong>AbstractExpression:</strong> 
+        Defines the common interface (usually an <code>interpret(context)</code> method) for all concrete expression classes. Every grammar rule or symbol will implement this interface.
+    </li>
+    <li>
+        <strong>TerminalExpression:</strong> 
+        Implements the interpretation for grammar elements that do not contain other expressions (i.e., leaf nodes in the grammar tree). For example, numbers or variables in a mathematical expression.
+    </li>
+    <li>
+        <strong>NonTerminalExpression:</strong> 
+        Implements grammar rules that involve other expressions (i.e., composite nodes). These classes combine terminal and/or non-terminal expressions to represent more complex grammar constructs, such as addition or subtraction in an arithmetic language.
+    </li>
+</ul>
+
+  <h2 class="toc-title">💡 Use Cases</h2>
+  <ul>
+    <li>Simple language interpreters (arithmetic, boolean)</li>
+    <li>Rule engines or DSLs (Domain-Specific Languages)</li>
+    <li>Command parsing in chatbots or command-line interfaces</li>
+    <li>Validation engines for expressions or conditions</li>
+  </ul>
+
+  <h2 class="toc-title">👨‍💻 Example Code</h2>
+    <div class="code-tabs">
+        <div class="tab-buttons">
+            <button onclick="showTab(this,'csharp')" class="active">C#</button>
+            <button onclick="showTab(this, 'python')">Python</button>
+        </div>
+
+    <div class="tab-content active" id="csharp">
+      <pre><code class="language-csharp">
+// Abstract Expression
+interface IExpression {
+    int Interpret();
+}
+
+// Terminal
+class Number : IExpression {
+    private int _value;
+    public Number(int value) => _value = value;
+    public int Interpret() => _value;
+}
+
+// Non-Terminal
+class Add : IExpression {
+    private IExpression _left, _right;
+    public Add(IExpression left, IExpression right) {
+        _left = left;
+        _right = right;
+    }
+    public int Interpret() => _left.Interpret() + _right.Interpret();
+}
+
+// Usage
+var expression = new Add(new Number(5), new Number(3));
+Console.WriteLine(expression.Interpret()); // Output: 8
+      </code></pre>
+    </div>
+
+    <div class="tab-content" id="python">
+      <pre><code class="language-python">
+from abc import ABC, abstractmethod
+
+class Expression(ABC):
+    @abstractmethod
+    def interpret(self):
+        pass
+
+class Number(Expression):
+    def __init__(self, value):
+        self.value = value
+    def interpret(self):
+        return self.value
+
+class Add(Expression):
+    def __init__(self, left, right):
+        self.left = left
+        self.right = right
+    def interpret(self):
+        return self.left.interpret() + self.right.interpret()
+
+# Usage
+expr = Add(Number(5), Number(3))
+print(expr.interpret())  # Output: 8
+      </code></pre>
+    </div>
+  </div>
+
+  <h2 class="toc-title">⚖️ Pros and Cons</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Good for simple grammar parsing and expression evaluation</td>
+            <td>Can become complex and hard to maintain for large or evolving grammars</td>
+        </tr>
+        <tr>
+            <td>Extensible—easy to add new grammar rules or expressions by introducing new classes</td>
+            <td>Poor performance for complex expressions due to recursive interpretation and object creation</td>
+        </tr>
+        <tr>
+            <td>Improves readability and separation of concerns by encapsulating grammar logic</td>
+            <td>Class explosion: each grammar rule or symbol often requires a new class, leading to many small classes</td>
+        </tr>
+        <tr>
+            <td>Useful for implementing DSLs, rule engines, and interpreters for custom languages</td>
+            <td>Not suitable for parsing complex languages—better tools exist (e.g., parser generators, ANTLR)</td>
+        </tr>
+        <tr>
+            <td>Promotes reusability and testability of grammar components</td>
+            <td>Can be difficult to debug and optimize as the grammar grows</td>
+        </tr>
+    </tbody>
+</table>
+
+  <h2 class="toc-title">📌 When to Use</h2>
+  <ul>
+    <li>You have a simple grammar to interpret.</li>
+    <li>You want to implement a small language, query, or expression evaluator.</li>
+    <li>You want a highly extensible solution where new rules are frequently added.</li>
+  </ul>
+
+  <h2 class="toc-title">🧠 Quiz Time</h2>
+  <div class='question-container'     
+                     data-questions='6260700247F44F2FBDE6035A1FE7F460'
+                     data-secret-key='9593BF7FC0294613B10E4F70028B5F5F'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='6260700247F44F2FBDE6035A1FE7F460'>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</script>
+                </div>
+
+  <h2 class="toc-title">📝 Summary</h2>
+  <p>
+    The Interpreter Pattern is powerful when used in the right scenarios, such as custom language parsers and expression evaluation engines. However, for complex grammars, it’s often better to use tools like ANTLR or parser generators.
+  </p>
+
+  <footer class="blog-footer">
+    <strong>Next Up:</strong> Series Complete – Congrats! 🎉  
+    <br>
+    <em>Explore more on system design, security, and architecture at TechWayFit.</em>
+  </footer>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/memento-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/conclusion">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/memento-pattern"><span aria-hidden="true">&#8592;</span> Memento Pattern &#x2013; Preserving Object State Without Breaking Encapsulation</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/conclusion">Conclusion: Your Design Patterns Journey <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

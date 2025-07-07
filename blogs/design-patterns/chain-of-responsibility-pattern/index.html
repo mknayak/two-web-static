@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Chain of Responsibility Pattern to build flexible pipelines where multiple objects can handle requests. Includes real-world use cases and C#/Python examples." />
+        <meta property='og:title' content='Chain of Responsibility Pattern: Passing the Buck Gracefully'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/chain-of-responsibility.webp'/>
+        <meta property='og:description' content='Master the Chain of Responsibility Pattern to build flexible pipelines where multiple objects can handle requests. Includes real-world use cases and C#/Python examples.'/> 
+        <title>Chain of Responsibility Pattern: Passing the Buck Gracefully | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/command-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/mediator-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/command-pattern"><span aria-hidden="true">&#8592;</span> Command Pattern: Encapsulate Requests as Objects</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/mediator-pattern">Mediator Pattern &#x2013; Simplifying Complex Object Communication <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Chain of Responsibility Pattern: Passing the Buck Gracefully</h1>
+                    <p class="lead">Master the Chain of Responsibility Pattern to build flexible pipelines where multiple objects can handle requests. Includes real-world use cases and C#/Python examples.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">04-Jul, 2025 &middot;
+                                    7 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/chain-of-responsibility.webp" />
+
+                    <div class="single-post-text my-5">
+                        <p>the Chain of Responsibility (CoR)—that allows a request to pass through a sequence (or pipeline) of potential
+    handlers. Each object in that sequence (like middleware components or approval stages) decides whether to act on the
+    request or pass it along.</p>
+
+<h2 class="toc-title">🧠 What is the Chain of Responsibility Pattern?</h2>
+<p>
+    The <strong>Chain of Responsibility (CoR)</strong> pattern is a <em>behavioral design pattern</em> that enables you
+    to pass a request along a chain of handlers. Each handler in the chain decides whether to handle the request or
+    delegate it to the next handler in line.
+</p>
+<section>
+    <h3>How It Works</h3>
+    <ul>
+        <li>Each handler has a reference to the next handler in the chain.</li>
+        <li>If the current handler can't process the request, it passes it forward.</li>
+        <li>This continues until one handler handles the request—or none do.</li>
+    </ul>
+</section>
+<section>
+    <h3>Benefits</h3>
+    <ul>
+        <li>Decouples sender and receiver logic.</li>
+        <li>Makes the processing logic extensible and reorderable.</li>
+        <li>Promotes single-responsibility and open/closed principles.</li>
+    </ul>
+</section>
+<h2 class="toc-title">🎯 Intent</h2>
+<blockquote>
+    “Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the
+    request.”
+</blockquote>
+
+<h2 class="toc-title">🏗️ Structure (UML)</h2>
+<pre class="mermaid">
+classDiagram
+  direction LR
+  class Client {
+    +request: string
+  }
+  class Handler {
+    +SetNext(handler: Handler): Handler
+    +Handle(request: string): void
+  }
+  class SpamHandler {
+    +Handle(request: string): void
+  }
+  class SupportHandler {
+    +Handle(request: string): void
+  }
+  class FeedbackHandler {
+    +Handle(request: string): void
+  }
+
+  Client --> Handler : sends request to
+  Handler <|-- SpamHandler
+  Handler <|-- SupportHandler
+  Handler <|-- FeedbackHandler
+
+  SpamHandler --> SupportHandler : passes request if unhandled
+  SupportHandler --> FeedbackHandler : passes request if unhandled
+
+</pre>
+
+<h2 class="toc-title">💡 🎧 Customer Support Analogy</h2>
+<section>
+    <p>
+        To understand the <strong>Chain of Responsibility</strong> pattern, imagine how customer service works:
+    </p>
+
+    <ol>
+        <li>
+            <strong>Level 1 Support</strong> – Handles basic, frequently asked questions or common issues.
+        </li>
+        <li>
+            <strong>Level 2 Support</strong> – Tackles tickets that require deeper troubleshooting or specialized
+            knowledge.
+        </li>
+        <li>
+            <strong>Level 3 Support</strong> – Reserved for complex technical cases or issues needing expert
+            intervention.
+        </li>
+    </ol>
+
+    <p>
+        Each level checks whether it can resolve the issue. If it can't, the request is <em>passed along to the next
+            level</em>—just like how handlers operate in a CoR processing chain.
+    </p>
+</section>
+
+
+<h2 class="toc-title">💻 Code Examples</h2>
+<div class="code-tabs">
+    <div class="tab-buttons">
+        <button onclick="showTab(this, 'chain-cs')" class="active">C#</button>
+        <button onclick="showTab(this, 'chain-py')">Python</button>
+    </div>
+
+    <div id="chain-cs" class="tab-content active">
+        <pre><code class="language-csharp">
+// Handler base class
+abstract class Handler
+{
+    protected Handler next;
+    public Handler SetNext(Handler handler)
+    {
+        next = handler;
+        return handler;
+    }
+    public abstract void Handle(string request);
+}
+
+// Concrete Handlers
+class SpamHandler : Handler
+{
+    public override void Handle(string request)
+    {
+        if (request.Contains("Buy now"))
+            Console.WriteLine("SpamHandler: Marked as spam.");
+        else
+            next?.Handle(request);
+    }
+}
+
+class SupportHandler : Handler
+{
+    public override void Handle(string request)
+    {
+        if (request.Contains("support"))
+            Console.WriteLine("SupportHandler: Routed to support team.");
+        else
+            next?.Handle(request);
+    }
+}
+
+class FeedbackHandler : Handler
+{
+    public override void Handle(string request)
+    {
+        if (request.Contains("feedback"))
+            Console.WriteLine("FeedbackHandler: Stored in feedback inbox.");
+        else
+            Console.WriteLine("No handler could process the request.");
+    }
+}
+
+// Client code
+class Program
+{
+    static void Main()
+    {
+        var spam = new SpamHandler();
+        var support = new SupportHandler();
+        var feedback = new FeedbackHandler();
+
+        spam.SetNext(support).SetNext(feedback);
+
+        var requests = new[] {
+            "I'd like to give feedback",
+            "Buy now! Limited offer!",
+            "Need help with my account",
+            "Hello there!"
+        };
+
+        foreach (var req in requests)
+        {
+            Console.WriteLine($"\nRequest: {req}");
+            spam.Handle(req);
+        }
+    }
+}
+</code></pre>
+    </div>
+
+    <div id="chain-py" class="tab-content">
+        <pre><code class="language-python">
+class Handler:
+    def __init__(self):
+        self.next = None
+
+    def set_next(self, handler):
+        self.next = handler
+        return handler
+
+    def handle(self, request):
+        raise NotImplementedError
+
+class SpamHandler(Handler):
+    def handle(self, request):
+        if "Buy now" in request:
+            print("SpamHandler: Marked as spam.")
+        elif self.next:
+            self.next.handle(request)
+
+class SupportHandler(Handler):
+    def handle(self, request):
+        if "support" in request:
+            print("SupportHandler: Routed to support team.")
+        elif self.next:
+            self.next.handle(request)
+
+class FeedbackHandler(Handler):
+    def handle(self, request):
+        if "feedback" in request:
+            print("FeedbackHandler: Stored in feedback inbox.")
+        else:
+            print("No handler could process the request.")
+
+# Client code
+if __name__ == "__main__":
+    spam = SpamHandler()
+    support = SupportHandler()
+    feedback = FeedbackHandler()
+
+    spam.set_next(support).set_next(feedback)
+
+    requests = [
+        "I'd like to give feedback",
+        "Buy now! Limited offer!",
+        "Need help with support",
+        "Hello there!"
+    ]
+
+    for req in requests:
+        print(f"\nRequest: {req}")
+        spam.handle(req)
+</code></pre>
+    </div>
+</div>
+
+
+<h2 class="toc-title">🏢 Real-World Use Cases</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Scenario</th>
+            <th>How CoR Helps</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Middleware in ASP.NET pipeline</td>
+            <td>Each middleware can pass to the next</td>
+        </tr>
+        <tr>
+            <td>Event processing</td>
+            <td>Pass event to subscribed handlers</td>
+        </tr>
+        <tr>
+            <td>Approval systems</td>
+            <td>Tiered approval flow (manager → director → VP)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="toc-title">✅ Pros and ❌ Cons</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Reduces coupling</td>
+            <td>Can lead to unhandled requests</td>
+        </tr>
+        <tr>
+            <td>Adds flexibility in order of handling</td>
+            <td>Harder to debug if chain is long</td>
+        </tr>
+        <tr>
+            <td>Easily add/remove handlers</td>
+            <td>Requires careful design of handler logic</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="toc-title">🧪 Quick Quiz</h2>
+<div class='question-container'     
+                     data-questions='7AC391B2979B4CDFA21F04876957D6E4'
+                     data-secret-key='2E8C8FE9E09F4668AF4A35FEF1B73B22'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='7AC391B2979B4CDFA21F04876957D6E4'>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</script>
+                </div>
+ 
+<section>
+  <h2 class="toc-title">📌 When to Use the Chain of Responsibility Pattern</h2>
+  <ul>
+    <li>
+      <strong>✅ Multiple Potential Handlers:</strong> 
+      When a request might be processed by any of several objects, and you don’t want to hardcode which one.
+    </li>
+    <li>
+      <strong>🔄 Decoupled Sender/Receiver:</strong> 
+      When the object that sends the request shouldn’t need to know which object will handle it.
+    </li>
+    <li>
+      <strong>⚙️ Dynamic Handler Chain:</strong> 
+      When the order or combination of request processors might change during runtime.
+    </li>
+  </ul>
+  <p>
+    These situations are ideal for using CoR to create flexible, pluggable pipelines where logic can evolve without disrupting core functionality.
+  </p>
+</section>
+
+
+<section>
+  <h2 class="toc-title">🚫 When <em>Not</em> to Use the Chain of Responsibility Pattern</h2>
+
+  <ul>
+    <li>
+      <strong>📣 All Handlers Must Act:</strong> 
+      If <em>every</em> handler must process the same request—like logging to multiple sinks—CoR is a poor fit.
+      <pre><code>// Not suitable: Each logger needs to process the message
+abstract class Logger {
+    protected Logger next;
+    public Logger SetNext(Logger logger) {
+        next = logger;
+        return logger;
+    }
+    public virtual void Log(string message) {
+        // All loggers log regardless
+        Console.WriteLine($"{this.GetType().Name} logs: {message}");
+        next?.Log(message);
+    }
+}
+</code></pre>
+    </li>
+
+    <li>
+      <strong>🐞 Hard to Debug:</strong> 
+      When tracing request flow is important, CoR makes things harder because execution jumps between handlers implicitly.
+      <pre><code>// Debugging this flow gets tricky as requests pass silently
+abstract class Handler {
+    protected Handler next;
+    public Handler SetNext(Handler handler) {
+        next = handler;
+        return handler;
+    }
+    public abstract void Handle(string request);
+}
+</code></pre>
+      <p>
+        Especially in long chains, identifying why a request wasn't handled—or by whom—requires verbose logging or breakpoints.
+      </p>
+    </li>
+  </ul>
+
+  <p>
+    In these cases, consider <strong>Composite</strong> or <strong>Observer</strong> patterns instead, depending on the goal. These allow parallel handling or better event propagation control.
+  </p>
+</section>
+
+
+<h2 class="toc-title">🧭 Final Thoughts</h2>
+<p>The Chain of Responsibility is perfect for building <strong>extensible processing pipelines</strong>. From approval
+    systems to loggers and middleware, this pattern offers clean separation and dynamic routing of requests.</p>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/command-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/mediator-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/command-pattern"><span aria-hidden="true">&#8592;</span> Command Pattern: Encapsulate Requests as Objects</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/mediator-pattern">Mediator Pattern &#x2013; Simplifying Complex Object Communication <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

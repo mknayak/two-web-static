@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Discover how the Template Method Pattern defines the algorithm skeleton while letting subclasses refine specific steps. Includes real-world examples, UML, and C#/Python code." />
+        <meta property='og:title' content='Template Method Pattern &#x2013; Define the Algorithm Skeleton'/>
+        <meta property='og:image' content='/assets/images/blogs/design-patterns/banners/template-method-pattern.webp'/>
+        <meta property='og:description' content='Discover how the Template Method Pattern defines the algorithm skeleton while letting subclasses refine specific steps. Includes real-world examples, UML, and C#/Python code.'/> 
+        <title>Template Method Pattern &#x2013; Define the Algorithm Skeleton | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/visitor-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/iterator-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/visitor-pattern"><span aria-hidden="true">&#8592;</span> Visitor Pattern &#x2013; Add Behavior Without Changing Classes</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/iterator-pattern">Iterator Pattern &#x2013; Access Elements Without Exposing Structure <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Template Method Pattern &#x2013; Define the Algorithm Skeleton</h1>
+                    <p class="lead">Discover how the Template Method Pattern defines the algorithm skeleton while letting subclasses refine specific steps. Includes real-world examples, UML, and C#/Python code.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">06-Jul, 2025 &middot;
+                                    7 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-patterns/banners/template-method-pattern.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+  <h1>Template Method Pattern</h1>
+<p>The Template Method Pattern is a behavioral design pattern that defines the skeleton of an algorithm in a base method, allowing certain steps to be implemented or customized by subclasses. This approach promotes code reuse, enforces a consistent process, and enables flexibility by letting subclasses override specific steps without altering the overall algorithm structure.</p>
+</section>
+
+<section>
+  <h2 class="toc-title">Real-World Analogy</h2>
+  <p>Think of making tea or coffee. The general process is the same: boil water, brew the beverage, pour into a cup, and optionally add condiments. The steps are consistent, but the implementation of "brew beverage" differs.</p>
+</section>
+
+<section>
+  <h2 class="toc-title">Pattern Structure</h2>
+  <pre><code class="mermaid">
+classDiagram
+  class AbstractClass {
+    +TemplateMethod()
+    +BaseOperation1()
+    +BaseOperation2()
+    #RequiredOperation1()
+    #RequiredOperation2()
+    +Hook()
+  }
+  class ConcreteClass {
+    +RequiredOperation1()
+    +RequiredOperation2()
+  }
+  AbstractClass <|-- ConcreteClass
+</code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">💻 Code Example</h2>
+  <p>The following example demonstrates the Template Method pattern using a Beverage preparation scenario.</p>
+  <div class="code-tabs">
+    <div class="tab-buttons">
+      <button onclick="showTab(this,'csharp')" class="active">C#</button>
+      <button onclick="showTab(this, 'python')">Python</button>
+    </div>
+
+    <div id="csharp" class="tab-content active">
+<pre><code class="language-csharp">
+abstract class CaffeineBeverage {
+    public void PrepareRecipe() {
+        BoilWater();
+        Brew();
+        PourInCup();
+        AddCondiments();
+    }
+
+    void BoilWater() => Console.WriteLine("Boiling water");
+    void PourInCup() => Console.WriteLine("Pouring into cup");
+
+    public abstract void Brew();
+    public abstract void AddCondiments();
+}
+
+class Tea : CaffeineBeverage {
+    public override void Brew() => Console.WriteLine("Steeping the tea");
+    public override void AddCondiments() => Console.WriteLine("Adding lemon");
+}
+</code></pre>
+    </div>
+
+    <div id="python" class="tab-content">
+<pre><code class="language-python">
+from abc import ABC, abstractmethod
+
+class CaffeineBeverage(ABC):
+    def prepare_recipe(self):
+        self.boil_water()
+        self.brew()
+        self.pour_in_cup()
+        self.add_condiments()
+
+    def boil_water(self):
+        print("Boiling water")
+
+    def pour_in_cup(self):
+        print("Pouring into cup")
+
+    @abstractmethod
+    def brew(self): pass
+
+    @abstractmethod
+    def add_condiments(self): pass
+
+class Tea(CaffeineBeverage):
+    def brew(self):
+        print("Steeping the tea")
+    def add_condiments(self):
+        print("Adding lemon")
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="toc-title">Key Points</h2>
+  <table class="table table-bordered">
+    <thead><tr><th>Component</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>Template Method</td><td>Defines the steps of the algorithm</td></tr>
+      <tr><td>Concrete Class</td><td>Implements abstract methods for specific steps</td></tr>
+      <tr><td>Hook (optional)</td><td>Provides a default method which can be overridden</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2 class="toc-title">When to Use</h2>
+<ul>
+    <li>
+        When multiple classes share the same algorithm structure.<br>
+        <strong>Example:</strong>
+        <pre><code class="language-csharp">
+// Base class defines the template
+abstract class ReportGenerator {
+    public void Generate() {
+            FetchData();
+            FormatData();
+            PrintReport();
+    }
+    protected abstract void FetchData();
+    protected abstract void FormatData();
+    protected virtual void PrintReport() => Console.WriteLine("Printing report...");
+}
+
+// Subclass customizes steps
+class SalesReport : ReportGenerator {
+    protected override void FetchData() => Console.WriteLine("Fetching sales data");
+    protected override void FormatData() => Console.WriteLine("Formatting sales data");
+}
+        </code></pre>
+    </li>
+    <li>
+        To prevent code duplication by reusing base logic.<br>
+        <strong>Example:</strong>
+        <pre><code class="language-python">
+class DataProcessor(ABC):
+    def process(self):
+            self.load()
+            self.transform()
+            self.save()
+    @abstractmethod
+    def load(self): pass
+    @abstractmethod
+    def transform(self): pass
+    def save(self):
+            print("Saving data")
+
+class CsvProcessor(DataProcessor):
+    def load(self): print("Loading CSV")
+    def transform(self): print("Transforming CSV")
+        </code></pre>
+    </li>
+    <li>
+        To enforce an invariant algorithm structure across implementations.<br>
+        <strong>Example:</strong>
+        <pre><code class="language-csharp">
+abstract class Game {
+    public void Play() {
+            Start();
+            while (!IsOver()) {
+                    TakeTurn();
+            }
+            End();
+    }
+    protected abstract void Start();
+    protected abstract bool IsOver();
+    protected abstract void TakeTurn();
+    protected abstract void End();
+}
+        </code></pre>
+    </li>
+</ul>
+</section>
+
+<section>
+  <h2 class="toc-title">Advantages and Disadvantages</h2>
+  <table class="table table-bordered">
+    <thead><tr><th>Pros</th><th>Cons</th></tr></thead>
+    <tbody>
+      <tr><td>Code reuse via base algorithm</td><td>Can lead to tight coupling with base class</td></tr>
+      <tr><td>Improves consistency</td><td>Inflexible structure if too rigid</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2 class="toc-title">🧠 Quiz</h2>
+ <div class='question-container'     
+                     data-questions='0136A069C6984D33BD827256D6A66E87'
+                     data-secret-key='5C43426054344C668269538E3A758EA3'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='0136A069C6984D33BD827256D6A66E87'>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</script>
+                </div>
+
+<section>
+  <h2 class="toc-title">🔚 Conclusion</h2>
+  <p>The Template Method Pattern is a powerful tool for ensuring consistency in algorithms while enabling flexibility in specific steps. By clearly defining the skeleton in a base class, and deferring step details to subclasses, it encourages reuse and clean structure in your codebase.</p>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/visitor-pattern"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-patterns/iterator-pattern">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-patterns/visitor-pattern"><span aria-hidden="true">&#8592;</span> Visitor Pattern &#x2013; Add Behavior Without Changing Classes</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-patterns-in-practice">Design Patterns in Practice</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-patterns/iterator-pattern">Iterator Pattern &#x2013; Access Elements Without Exposing Structure <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>
