@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Dive deep into the SOLID principles to write clean, maintainable, and scalable code. Includes C# and Python examples, UML diagrams, and real-world applications." />
+        <meta property='og:title' content='SOLID Principles &#x2013; The Foundation of Object-Oriented Design'/>
+        <meta property='og:image' content='/assets/images/blogs/design-principles/solid-principles-banner.webp'/>
+        <meta property='og:description' content='Dive deep into the SOLID principles to write clean, maintainable, and scalable code. Includes C# and Python examples, UML diagrams, and real-world applications.'/> 
+        <title>SOLID Principles &#x2013; The Foundation of Object-Oriented Design | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/design-principles-101"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-secondary" href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/design-principles-101"><span aria-hidden="true">&#8592;</span> Design Principles 101 &#x2013; Writing Code That Stands the Test of Time</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 end text-center">
+        <a href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>SOLID Principles &#x2013; The Foundation of Object-Oriented Design</h1>
+                    <p class="lead">Dive deep into the SOLID principles to write clean, maintainable, and scalable code. Includes C# and Python examples, UML diagrams, and real-world applications.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">14-Jul, 2025 &middot;
+                                    12 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-principles/solid-principles-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+  <h2>💡 Why Clean Design Matters</h2>
+  <p>
+    When software scales, complexity creeps in—not as loud chaos, but as subtle friction. Clean design isn’t just a matter of elegance; it’s a survival strategy. 
+    It empowers teams to collaborate smoothly, extend features confidently, and resolve bugs swiftly.
+  </p>
+  <p>
+    Imagine a <strong>skyscraper</strong>. You don’t see the structural steel and load-distribution systems behind the polished glass—but they’re what keep everything standing tall through storms and time. 
+    <strong>SOLID principles</strong> are like that invisible engineering for your codebase: they quietly hold everything together, preventing collapse as new floors (features) are added.
+  </p>
+  <p>
+    In this post, we’ll explore each of the five SOLID pillars and see how they reinforce architecture from the inside out.
+  </p>
+</section>
+
+<section>
+    <h2>SOLID Principles</h2>
+    <p>
+        The SOLID principles are a set of design guidelines that help developers build maintainable, extensible, and robust software. They are especially important in object-oriented programming. SOLID stands for:
+    </p>
+    <ul>
+        <li><strong>S</strong> - Single Responsibility Principle (SRP)</li>
+        <li><strong>O</strong> - Open/Closed Principle (OCP)</li>
+        <li><strong>L</strong> - Liskov Substitution Principle (LSP)</li>
+        <li><strong>I</strong> - Interface Segregation Principle (ISP)</li>
+        <li><strong>D</strong> - Dependency Inversion Principle (DIP)</li>
+    </ul>
+<code class="mermaid">
+graph LR
+  SOLID((SOLID Principles))
+
+  SRP[Single Responsibility Principle]
+  OCP[Open/Closed Principle]
+  LSP[Liskov Substitution Principle]
+  ISP[Interface Segregation Principle]
+  DIP[Dependency Inversion Principle]
+
+  SOLID --> SRP
+  SOLID --> OCP
+  SOLID --> LSP
+  SOLID --> ISP
+  SOLID --> DIP
+
+  SRP --> Maintainability[Better maintainability]
+  OCP --> Extensibility[Easy to add features]
+  LSP --> Reliability[Safe substitutions]
+  ISP --> Flexibility[Focused, modular interfaces]
+  DIP --> Testability[Decoupled, test-friendly design]
+
+</code>
+    <h3>Single Responsibility Principle (SRP)</h3>
+    <p>
+        A class should have only one reason to change, meaning it should only have one job. This makes your code easier to maintain and test. For example, if a class handles both user data and reporting, changes in reporting requirements could affect user data logic, leading to bugs.
+    </p>
+    <pre><code class="language-csharp">
+// Bad Example
+class User {
+    void SaveToDatabase() { /* ... */ }
+    void GenerateReport() { /* ... */ }
+}
+
+// Good Example
+class User { /* ... */ }
+class UserRepository {
+    void Save(User user) { /* ... */ }
+}
+class ReportGenerator {
+    void Generate(User user) { /* ... */ }
+}
+    </code></pre>
+
+    <h3>Open/Closed Principle (OCP)</h3>
+    <p>
+        Software entities should be open for extension, but closed for modification. This means you should be able to add new functionality without changing existing code, reducing the risk of introducing bugs. Use interfaces or abstract classes to achieve this.
+    </p>
+    <pre><code class="language-csharp">
+// Bad Example
+class Discount {
+    double GetDiscount(string type) {
+        if (type == "Student") return 0.2;
+        else if (type == "Senior") return 0.3;
+        return 0;
+    }
+}
+
+// Good Example
+interface IDiscount {
+    double GetDiscount();
+}
+class StudentDiscount : IDiscount {
+    public double GetDiscount() => 0.2;
+}
+class SeniorDiscount : IDiscount {
+    public double GetDiscount() => 0.3;
+}
+    </code></pre>
+
+    <h3>Liskov Substitution Principle (LSP)</h3>
+    <p>
+        Subtypes must be substitutable for their base types without altering the correctness of the program. If a subclass cannot stand in for its parent, it breaks the contract and can cause runtime errors. Design your inheritance hierarchies carefully.
+    </p>
+    <pre><code class="language-csharp">
+// Bad Example
+class Bird {
+    public virtual void Fly() { }
+}
+class Ostrich : Bird {
+    public override void Fly() { throw new Exception("Can't fly"); }
+}
+
+// Good Example
+class Bird { }
+class FlyingBird : Bird {
+    public void Fly() { /* ... */ }
+}
+class Ostrich : Bird { /* ... */ }
+    </code></pre>
+
+    <h3>Interface Segregation Principle (ISP)</h3>
+    <p>
+        Clients should not be forced to depend on interfaces they do not use. Split large interfaces into smaller, more specific ones so classes only implement what they need. This keeps your code flexible and easier to maintain.
+    </p>
+    <pre><code class="language-csharp">
+// Bad Example
+interface IWorker {
+    void Work();
+    void Eat();
+}
+class Robot : IWorker {
+    public void Work() { /* ... */ }
+    public void Eat() { throw new NotImplementedException(); }
+}
+
+// Good Example
+interface IWorkable {
+    void Work();
+}
+interface IEatable {
+    void Eat();
+}
+class Robot : IWorkable {
+    public void Work() { /* ... */ }
+}
+    </code></pre>
+
+    <h3>Dependency Inversion Principle (DIP)</h3>
+    <p>
+        High-level modules should not depend on low-level modules. Both should depend on abstractions. This makes your code more flexible and easier to test, as you can swap implementations without changing the high-level logic.
+    </p>
+    <pre><code class="language-csharp">
+// Bad Example
+class LightBulb {
+    public void TurnOn() { /* ... */ }
+}
+class Switch {
+    private LightBulb bulb = new LightBulb();
+    public void Operate() { bulb.TurnOn(); }
+}
+
+// Good Example
+interface IDevice {
+    void TurnOn();
+}
+class LightBulb : IDevice {
+    public void TurnOn() { /* ... */ }
+}
+class Switch {
+    private IDevice device;
+    public Switch(IDevice device) { this.device = device; }
+    public void Operate() { device.TurnOn(); }
+}
+    </code></pre>
+</section>
+<section>
+  <h2>🐞 Real-World Scenarios: When SOLID Saved the Day</h2>
+
+  <h3>🔹 SRP Breakdown – Tangled Reporting in CRM</h3>
+  <p>Our CRM's <code>UserManager</code> class was managing user data and generating monthly reports. When the marketing team requested a change to the report format, it inadvertently broke the save-to-database logic—because both responsibilities lived in the same class.</p>
+  <p><strong>Solution:</strong> We split responsibilities into <code>UserRepository</code> and <code>ReportGenerator</code>. Bugs vanished, features were added faster, and the code was much easier to test.</p>
+
+  <h3>🔸 OCP Misstep – Discount Logic Spiral</h3>
+  <p>Originally, we had a <code>DiscountCalculator</code> class with a big <code>switch</code> statement for each user type. Each time a new discount was introduced (student, senior, veteran), we had to modify existing code—leading to merge conflicts and accidental overwrites.</p>
+  <p><strong>Solution:</strong> We refactored using the OCP principle: created an <code>IDiscount</code> interface and separate classes for each discount type. Now we add new logic without touching the existing code.</p>
+
+  <h3>🔹 DIP Violation – Hardwired Devices in Home Automation</h3>
+  <p>The <code>Switch</code> class in our IoT system was hardcoded to use <code>LightBulb</code>. When we needed to support a <code>Fan</code> and a <code>SmartHeater</code>, the ripple effect caused changes in multiple modules.</p>
+  <p><strong>Solution:</strong> We introduced the <code>IDevice</code> interface and inverted dependencies so that the <code>Switch</code> worked with any device abstraction. Our system became modular and easily expandable.</p>
+</section>
+<section >
+  <h2>🔗 Related Design Principles and Patterns</h2>
+  <p>Now that you've explored SOLID principles, here are a few other foundational concepts that complement your design architecture:</p>
+  <ul>
+    <li><strong>DRY (Don't Repeat Yourself):</strong> Reduces redundancy, leading to cleaner code and fewer bugs.</li>
+    <li><strong>KISS (Keep It Simple, Stupid):</strong> Encourages simplicity over complexity, making your codebase easier to understand and modify.</li>
+  </ul>
+  <p>Looking to go deeper into real-world applications? Check out these design patterns that extend SOLID principles:</p>
+  <ul>
+    <li><a href="/blogs/design-patterns/observer-pattern">👁️ Observer Pattern</a> – Useful for event-driven systems and UI components that react to state changes.</li>
+    <li><a href="/blogs/design-patterns/strategy-pattern">🧠 Strategy Pattern</a> – Allows you to define a family of algorithms and make them interchangeable.</li>
+    <li><a href="/blogs/design-patterns/command-pattern">🎮 Command Pattern</a> – Great for encapsulating actions as objects, often used in undo/redo functionality.</li>
+  </ul>
+  <p>These patterns are explored in-depth with diagrams and code examples—perfect for the curious developer looking to level up their architecture toolkit.</p>
+</section>
+
+<section>
+  <h2>🛠️ Conclusion: Building Resilient Software with SOLID</h2>
+  <p>
+    The SOLID principles are not just theoretical concepts; they are practical tools that help you build software that can grow and adapt without breaking. 
+    By adhering to these principles, you create a codebase that is easier to maintain, extend, and test.
+  </p>
+  <p>
+    Remember, clean design is like a well-engineered foundation for your skyscraper. It may not be visible at first glance, but it’s what allows your software to stand tall and resilient against the storms of change.
+  </p>
+  </section>    
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/design-principles-101"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-secondary" href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/design-principles-101"><span aria-hidden="true">&#8592;</span> Design Principles 101 &#x2013; Writing Code That Stands the Test of Time</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 end text-center">
+        <a href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

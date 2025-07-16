@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master foundational design principles like SOLID, DRY, and KISS to build scalable and maintainable software. Includes real-world examples in C# and Python." />
+        <meta property='og:title' content='Design Principles 101 &#x2013; Writing Code That Stands the Test of Time'/>
+        <meta property='og:image' content='/assets/images/blogs/design-principles/design-principles-101-banner.webp'/>
+        <meta property='og:description' content='Master foundational design principles like SOLID, DRY, and KISS to build scalable and maintainable software. Includes real-world examples in C# and Python.'/> 
+        <title>Design Principles 101 &#x2013; Writing Code That Stands the Test of Time | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-10">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/solid-principles">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 end">
+        <a href="/blogs"><span aria-hidden="true">&#8592;</span>Return to Blog Series</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/solid-principles">SOLID Principles &#x2013; The Foundation of Object-Oriented Design <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Design Principles 101 &#x2013; Writing Code That Stands the Test of Time</h1>
+                    <p class="lead">Master foundational design principles like SOLID, DRY, and KISS to build scalable and maintainable software. Includes real-world examples in C# and Python.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">14-Jul, 2025 &middot;
+                                    9 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-principles/design-principles-101-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <!-- Design Principles 101 – Writing Code That Stands the Test of Time -->
+<article>
+  <h1>Design Principles 101 – Writing Code That Stands the Test of Time</h1>
+
+  <p>
+    Writing maintainable and scalable software isn’t just about choosing the right framework or language — it’s about mastering the <strong>principles</strong> that make your codebase resilient to change. In this post, we’ll explore what design principles are, why they matter, and how they’re different from design patterns. We’ll then introduce the most important principles every developer should know.
+  </p>
+
+  <h2>📘 What Are Design Principles?</h2>
+  <p>
+    Design principles are guidelines that help developers make decisions about structure, behavior, and responsibility in their software systems. Unlike design patterns — which are reusable solutions to common problems — principles are more abstract and apply universally.
+  </p>
+<section id="principles-vs-patterns">
+  <h2>🆚 Difference Between Design Principles and Design Patterns</h2>
+  <p>
+    While both aim to improve software quality, <strong>design principles</strong> and 
+    <strong>design patterns</strong> serve distinct purposes:
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead style="background-color: #f2f2f2;">
+      <tr>
+        <th>Aspect</th>
+        <th>Design Principles</th>
+        <th>Design Patterns</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🧠 <strong>Definition</strong></td>
+        <td>Universal guidelines for writing better code</td>
+        <td>Reusable solutions to common design problems</td>
+      </tr>
+      <tr>
+        <td>🎯 <strong>Purpose</strong></td>
+        <td>Improve structure, clarity, and maintainability</td>
+        <td>Solve recurring problems in specific contexts</td>
+      </tr>
+      <tr>
+        <td>🏗️ <strong>Scope</strong></td>
+        <td>Broad and language-agnostic</td>
+        <td>Specific and often tied to object-oriented design</td>
+      </tr>
+      <tr>
+        <td>🔄 <strong>Example</strong></td>
+        <td>KISS, DRY, SOLID</td>
+        <td>Observer, Strategy, Singleton, Factory</td>
+      </tr>
+      <tr>
+        <td>⚙️ <strong>Application</strong></td>
+        <td>Shape overall coding philosophy</td>
+        <td>Drive implementation choices</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <blockquote style="margin-top: 1em; font-style: italic; border-left: 4px solid #ccc; padding-left: 1em;">
+    🧱 Principles are the architectural rules of a building, while<br>
+    🧰 Patterns are the construction techniques you use to solve practical challenges during the build.
+  </blockquote>
+</section>
+
+  <h2>🔑 Top Principles to Master</h2>
+  <ul>
+    <li><strong>SOLID Principles:</strong> The gold standard for object-oriented design (each will be covered in future posts):
+      <ul>
+        <li>Single Responsibility Principle (SRP)</li>
+        <li>Open/Closed Principle (OCP)</li>
+        <li>Liskov Substitution Principle (LSP)</li>
+        <li>Interface Segregation Principle (ISP)</li>
+        <li>Dependency Inversion Principle (DIP)</li>
+      </ul>
+      <p>
+        These principles help create code that is easy to maintain, extend, and test. They promote good practices like separation of concerns and reducing coupling between components.
+      </p>
+    </li>
+    <li><strong>DRY</strong> – Don’t Repeat Yourself<p>
+        This principle emphasizes the importance of reducing code duplication. If you find yourself copying and pasting code, it’s a sign that you need to refactor.
+    </p></li>
+    <li><strong>KISS</strong> – Keep It Simple, Stupid <p>
+        This principle emphasizes simplicity in design. Complex solutions are harder to maintain and understand, so aim for the simplest solution that works.
+    </p></li>
+    <li><strong>YAGNI</strong> – You Aren’t Gonna Need It <p>
+        This principle advises against adding functionality until it is necessary. Premature optimization can lead to complex code that is hard to maintain.
+    </p></li>
+    <li><strong>Separation of Concerns</strong>
+    <p>
+        This principle states that different concerns or functionalities should be separated into distinct sections of code. This makes it easier to manage, test, and maintain each part independently.
+    </p>
+    </li>
+    <li><strong>Law of Demeter</strong> <p>
+        Also known as the Principle of Least Knowledge, this principle suggests that an object should only talk to its immediate friends and not to strangers. This reduces dependencies and makes the code more modular.
+    </p></li>
+    <li><strong>Composition Over Inheritance</strong><p>
+        This principle advocates for using composition to achieve code reuse instead of inheritance. It allows for more flexible and maintainable code structures.
+    </p></li>
+    <li><strong>Program to an Interface, Not Implementation</strong><p>
+        This principle suggests that you should depend on abstractions (interfaces) rather than concrete implementations. This leads to more flexible and testable code.
+    </p></li>
+  </ul>
+
+  <h2>🚨 Real-World Consequences of Ignoring Them</h2>
+  <p>
+    Let’s say you ignore SRP and cram multiple responsibilities into a single class. What happens when requirements change? You risk breaking functionality that wasn’t supposed to change. Ignoring these principles leads to:
+  </p>
+  <ul>
+    <li>Code duplication and higher maintenance cost</li>
+    <li>Tightly coupled components</li>
+    <li>Difficulty in testing or extending functionality</li>
+    <li>Increased bugs and regressions</li>
+  </ul>
+
+  <h2>👨‍💻 Examples in C# and Python</h2>
+  <p>Let’s look at a small example that violates and then follows the Single Responsibility Principle (SRP):</p>
+
+   <div class="code-tabs">
+        <div class="tab-buttons">
+            <button onclick="showTab(this,'csharp')" class="active">C#</button>
+            <button onclick="showTab(this, 'python')">Python</button>
+        </div>
+
+    <div class="tab-content active" id="csharp">
+      <pre><code class="language-csharp">// ❌ Violates SRP
+public class ReportGenerator {
+    public string GenerateReport() {
+        return "Report content";
+    }
+    public void SaveToFile(string content) {
+        File.WriteAllText("report.txt", content);
+    }
+}</code></pre>
+
+      <pre><code class="language-csharp">// ✅ SRP Applied
+public class ReportGenerator {
+    public string GenerateReport() {
+        return "Report content";
+    }
+}
+
+public class FileSaver {
+    public void SaveToFile(string content) {
+        File.WriteAllText("report.txt", content);
+    }
+}</code></pre>
+    </div>
+
+    <div class="tab-content" id="python">
+      <pre><code class="language-python"># ❌ Violates SRP
+class ReportGenerator:
+    def generate_report(self):
+        return "Report content"
+
+    def save_to_file(self, content):
+        with open("report.txt", "w") as f:
+            f.write(content)</code></pre>
+
+      <pre><code class="language-python"># ✅ SRP Applied
+class ReportGenerator:
+    def generate_report(self):
+        return "Report content"
+
+class FileSaver:
+    def save_to_file(self, content):
+        with open("report.txt", "w") as f:
+            f.write(content)</code></pre>
+    </div>
+  </div>
+<div>
+   <h2>⚠️ Common Pitfalls of Overusing Design Principles</h2>
+  <p>
+    While design principles are essential, overusing them can lead to unnecessary complexity. Here are some common pitfalls, each with a practical example:
+    <ul>
+      <li>
+        <strong>Over-Engineering:</strong> Applying principles where they aren’t needed can complicate simple solutions.<br>
+        <em>Example:</em> Creating multiple interfaces for a class that only has one method:
+        <pre><code class="language-csharp">// Over-engineered
+interface IPrinter { void Print(); }
+interface IScanner { void Scan(); }
+class MultiFunctionDevice : IPrinter, IScanner {
+    public void Print() { /* ... */ }
+    public void Scan() { /* ... */ }
+}
+// If only Print() is needed, a single class suffices.
+</code></pre>
+      </li>
+      <li>
+        <strong>Premature Optimization:</strong> Focusing on extensibility before it’s necessary can lead to convoluted designs.<br>
+        <em>Example:</em> Abstracting everything before requirements are clear:
+        <pre><code class="language-python"># Premature abstraction
+class DataProcessor:
+    def process(self, strategy):
+        strategy.execute()
+# If only one processing method is needed, keep it simple.
+</code></pre>
+      </li>
+      <li>
+        <strong>Ignoring Context:</strong> Applying principles rigidly without considering the specific context can lead to inappropriate solutions.<br>
+        <em>Example:</em> Using inheritance for simple data containers:
+        <pre><code class="language-csharp">// Unnecessary inheritance
+class User { }
+class Admin : User { }
+// If Admin doesn't add behavior, a simple User class is enough.
+</code></pre>
+      </li>
+      <li>
+        <strong>Complexity Over Clarity:</strong> Sometimes, following a principle can make the code more complex than it needs to be.<br>
+        <em>Example:</em> Excessive separation of concerns:
+        <pre><code class="language-python"># Too many layers for a simple task
+class InputReader: ...
+class DataValidator: ...
+class DataTransformer: ...
+class OutputWriter: ...
+# For a small script, a single function may be clearer.
+</code></pre>
+      </li>
+    </ul>
+    <p>
+      <strong>Tip:</strong> Always prioritize clarity and simplicity. Use principles as guidelines, not rigid rules.
+    </p>
+</div>
+<section id="overuse-pitfalls">
+ 
+  <p>
+    While design principles help build robust software, overapplying them without context can introduce needless complexity. Here's where it can go wrong:
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Principle</th>
+        <th>Overuse Pitfall</th>
+        <th>Consequence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SRP (Single Responsibility)</strong></td>
+        <td>Splitting classes too granularly—creating a class for every tiny task</td>
+        <td>Class explosion, reduced cohesion</td>
+      </tr>
+      <tr>
+        <td><strong>OCP (Open/Closed)</strong></td>
+        <td>Creating excessive abstractions just to avoid modification</td>
+        <td>Overengineering, hard-to-follow logic</td>
+      </tr>
+      <tr>
+        <td><strong>LSP (Liskov Substitution)</strong></td>
+        <td>Forcing strict inheritance rules even when composition is cleaner</td>
+        <td>Design rigidity, confusion</td>
+      </tr>
+      <tr>
+        <td><strong>ISP (Interface Segregation)</strong></td>
+        <td>Segmenting interfaces too early or excessively</td>
+        <td>Fragmented APIs, difficult maintenance</td>
+      </tr>
+      <tr>
+        <td><strong>DIP (Dependency Inversion)</strong></td>
+        <td>Using DI frameworks in simple projects</td>
+        <td>Unnecessary complexity, steep learning curve</td>
+      </tr>
+      <tr>
+        <td><strong>DRY (Don't Repeat Yourself)</strong></td>
+        <td>Merging unrelated logic just to avoid repetition</td>
+        <td>Loss of clarity, tightly coupled responsibilities</td>
+      </tr>
+      <tr>
+        <td><strong>KISS (Keep It Simple)</strong></td>
+        <td>Oversimplifying problems that require nuanced solutions</td>
+        <td>Fragile design, poor scalability</td>
+      </tr>
+      <tr>
+        <td><strong>YAGNI (You Aren’t Gonna Need It)</strong></td>
+        <td>Ignoring foreseeable future needs to keep things minimal</td>
+        <td>Technical debt, frequent rework</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <blockquote style="margin-top: 1em; font-style: italic; border-left: 4px solid #ccc; padding-left: 1em;">
+    🧠 Smart design isn’t just applying principles—it’s knowing when not to. Context is king.
+  </blockquote>
+</section>
+
+  <h2>🧪 Quiz Yourself</h2>
+<div class='question-container'     
+                     data-questions='18A3E36D0491464798D155A7FB62AC97'
+                     data-secret-key='D9B07D2F08EC45658954B9B43EC0EFBB'
+                     data-welcome-message=''     
+                     data-complete-message=''>  
+                     <script type='text/plain' 
+                             data-quiz-id='18A3E36D0491464798D155A7FB62AC97'>4q5SGm9XyKtLO3SQrISskHN1RdIYbS1LKtmfDXBBFTQ2n8hLKmctFzBGinqzPkerbj0iCzyrxcaynNH7g9nTuzDgod7041/jwh6ZIJS+VsHb54bHdkLzvINgE6gIid/Wqq3Za/toonWnzhztasOZSR8OX46sc23COSmjz4F4/Mz4oHIfxT0oez7FDQPcKXftBJgax/ow0RONwWPz8QUtCYkHoqKeHHyR22q1aaDsXHSEqui/IiBiOGJ7ZtS74TdAIVPLWHGLOKCn35wa0+PewSV49zSFaP8zUyi4V2UE5MfKQmd7Owq2gpMHKfuupkcIyQ8AFeME62yyhVVIr/+jMrIFD42TT5gScKt3avnQCtZ8GDNxP0UQs1qBjc3b53saOo3SZlLBVQa81tHpuNunIU/rzhWoMq4+ddcLbme30YhRkCcCxdzXmn7WgVY5zLYiAvZnqmXCI5E+z+fzjSCT1e55neya9S0N0h5Kmx6sXVfo1ydbS4gPVzuc1Xv6iBQ693t0UdfHjeaiXy7sD1b2JY6iGZ0HSjWYJlnqHEI/FoR7al1G/p0blOvGgAW5i7XwNSuuf5JiebMjrccH4qoaE3fYTBGBQlmtFgFYZlBT/cw+4MIcFnJb11cnaX3xZgedT7FTRE0gfoVLqJciOJIPcVtu4NDGf+ilDX+ERqle5pkkiWt1aaMfcWZKCgsuY+XCge/0wedPIB78Cdpnz1mX7yQ33jWPjy/+S+fwpBFz/hIzgvr55yLCNp9cu11LPZyqcECHKa8+FkFk2xxY8SeYOMAhqzxoWizIn+yyJMW3ckAPw2ZTZ24zANYaatlzecWHoYIDxnQNeCYRfPI8HlmIVZlla39A4Bnhk9aasGT37Rr8R4bK3sUeDNuPRok5437/iL/btYF1hz4f9BgQREakYHh1EKOfGWclGCsngbBU2F56OB/BJkkmT6bmuKuUhrmF4FNhCVMv/Zx9C2VHpMxmiFaTcmQj81HlfPrbpB+u2z4fkrCppjVuIc5Qy2WaYyirFWjdEr9UuxZTHX2qH6wlDU5RwXnLyz5T4a5sLVO0zcWR76a4ZKbLYPZ6gwEf9GoOIYh/HgW/H+FWtwpiPuBr0QAXN7oFz1k61JESTToI9BsnmZg6CV0grJxRYtx5Udcp2EpyhDpVJzPyGuchRXxUQI94y/TjjGAs4BapZk+3Np/WryxlT40fXXI7v7Zthk/NhzkLZRLm2NLr29JnMKE4S5xTYlPylHmZZu0sPL+reAzqr2Rj5qj65pDWCDwWZ2lA73DE2SxTONtwqfgLpPK6L3eAkSQSN8evejxinPFwzywmWbsBNc48V8dmOEdoSEHY0PAmS9eccMF3dvnCiI3s1A8f4tiI8MJAJL/R/Wd+/DAos4Mt/k6SBUWkG7Y5faH6ihr0GrnPI1+U44OErzOYzJbzd6Lm4NjbG3lw+OXwOW0hCDV/D332ZJdVRDb+Nhnh0Qfwq2ArG8rpSHxG2AS1bNNvtRV2eskdA0DoQ9ao6xFgu87G3JnRSAuDOLhPvzwL0ORiaQ2ewZhKzJozjtwC3OnHtRklV3UB2sSqP+IwVfh1jde/2obCwQMw46XTTE9OrA4oRXR9Eg26ARjEQcSm2mTHJwqwYVkutTNmbRM+Ms5bC1ooiYKFTBqajj5LUSYdbmyr0rXiX2hQaYIeJYHBv9Iq9aWJMy/7D12gbtRiQdQmixdZkItWfkzJb0YV80zoBsY64tNPz/Sg70nmoHwe8WuLIVlslwP/DIzTvyeb0DcCs+Ko+grsRCSt2g69OSji8PJiiMcihJMrcrObwa8MeqrGn66fyyVVklBXSwE8SzbHCJBarevKKSMlSYrnLUyaKAl4R/DTCDH2UNPjgpZvy0YzjRU1zDlYxrXT2rbosjoAwGILvfehQbwgRj3gzU7qXM464DOJBtB1pTKWyTKiMKE2MCXGXxE/Ju5HA8zc7mgqWXqJIJkBmBu6W/dJjwbcqEnPqUHeP5AUWXB45yheGcM5dpsI2z4MmgqXSD7YzUXwXdUQPFVoxSaoZRIXCWnW1EV7U+gfelV1J+K6D5G42BI9csB3AKyo1unBv6uZr0dWF9LzqJ84tZmqAiqKqj+rbY8geLeTXCKi2LY/lR7OdCc32yzma786tbDhV7QnCMQ7JdTxPk/Y3yo8fqsrPS0VgbQNQZFlCh+LInBrCER8O2glSfZ1XR2ojvntAnaHRcMB3qpLsGsPYuvhE1bkx0YckPFj5niZgHT6sA12hPi2pXD/VworKbeGYRwNT3R+x8N0NCjIWCzg1HeIeU7dNYPJjwdSX0QQbOKoYuo5+nEFIMAEVYiQPf07brjVfIiXvCmFVcCl9iRr/MSWLli9907cDt9mgCNmYhYxoAmpqNjeMhVnl4J9i5J67E9l5dTqyJaJSFa+gl74467KI5HRL7RB4RvRdB/5EPvPF9UT8U/gliv7zyNTwJzH1MKHX8CowSl4kgsHGLUCY078sxrjtRfah7onJ8qurLmt2NIyh2Gje/u7Qva8JfSQvUBbDB2zYH5JvrkahJbK1U+wGif+/YM2jeM4Jizb90sivkt5As5rrg8dffVBwke0W1XNr0AtcMQkUllTR9tCD9HbvytNvNhj1cMp67KLZCvMJDsU20wd3UZ4eXPS5tK5TPfSxkPv/hphRJ5QQ/gyMt1HE8l0QXS2STpze5iSoVJ8vylfKLBfu+aDyYmINkAiYGbSxUzgAj/PL9XakzyUK7LBD3fvh4V4maKNoT91mOz0YRvuH2KC8aEm29UKEYUBFKRBRSJ0X7vD/PaC+4P8rTlj9TG6OMuGhJlN1RF53mpGVCiPp5NteB71SpxOgrrz81t/BVM3MMK90E6XyBhJLRvsap/vykN9ja+8VRNMychwRwR8BCbCsYChvRPGydkj0K/iGOmUDdNZPCAZxqVvTtCAeiScmKYZXiQVXdXOogsjQaNpr6cK2JDbi/RuAF/bDMbNi9PYJTrb5bC2HRxsmCY3chdrUvzFyNwCySeIJEwy/gxCUOBI9JK/3gfMFVRdW9tgDMG29v24Czf7J1eIjL5Fb6MbkdzwfwZgfHdYkhaXieb0F7FBbKUZXuYsS3sgRCweqMjua1HxwK1zIqe69M+lmhNd2lMx1Gm4T2Tw6WprBFwxgYNb+07Av54zPDrtkhDsbPzDL+Uc4FvzJAtelNlQs/p9xlud1llEzV4Pv73QZN3EPJpE3K3XC4cay1W/t4Mneh9sHNrajhqoLdtYxmsJrkVzwRBkKdUBOKZX2kd7U0YpPtBvPs4BU2LTT2+J3So/lCtPp5hdzfjMX0OtaXSe4LyrU382TrwsQEaUlQFWyjvMU2GfF+WqJcPp90bf+41IiVoOv+IsTfwf+Q8truUwkgDqWlCp0hh8MgsuN4vXU/GSwNpv5IlxAR5p73kVaeOJs5rWogO/mfKbl2XEBVuwsbWLRa87k0pW/ZGzi1dVQx9FXVP8JQPikZxmiHlEhJgUIGeohIhTlQOcOuOd4I4i8H9wxB4biBKN269ByJeiqrTFfbUL5c3/WBO45QCEnR/JexP0PuavMd1PNhWu7FDSi6HSaOrrgDEanf1Od/jY7OXqwNhARsYwsUjjPpUJmVMeVI5HI1Pom6EwL2xrYZuECBjEEVGVB3iX0lUssj4gM19iCua1jK2RAW2jw1OznktprqncU9Bhl5ijHJlXLncj6VobfGVHyagHY9lCtkSvcbAJ5AlAA1XUIfLFj7G14JbsQrnAnLi3e02/XP95TEOslIBjiwvqnU+gdFmAs0/aHgOYKMjcdnyL2FBjCBEJWoMG/LUxDIgr1/3QSL6w8uqlc5DeJQQ+wM70aeUN0HbsElylGVu1OwaJTRMbark8fC5Dij1Bp4uMahbiSoeWL6msfiYFPve8nM2m+r+WdrCdGhqdieCk+yXyKP+r6SucvaUNFsHkeau0XTU6wOggFgZE+5betnwVZvkjKpjh0PeNSfAeb7VFi8brLSMMs1eaSgQWHU/jT0nBURTJzvkHCN9EeSRO01b4XdLSQ95MpbQaRPYd7A3XKeURhJ58l7rMc67QpfpM+9wVofY/D+Wf6Dhtpi0Dkpo8MN8OgrJQrVqbAHdgxHCOjnxH/P7VuQvtBqUzK5tULs9yqRR14LIhUjWRWScPVbMOS8tX3OqO75gzh6C48p+Tiu2HNYYgNWI2JHXEghpfgMFrzyprrs12xAJLp7JaPlQRe25o/m3agvhPg24FFukfOQ9Arl2tv46iwfxCd5xGB6f7EpCcL9Eq28LdvUspETqhahxAIHwoqApMvTp0F7zo3S6XwBqXS/qZkfRyit8IXilZcv29JYQk9T6/ORBuV5V4XB7XOO8pn69f77Se0ZwZ6A6Ru98/wjAXPwfpK6hNwqpCyeMjgKH1mijwws3tw2xZv8zCMJJr0vSTh164fr16KxeZHknMJ8MGBfd9zcRA0VqgD0MLyivCwmNW52JcqawVj9Apc/rIBYNx56zaQaUTrArdi5CACQA6bE4FgvziXpem9c0OvvVi5fkWob9dHmFBmZGR+oMqEvJrJSCl0BATs944crBtlcHN6MquwHffYzdghblxtvP0uuArrhe8iaoaYhqDgzNBVxsi7Q0WEUlx2omjFBZmPaBrYlegpgS0bBF6hGlLXJclo/usfl7tiGnKZWr454E2UuGsxS00a1gPVDj9SHHVzcHrv0kgVTIKHcIU23hmZv3diXbxXEcEt4RBXGWC7BIDk/35ynH7WLtpGyDb5grhQ4e4sfFCAjRjc71baFvO0JWCvPC5qS9mj9BGWVEDZ9UIoRmOEvLyMBiJwWlo+u+RedzV0wIjAURIAyX7qvZHsipjCYdotCYC0JnFJZwqHOpKoxw9iEUDBd7jMqI3kl/5SDm4EHMn3+f6Qwlsf5u4QwYRPqjbUOfx9UjguUgBsnz5Tl0g3IR7p141ciqh8nJaMe6a+rJBai03TqZfu4llW2rIv64Xv0gB3I+vuOLSMwrgPyX1l8l6bHgUP2T+WZnsNxQLnstuKCrNwAww2RILotHMLsIA/GIc80KmExjID+EznvcfxWUpKu9v8FcfXAUVIYkrOyRAWR02YuljO7Hf56yh0xam0Zgx+XB1xBOt7YuVgp0UYoAqHD8j+gWShji5Z5roSJjGj9Q+SGcA450jOstNpMQpTz6OTA6ValR3FExHsGRmwbDVdAuApoFUXsZgrb9c24HG62Zh5CjengjdGHXko9AHvXfg7jvCu40k7+Izvx8+WKEJPd2WgNBGRW8322Va98ZRj0J+GmGSIXmly+J89ghXL624gWgnunsEa4LI5HULE2NMRnCVLn7Bn+Woor+MsKr1e/1ZP+OhWiIBTG6gOnchTJuwCGLTDn/F573HnFsOomm9mH9gmXkubRn7j1B68YyHgXXaJPYEm/GYLZwnc7wTkLpOXphdIwCN9i+rlTl9VrEpI8AGQJaI8Ro8FAJle53NAEY+PRLhxb3VTnaBpxYOhzjgCecaW0l5p731GfRw842dBII6qblhZMa579ubZvQ+f3qJN0A8ytHJJT5FGkDF5TcuCRgXSJ8phisN8e4lsLLcb2nWjljMH1KvOa6XJJJOa8VX0E8+IsRN8XQF/gvueehmGu9l/pbVREvRaz4nDiHnwqmzxWwscIU3qrw7eO7PKDpTlgeyc07yTYAga7SyQyFhw1x5SPPXHw4Rcn5H104fkbvsjGDzzSilsHLgqMsrAamSh1W56OLHYk7Y5bKM/SOYp1V8Dnt2QS7f2E5iLfJK07kyj6RJOG6ZCFZdtot1+wIyqFBMSZId8nkdy64QI2B1Fu4lH+ij2djfb2E6Iz5lleJm4pAMRManQAJLmjohNiSP4uqn86WkXNqdXPy4TXAZpWK8aRqLXMH4s5+lPQT+2x6t49zEDtG5T6wuvV4o8JWsRmBGlBUfD5xtm3fH9kR32hBPo8L4RH/nOaUnpIYST5KaOvAZa70b/fly8M08FgBfOlQ2LFs5b/KMTLaGl8cf0H8UM+aIogDPdyN3RwaNUj6oXc6IqN26141TUujTx9v2mHvIPc5oWcExZ+8BvsXszxQZ6Sc8qgclUPiw4M5hwuNwSvF98u45KC2a2AqLys3Vb+G7mEmB04xeoeeM7BW9kuWATsU0vmrFqWujJDPk8Got57/My3cAeBaKdHLD83zRXCtFiiWprpCB17SmGuPc3w1X3fudjztJ/mPzB1bH+roWR1OjrXCZi2nlmtboryVtL5+hgmdH/hSsoMBx/0ydam7iSQCQvrmUPf2vl3CKm5dVPAdBFuWk8DjnBLdQLs2vhWPtKBzGdcbJW/oF1i4bUS/BzmZf5rTQWHFFK2a0kqm8cTiZjhfLnqKWxvK2dPRlXb1RE3M7J2A9t4W8Izguf5mF1ilWcEPicKSs7QepL+TUl7wLdI6cEH3vlMz7SEj4kY16N4zBRfo6oiQWfm3GxFel0cJU+d22oVW7R0jAHiY2Pe+lQgmISwn7egzWr+j6Rkh3XwQ4eFzWz7X4gLYLTlvgI58sU6mQKTM/mz8gPliVpJmt8d/W0ZzYDd/3nqUrLzT4Lb51BkgpUqYJEnIWw82koIMchlyj1SxW5fWACJ+elHg1h5Pstp3K+GM7ANDWjsckn7CNztyDbaueTXuxe8wOWMZyJCwlLQdQo3Y04a+bruzxbSd1lmpVPNwkO2cnS6JmEUzIIJaHSpxA/vl1LhlcgpO3YcEfXz1BmA2g0nXdRsw58ImoGuY95sMU4GUgXFYdusRYXwltaHy0hR0oWxE3rW4AgR2qbGp1on+GXqHQ9+PT/UTYA2oOP3ymSRkL31/e7badQpwe9lFheuCJdnGHbcRvlw1CUMU98hM5Ul4ogJX3v0ZfnPXWDX1YnEsJj2jzkMvw//pGBgbDgD6YZHDZQ6z+eXM4NczHlGdmjGV07iMQJv6KJ7rEg7U+Ontzr1RPapTFOvKXnomgKv04m1Qjyj1Kup6dDQhRD4lk2c6p8eQW903NMSMQ+YtPsihbeeTCyBloiWo2bP/sFsyyMsa2vdKPTXnBAnO6uvKk/u2y7edHVBUhXWh6rndzJGWG1ljv1ADRzAmPp6xFjT1vABHEpLKzPtiKXjUPIsIUtdSzxsuvsYxuTGA9diY1WER3xnokVjKL1ptDOGG4P60LutwMtgZXS7hyqS2iRNFgW3vA3XjF+F4tnamqbnDlaWx2R/LhUnuZNBWRINcakrqLvCQ+EjEPa/9su//WQ7QgapL/Y+270RsJ6Xd9Fr3dqm/rneVO1rPmzKzjUsbFvuR7yU2izAR1FfocFmCK3usFYOfB0ikaC3aZfUicsjcD4YphqtwzcymFAitRj6P64soFkyxXAYcuiPZY45D2fQVWOJqVN6zPi8odAGD6X/EYUq9VO5HtEzU4YcszqptlvTBrlsqYRmIWCjMNzao+YINddo48+ByoGrcsFy4HatSBd8VYbrm/5zTxOs2MmzxpCKeucy8vz8f9LBWKw8hyolBgWU/VPvP529c7QJFOFadbpN2S0MqJoMLAOe91mfJ0HobH6sjX6zTcjM7bIhS+1Jp/AKya3UWulV//XHZEvnNSlA+4wBR5Jldek1sTHfCwMEIItv79GatDH55kCw5O9cuw2C8e3cCU6R090NJOM5Pcf1zbl7TpkIj2QGr+2GRtpHRN69/25LlMPL4lezhzFocVP07l0MMgd1ia2q5CZWYDV7P77ugOcXdpEMwVKEZZ3N4x2MfMBZEKOcihh3FT3iBe/TFcsoVmTrIv0oT8pOoxsVQ+NeS8oStokT59ohYUq7r77GNInVbn4cvhU0g3rL5XIVqM+1SzAMmN6oNSRv2meg3jWB/RNovhqRx87vj0C99Dp9r776G7dTcockw8Ghz78/sn5fPyKyixWLvxW6z8uvLXOvkAT7fs9otnQ388xCGTNOj0pGjWuI9fY5g6hvessoHw1fMg5plbGpOqjV6F/a1UFY5hMaZ0YCrVASJqrgtOUvKtrXR6jjGmoHckwaplBpAH//A7oSg+tkrRGAoMFmxwAvLEMxO82vLr/WXxFH0Qk4wtPWjT6ck41a2ulvaDeJZFlpld7ZrbtRdD/tZr9mrwIRRosIa9WiclQH0zLtmCAwPUnOVDY3DvbTTNiRMudJVhrEN+VPxEW/+LFP5NkvsOnzEUm2WRWxrabj34Q4gYoOASE5Gp2cMwSqsKKLPGy3CPksPIyChrkkQbZkP2ahrZN+S0GNZKdoWQPWA+YT+eVb4oCROBIuwxGKzYgD9WsPpei3eYCKcvVCukIIBlGqjvYGziyrIlJ5KbHyaLqovJliuoD8ycLruSLMPcmeO7D9X1Jrf2Ob60W8JWO6p5iN1XJeVZdL2dsWHND42x8tgt0neSNutS5rrznfXrOZ5JNVpc+YqTpK8SEycCbkoXEH8Lp9J93O9Of9K9ckgn80jgm2zvGNs3JxwyJcSpwvlWH0tiE/eYaV/vA6nRV68fQ5g4k0lbvhJxZqfJWm9LlWGbTRGMFTd9vf8O+Nh4EhkloyBnOUsQkxvTVF5sLFCGMedoxh0N64Ftxhnq5BkMBrXZEYy0cZNelKDpO2O7pBM9X0lsTvDYpXv08yWW/CcGBeY/D4CHGAFSjqAsG9aYLLXKBM7j1PHLsWbUeafPNZX0Uge1GkhhmqdC9/mpJQjeltXEOq4T5PlGORu1DQCmZZQfpmUUMFE4G8RQMFFY4R2tRnGAHIgMtQtCE13glTvc0tWI2IlbmDauhk80CwNxYeHvraZKRWntcjNTPSwRGfCvjxaONJ7Gm8NEJ0ciChIXRzVw6Nw/5iG3lXUD613hNRrQ+3MYKZEPNvB/iDFVrh4e1OJFjnUSaSle927Vjx9jdmC5LShtTYbdHx9tOfmPMNTK5YnsGgS0JGj+7qOnKQkVpz0dWODGBPrbjrAri+LdwTIhVaIUiNs6BKTYpqb3AFlAUKw3evbPK+dfhprpgNtbh2eruH8XdG4UbP3HOJT2qBBbx1g=</script>
+                </div>
+
+  <h2>🔗 What’s Next?</h2>
+  <p>
+    In the upcoming blogs, we’ll deep-dive into each principle starting with the Single Responsibility Principle. Each post will feature real-world code, bad practices, and how to fix them with visual explanations and quizzes.
+  </p>
+</article>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-6 text-start">
+      </div>
+      <div class="col-6 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/solid-principles">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 end">
+        <a href="/blogs"><span aria-hidden="true">&#8592;</span>Return to Blog Series</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/solid-principles">SOLID Principles &#x2013; The Foundation of Object-Oriented Design <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>
