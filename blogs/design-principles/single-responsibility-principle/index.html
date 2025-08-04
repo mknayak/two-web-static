@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Understand the Single Responsibility Principle (SRP) and how it helps in writing maintainable and scalable code. Includes examples in C# and Python." />
+        <meta property='og:title' content='Single Responsibility Principle - One Reason to Change, One Purpose to Serve'/>
+        <meta property='og:image' content='/assets/images/blogs/design-principles/srp-banner.webp'/>
+        <meta property='og:description' content='Understand the Single Responsibility Principle (SRP) and how it helps in writing maintainable and scalable code. Includes examples in C# and Python.'/> 
+        <title>Single Responsibility Principle - One Reason to Change, One Purpose to Serve | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-5">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/solid-principles"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/open-closed-principle">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/solid-principles"><span aria-hidden="true">&#8592;</span> SOLID Principles &#x2013; The Foundation of Object-Oriented Design</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/open-closed-principle">Open-Closed Principle -  Extend Without Breaking Existing Code <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Single Responsibility Principle - One Reason to Change, One Purpose to Serve</h1>
+                    <p class="lead">Understand the Single Responsibility Principle (SRP) and how it helps in writing maintainable and scalable code. Includes examples in C# and Python.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">18-Jul, 2025 &middot;
+                                    8 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-principles/srp-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+  <h2 class="toc-title">💡 Understanding the Single Responsibility Principle</h2>
+  <p>
+    The Single Responsibility Principle (SRP) is a cornerstone of clean code and maintainable software. It states that a class should have only one reason to change, meaning it should only have one job or responsibility.
+  </p>
+  <p>
+    By adhering to SRP, you can reduce the risk of bugs, improve code readability, and make your software easier to extend and maintain.
+  </p>
+  <p>
+    However, when SRP is not followed, the    The key is to strike a balance between SRP and High Cohesion. While SRP helps define clear responsibilities, it's important to ensure that related functionalities remain cohesive within a single class or module.
+  </p>
+  
+  <h3>Better Approach: Balanced SRP</h3>
+  <pre><code class="language-csharp">// ✅ Better approach - Groups related validation logic together
+public class UserValidator {
+    public ValidationResult ValidateRegistration(string email, string password) {
+        var result = new ValidationResult();
+        
+        if (!IsValidEmail(email)) {
+            result.AddError("Invalid email format");
+        }
+        
+        if (!IsValidPassword(password)) {
+            result.AddError("Password must be at least 8 characters with numbers and symbols");
+        }
+        
+        return result;
+    }
+    
+    private bool IsValidEmail(string email) {
+        return email.Contains("@") && email.Contains(".");
+    }
+    
+    private bool IsValidPassword(string password) {
+        return password.Length >= 8 && 
+               password.Any(char.IsDigit) && 
+               password.Any(char.IsSymbol);
+    }
+}
+
+public class UserRegistrationService {
+    private readonly UserValidator _validator;
+    private readonly IUserRepository _repository;
+    private readonly IPasswordHasher _hasher;
+    
+    public UserRegistrationService(
+        UserValidator validator, 
+        IUserRepository repository, 
+        IPasswordHasher hasher) {
+        _validator = validator;
+        _repository = repository;
+        _hasher = hasher;
+    }
+    
+    public async Task<bool> RegisterUserAsync(string email, string password) {
+        var validation = _validator.ValidateRegistration(email, password);
+        if (!validation.IsValid) {
+            throw new ValidationException(validation.Errors);
+        }
+        
+        var hashedPassword = _hasher.Hash(password);
+        await _repository.CreateUserAsync(email, hashedPassword);
+        }
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🛠️ Practical Tips for Implementing SRP</h2>
+  <p>
+    Applying SRP effectively requires practice and good judgment. Here are practical guidelines to help you implement SRP successfully:
+  </p>
+  
+  <h3>1. The "Reason to Change" Test</h3>
+  <p>
+    Ask yourself: "How many different reasons could this class need to change?" If you can identify multiple distinct reasons, consider splitting the class.
+  </p>
+  <pre><code class="language-csharp">// ❌ Multiple reasons to change
+public class Employee {
+    public string Name { get; set; }
+    public decimal Salary { get; set; }
+    
+    // Reason 1: Employee data changes
+    public void UpdatePersonalInfo(string name) {
+        Name = name;
+    }
+    
+    // Reason 2: Salary calculation logic changes
+    public decimal CalculateBonus() {
+        return Salary * 0.1m;
+    }
+    
+    // Reason 3: Report format changes
+    public string GeneratePayslip() {
+        return $"Employee: {Name}, Salary: {Salary}, Bonus: {CalculateBonus()}";
+    }
+}
+
+// ✅ Single reason to change per class
+public class Employee {
+    public string Name { get; set; }
+    public decimal Salary { get; set; }
+    
+    public void UpdatePersonalInfo(string name) {
+        Name = name;
+    }
+}
+
+public class SalaryCalculator {
+    public decimal CalculateBonus(Employee employee) {
+        return employee.Salary * 0.1m;
+    }
+}
+
+public class PayslipGenerator {
+    private readonly SalaryCalculator _calculator;
+    
+    public PayslipGenerator(SalaryCalculator calculator) {
+        _calculator = calculator;
+    }
+    
+    public string GeneratePayslip(Employee employee) {
+        var bonus = _calculator.CalculateBonus(employee);
+        return $"Employee: {employee.Name}, Salary: {employee.Salary}, Bonus: {bonus}";
+    }
+}
+  </code></pre>
+
+  <h3>2. The "Actor" Pattern</h3>
+  <p>
+    Identify the different actors (users, systems, or stakeholders) that might request changes to your code. Each actor should have their own class or module.
+  </p>
+  <pre><code class="language-python"># Different actors have different concerns
+class BookingSystem:
+    # Actor: Customer - wants to make bookings
+    def make_reservation(self, customer_id, room_id, dates):
+        pass
+    
+    # Actor: Hotel Manager - wants reporting
+    def generate_occupancy_report(self, start_date, end_date):
+        pass
+    
+    # Actor: Accountant - wants financial data
+    def calculate_revenue(self, period):
+        pass
+
+# ✅ Separate classes for different actors
+class ReservationService:  # For customers
+    def make_reservation(self, customer_id, room_id, dates):
+        pass
+    
+    def cancel_reservation(self, reservation_id):
+        pass
+
+class ReportingService:  # For hotel managers
+    def generate_occupancy_report(self, start_date, end_date):
+        pass
+    
+    def get_booking_analytics(self):
+        pass
+
+class FinancialService:  # For accountants
+    def calculate_revenue(self, period):
+        pass
+    
+    def generate_invoice(self, reservation_id):
+        pass
+  </code></pre>
+
+  <h3>3. Code Smell Indicators</h3>
+  <p>
+    Watch out for these common indicators that suggest SRP violations:
+  </p>
+  <ul>
+    <li><strong>Large classes:</strong> Classes with more than 200-300 lines often have multiple responsibilities.</li>
+    <li><strong>Many dependencies:</strong> If a class requires many different services, it might be doing too much.</li>
+    <li><strong>Mixed abstraction levels:</strong> High-level business logic mixed with low-level implementation details.</li>
+    <li><strong>Difficult naming:</strong> If you struggle to name a class concisely, it might have multiple purposes.</li>
+    <li><strong>Complex unit tests:</strong> Tests that require extensive setup often indicate SRP violations.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="toc-title">⚠️ Common SRP Mistakes and How to Avoid Them</h2>
+  <p>
+    Even experienced developers can fall into common traps when applying SRP. Here are the most frequent mistakes and how to avoid them:
+  </p>
+  
+  <h3>Mistake 1: God Objects</h3>
+  <p>
+    Creating classes that try to do everything, often called "God Objects" or "Swiss Army Knife" classes.
+  </p>
+  <pre><code class="language-csharp">// ❌ God Object - tries to do everything
+public class ApplicationManager {
+    public void StartApplication() { }
+    public void ConfigureDatabase() { }
+    public void SetupLogging() { }
+    public void InitializeCache() { }
+    public void LoadUserPreferences() { }
+    public void ValidateConfiguration() { }
+    public void SendStartupNotifications() { }
+    public void RegisterEventHandlers() { }
+    public void LoadPlugins() { }
+    // ... and many more responsibilities
+}
+
+// ✅ Broken down into focused classes
+public class ApplicationBootstrapper {
+    private readonly DatabaseConfigurator _dbConfig;
+    private readonly LoggingConfigurator _loggingConfig;
+    private readonly NotificationService _notificationService;
+    
+    public async Task StartApplicationAsync() {
+        await _dbConfig.ConfigureAsync();
+        _loggingConfig.Setup();
+        await _notificationService.SendStartupNotificationAsync();
+    }
+}
+  </code></pre>
+
+  <h3>Mistake 2: Anemic Domain Models</h3>
+  <p>
+    Taking SRP too far and creating classes with no behavior, just data (anemic models).
+  </p>
+  <pre><code class="language-csharp">// ❌ Anemic model - no behavior
+public class BankAccount {
+    public decimal Balance { get; set; }
+    public string AccountNumber { get; set; }
+}
+
+public class BankAccountService {
+    public void Withdraw(BankAccount account, decimal amount) {
+        if (account.Balance < amount) {
+            throw new InvalidOperationException("Insufficient funds");
+        }
+        account.Balance -= amount;
+    }
+}
+
+// ✅ Rich domain model with appropriate behavior
+public class BankAccount {
+    public decimal Balance { get; private set; }
+    public string AccountNumber { get; private set; }
+    
+    public BankAccount(string accountNumber, decimal initialBalance) {
+        AccountNumber = accountNumber;
+        Balance = initialBalance;
+    }
+    
+    public void Withdraw(decimal amount) {
+        if (amount <= 0) {
+            throw new ArgumentException("Amount must be positive");
+        }
+        
+        if (Balance < amount) {
+            throw new InvalidOperationException("Insufficient funds");
+        }
+        
+        Balance -= amount;
+    }
+    
+    public void Deposit(decimal amount) {
+        if (amount <= 0) {
+            throw new ArgumentException("Amount must be positive");
+        }
+        
+        Balance += amount;
+    }
+}
+  </code></pre>
+</section>
+
+<section>onsequences can be significant:
+  </p>
+  <ul>
+    <li><strong>Reduced Maintainability:</strong> Classes with multiple responsibilities become harder to understand and maintain. Developers may struggle to identify which part of the code needs changes, leading to increased debugging time.</li>
+    <li><strong>Increased Complexity:</strong> A single class handling multiple responsibilities often results in tightly coupled code. This increases the overall complexity of the system, making it harder to refactor or extend.</li>
+    <li><strong>Higher Risk of Bugs:</strong> Changes made to one responsibility can inadvertently affect other responsibilities within the same class, introducing unexpected bugs.</li>
+    <li><strong>Impact Assessment Challenges:</strong> When a class has multiple responsibilities, assessing the impact of a change becomes difficult. Developers may overlook dependencies, leading to incomplete or incorrect implementations.</li>
+    <li><strong>Difficulty in Testing:</strong> Classes with multiple responsibilities are harder to test in isolation. Unit tests may become more complex and less reliable, reducing confidence in the codebase.</li>
+  </ul>
+  <p>
+    By ensuring that each class has a single responsibility, you can create systems that are easier to understand, test, and extend, ultimately leading to more robust and maintainable software.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">💻 Examples of SRP in Action</h2>
+  <p>
+    Let’s explore how SRP can be applied in real-world scenarios using C#, Python, Java, and JavaScript.
+  </p>
+  <pre><code class="language-csharp">// Bad Example
+class User {
+    void SaveToDatabase() { /* ... */ }
+    void GenerateReport() { /* ... */ }
+}
+
+// Good Example
+class User { /* ... */ }
+class UserRepository {
+    void Save(User user) { /* ... */ }
+}
+class ReportGenerator {
+    void Generate(User user) { /* ... */ }
+}
+  </code></pre>
+  <pre><code class="language-python"># Bad Example
+class User:
+    def save_to_database(self):
+        pass
+
+    def generate_report(self):
+        pass
+
+# Good Example
+class User:
+    pass
+
+class UserRepository:
+    def save(self, user):
+        pass
+
+class ReportGenerator:
+    def generate(self, user):
+        pass
+  </code></pre>
+  <pre><code class="language-javascript">// Bad Example in JavaScript
+class Logger {
+    logMessage(message) {
+        console.log(message);
+    }
+    saveToFile(message) {
+        // Save to file
+    }
+}
+
+// Good Example in JavaScript
+class Logger {
+    logMessage(message) {
+        console.log(message);
+    }
+}
+
+class FileLogger {
+    saveToFile(message) {
+        // Save to file
+    }
+}
+  </code></pre>
+  <pre><code class="language-java">// Bad Example in Java
+public class OrderService {
+    public void createOrder(Order order) {
+        // create order
+    }
+    public void emailConfirmation(Order order) {
+        // send email confirmation
+    }
+}
+
+// Good Example in Java
+public class OrderService {
+    public void createOrder(Order order) {
+        // create order
+    }
+}
+
+public class EmailService {
+    public void sendOrderConfirmation(Order order) {
+        // send email confirmation
+    }
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🌍 Real-World SRP Examples</h2>
+  <p>
+    Let's examine more complex, real-world scenarios where SRP can make a significant difference in code quality and maintainability.
+  </p>
+  
+  <h3>Example 1: E-commerce Order Processing</h3>
+  <pre><code class="language-csharp">// ❌ Violates SRP - OrderProcessor has too many responsibilities
+public class OrderProcessor {
+    public void ProcessOrder(Order order) {
+        // Validate order
+        if (order.Items.Count == 0) throw new Exception("No items");
+        
+        // Calculate pricing
+        decimal total = 0;
+        foreach (var item in order.Items) {
+            total += item.Price * item.Quantity;
+            if (item.Quantity > 10) total *= 0.9m; // Bulk discount
+        }
+        order.Total = total;
+        
+        // Process payment
+        var paymentGateway = new PaymentGateway();
+        paymentGateway.ChargeCard(order.PaymentInfo, total);
+        
+        // Update inventory
+        foreach (var item in order.Items) {
+            UpdateStock(item.ProductId, item.Quantity);
+        }
+        
+        // Send notifications
+        SendEmailConfirmation(order.CustomerEmail);
+        SendSMSNotification(order.CustomerPhone);
+        
+        // Log order
+        File.AppendAllText("orders.log", $"Order {order.Id} processed");
+    }
+}
+
+// ✅ Follows SRP - Each class has a single responsibility
+public class OrderValidator {
+    public void Validate(Order order) {
+        if (order.Items.Count == 0) 
+            throw new ArgumentException("Order must contain at least one item");
+    }
+}
+
+public class PricingService {
+    public decimal CalculateTotal(Order order) {
+        decimal total = 0;
+        foreach (var item in order.Items) {
+            total += item.Price * item.Quantity;
+            if (item.Quantity > 10) total *= 0.9m; // Bulk discount
+        }
+        return total;
+    }
+}
+
+public class PaymentService {
+    private readonly IPaymentGateway _gateway;
+    
+    public PaymentService(IPaymentGateway gateway) {
+        _gateway = gateway;
+    }
+    
+    public void ProcessPayment(PaymentInfo paymentInfo, decimal amount) {
+        _gateway.ChargeCard(paymentInfo, amount);
+    }
+}
+
+public class InventoryService {
+    public void UpdateStock(int productId, int quantity) {
+        // Update inventory logic
+    }
+}
+
+public class NotificationService {
+    public void SendOrderConfirmation(string email, Order order) {
+        // Send email logic
+    }
+    
+    public void SendSMSNotification(string phone, Order order) {
+        // Send SMS logic
+    }
+}
+
+public class OrderLogger {
+    public void LogOrder(Order order) {
+        File.AppendAllText("orders.log", $"Order {order.Id} processed at {DateTime.Now}");
+    }
+}
+
+// Orchestrator that uses all services
+public class OrderProcessingOrchestrator {
+    private readonly OrderValidator _validator;
+    private readonly PricingService _pricingService;
+    private readonly PaymentService _paymentService;
+    private readonly InventoryService _inventoryService;
+    private readonly NotificationService _notificationService;
+    private readonly OrderLogger _logger;
+    
+    public OrderProcessingOrchestrator(
+        OrderValidator validator,
+        PricingService pricingService,
+        PaymentService paymentService,
+        InventoryService inventoryService,
+        NotificationService notificationService,
+        OrderLogger logger) {
+        _validator = validator;
+        _pricingService = pricingService;
+        _paymentService = paymentService;
+        _inventoryService = inventoryService;
+        _notificationService = notificationService;
+        _logger = logger;
+    }
+    
+    public async Task ProcessOrderAsync(Order order) {
+        _validator.Validate(order);
+        order.Total = _pricingService.CalculateTotal(order);
+        await _paymentService.ProcessPayment(order.PaymentInfo, order.Total);
+        
+        foreach (var item in order.Items) {
+            _inventoryService.UpdateStock(item.ProductId, item.Quantity);
+        }
+        
+        await _notificationService.SendOrderConfirmation(order.CustomerEmail, order);
+        await _notificationService.SendSMSNotification(order.CustomerPhone, order);
+        _logger.LogOrder(order);
+    }
+}
+  </code></pre>
+
+  <h3>Example 2: User Management System</h3>
+  <pre><code class="language-python"># ❌ Violates SRP - UserManager does everything
+class UserManager:
+    def create_user(self, user_data):
+        # Validate input
+        if not user_data.get('email'):
+            raise ValueError("Email is required")
+        if len(user_data.get('password', '')) < 8:
+            raise ValueError("Password too short")
+        
+        # Hash password
+        import hashlib
+        hashed_password = hashlib.sha256(user_data['password'].encode()).hexdigest()
+        
+        # Save to database
+        import sqlite3
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO users (email, password, created_at) VALUES (?, ?, ?)",
+            (user_data['email'], hashed_password, datetime.now())
+        )
+        conn.commit()
+        conn.close()
+        
+        # Send welcome email
+        import smtplib
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login("admin@company.com", "password")
+        message = f"Welcome {user_data['email']}!"
+        server.sendmail("admin@company.com", user_data['email'], message)
+        server.quit()
+        
+        # Log activity
+        with open('activity.log', 'a') as f:
+            f.write(f"User {user_data['email']} created at {datetime.now()}\n")
+
+# ✅ Follows SRP - Each class has a focused responsibility
+class UserValidator:
+    def validate(self, user_data):
+        if not user_data.get('email'):
+            raise ValueError("Email is required")
+        if len(user_data.get('password', '')) < 8:
+            raise ValueError("Password must be at least 8 characters")
+        if '@' not in user_data.get('email', ''):
+            raise ValueError("Invalid email format")
+
+class PasswordHasher:
+    def hash_password(self, password):
+        import hashlib
+        import secrets
+        salt = secrets.token_hex(16)
+        hashed = hashlib.pbkdf2_hmac('sha256', password.encode(), salt.encode(), 100000)
+        return f"{salt}:{hashed.hex()}"
+
+class UserRepository:
+    def __init__(self, database_connection):
+        self.db = database_connection
+    
+    def save_user(self, user_data):
+        cursor = self.db.cursor()
+        cursor.execute(
+            "INSERT INTO users (email, password_hash, created_at) VALUES (?, ?, ?)",
+            (user_data['email'], user_data['password_hash'], datetime.now())
+        )
+        self.db.commit()
+        return cursor.lastrowid
+
+class EmailService:
+    def __init__(self, smtp_config):
+        self.smtp_config = smtp_config
+    
+    def send_welcome_email(self, email):
+        import smtplib
+        server = smtplib.SMTP(self.smtp_config['host'], self.smtp_config['port'])
+        server.starttls()
+        server.login(self.smtp_config['username'], self.smtp_config['password'])
+        message = f"Subject: Welcome!\n\nWelcome to our platform, {email}!"
+        server.sendmail(self.smtp_config['from_email'], email, message)
+        server.quit()
+
+class ActivityLogger:
+    def __init__(self, log_file):
+        self.log_file = log_file
+    
+    def log_user_creation(self, email):
+        with open(self.log_file, 'a') as f:
+            f.write(f"User {email} created at {datetime.now()}\n")
+
+# Service layer that orchestrates the process
+class UserService:
+    def __init__(self, validator, hasher, repository, email_service, logger):
+        self.validator = validator
+        self.hasher = hasher
+        self.repository = repository
+        self.email_service = email_service
+        self.logger = logger
+    
+    def create_user(self, user_data):
+        self.validator.validate(user_data)
+        user_data['password_hash'] = self.hasher.hash_password(user_data['password'])
+        del user_data['password']  # Remove plain password
+        
+        user_id = self.repository.save_user(user_data)
+        self.email_service.send_welcome_email(user_data['email'])
+        self.logger.log_user_creation(user_data['email'])
+        
+        return user_id
+  </code></pre>
+
+  <h3>Benefits of the Refactored Approach</h3>
+  <ul>
+    <li><strong>Testability:</strong> Each service can be unit tested independently with mock dependencies.</li>
+    <li><strong>Maintainability:</strong> Changes to email logic don't affect password hashing or database operations.</li>
+    <li><strong>Reusability:</strong> Services like EmailService can be reused across different parts of the application.</li>
+    <li><strong>Flexibility:</strong> Easy to swap implementations (e.g., different email providers or databases).</li>
+    <li><strong>Debugging:</strong> Issues can be traced to specific services, making troubleshooting faster.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="toc-title">🏗️ SRP in Different Architectural Patterns</h2>
+  <p>
+    SRP applies differently across various architectural patterns. Let's explore how it works in common scenarios.
+  </p>
+  
+  <h3>MVC Pattern</h3>
+  <pre><code class="language-csharp">// ❌ Controller doing too much
+public class ProductController : Controller {
+    public ActionResult CreateProduct(ProductViewModel model) {
+        // Validation
+        if (string.IsNullOrEmpty(model.Name)) {
+            ModelState.AddModelError("Name", "Product name is required");
+        }
+        
+        // Business logic
+        var product = new Product {
+            Name = model.Name,
+            Price = model.Price * 1.1m, // Add 10% markup
+            CreatedDate = DateTime.Now
+        };
+        
+        // Data access
+        using (var context = new DbContext()) {
+            context.Products.Add(product);
+            context.SaveChanges();
+        }
+        
+        // Send notification
+        var emailService = new EmailService();
+        emailService.SendProductCreatedEmail(product.Name);
+        
+        return View(product);
+    }
+}
+
+// ✅ SRP Applied
+public class ProductController : Controller {
+    private readonly IProductService _productService;
+    
+    public ProductController(IProductService productService) {
+        _productService = productService;
+    }
+    
+    public async Task<ActionResult> CreateProduct(ProductViewModel model) {
+        if (!ModelState.IsValid) {
+            return View(model);
+        }
+        
+        var result = await _productService.CreateProductAsync(model);
+        
+        if (result.Success) {
+            return RedirectToAction("Details", new { id = result.ProductId });
+        }
+        
+        ModelState.AddModelError("", result.ErrorMessage);
+        return View(model);
+    }
+}
+
+public interface IProductService {
+    Task<ProductCreationResult> CreateProductAsync(ProductViewModel model);
+}
+
+public class ProductService : IProductService {
+    private readonly IProductRepository _repository;
+    private readonly INotificationService _notificationService;
+    private readonly IPricingService _pricingService;
+    
+    public ProductService(
+        IProductRepository repository,
+        INotificationService notificationService,
+        IPricingService pricingService) {
+        _repository = repository;
+        _notificationService = notificationService;
+        _pricingService = pricingService;
+    }
+    
+    public async Task<ProductCreationResult> CreateProductAsync(ProductViewModel model) {
+        var price = _pricingService.CalculatePrice(model.Price);
+        
+        var product = new Product {
+            Name = model.Name,
+            Price = price,
+            CreatedDate = DateTime.Now
+        };
+        
+        var productId = await _repository.CreateAsync(product);
+        await _notificationService.SendProductCreatedNotificationAsync(product.Name);
+        
+        return new ProductCreationResult { Success = true, ProductId = productId };
+    }
+}
+  </code></pre>
+
+  <h3>Microservices Architecture</h3>
+  <pre><code class="language-javascript">// ❌ Monolithic service handling multiple concerns
+class OrderService {
+    async processOrder(orderData) {
+        // User verification
+        const user = await this.userDatabase.findById(orderData.userId);
+        if (!user || !user.isActive) {
+            throw new Error('Invalid user');
+        }
+        
+        // Inventory check
+        for (const item of orderData.items) {
+            const product = await this.productDatabase.findById(item.productId);
+            if (product.stock < item.quantity) {
+                throw new Error('Insufficient stock');
+            }
+        }
+        
+        // Payment processing
+        const paymentResult = await this.paymentGateway.charge({
+            amount: orderData.total,
+            token: orderData.paymentToken
+        });
+        
+        // Inventory update
+        for (const item of orderData.items) {
+            await this.productDatabase.updateStock(item.productId, -item.quantity);
+        }
+        
+        // Order creation
+        const order = await this.orderDatabase.create(orderData);
+        
+        // Notifications
+        await this.emailService.sendConfirmation(user.email, order);
+        await this.smsService.sendNotification(user.phone, order);
+        
+        return order;
+    }
+}
+
+// ✅ SRP Applied with separate microservices
+class OrderOrchestrationService {
+    constructor(userService, inventoryService, paymentService, notificationService) {
+        this.userService = userService;
+        this.inventoryService = inventoryService;
+        this.paymentService = paymentService;
+        this.notificationService = notificationService;
+    }
+    
+    async processOrder(orderData) {
+        // Each service handles its own responsibility
+        await this.userService.validateUser(orderData.userId);
+        await this.inventoryService.checkAvailability(orderData.items);
+        
+        const paymentResult = await this.paymentService.processPayment({
+            amount: orderData.total,
+            token: orderData.paymentToken
+        });
+        
+        await this.inventoryService.reserveItems(orderData.items);
+        
+        const order = await this.createOrder(orderData);
+        
+        await this.notificationService.sendOrderConfirmation({
+            email: orderData.customerEmail,
+            phone: orderData.customerPhone,
+            order: order
+        });
+        
+        return order;
+    }
+}
+
+// Each service is focused on a single domain
+class UserValidationService {
+    async validateUser(userId) {
+        const user = await this.userRepository.findById(userId);
+        if (!user || !user.isActive) {
+            throw new Error('Invalid or inactive user');
+        }
+        return user;
+    }
+}
+
+class InventoryService {
+    async checkAvailability(items) {
+        for (const item of items) {
+            const product = await this.productRepository.findById(item.productId);
+            if (product.stock < item.quantity) {
+                throw new Error(`Insufficient stock for product ${item.productId}`);
+            }
+        }
+    }
+    
+    async reserveItems(items) {
+        for (const item of items) {
+            await this.productRepository.updateStock(item.productId, -item.quantity);
+        }
+    }
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🚫 When Not to Use SRP</h2>
+  <p>
+    While the Single Responsibility Principle (SRP) is a powerful guideline, there are scenarios where strict adherence may not be practical or necessary:
+  </p>
+  <ul>
+    <li><strong>Small, Simple Classes:</strong> For small utility classes or data transfer objects (DTOs), splitting responsibilities may introduce unnecessary complexity without significant benefits.</li>
+    <li><strong>Performance-Critical Code:</strong> In performance-critical applications, adhering to SRP might lead to additional layers of abstraction, which could impact execution speed.</li>
+    <li><strong>Prototyping:</strong> During the early stages of prototyping, focusing on SRP might slow down development. It’s often better to refactor for SRP after the prototype is validated.</li>
+  </ul>
+  <p>
+    The key is to balance SRP with the specific needs of your project. Over-engineering can be as harmful as under-engineering.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">🔗 High Cohesion and Loose Coupling</h2>
+  <p>
+    High Cohesion and Loose Coupling are complementary principles that work hand-in-hand with SRP to create robust and maintainable software systems.
+  </p>
+  <ul>
+    <li><strong>High Cohesion:</strong> A class or module exhibits high cohesion when its responsibilities are closely related and focused. This makes the code easier to understand, test, and maintain. For example, a class responsible for user authentication should not also handle database connections.</li>
+    <li><strong>Loose Coupling:</strong> Loose coupling ensures that classes and modules are minimally dependent on each other. This reduces the impact of changes in one module on others, making the system more flexible and easier to extend. Dependency injection and interfaces are common techniques to achieve loose coupling.</li>
+  </ul>
+  <p>
+    By combining SRP with High Cohesion and Loose Coupling, you can design systems that are not only functional but also resilient to change and easy to scale.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">📊 Examples of High Cohesion</h2>
+  <p>
+    High Cohesion ensures that a class or module focuses on a single, well-defined responsibility, with all its methods and properties closely related to that responsibility. Here are some examples:
+  </p>
+  <pre><code class="language-csharp">// High Cohesion Example in C#
+class AuthenticationService {
+    public bool Login(string username, string password) {
+        // Validate credentials
+    }
+
+    public void Logout() {
+        // Clear session
+    }
+
+    public bool IsUserLoggedIn() {
+        // Check session
+    }
+}
+
+// Each method in AuthenticationService is closely related to user authentication.
+  </code></pre>
+  <pre><code class="language-python"># High Cohesion Example in Python
+class PaymentProcessor:
+    def process_payment(self, amount, payment_method):
+        # Process the payment
+
+    def refund_payment(self, transaction_id):
+        # Refund the payment
+
+    def validate_payment_method(self, payment_method):
+        # Validate the payment method
+
+# All methods in PaymentProcessor are focused on payment-related tasks.
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🤝 How SRP and High Cohesion Work Together</h2>
+  <p>
+    The Single Responsibility Principle (SRP) and High Cohesion are complementary principles that, when applied together, lead to better software design:
+  </p>
+  <ul>
+    <li><strong>SRP Defines the Scope:</strong> SRP ensures that a class has a single responsibility, which defines the scope of what the class should do.</li>
+    <li><strong>High Cohesion Ensures Focus:</strong> High Cohesion ensures that all methods and properties within the class are closely related to that single responsibility, avoiding unrelated functionality.</li>
+    <li><strong>Improved Maintainability:</strong> By combining SRP and High Cohesion, you create classes that are easier to understand, modify, and test. Changes to one responsibility are less likely to impact other parts of the system.</li>
+    <li><strong>Reduced Complexity:</strong> Classes with High Cohesion and SRP are less complex, as they avoid mixing unrelated responsibilities and focus on doing one thing well.</li>
+  </ul>
+  <p>
+    For example, an <code>OrderService</code> class adhering to SRP would only handle order-related tasks, while High Cohesion ensures that all its methods, such as <code>createOrder</code>, <code>cancelOrder</code>, and <code>getOrderDetails</code>, are directly related to managing orders.
+  </p>
+  <p>
+    Together, SRP and High Cohesion provide a strong foundation for building scalable, maintainable, and robust software systems.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">⚖️ When SRP Violates High Cohesion</h2>
+  <p>
+    While the Single Responsibility Principle (SRP) is a powerful guideline, excessive adherence to it can sometimes lead to a violation of High Cohesion. Splitting responsibilities too much can result in fragmented logic, where related functionalities are scattered across multiple classes or modules.
+  </p>
+  <p>
+    Here’s an example to illustrate this issue:
+  </p>
+  <pre><code class="language-csharp">// Overuse of SRP in C#
+class UserInputValidator {
+    public bool ValidateEmail(string email) {
+        // Validate email format
+    }
+}
+
+class UserPasswordValidator {
+    public bool ValidatePassword(string password) {
+        // Validate password strength
+    }
+}
+
+class UserRegistrationService {
+    private UserInputValidator inputValidator = new UserInputValidator();
+    private UserPasswordValidator passwordValidator = new UserPasswordValidator();
+
+    public bool RegisterUser(string email, string password) {
+        if (!inputValidator.ValidateEmail(email) || !passwordValidator.ValidatePassword(password)) {
+            return false;
+        }
+        // Register user
+        return true;
+    }
+}
+// The logic for user validation is fragmented across multiple classes, reducing cohesion.
+  </code></pre>
+  <pre><code class="language-python"># Overuse of SRP in Python
+class EmailValidator:
+    def validate_email(self, email):
+        # Validate email format
+        pass
+
+class PasswordValidator:
+    def validate_password(self, password):
+        # Validate password strength
+        pass
+
+class UserRegistrationService:
+    def __init__(self):
+        self.email_validator = EmailValidator()
+        self.password_validator = PasswordValidator()
+
+    def register_user(self, email, password):
+        if not self.email_validator.validate_email(email) or not self.password_validator.validate_password(password):
+            return False
+        # Register user
+        return True
+# The logic for user validation is fragmented across multiple classes, reducing cohesion.
+  </code></pre>
+  <p>
+    <strong>Impacts of Violating High Cohesion:</strong>
+  </p>
+  <ul>
+    <li><strong>Increased Complexity:</strong> The system becomes harder to understand as related functionalities are scattered across multiple classes.</li>
+    <li><strong>Harder Debugging:</strong> Debugging issues requires navigating through multiple classes, increasing the time and effort needed.</li>
+    <li><strong>Reduced Maintainability:</strong> Changes to related functionalities require modifications in multiple places, increasing the risk of errors.</li>
+  </ul>
+  <p>
+    The key is to strike a balance between SRP and High Cohesion. While SRP helps define clear responsibilities, it’s important to ensure that related functionalities remain cohesive within a single class or module.
+  </p>
+</section>
+<section>
+  <h2 class="toc-title">🎯 Conclusion</h2>
+  <p>
+    The Single Responsibility Principle is a simple yet powerful concept that can transform the way you design and maintain software. By ensuring that each class has a single responsibility, you can create systems that are easier to understand, test, and extend.
+  </p>
+  <p>
+    Remember these key takeaways:
+  </p>
+  <ul>
+    <li><strong>Start with SRP in mind:</strong> Design classes with a single, clear purpose from the beginning.</li>
+    <li><strong>Refactor when needed:</strong> Don't be afraid to split classes when they grow beyond their original responsibility.</li>
+    <li><strong>Balance is key:</strong> Avoid over-engineering by splitting responsibilities that are naturally cohesive.</li>
+    <li><strong>Test-driven approach:</strong> If a class is hard to test, it probably violates SRP.</li>
+    <li><strong>Think long-term:</strong> SRP may require more upfront effort but pays dividends in maintainability.</li>
+  </ul>
+  <p>
+    By consistently applying SRP alongside other SOLID principles, you'll build software that stands the test of time and adapts gracefully to changing requirements.
+  </p>
+</section>
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/solid-principles"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/open-closed-principle">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/solid-principles"><span aria-hidden="true">&#8592;</span> SOLID Principles &#x2013; The Foundation of Object-Oriented Design</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/open-closed-principle">Open-Closed Principle -  Extend Without Breaking Existing Code <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

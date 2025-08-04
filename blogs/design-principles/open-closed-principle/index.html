@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Open-Closed Principle (OCP) and learn how to build software that is open for extension but closed for modification. Includes real-world examples in C#, Python, Java, and JavaScript with practical implementation patterns." />
+        <meta property='og:title' content='Open-Closed Principle -  Extend Without Breaking Existing Code'/>
+        <meta property='og:image' content='/assets/images/blogs/design-principles/ocp-banner.webp'/>
+        <meta property='og:description' content='Master the Open-Closed Principle (OCP) and learn how to build software that is open for extension but closed for modification. Includes real-world examples in C#, Python, Java, and JavaScript with practical implementation patterns.'/> 
+        <title>Open-Closed Principle -  Extend Without Breaking Existing Code | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-5">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/single-responsibility-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-secondary" href="/blogs"> Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/single-responsibility-principle"><span aria-hidden="true">&#8592;</span> Single Responsibility Principle - One Reason to Change, One Purpose to Serve</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 end text-center">
+        <a href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Open-Closed Principle -  Extend Without Breaking Existing Code</h1>
+                    <p class="lead">Master the Open-Closed Principle (OCP) and learn how to build software that is open for extension but closed for modification. Includes real-world examples in C#, Python, Java, and JavaScript with practical implementation patterns.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">30-Jul, 2025 &middot;
+                                    12 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-principles/ocp-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+  <h2 class="toc-title">🔓 Understanding the Open-Closed Principle</h2>
+  <p>
+    The Open-Closed Principle (OCP) is the second principle in the SOLID design principles, coined by Bertrand Meyer. It states that software entities (classes, modules, functions, etc.) should be <strong>open for extension but closed for modification</strong>.
+  </p>
+  <p>
+    This means you should be able to add new functionality to existing code without changing the existing code itself. By following OCP, you can extend your application's behavior while keeping the existing, tested code stable and unchanged.
+  </p>
+  <p>
+    When OCP is violated, the consequences can be significant:
+  </p>
+  <ul>
+    <li><strong>Fragile Code Base:</strong> Every new feature requires modifying existing code, which increases the risk of introducing bugs into previously working functionality.</li>
+    <li><strong>Regression Risks:</strong> Changes to existing code can break functionality that was working correctly, leading to regression bugs that are often discovered late in the development cycle.</li>
+    <li><strong>Testing Overhead:</strong> When existing code is modified, all related tests need to be re-run and potentially updated, increasing the testing burden.</li>
+    <li><strong>Deployment Complexity:</strong> Changes to core modules affect multiple parts of the system, making deployments riskier and more complex.</li>
+    <li><strong>Developer Friction:</strong> Teams become hesitant to add new features because they fear breaking existing functionality, slowing down development velocity.</li>
+    <li><strong>Code Ownership Issues:</strong> In team environments, modifying existing code owned by other developers can lead to conflicts and coordination overhead.</li>
+  </ul>
+  <p>
+    By adhering to OCP, you create systems that are more flexible, maintainable, and resilient to change, allowing your software to evolve gracefully over time.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">💻 Examples of OCP in Action</h2>
+  <p>
+    Let's explore how OCP can be applied in real-world scenarios using multiple programming languages. These examples demonstrate common violations and how to refactor them for better extensibility.
+  </p>
+  
+  <h3>Basic Example: Shape Calculator</h3>
+  <pre><code class="language-csharp">// ❌ Violates OCP - Need to modify existing code for new shapes
+public class AreaCalculator {
+    public double CalculateArea(object shape) {
+        if (shape is Rectangle rectangle) {
+            return rectangle.Width * rectangle.Height;
+        }
+        else if (shape is Circle circle) {
+            return Math.PI * circle.Radius * circle.Radius;
+        }
+        // Adding a new shape requires modifying this method
+        else if (shape is Triangle triangle) {
+            return 0.5 * triangle.Base * triangle.Height;
+        }
+        
+        throw new ArgumentException("Unknown shape type");
+    }
+}
+
+// ✅ Follows OCP - Open for extension, closed for modification
+public abstract class Shape {
+    public abstract double CalculateArea();
+}
+
+public class Rectangle : Shape {
+    public double Width { get; set; }
+    public double Height { get; set; }
+    
+    public override double CalculateArea() {
+        return Width * Height;
+    }
+}
+
+public class Circle : Shape {
+    public double Radius { get; set; }
+    
+    public override double CalculateArea() {
+        return Math.PI * Radius * Radius;
+    }
+}
+
+public class Triangle : Shape {
+    public double Base { get; set; }
+    public double Height { get; set; }
+    
+    public override double CalculateArea() {
+        return 0.5 * Base * Height;
+    }
+}
+
+public class AreaCalculator {
+    public double CalculateArea(Shape shape) {
+        return shape.CalculateArea();
+    }
+}
+  </code></pre>
+
+  <h3>Python Example: Payment Processing</h3>
+  <pre><code class="language-python"># ❌ Violates OCP
+class PaymentProcessor:
+    def process_payment(self, payment_type, amount):
+        if payment_type == "credit_card":
+            print(f"Processing credit card payment of ${amount}")
+            # Credit card processing logic
+        elif payment_type == "paypal":
+            print(f"Processing PayPal payment of ${amount}")
+            # PayPal processing logic
+        elif payment_type == "bank_transfer":
+            print(f"Processing bank transfer of ${amount}")
+            # Bank transfer processing logic
+        else:
+            raise ValueError("Unsupported payment type")
+
+# ✅ Follows OCP
+from abc import ABC, abstractmethod
+
+class PaymentMethod(ABC):
+    @abstractmethod
+    def process_payment(self, amount):
+        pass
+
+class CreditCardPayment(PaymentMethod):
+    def process_payment(self, amount):
+        print(f"Processing credit card payment of ${amount}")
+        # Credit card processing logic
+
+class PayPalPayment(PaymentMethod):
+    def process_payment(self, amount):
+        print(f"Processing PayPal payment of ${amount}")
+        # PayPal processing logic
+
+class BankTransferPayment(PaymentMethod):
+    def process_payment(self, amount):
+        print(f"Processing bank transfer of ${amount}")
+        # Bank transfer processing logic
+
+class PaymentProcessor:
+    def process_payment(self, payment_method: PaymentMethod, amount):
+        payment_method.process_payment(amount)
+  </code></pre>
+
+  <h3>JavaScript Example: Notification System</h3>
+  <pre><code class="language-javascript">// ❌ Violates OCP
+class NotificationService {
+    sendNotification(type, message, recipient) {
+        switch(type) {
+            case 'email':
+                console.log(`Sending email to ${recipient}: ${message}`);
+                // Email sending logic
+                break;
+            case 'sms':
+                console.log(`Sending SMS to ${recipient}: ${message}`);
+                // SMS sending logic
+                break;
+            case 'push':
+                console.log(`Sending push notification to ${recipient}: ${message}`);
+                // Push notification logic
+                break;
+            default:
+                throw new Error('Unsupported notification type');
+        }
+    }
+}
+
+// ✅ Follows OCP
+class NotificationChannel {
+    send(message, recipient) {
+        throw new Error('send method must be implemented');
+    }
+}
+
+class EmailNotification extends NotificationChannel {
+    send(message, recipient) {
+        console.log(`Sending email to ${recipient}: ${message}`);
+        // Email sending logic
+    }
+}
+
+class SMSNotification extends NotificationChannel {
+    send(message, recipient) {
+        console.log(`Sending SMS to ${recipient}: ${message}`);
+        // SMS sending logic
+    }
+}
+
+class PushNotification extends NotificationChannel {
+    send(message, recipient) {
+        console.log(`Sending push notification to ${recipient}: ${message}`);
+        // Push notification logic
+    }
+}
+
+class NotificationService {
+    constructor() {
+        this.channels = [];
+    }
+    
+    addChannel(channel) {
+        this.channels.push(channel);
+    }
+    
+    sendNotification(message, recipient) {
+        this.channels.forEach(channel => {
+            channel.send(message, recipient);
+        });
+    }
+}
+  </code></pre>
+
+  <h3>Java Example: Report Generation</h3>
+  <pre><code class="language-java">// ❌ Violates OCP
+public class ReportGenerator {
+    public void generateReport(String type, Data data) {
+        if (type.equals("PDF")) {
+            generatePDFReport(data);
+        } else if (type.equals("Excel")) {
+            generateExcelReport(data);
+        } else if (type.equals("CSV")) {
+            generateCSVReport(data);
+        } else {
+            throw new IllegalArgumentException("Unsupported report type");
+        }
+    }
+    
+    private void generatePDFReport(Data data) {
+        // PDF generation logic
+    }
+    
+    private void generateExcelReport(Data data) {
+        // Excel generation logic
+    }
+    
+    private void generateCSVReport(Data data) {
+        // CSV generation logic
+    }
+}
+
+// ✅ Follows OCP
+public interface ReportFormatter {
+    void generateReport(Data data);
+}
+
+public class PDFReportFormatter implements ReportFormatter {
+    public void generateReport(Data data) {
+        // PDF generation logic
+        System.out.println("Generating PDF report");
+    }
+}
+
+public class ExcelReportFormatter implements ReportFormatter {
+    public void generateReport(Data data) {
+        // Excel generation logic
+        System.out.println("Generating Excel report");
+    }
+}
+
+public class CSVReportFormatter implements ReportFormatter {
+    public void generateReport(Data data) {
+        // CSV generation logic
+        System.out.println("Generating CSV report");
+    }
+}
+
+public class ReportGenerator {
+    private ReportFormatter formatter;
+    
+    public ReportGenerator(ReportFormatter formatter) {
+        this.formatter = formatter;
+    }
+    
+    public void generateReport(Data data) {
+        formatter.generateReport(data);
+    }
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🌍 Real-World OCP Examples</h2>
+  <p>
+    Let's examine complex, real-world scenarios where OCP can significantly improve code maintainability and extensibility.
+  </p>
+  
+  <h3>Example 1: E-commerce Discount System</h3>
+  <pre><code class="language-csharp">// ❌ Violates OCP - Adding new discount types requires modifying existing code
+public class DiscountService {
+    public decimal CalculateDiscount(Order order, string discountType) {
+        switch (discountType) {
+            case "PERCENTAGE":
+                return order.TotalAmount * 0.1m; // 10% discount
+            case "FIXED_AMOUNT":
+                return Math.Min(order.TotalAmount, 50m); // $50 max discount
+            case "BULK_ORDER":
+                return order.Items.Count > 10 ? order.TotalAmount * 0.15m : 0;
+            case "SEASONAL":
+                return DateTime.Now.Month == 12 ? order.TotalAmount * 0.2m : 0;
+            case "LOYALTY":
+                return order.Customer.IsLoyaltyMember ? order.TotalAmount * 0.05m : 0;
+            default:
+                return 0;
+        }
+    }
+}
+
+// ✅ Follows OCP - Easy to add new discount types without modifying existing code
+public interface IDiscountStrategy {
+    decimal CalculateDiscount(Order order);
+    bool IsApplicable(Order order);
+}
+
+public class PercentageDiscountStrategy : IDiscountStrategy {
+    private readonly decimal _percentage;
+    
+    public PercentageDiscountStrategy(decimal percentage) {
+        _percentage = percentage;
+    }
+    
+    public decimal CalculateDiscount(Order order) {
+        return order.TotalAmount * _percentage;
+    }
+    
+    public bool IsApplicable(Order order) {
+        return true; // Always applicable
+    }
+}
+
+public class FixedAmountDiscountStrategy : IDiscountStrategy {
+    private readonly decimal _amount;
+    
+    public FixedAmountDiscountStrategy(decimal amount) {
+        _amount = amount;
+    }
+    
+    public decimal CalculateDiscount(Order order) {
+        return Math.Min(order.TotalAmount, _amount);
+    }
+    
+    public bool IsApplicable(Order order) {
+        return order.TotalAmount >= _amount;
+    }
+}
+
+public class BulkOrderDiscountStrategy : IDiscountStrategy {
+    private readonly int _minimumItems;
+    private readonly decimal _discountPercentage;
+    
+    public BulkOrderDiscountStrategy(int minimumItems, decimal discountPercentage) {
+        _minimumItems = minimumItems;
+        _discountPercentage = discountPercentage;
+    }
+    
+    public decimal CalculateDiscount(Order order) {
+        return IsApplicable(order) ? order.TotalAmount * _discountPercentage : 0;
+    }
+    
+    public bool IsApplicable(Order order) {
+        return order.Items.Count >= _minimumItems;
+    }
+}
+
+public class SeasonalDiscountStrategy : IDiscountStrategy {
+    private readonly int _seasonMonth;
+    private readonly decimal _discountPercentage;
+    
+    public SeasonalDiscountStrategy(int seasonMonth, decimal discountPercentage) {
+        _seasonMonth = seasonMonth;
+        _discountPercentage = discountPercentage;
+    }
+    
+    public decimal CalculateDiscount(Order order) {
+        return IsApplicable(order) ? order.TotalAmount * _discountPercentage : 0;
+    }
+    
+    public bool IsApplicable(Order order) {
+        return DateTime.Now.Month == _seasonMonth;
+    }
+}
+
+public class LoyaltyDiscountStrategy : IDiscountStrategy {
+    private readonly decimal _discountPercentage;
+    
+    public LoyaltyDiscountStrategy(decimal discountPercentage) {
+        _discountPercentage = discountPercentage;
+    }
+    
+    public decimal CalculateDiscount(Order order) {
+        return IsApplicable(order) ? order.TotalAmount * _discountPercentage : 0;
+    }
+    
+    public bool IsApplicable(Order order) {
+        return order.Customer.IsLoyaltyMember;
+    }
+}
+
+public class DiscountService {
+    private readonly List<IDiscountStrategy> _strategies;
+    
+    public DiscountService(List<IDiscountStrategy> strategies) {
+        _strategies = strategies;
+    }
+    
+    public decimal CalculateTotalDiscount(Order order) {
+        return _strategies
+            .Where(strategy => strategy.IsApplicable(order))
+            .Sum(strategy => strategy.CalculateDiscount(order));
+    }
+    
+    public void AddDiscountStrategy(IDiscountStrategy strategy) {
+        _strategies.Add(strategy);
+    }
+}
+  </code></pre>
+
+  <h3>Example 2: Data Validation System</h3>
+  <pre><code class="language-python"># ❌ Violates OCP
+class UserValidator:
+    def validate_user(self, user_data, validation_type):
+        errors = []
+        
+        if validation_type == "registration":
+            if not user_data.get("email"):
+                errors.append("Email is required")
+            if not user_data.get("password"):
+                errors.append("Password is required")
+            if len(user_data.get("password", "")) < 8:
+                errors.append("Password must be at least 8 characters")
+                
+        elif validation_type == "profile_update":
+            if user_data.get("email") and "@" not in user_data["email"]:
+                errors.append("Invalid email format")
+            if user_data.get("age") and user_data["age"] < 13:
+                errors.append("User must be at least 13 years old")
+                
+        elif validation_type == "password_change":
+            if not user_data.get("current_password"):
+                errors.append("Current password is required")
+            if not user_data.get("new_password"):
+                errors.append("New password is required")
+            if user_data.get("new_password") == user_data.get("current_password"):
+                errors.append("New password must be different from current password")
+                
+        return errors
+
+# ✅ Follows OCP
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
+
+class ValidationRule(ABC):
+    @abstractmethod
+    def validate(self, data: Dict[str, Any]) -> List[str]:
+        """Validate data and return list of error messages"""
+        pass
+
+class RequiredFieldRule(ValidationRule):
+    def __init__(self, field_name: str, message: str = None):
+        self.field_name = field_name
+        self.message = message or f"{field_name} is required"
+    
+    def validate(self, data: Dict[str, Any]) -> List[str]:
+        if not data.get(self.field_name):
+            return [self.message]
+        return []
+
+class MinimumLengthRule(ValidationRule):
+    def __init__(self, field_name: str, min_length: int):
+        self.field_name = field_name
+        self.min_length = min_length
+    
+    def validate(self, data: Dict[str, Any]) -> List[str]:
+        value = data.get(self.field_name, "")
+        if len(value) < self.min_length:
+            return [f"{self.field_name} must be at least {self.min_length} characters"]
+        return []
+
+class EmailFormatRule(ValidationRule):
+    def __init__(self, field_name: str = "email"):
+        self.field_name = field_name
+    
+    def validate(self, data: Dict[str, Any]) -> List[str]:
+        email = data.get(self.field_name)
+        if email and "@" not in email:
+            return ["Invalid email format"]
+        return []
+
+class MinimumAgeRule(ValidationRule):
+    def __init__(self, field_name: str, min_age: int):
+        self.field_name = field_name
+        self.min_age = min_age
+    
+    def validate(self, data: Dict[str, Any]) -> List[str]:
+        age = data.get(self.field_name)
+        if age is not None and age < self.min_age:
+            return [f"User must be at least {self.min_age} years old"]
+        return []
+
+class PasswordDifferenceRule(ValidationRule):
+    def __init__(self, current_field: str, new_field: str):
+        self.current_field = current_field
+        self.new_field = new_field
+    
+    def validate(self, data: Dict[str, Any]) -> List[str]:
+        current = data.get(self.current_field)
+        new = data.get(self.new_field)
+        if current and new and current == new:
+            return ["New password must be different from current password"]
+        return []
+
+class ValidationRuleSet:
+    def __init__(self, name: str):
+        self.name = name
+        self.rules: List[ValidationRule] = []
+    
+    def add_rule(self, rule: ValidationRule):
+        self.rules.append(rule)
+        return self  # For method chaining
+    
+    def validate(self, data: Dict[str, Any]) -> List[str]:
+        errors = []
+        for rule in self.rules:
+            errors.extend(rule.validate(data))
+        return errors
+
+class UserValidator:
+    def __init__(self):
+        self.rule_sets = {}
+        self._setup_default_rule_sets()
+    
+    def _setup_default_rule_sets(self):
+        # Registration validation
+        registration_rules = ValidationRuleSet("registration")
+        registration_rules.add_rule(RequiredFieldRule("email"))
+        registration_rules.add_rule(RequiredFieldRule("password"))
+        registration_rules.add_rule(MinimumLengthRule("password", 8))
+        registration_rules.add_rule(EmailFormatRule())
+        
+        # Profile update validation
+        profile_rules = ValidationRuleSet("profile_update")
+        profile_rules.add_rule(EmailFormatRule())
+        profile_rules.add_rule(MinimumAgeRule("age", 13))
+        
+        # Password change validation
+        password_rules = ValidationRuleSet("password_change")
+        password_rules.add_rule(RequiredFieldRule("current_password"))
+        password_rules.add_rule(RequiredFieldRule("new_password"))
+        password_rules.add_rule(PasswordDifferenceRule("current_password", "new_password"))
+        
+        self.rule_sets["registration"] = registration_rules
+        self.rule_sets["profile_update"] = profile_rules
+        self.rule_sets["password_change"] = password_rules
+    
+    def validate_user(self, user_data: Dict[str, Any], validation_type: str) -> List[str]:
+        rule_set = self.rule_sets.get(validation_type)
+        if not rule_set:
+            raise ValueError(f"Unknown validation type: {validation_type}")
+        
+        return rule_set.validate(user_data)
+    
+    def add_custom_rule_set(self, validation_type: str, rule_set: ValidationRuleSet):
+        self.rule_sets[validation_type] = rule_set
+  </code></pre>
+
+  <h3>Benefits of the Refactored Approach</h3>
+  <ul>
+    <li><strong>Extensibility:</strong> New discount strategies or validation rules can be added without modifying existing code.</li>
+    <li><strong>Testability:</strong> Each strategy or rule can be unit tested independently.</li>
+    <li><strong>Maintainability:</strong> Changes to one strategy don't affect others, reducing the risk of regression bugs.</li>
+    <li><strong>Flexibility:</strong> Rules and strategies can be combined dynamically at runtime.</li>
+    <li><strong>Reusability:</strong> Individual strategies can be reused across different contexts.</li>
+    <li><strong>Single Responsibility:</strong> Each class has a single, well-defined purpose.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="toc-title">🎯 OCP Implementation Patterns</h2>
+  <p>
+    There are several common patterns and techniques for implementing the Open-Closed Principle effectively.
+  </p>
+  
+  <h3>1. Strategy Pattern</h3>
+  <p>
+    The Strategy pattern is one of the most effective ways to implement OCP. It allows you to define a family of algorithms and make them interchangeable.
+  </p>
+  <pre><code class="language-csharp">// Strategy for different pricing models
+public interface IPricingStrategy {
+    decimal CalculatePrice(Product product, Customer customer);
+}
+
+public class StandardPricingStrategy : IPricingStrategy {
+    public decimal CalculatePrice(Product product, Customer customer) {
+        return product.BasePrice;
+    }
+}
+
+public class VIPPricingStrategy : IPricingStrategy {
+    public decimal CalculatePrice(Product product, Customer customer) {
+        return product.BasePrice * 0.9m; // 10% discount for VIP
+    }
+}
+
+public class BulkPricingStrategy : IPricingStrategy {
+    public decimal CalculatePrice(Product product, Customer customer) {
+        return customer.OrderQuantity > 100 ? product.BasePrice * 0.85m : product.BasePrice;
+    }
+}
+
+public class PricingEngine {
+    private readonly IPricingStrategy _strategy;
+    
+    public PricingEngine(IPricingStrategy strategy) {
+        _strategy = strategy;
+    }
+    
+    public decimal GetPrice(Product product, Customer customer) {
+        return _strategy.CalculatePrice(product, customer);
+    }
+}
+  </code></pre>
+
+  <h3>2. Factory Pattern</h3>
+  <p>
+    The Factory pattern helps create objects without specifying their exact classes, supporting OCP by allowing new types to be added without modifying existing factory code.
+  </p>
+  <pre><code class="language-javascript">// Factory pattern for creating different types of loggers
+class Logger {
+    log(message) {
+        throw new Error('log method must be implemented');
+    }
+}
+
+class FileLogger extends Logger {
+    constructor(filePath) {
+        super();
+        this.filePath = filePath;
+    }
+    
+    log(message) {
+        console.log(`Writing to file ${this.filePath}: ${message}`);
+        // File writing logic
+    }
+}
+
+class DatabaseLogger extends Logger {
+    constructor(connectionString) {
+        super();
+        this.connectionString = connectionString;
+    }
+    
+    log(message) {
+        console.log(`Writing to database: ${message}`);
+        // Database writing logic
+    }
+}
+
+class CloudLogger extends Logger {
+    constructor(apiKey) {
+        super();
+        this.apiKey = apiKey;
+    }
+    
+    log(message) {
+        console.log(`Writing to cloud service: ${message}`);
+        // Cloud service API call
+    }
+}
+
+// Factory that can be extended without modification
+class LoggerFactory {
+    static creators = new Map();
+    
+    static register(type, creator) {
+        LoggerFactory.creators.set(type, creator);
+    }
+    
+    static create(type, config) {
+        const creator = LoggerFactory.creators.get(type);
+        if (!creator) {
+            throw new Error(`Unknown logger type: ${type}`);
+        }
+        return creator(config);
+    }
+}
+
+// Register logger types
+LoggerFactory.register('file', (config) => new FileLogger(config.filePath));
+LoggerFactory.register('database', (config) => new DatabaseLogger(config.connectionString));
+LoggerFactory.register('cloud', (config) => new CloudLogger(config.apiKey));
+
+// Usage
+const fileLogger = LoggerFactory.create('file', { filePath: '/var/log/app.log' });
+const dbLogger = LoggerFactory.create('database', { connectionString: 'server=localhost' });
+  </code></pre>
+
+  <h3>3. Plugin Architecture</h3>
+  <p>
+    Plugin architecture allows extending functionality through external modules without modifying the core system.
+  </p>
+  <pre><code class="language-python"># Plugin architecture for extensible processing pipeline
+from abc import ABC, abstractmethod
+from typing import Any, List
+import importlib
+import os
+
+class ProcessorPlugin(ABC):
+    @abstractmethod
+    def process(self, data: Any) -> Any:
+        """Process the input data and return the result"""
+        pass
+    
+    @abstractmethod
+    def can_handle(self, data_type: str) -> bool:
+        """Check if this plugin can handle the given data type"""
+        pass
+
+class ImageProcessorPlugin(ProcessorPlugin):
+    def process(self, data: Any) -> Any:
+        print(f"Processing image data: {data}")
+        # Image processing logic
+        return f"processed_image_{data}"
+    
+    def can_handle(self, data_type: str) -> bool:
+        return data_type in ['jpg', 'png', 'gif']
+
+class VideoProcessorPlugin(ProcessorPlugin):
+    def process(self, data: Any) -> Any:
+        print(f"Processing video data: {data}")
+        # Video processing logic
+        return f"processed_video_{data}"
+    
+    def can_handle(self, data_type: str) -> bool:
+        return data_type in ['mp4', 'avi', 'mov']
+
+class DocumentProcessorPlugin(ProcessorPlugin):
+    def process(self, data: Any) -> Any:
+        print(f"Processing document data: {data}")
+        # Document processing logic
+        return f"processed_document_{data}"
+    
+    def can_handle(self, data_type: str) -> bool:
+        return data_type in ['pdf', 'doc', 'txt']
+
+class ProcessingEngine:
+    def __init__(self):
+        self.plugins: List[ProcessorPlugin] = []
+        self._load_default_plugins()
+    
+    def _load_default_plugins(self):
+        self.plugins.extend([
+            ImageProcessorPlugin(),
+            VideoProcessorPlugin(),
+            DocumentProcessorPlugin()
+        ])
+    
+    def register_plugin(self, plugin: ProcessorPlugin):
+        """Register a new plugin - extends functionality without modifying existing code"""
+        self.plugins.append(plugin)
+    
+    def process_data(self, data: Any, data_type: str) -> Any:
+        for plugin in self.plugins:
+            if plugin.can_handle(data_type):
+                return plugin.process(data)
+        
+        raise ValueError(f"No plugin found to handle data type: {data_type}")
+    
+    def load_plugins_from_directory(self, plugin_dir: str):
+        """Dynamically load plugins from a directory"""
+        for filename in os.listdir(plugin_dir):
+            if filename.endswith('.py') and not filename.startswith('__'):
+                module_name = filename[:-3]
+                try:
+                    module = importlib.import_module(f"{plugin_dir}.{module_name}")
+                    # Look for classes that inherit from ProcessorPlugin
+                    for attr_name in dir(module):
+                        attr = getattr(module, attr_name)
+                        if (isinstance(attr, type) and 
+                            issubclass(attr, ProcessorPlugin) and 
+                            attr != ProcessorPlugin):
+                            self.register_plugin(attr())
+                except ImportError as e:
+                    print(f"Failed to load plugin {module_name}: {e}")
+
+# Usage example
+engine = ProcessingEngine()
+
+# Process different types of data
+result1 = engine.process_data("photo.jpg", "jpg")
+result2 = engine.process_data("video.mp4", "mp4")
+result3 = engine.process_data("document.pdf", "pdf")
+
+# Add a new plugin at runtime
+class AudioProcessorPlugin(ProcessorPlugin):
+    def process(self, data: Any) -> Any:
+        print(f"Processing audio data: {data}")
+        return f"processed_audio_{data}"
+    
+    def can_handle(self, data_type: str) -> bool:
+        return data_type in ['mp3', 'wav', 'flac']
+
+engine.register_plugin(AudioProcessorPlugin())
+result4 = engine.process_data("song.mp3", "mp3")
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🛠️ Practical Tips for Implementing OCP</h2>
+  <p>
+    Successfully implementing the Open-Closed Principle requires careful design and planning. Here are practical guidelines to help you apply OCP effectively.
+  </p>
+  
+  <h3>1. Identify Variation Points</h3>
+  <p>
+    Look for areas in your code where requirements are likely to change or where new functionality might be added.
+  </p>
+  <pre><code class="language-csharp">// Identify areas where business rules change frequently
+public class OrderProcessor {
+    // Variation point: Different validation rules for different regions
+    public bool ValidateOrder(Order order, string region) {
+        // This will likely change as new regions are added
+    }
+    
+    // Variation point: Different shipping calculations
+    public decimal CalculateShipping(Order order, string shippingMethod) {
+        // New shipping methods will be added over time
+    }
+    
+    // Variation point: Different tax calculations
+    public decimal CalculateTax(Order order, string location) {
+        // Tax rules change frequently based on location
+    }
+}
+
+// Apply OCP to these variation points
+public interface IOrderValidator {
+    bool ValidateOrder(Order order);
+}
+
+public interface IShippingCalculator {
+    decimal CalculateShipping(Order order);
+}
+
+public interface ITaxCalculator {
+    decimal CalculateTax(Order order);
+}
+  </code></pre>
+
+  <h3>2. Use Composition Over Inheritance</h3>
+  <p>
+    Favor composition and dependency injection over inheritance for better flexibility and testability.
+  </p>
+  <pre><code class="language-python"># Using composition for better OCP compliance
+class EmailService:
+    def __init__(self, formatter, sender, validator):
+        self.formatter = formatter  # Composition
+        self.sender = sender        # Composition
+        self.validator = validator  # Composition
+    
+    def send_email(self, recipient, subject, content):
+        if not self.validator.is_valid_email(recipient):
+            raise ValueError("Invalid email address")
+        
+        formatted_content = self.formatter.format(content)
+        self.sender.send(recipient, subject, formatted_content)
+
+# Different implementations can be swapped without changing EmailService
+class HTMLFormatter:
+    def format(self, content):
+        return f"<html><body>{content}</body></html>"
+
+class PlainTextFormatter:
+    def format(self, content):
+        return content
+
+class SMTPSender:
+    def send(self, recipient, subject, content):
+        print(f"Sending via SMTP to {recipient}")
+
+class APISender:
+    def send(self, recipient, subject, content):
+        print(f"Sending via API to {recipient}")
+  </code></pre>
+
+  <h3>3. Design for Testability</h3>
+  <p>
+    OCP-compliant code is typically more testable because dependencies can be easily mocked or substituted.
+  </p>
+  <pre><code class="language-javascript">// Testable design with OCP
+class UserService {
+    constructor(userRepository, emailService, logger) {
+        this.userRepository = userRepository;
+        this.emailService = emailService;
+        this.logger = logger;
+    }
+    
+    async createUser(userData) {
+        try {
+            const user = await this.userRepository.save(userData);
+            await this.emailService.sendWelcomeEmail(user.email);
+            this.logger.info(`User created: ${user.id}`);
+            return user;
+        } catch (error) {
+            this.logger.error(`User creation failed: ${error.message}`);
+            throw error;
+        }
+    }
+}
+
+// Easy to test with mocks
+class MockUserRepository {
+    async save(userData) {
+        return { id: 1, ...userData };
+    }
+}
+
+class MockEmailService {
+    async sendWelcomeEmail(email) {
+        console.log(`Mock email sent to ${email}`);
+    }
+}
+
+class MockLogger {
+    info(message) { console.log(`INFO: ${message}`); }
+    error(message) { console.log(`ERROR: ${message}`); }
+}
+
+// Test setup
+const userService = new UserService(
+    new MockUserRepository(),
+    new MockEmailService(),
+    new MockLogger()
+);
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">⚠️ Common OCP Mistakes and How to Avoid Them</h2>
+  <p>
+    Even experienced developers can make mistakes when applying OCP. Here are common pitfalls and how to avoid them.
+  </p>
+  
+  <h3>Mistake 1: Over-Engineering</h3>
+  <p>
+    Creating abstractions for every possible future change, leading to unnecessary complexity.
+  </p>
+  <pre><code class="language-csharp">// ❌ Over-engineered - Too many abstractions for simple functionality
+public interface IStringProcessor {
+    string Process(string input);
+}
+
+public interface IStringValidator {
+    bool Validate(string input);
+}
+
+public interface IStringFormatter {
+    string Format(string input);
+}
+
+public interface IStringLogger {
+    void Log(string message);
+}
+
+public class SimpleStringService {
+    private readonly IStringProcessor _processor;
+    private readonly IStringValidator _validator;
+    private readonly IStringFormatter _formatter;
+    private readonly IStringLogger _logger;
+    
+    // Too many dependencies for simple string operations
+    public SimpleStringService(
+        IStringProcessor processor,
+        IStringValidator validator,
+        IStringFormatter formatter,
+        IStringLogger logger) {
+        _processor = processor;
+        _validator = validator;
+        _formatter = formatter;
+        _logger = logger;
+    }
+    
+    public string ProcessString(string input) {
+        if (!_validator.Validate(input)) {
+            throw new ArgumentException("Invalid input");
+        }
+        
+        var processed = _processor.Process(input);
+        var formatted = _formatter.Format(processed);
+        _logger.Log($"Processed: {formatted}");
+        
+        return formatted;
+    }
+}
+
+// ✅ Better approach - Abstractions where they add value
+public class StringService {
+    private readonly ILogger _logger;
+    
+    public StringService(ILogger logger) {
+        _logger = logger; // Only abstract what's likely to change
+    }
+    
+    public string ProcessString(string input) {
+        // Simple validation doesn't need abstraction
+        if (string.IsNullOrWhiteSpace(input)) {
+            throw new ArgumentException("Input cannot be null or empty");
+        }
+        
+        // Simple processing doesn't need abstraction
+        var processed = input.Trim().ToLowerInvariant();
+        var formatted = $"Processed: {processed}";
+        
+        _logger.LogInformation(formatted);
+        return formatted;
+    }
+}
+  </code></pre>
+
+  <h3>Mistake 2: Premature Abstraction</h3>
+  <p>
+    Creating abstractions before understanding the actual variation points in the system.
+  </p>
+  <pre><code class="language-python"># ❌ Premature abstraction
+class DataProcessor:
+    def __init__(self, strategy):
+        self.strategy = strategy  # Abstract too early
+    
+    def process_data(self, data):
+        return self.strategy.process(data)
+
+# ✅ Better approach - Wait for patterns to emerge
+class DataProcessor:
+    def process_user_data(self, user_data):
+        # Start with concrete implementation
+        validated_data = self._validate_user_data(user_data)
+        processed_data = self._transform_user_data(validated_data)
+        return self._save_user_data(processed_data)
+    
+    def _validate_user_data(self, data):
+        # Implement validation logic
+        return data
+    
+    def _transform_user_data(self, data):
+        # Implement transformation logic
+        return data
+    
+    def _save_user_data(self, data):
+        # Implement saving logic
+        return data
+
+# When a second type of data processing is needed,
+# THEN consider abstracting the common patterns
+  </code></pre>
+
+  <h3>Mistake 3: Not Following Interface Segregation</h3>
+  <p>
+    Creating large interfaces that force implementers to implement methods they don't need.
+  </p>
+  <pre><code class="language-java">// ❌ Violates Interface Segregation Principle
+public interface MediaProcessor {
+    void processImage(ImageData image);
+    void processVideo(VideoData video);
+    void processAudio(AudioData audio);
+    void processDocument(DocumentData document);
+}
+
+// Forces all implementations to implement all methods
+public class ImageOnlyProcessor implements MediaProcessor {
+    public void processImage(ImageData image) {
+        // Actual implementation
+    }
+    
+    public void processVideo(VideoData video) {
+        throw new UnsupportedOperationException("Video processing not supported");
+    }
+    
+    public void processAudio(AudioData audio) {
+        throw new UnsupportedOperationException("Audio processing not supported");
+    }
+    
+    public void processDocument(DocumentData document) {
+        throw new UnsupportedOperationException("Document processing not supported");
+    }
+}
+
+// ✅ Better approach - Smaller, focused interfaces
+public interface ImageProcessor {
+    void processImage(ImageData image);
+}
+
+public interface VideoProcessor {
+    void processVideo(VideoData video);
+}
+
+public interface AudioProcessor {
+    void processAudio(AudioData audio);
+}
+
+public interface DocumentProcessor {
+    void processDocument(DocumentData document);
+}
+
+// Implementations only need to implement relevant interfaces
+public class ImageOnlyProcessor implements ImageProcessor {
+    public void processImage(ImageData image) {
+        // Actual implementation
+    }
+}
+
+public class MultimediaProcessor implements ImageProcessor, VideoProcessor, AudioProcessor {
+    public void processImage(ImageData image) {
+        // Image processing implementation
+    }
+    
+    public void processVideo(VideoData video) {
+        // Video processing implementation
+    }
+    
+    public void processAudio(AudioData audio) {
+        // Audio processing implementation
+    }
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🏗️ OCP in Different Architectural Patterns</h2>
+  <p>
+    The Open-Closed Principle applies differently across various architectural patterns. Let's explore how it works in common scenarios.
+  </p>
+  
+  <h3>Event-Driven Architecture</h3>
+  <pre><code class="language-csharp">// OCP in event-driven systems
+public interface IDomainEvent {
+    DateTime OccurredOn { get; }
+    string EventType { get; }
+}
+
+public interface IEventHandler<in T> where T : IDomainEvent {
+    Task HandleAsync(T domainEvent);
+}
+
+// Events are open for extension
+public class OrderCreatedEvent : IDomainEvent {
+    public DateTime OccurredOn { get; set; }
+    public string EventType => "OrderCreated";
+    public int OrderId { get; set; }
+    public decimal Amount { get; set; }
+    public string CustomerId { get; set; }
+}
+
+public class UserRegisteredEvent : IDomainEvent {
+    public DateTime OccurredOn { get; set; }
+    public string EventType => "UserRegistered";
+    public string UserId { get; set; }
+    public string Email { get; set; }
+}
+
+// Handlers can be added without modifying existing code
+public class OrderCreatedEmailHandler : IEventHandler<OrderCreatedEvent> {
+    private readonly IEmailService _emailService;
+    
+    public OrderCreatedEmailHandler(IEmailService emailService) {
+        _emailService = emailService;
+    }
+    
+    public async Task HandleAsync(OrderCreatedEvent domainEvent) {
+        await _emailService.SendOrderConfirmationAsync(domainEvent.OrderId);
+    }
+}
+
+public class OrderCreatedInventoryHandler : IEventHandler<OrderCreatedEvent> {
+    private readonly IInventoryService _inventoryService;
+    
+    public OrderCreatedInventoryHandler(IInventoryService inventoryService) {
+        _inventoryService = inventoryService;
+    }
+    
+    public async Task HandleAsync(OrderCreatedEvent domainEvent) {
+        await _inventoryService.ReserveItemsAsync(domainEvent.OrderId);
+    }
+}
+
+// Event dispatcher that's closed for modification
+public class EventDispatcher {
+    private readonly IServiceProvider _serviceProvider;
+    
+    public EventDispatcher(IServiceProvider serviceProvider) {
+        _serviceProvider = serviceProvider;
+    }
+    
+    public async Task DispatchAsync<T>(T domainEvent) where T : IDomainEvent {
+        var handlers = _serviceProvider.GetServices<IEventHandler<T>>();
+        
+        var tasks = handlers.Select(handler => handler.HandleAsync(domainEvent));
+        await Task.WhenAll(tasks);
+    }
+}
+  </code></pre>
+
+  <h3>Middleware Pipeline</h3>
+  <pre><code class="language-javascript">// OCP in middleware architectures
+class MiddlewarePipeline {
+    constructor() {
+        this.middlewares = [];
+    }
+    
+    use(middleware) {
+        this.middlewares.push(middleware);
+        return this; // For chaining
+    }
+    
+    async execute(context) {
+        let index = 0;
+        
+        const next = async () => {
+            if (index < this.middlewares.length) {
+                const middleware = this.middlewares[index++];
+                await middleware(context, next);
+            }
+        };
+        
+        await next();
+    }
+}
+
+// Middleware functions can be added without modifying the pipeline
+const authenticationMiddleware = async (context, next) => {
+    console.log('Authentication middleware');
+    if (!context.user) {
+        throw new Error('Unauthorized');
+    }
+    await next();
+};
+
+const loggingMiddleware = async (context, next) => {
+    console.log(`Request: ${context.method} ${context.path}`);
+    const start = Date.now();
+    await next();
+    const duration = Date.now() - start;
+    console.log(`Response time: ${duration}ms`);
+};
+
+const validationMiddleware = async (context, next) => {
+    console.log('Validation middleware');
+    if (!context.data || !context.data.isValid) {
+        throw new Error('Invalid data');
+    }
+    await next();
+};
+
+const cachingMiddleware = async (context, next) => {
+    console.log('Caching middleware');
+    // Check cache first
+    if (context.cached) {
+        context.result = context.cached;
+        return;
+    }
+    await next();
+    // Cache the result
+};
+
+// Usage - pipeline is open for extension
+const pipeline = new MiddlewarePipeline()
+    .use(loggingMiddleware)
+    .use(authenticationMiddleware)
+    .use(validationMiddleware)
+    .use(cachingMiddleware);
+
+// Execute pipeline
+const context = {
+    method: 'GET',
+    path: '/api/users',
+    user: { id: 1, name: 'John' },
+    data: { isValid: true }
+};
+
+pipeline.execute(context);
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🧪 Testing OCP-Compliant Code</h2>
+  <p>
+    Code that follows the Open-Closed Principle is typically easier to test because of its modular design and dependency injection patterns.
+  </p>
+  
+  <pre><code class="language-python"># Example of testing OCP-compliant code
+import unittest
+from unittest.mock import Mock, patch
+from typing import List
+
+# OCP-compliant discount system (from earlier example)
+class DiscountStrategy:
+    def calculate_discount(self, order):
+        raise NotImplementedError
+    
+    def is_applicable(self, order):
+        raise NotImplementedError
+
+class PercentageDiscountStrategy(DiscountStrategy):
+    def __init__(self, percentage):
+        self.percentage = percentage
+    
+    def calculate_discount(self, order):
+        return order.total_amount * self.percentage
+    
+    def is_applicable(self, order):
+        return True
+
+class LoyaltyDiscountStrategy(DiscountStrategy):
+    def __init__(self, percentage):
+        self.percentage = percentage
+    
+    def calculate_discount(self, order):
+        return order.total_amount * self.percentage if self.is_applicable(order) else 0
+    
+    def is_applicable(self, order):
+        return order.customer.is_loyalty_member
+
+class DiscountService:
+    def __init__(self, strategies: List[DiscountStrategy]):
+        self.strategies = strategies
+    
+    def calculate_total_discount(self, order):
+        return sum(
+            strategy.calculate_discount(order)
+            for strategy in self.strategies
+            if strategy.is_applicable(order)
+        )
+
+# Test cases
+class TestDiscountSystem(unittest.TestCase):
+    def setUp(self):
+        # Mock objects
+        self.mock_customer = Mock()
+        self.mock_order = Mock()
+        self.mock_order.total_amount = 100.0
+        self.mock_order.customer = self.mock_customer
+    
+    def test_percentage_discount_always_applicable(self):
+        # Test individual strategy
+        strategy = PercentageDiscountStrategy(0.1)  # 10%
+        
+        discount = strategy.calculate_discount(self.mock_order)
+        
+        self.assertEqual(discount, 10.0)
+        self.assertTrue(strategy.is_applicable(self.mock_order))
+    
+    def test_loyalty_discount_for_loyalty_member(self):
+        # Test loyalty strategy with loyalty member
+        self.mock_customer.is_loyalty_member = True
+        strategy = LoyaltyDiscountStrategy(0.05)  # 5%
+        
+        discount = strategy.calculate_discount(self.mock_order)
+        
+        self.assertEqual(discount, 5.0)
+        self.assertTrue(strategy.is_applicable(self.mock_order))
+    
+    def test_loyalty_discount_for_non_loyalty_member(self):
+        # Test loyalty strategy with non-loyalty member
+        self.mock_customer.is_loyalty_member = False
+        strategy = LoyaltyDiscountStrategy(0.05)
+        
+        discount = strategy.calculate_discount(self.mock_order)
+        
+        self.assertEqual(discount, 0.0)
+        self.assertFalse(strategy.is_applicable(self.mock_order))
+    
+    def test_discount_service_with_multiple_strategies(self):
+        # Test service with multiple strategies
+        self.mock_customer.is_loyalty_member = True
+        
+        strategies = [
+            PercentageDiscountStrategy(0.1),    # 10%
+            LoyaltyDiscountStrategy(0.05)       # 5%
+        ]
+        service = DiscountService(strategies)
+        
+        total_discount = service.calculate_total_discount(self.mock_order)
+        
+        self.assertEqual(total_discount, 15.0)  # 10 + 5
+    
+    def test_adding_new_strategy_doesnt_break_existing_functionality(self):
+        # Test that adding new strategies doesn't affect existing ones
+        self.mock_customer.is_loyalty_member = True
+        
+        # New strategy for testing
+        class TestDiscountStrategy(DiscountStrategy):
+            def calculate_discount(self, order):
+                return 2.0
+            
+            def is_applicable(self, order):
+                return True
+        
+        strategies = [
+            PercentageDiscountStrategy(0.1),
+            LoyaltyDiscountStrategy(0.05),
+            TestDiscountStrategy()  # New strategy added
+        ]
+        service = DiscountService(strategies)
+        
+        total_discount = service.calculate_total_discount(self.mock_order)
+        
+        self.assertEqual(total_discount, 17.0)  # 10 + 5 + 2
+
+if __name__ == '__main__':
+    unittest.main()
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🚫 When Not to Use OCP</h2>
+  <p>
+    While the Open-Closed Principle is generally beneficial, there are scenarios where strict adherence may not be practical or necessary:
+  </p>
+  <ul>
+    <li><strong>Simple, Stable Code:</strong> For simple functions or classes that are unlikely to change, adding abstractions may introduce unnecessary complexity.</li>
+    <li><strong>Performance-Critical Code:</strong> In performance-critical applications, the additional layers of abstraction required by OCP might impact performance.</li>
+    <li><strong>Rapid Prototyping:</strong> During early development phases, it's often better to iterate quickly and refactor for OCP later when requirements stabilize.</li>
+    <li><strong>Well-Defined, Closed Domains:</strong> Some domains have well-defined, stable requirements that are unlikely to change (e.g., mathematical calculations).</li>
+    <li><strong>Cost vs. Benefit:</strong> When the cost of implementing OCP exceeds the potential benefits, especially for code that's unlikely to be extended.</li>
+  </ul>
+  
+  <pre><code class="language-csharp">// Example where OCP might not be necessary
+public class MathUtilities {
+    // Basic mathematical operations are unlikely to change
+    public static double Add(double a, double b) {
+        return a + b;
+    }
+    
+    public static double Multiply(double a, double b) {
+        return a * b;
+    }
+    
+    public static double CalculateCircleArea(double radius) {
+        return Math.PI * radius * radius; // Formula is mathematically defined
+    }
+}
+  </code></pre>
+  
+  <p>
+    The key is to identify areas where change is likely and apply OCP strategically, rather than everywhere.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">🎯 Conclusion</h2>
+  <p>
+    The Open-Closed Principle is a fundamental concept for building maintainable, extensible software systems. By designing code that is open for extension but closed for modification, you can add new functionality without risking existing, tested code.
+  </p>
+  <p>
+    Remember these key takeaways:
+  </p>
+  <ul>
+    <li><strong>Identify variation points:</strong> Look for areas where requirements are likely to change and apply OCP there.</li>
+    <li><strong>Use appropriate patterns:</strong> Strategy, Factory, and Plugin patterns are effective ways to implement OCP.</li>
+    <li><strong>Avoid over-engineering:</strong> Don't create abstractions for every possible future change; wait for patterns to emerge.</li>
+    <li><strong>Test extensively:</strong> OCP-compliant code is typically more testable due to its modular design.</li>
+    <li><strong>Balance complexity:</strong> Apply OCP where it adds value, but don't sacrifice simplicity for theoretical extensibility.</li>
+    <li><strong>Refactor incrementally:</strong> You don't need to design for OCP upfront; refactor towards it as requirements evolve.</li>
+  </ul>
+  <p>
+    By consistently applying OCP alongside other SOLID principles, you'll create software architectures that can adapt to changing requirements while maintaining stability and reliability. The principle helps you build systems that grow with your business needs rather than fighting against them.
+  </p>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/single-responsibility-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-secondary" href="/blogs"> Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/single-responsibility-principle"><span aria-hidden="true">&#8592;</span> Single Responsibility Principle - One Reason to Change, One Purpose to Serve</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 end text-center">
+        <a href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>
