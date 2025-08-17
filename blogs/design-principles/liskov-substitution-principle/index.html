@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Liskov Substitution Principle (LSP) and learn how to design inheritance hierarchies where subclasses can seamlessly replace their parent classes. Includes comprehensive examples in C#, Python, Java, and JavaScript with real-world scenarios and implementation guidelines." />
+        <meta property='og:title' content='Liskov Substitution Principle - Building Reliable Inheritance Hierarchies'/>
+        <meta property='og:image' content='/assets/images/blogs/design-principles/lsp-banner.webp'/>
+        <meta property='og:description' content='Master the Liskov Substitution Principle (LSP) and learn how to design inheritance hierarchies where subclasses can seamlessly replace their parent classes. Includes comprehensive examples in C#, Python, Java, and JavaScript with real-world scenarios and implementation guidelines.'/> 
+        <title>Liskov Substitution Principle - Building Reliable Inheritance Hierarchies | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-5">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/open-closed-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/interface-segregation-principle">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/open-closed-principle"><span aria-hidden="true">&#8592;</span> Open-Closed Principle -  Extend Without Breaking Existing Code</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/interface-segregation-principle">Interface Segregation Principle - Design Focused, Client-Specific Interfaces <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Liskov Substitution Principle - Building Reliable Inheritance Hierarchies</h1>
+                    <p class="lead">Master the Liskov Substitution Principle (LSP) and learn how to design inheritance hierarchies where subclasses can seamlessly replace their parent classes. Includes comprehensive examples in C#, Python, Java, and JavaScript with real-world scenarios and implementation guidelines.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">10-Aug, 2025 &middot;
+                                    15 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-principles/lsp-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+  <h2 class="toc-title">🔄 Understanding the Liskov Substitution Principle</h2>
+  <p>
+    The Liskov Substitution Principle (LSP) is the third principle in the SOLID design principles, formulated by Barbara Liskov in 1987. It states that <strong>objects of a superclass should be replaceable with objects of its subclasses without breaking the application</strong>.
+  </p>
+  <p>
+    In simpler terms, if class B is a subtype of class A, then we should be able to replace A with B without disrupting the behavior of our program. This means that subclasses should extend the functionality of their parent class without changing or removing the parent's behavior.
+  </p>
+  <p>
+    When LSP is violated, the consequences can be significant:
+  </p>
+  <ul>
+    <li><strong>Unexpected Behavior:</strong> Substituting a derived class for its base class leads to unexpected results, making the code unpredictable and unreliable.</li>
+    <li><strong>Broken Polymorphism:</strong> The core benefit of polymorphism is lost when derived classes don't properly implement the interface contract of their base class.</li>
+    <li><strong>Complex Client Code:</strong> Clients need to know about specific subclass implementations and handle them differently, violating the abstraction principle.</li>
+    <li><strong>Runtime Errors:</strong> Type checking and casting become necessary, leading to potential runtime exceptions and making the code more error-prone.</li>
+    <li><strong>Testing Difficulties:</strong> Each subclass requires different testing approaches since they can't be treated uniformly, increasing test complexity.</li>
+    <li><strong>Maintenance Overhead:</strong> Changes to base classes or interfaces require careful analysis of all derived classes to ensure LSP compliance.</li>
+  </ul>
+  <p>
+    By adhering to LSP, you ensure that your inheritance hierarchies are well-designed, your polymorphic code works correctly, and your abstractions remain meaningful and reliable.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">💻 Examples of LSP in Action</h2>
+  <p>
+    Let's explore how LSP can be applied in real-world scenarios using multiple programming languages. These examples demonstrate common violations and how to refactor them for proper substitutability.
+  </p>
+  
+  <h3>Basic Example: Rectangle and Square</h3>
+  <pre><code class="language-csharp">// ❌ Violates LSP - Square changes behavior of Rectangle
+public class Rectangle {
+    public virtual double Width { get; set; }
+    public virtual double Height { get; set; }
+    
+    public double CalculateArea() {
+        return Width * Height;
+    }
+}
+
+public class Square : Rectangle {
+    public override double Width {
+        get => base.Width;
+        set {
+            base.Width = value;
+            base.Height = value; // Unexpected side effect!
+        }
+    }
+    
+    public override double Height {
+        get => base.Height;
+        set {
+            base.Width = value;  // Unexpected side effect!
+            base.Height = value;
+        }
+    }
+}
+
+// This violates LSP because:
+// Rectangle rect = new Square();
+// rect.Width = 5;
+// rect.Height = 10;
+// Console.WriteLine(rect.CalculateArea()); // Expected: 50, Actual: 100
+
+// ✅ Follows LSP - Use composition or redesign the hierarchy
+public abstract class Shape {
+    public abstract double CalculateArea();
+}
+
+public class Rectangle : Shape {
+    public double Width { get; set; }
+    public double Height { get; set; }
+    
+    public override double CalculateArea() {
+        return Width * Height;
+    }
+}
+
+public class Square : Shape {
+    public double Side { get; set; }
+    
+    public override double CalculateArea() {
+        return Side * Side;
+    }
+}
+
+// Alternative approach using immutable objects
+public abstract class ImmutableShape {
+    public abstract double CalculateArea();
+}
+
+public class ImmutableRectangle : ImmutableShape {
+    public double Width { get; }
+    public double Height { get; }
+    
+    public ImmutableRectangle(double width, double height) {
+        Width = width;
+        Height = height;
+    }
+    
+    public override double CalculateArea() {
+        return Width * Height;
+    }
+}
+
+public class ImmutableSquare : ImmutableShape {
+    public double Side { get; }
+    
+    public ImmutableSquare(double side) {
+        Side = side;
+    }
+    
+    public override double CalculateArea() {
+        return Side * Side;
+    }
+}
+  </code></pre>
+
+  <h3>Python Example: Bird Hierarchy</h3>
+  <pre><code class="language-python"># ❌ Violates LSP - Not all birds can fly
+class Bird:
+    def fly(self):
+        print("Flying through the sky")
+    
+    def make_sound(self):
+        print("Generic bird sound")
+
+class Duck(Bird):
+    def fly(self):
+        print("Duck flying")
+    
+    def make_sound(self):
+        print("Quack!")
+
+class Ostrich(Bird):
+    def fly(self):
+        raise NotImplementedError("Ostriches cannot fly!")  # LSP violation!
+    
+    def make_sound(self):
+        print("Ostrich sound")
+
+# This breaks when we try to use polymorphism:
+# birds = [Duck(), Ostrich()]
+# for bird in birds:
+#     bird.fly()  # This will crash when it reaches Ostrich!
+
+# ✅ Follows LSP - Redesign hierarchy based on capabilities
+from abc import ABC, abstractmethod
+
+class Bird(ABC):
+    @abstractmethod
+    def make_sound(self):
+        pass
+    
+    @abstractmethod
+    def move(self):
+        pass
+
+class FlyingBird(Bird):
+    @abstractmethod
+    def fly(self):
+        pass
+    
+    def move(self):
+        self.fly()
+
+class FlightlessBird(Bird):
+    @abstractmethod
+    def walk(self):
+        pass
+    
+    def move(self):
+        self.walk()
+
+class Duck(FlyingBird):
+    def fly(self):
+        print("Duck flying through the air")
+    
+    def make_sound(self):
+        print("Quack!")
+
+class Eagle(FlyingBird):
+    def fly(self):
+        print("Eagle soaring high")
+    
+    def make_sound(self):
+        print("Screech!")
+
+class Ostrich(FlightlessBird):
+    def walk(self):
+        print("Ostrich running fast")
+    
+    def make_sound(self):
+        print("Deep ostrich call")
+
+class Penguin(FlightlessBird):
+    def walk(self):
+        print("Penguin waddling")
+    
+    def swim(self):
+        print("Penguin swimming gracefully")
+    
+    def make_sound(self):
+        print("Penguin chirp")
+    
+    def move(self):
+        # Penguins can both walk and swim
+        print("Penguin moving: ", end="")
+        self.walk()
+
+# Now we can use polymorphism safely:
+# flying_birds = [Duck(), Eagle()]
+# for bird in flying_birds:
+#     bird.fly()  # Safe - all flying birds can fly
+#
+# all_birds = [Duck(), Eagle(), Ostrich(), Penguin()]
+# for bird in all_birds:
+#     bird.make_sound()  # Safe - all birds make sounds
+#     bird.move()        # Safe - all birds can move in their own way
+  </code></pre>
+
+  <h3>JavaScript Example: Payment Processing</h3>
+  <pre><code class="language-javascript">// ❌ Violates LSP - Different error handling behaviors
+class PaymentProcessor {
+    processPayment(amount) {
+        if (amount <= 0) {
+            throw new Error('Invalid amount');
+        }
+        console.log(`Processing payment of $${amount}`);
+        return { success: true, transactionId: Date.now() };
+    }
+    
+    refundPayment(transactionId) {
+        console.log(`Refunding transaction ${transactionId}`);
+        return { success: true };
+    }
+}
+
+class CreditCardProcessor extends PaymentProcessor {
+    processPayment(amount) {
+        if (amount <= 0) {
+            throw new Error('Invalid amount');
+        }
+        if (amount > 10000) {
+            throw new Error('Amount exceeds credit limit');
+        }
+        console.log(`Processing credit card payment of $${amount}`);
+        return { success: true, transactionId: `CC_${Date.now()}` };
+    }
+}
+
+class GiftCardProcessor extends PaymentProcessor {
+    constructor(balance) {
+        super();
+        this.balance = balance;
+    }
+    
+    processPayment(amount) {
+        if (amount <= 0) {
+            throw new Error('Invalid amount');
+        }
+        if (amount > this.balance) {
+            // LSP violation - returns failure instead of throwing like parent
+            return { success: false, error: 'Insufficient balance' };
+        }
+        this.balance -= amount;
+        console.log(`Processing gift card payment of $${amount}`);
+        return { success: true, transactionId: `GC_${Date.now()}` };
+    }
+    
+    refundPayment(transactionId) {
+        // LSP violation - doesn't actually process refunds
+        console.log(`Gift cards cannot be refunded`);
+        return { success: false, error: 'Refunds not supported' };
+    }
+}
+
+// ✅ Follows LSP - Consistent behavior and error handling
+class PaymentResult {
+    constructor(success, transactionId = null, error = null) {
+        this.success = success;
+        this.transactionId = transactionId;
+        this.error = error;
+    }
+}
+
+class BasePaymentProcessor {
+    processPayment(amount) {
+        if (amount <= 0) {
+            return new PaymentResult(false, null, 'Invalid amount');
+        }
+        return this.doProcessPayment(amount);
+    }
+    
+    doProcessPayment(amount) {
+        throw new Error('doProcessPayment must be implemented by subclass');
+    }
+    
+    refundPayment(transactionId) {
+        if (!transactionId) {
+            return new PaymentResult(false, null, 'Invalid transaction ID');
+        }
+        return this.doRefundPayment(transactionId);
+    }
+    
+    doRefundPayment(transactionId) {
+        throw new Error('doRefundPayment must be implemented by subclass');
+    }
+    
+    canProcessAmount(amount) {
+        return true; // Default implementation
+    }
+    
+    supportsRefunds() {
+        return true; // Default implementation
+    }
+}
+
+class ImprovedCreditCardProcessor extends BasePaymentProcessor {
+    doProcessPayment(amount) {
+        if (amount > 10000) {
+            return new PaymentResult(false, null, 'Amount exceeds credit limit');
+        }
+        console.log(`Processing credit card payment of $${amount}`);
+        return new PaymentResult(true, `CC_${Date.now()}`);
+    }
+    
+    doRefundPayment(transactionId) {
+        console.log(`Refunding credit card transaction ${transactionId}`);
+        return new PaymentResult(true, `REF_${Date.now()}`);
+    }
+    
+    canProcessAmount(amount) {
+        return amount <= 10000;
+    }
+}
+
+class ImprovedGiftCardProcessor extends BasePaymentProcessor {
+    constructor(balance) {
+        super();
+        this.balance = balance;
+    }
+    
+    doProcessPayment(amount) {
+        if (amount > this.balance) {
+            return new PaymentResult(false, null, 'Insufficient balance');
+        }
+        this.balance -= amount;
+        console.log(`Processing gift card payment of $${amount}`);
+        return new PaymentResult(true, `GC_${Date.now()}`);
+    }
+    
+    doRefundPayment(transactionId) {
+        return new PaymentResult(false, null, 'Gift card refunds not supported');
+    }
+    
+    canProcessAmount(amount) {
+        return amount <= this.balance;
+    }
+    
+    supportsRefunds() {
+        return false;
+    }
+}
+
+// Now all processors can be used interchangeably:
+function processPayments(processors, amount) {
+    processors.forEach(processor => {
+        if (processor.canProcessAmount(amount)) {
+            const result = processor.processPayment(amount);
+            console.log(`Payment result:`, result);
+        } else {
+            console.log(`Processor cannot handle amount: $${amount}`);
+        }
+    });
+}
+
+const processors = [
+    new ImprovedCreditCardProcessor(),
+    new ImprovedGiftCardProcessor(500)
+];
+
+processPayments(processors, 100); // Works consistently for all processors
+  </code></pre>
+
+  <h3>Java Example: File Operations</h3>
+  <pre><code class="language-java">// ❌ Violates LSP - ReadOnlyFile changes expected behavior
+public abstract class FileOperations {
+    protected String fileName;
+    
+    public FileOperations(String fileName) {
+        this.fileName = fileName;
+    }
+    
+    public abstract String read();
+    public abstract void write(String content);
+    public abstract void delete();
+}
+
+public class RegularFile extends FileOperations {
+    public RegularFile(String fileName) {
+        super(fileName);
+    }
+    
+    public String read() {
+        System.out.println("Reading from " + fileName);
+        return "file content";
+    }
+    
+    public void write(String content) {
+        System.out.println("Writing to " + fileName + ": " + content);
+    }
+    
+    public void delete() {
+        System.out.println("Deleting " + fileName);
+    }
+}
+
+public class ReadOnlyFile extends FileOperations {
+    public ReadOnlyFile(String fileName) {
+        super(fileName);
+    }
+    
+    public String read() {
+        System.out.println("Reading from read-only " + fileName);
+        return "read-only content";
+    }
+    
+    public void write(String content) {
+        // LSP violation - throws exception instead of performing operation
+        throw new UnsupportedOperationException("Cannot write to read-only file");
+    }
+    
+    public void delete() {
+        // LSP violation - throws exception instead of performing operation
+        throw new UnsupportedOperationException("Cannot delete read-only file");
+    }
+}
+
+// ✅ Follows LSP - Redesign hierarchy based on capabilities
+public interface Readable {
+    String read();
+}
+
+public interface Writable {
+    void write(String content);
+}
+
+public interface Deletable {
+    void delete();
+}
+
+public abstract class BaseFile implements Readable {
+    protected String fileName;
+    
+    public BaseFile(String fileName) {
+        this.fileName = fileName;
+    }
+    
+    public String getFileName() {
+        return fileName;
+    }
+}
+
+public class RegularFile extends BaseFile implements Writable, Deletable {
+    public RegularFile(String fileName) {
+        super(fileName);
+    }
+    
+    @Override
+    public String read() {
+        System.out.println("Reading from " + fileName);
+        return "file content";
+    }
+    
+    @Override
+    public void write(String content) {
+        System.out.println("Writing to " + fileName + ": " + content);
+    }
+    
+    @Override
+    public void delete() {
+        System.out.println("Deleting " + fileName);
+    }
+}
+
+public class ReadOnlyFile extends BaseFile {
+    public ReadOnlyFile(String fileName) {
+        super(fileName);
+    }
+    
+    @Override
+    public String read() {
+        System.out.println("Reading from read-only " + fileName);
+        return "read-only content";
+    }
+}
+
+public class SystemFile extends BaseFile implements Writable {
+    public SystemFile(String fileName) {
+        super(fileName);
+    }
+    
+    @Override
+    public String read() {
+        System.out.println("Reading system file " + fileName);
+        return "system file content";
+    }
+    
+    @Override
+    public void write(String content) {
+        System.out.println("Writing to system file " + fileName + ": " + content);
+    }
+    // Note: SystemFile is not Deletable - system files cannot be deleted
+}
+
+// Usage with proper abstraction
+public class FileManager {
+    public void readFiles(List<Readable> files) {
+        for (Readable file : files) {
+            String content = file.read(); // Safe - all Readable files can be read
+            System.out.println("Content: " + content);
+        }
+    }
+    
+    public void writeToFiles(List<Writable> files, String content) {
+        for (Writable file : files) {
+            file.write(content); // Safe - all Writable files can be written to
+        }
+    }
+    
+    public void deleteFiles(List<Deletable> files) {
+        for (Deletable file : files) {
+            file.delete(); // Safe - all Deletable files can be deleted
+        }
+    }
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🌍 Real-World LSP Examples</h2>
+  <p>
+    Let's examine complex, real-world scenarios where LSP compliance is crucial for maintainable and reliable software systems.
+  </p>
+  
+  <h3>Example 1: Database Connection Pool</h3>
+  <pre><code class="language-csharp">// ❌ Violates LSP - Different connection types have inconsistent behavior
+public abstract class DatabaseConnection {
+    public abstract void Connect();
+    public abstract void Disconnect();
+    public abstract void ExecuteQuery(string sql);
+    public abstract void BeginTransaction();
+    public abstract void CommitTransaction();
+    public abstract void RollbackTransaction();
+}
+
+public class SqlServerConnection : DatabaseConnection {
+    public override void Connect() {
+        Console.WriteLine("Connecting to SQL Server");
+    }
+    
+    public override void Disconnect() {
+        Console.WriteLine("Disconnecting from SQL Server");
+    }
+    
+    public override void ExecuteQuery(string sql) {
+        Console.WriteLine($"Executing SQL Server query: {sql}");
+    }
+    
+    public override void BeginTransaction() {
+        Console.WriteLine("Beginning SQL Server transaction");
+    }
+    
+    public override void CommitTransaction() {
+        Console.WriteLine("Committing SQL Server transaction");
+    }
+    
+    public override void RollbackTransaction() {
+        Console.WriteLine("Rolling back SQL Server transaction");
+    }
+}
+
+public class NoSqlConnection : DatabaseConnection {
+    public override void Connect() {
+        Console.WriteLine("Connecting to NoSQL database");
+    }
+    
+    public override void Disconnect() {
+        Console.WriteLine("Disconnecting from NoSQL database");
+    }
+    
+    public override void ExecuteQuery(string sql) {
+        // LSP violation - NoSQL doesn't use SQL!
+        throw new NotSupportedException("NoSQL doesn't support SQL queries");
+    }
+    
+    public override void BeginTransaction() {
+        // LSP violation - Many NoSQL databases don't support transactions
+        throw new NotSupportedException("NoSQL doesn't support transactions");
+    }
+    
+    public override void CommitTransaction() {
+        throw new NotSupportedException("NoSQL doesn't support transactions");
+    }
+    
+    public override void RollbackTransaction() {
+        throw new NotSupportedException("NoSQL doesn't support transactions");
+    }
+}
+
+// ✅ Follows LSP - Design based on actual capabilities
+public interface IConnection {
+    void Connect();
+    void Disconnect();
+    bool IsConnected { get; }
+}
+
+public interface IQueryable {
+    TResult ExecuteQuery<TResult>(IQuery<TResult> query);
+}
+
+public interface ITransactional {
+    ITransaction BeginTransaction();
+}
+
+public interface IQuery<TResult> {
+    TResult Execute(IConnection connection);
+}
+
+public interface ITransaction : IDisposable {
+    void Commit();
+    void Rollback();
+    bool IsActive { get; }
+}
+
+public abstract class BaseConnection : IConnection {
+    protected bool _isConnected;
+    
+    public bool IsConnected => _isConnected;
+    
+    public abstract void Connect();
+    public abstract void Disconnect();
+}
+
+public class SqlServerConnection : BaseConnection, IQueryable, ITransactional {
+    private ITransaction _currentTransaction;
+    
+    public override void Connect() {
+        Console.WriteLine("Connecting to SQL Server");
+        _isConnected = true;
+    }
+    
+    public override void Disconnect() {
+        Console.WriteLine("Disconnecting from SQL Server");
+        _isConnected = false;
+    }
+    
+    public TResult ExecuteQuery<TResult>(IQuery<TResult> query) {
+        if (!IsConnected) {
+            throw new InvalidOperationException("Not connected to database");
+        }
+        return query.Execute(this);
+    }
+    
+    public ITransaction BeginTransaction() {
+        if (!IsConnected) {
+            throw new InvalidOperationException("Not connected to database");
+        }
+        _currentTransaction = new SqlTransaction();
+        Console.WriteLine("Beginning SQL Server transaction");
+        return _currentTransaction;
+    }
+}
+
+public class NoSqlConnection : BaseConnection, IQueryable {
+    public override void Connect() {
+        Console.WriteLine("Connecting to NoSQL database");
+        _isConnected = true;
+    }
+    
+    public override void Disconnect() {
+        Console.WriteLine("Disconnecting from NoSQL database");
+        _isConnected = false;
+    }
+    
+    public TResult ExecuteQuery<TResult>(IQuery<TResult> query) {
+        if (!IsConnected) {
+            throw new InvalidOperationException("Not connected to database");
+        }
+        return query.Execute(this);
+    }
+    // Note: NoSqlConnection doesn't implement ITransactional because it doesn't support transactions
+}
+
+public class InMemoryConnection : BaseConnection, IQueryable, ITransactional {
+    private readonly Dictionary<string, object> _data = new();
+    private ITransaction _currentTransaction;
+    
+    public override void Connect() {
+        Console.WriteLine("Connecting to in-memory database");
+        _isConnected = true;
+    }
+    
+    public override void Disconnect() {
+        Console.WriteLine("Disconnecting from in-memory database");
+        _isConnected = false;
+    }
+    
+    public TResult ExecuteQuery<TResult>(IQuery<TResult> query) {
+        if (!IsConnected) {
+            throw new InvalidOperationException("Not connected to database");
+        }
+        return query.Execute(this);
+    }
+    
+    public ITransaction BeginTransaction() {
+        if (!IsConnected) {
+            throw new InvalidOperationException("Not connected to database");
+        }
+        _currentTransaction = new InMemoryTransaction();
+        Console.WriteLine("Beginning in-memory transaction");
+        return _currentTransaction;
+    }
+}
+
+// Usage that respects LSP
+public class DatabaseService {
+    public void ProcessConnections(List<IConnection> connections) {
+        foreach (var connection in connections) {
+            connection.Connect(); // Safe - all connections can connect
+            Console.WriteLine($"Connection status: {connection.IsConnected}");
+            connection.Disconnect(); // Safe - all connections can disconnect
+        }
+    }
+    
+    public void ExecuteQueries(List<IQueryable> queryableConnections, IQuery<string> query) {
+        foreach (var connection in queryableConnections) {
+            var result = connection.ExecuteQuery(query); // Safe - all queryable connections support queries
+            Console.WriteLine($"Query result: {result}");
+        }
+    }
+    
+    public void PerformTransactions(List<ITransactional> transactionalConnections) {
+        foreach (var connection in transactionalConnections) {
+            using (var transaction = connection.BeginTransaction()) {
+                // Perform transaction operations
+                transaction.Commit(); // Safe - all transactional connections support transactions
+            }
+        }
+    }
+}
+  </code></pre>
+
+  <h3>Example 2: Media Player System</h3>
+  <pre><code class="language-python"># ❌ Violates LSP - Different media types have incompatible interfaces
+class MediaPlayer:
+    def play(self):
+        raise NotImplementedError
+    
+    def pause(self):
+        raise NotImplementedError
+    
+    def stop(self):
+        raise NotImplementedError
+    
+    def seek(self, position):
+        raise NotImplementedError
+    
+    def get_duration(self):
+        raise NotImplementedError
+
+class AudioPlayer(MediaPlayer):
+    def __init__(self, file_path):
+        self.file_path = file_path
+        self.is_playing = False
+        self.position = 0
+        self.duration = 180  # 3 minutes
+    
+    def play(self):
+        print(f"Playing audio: {self.file_path}")
+        self.is_playing = True
+    
+    def pause(self):
+        print("Pausing audio")
+        self.is_playing = False
+    
+    def stop(self):
+        print("Stopping audio")
+        self.is_playing = False
+        self.position = 0
+    
+    def seek(self, position):
+        if 0 <= position <= self.duration:
+            self.position = position
+            print(f"Seeking to {position} seconds")
+        else:
+            raise ValueError("Invalid position")
+    
+    def get_duration(self):
+        return self.duration
+
+class LiveStreamPlayer(MediaPlayer):
+    def __init__(self, stream_url):
+        self.stream_url = stream_url
+        self.is_playing = False
+    
+    def play(self):
+        print(f"Starting live stream: {self.stream_url}")
+        self.is_playing = True
+    
+    def pause(self):
+        print("Pausing live stream")
+        self.is_playing = False
+    
+    def stop(self):
+        print("Stopping live stream")
+        self.is_playing = False
+    
+    def seek(self, position):
+        # LSP violation - live streams can't seek!
+        raise NotSupportedError("Cannot seek in live streams")
+    
+    def get_duration(self):
+        # LSP violation - live streams don't have duration!
+        raise NotSupportedError("Live streams don't have duration")
+
+# ✅ Follows LSP - Design based on actual capabilities
+from abc import ABC, abstractmethod
+from typing import Optional
+
+class Playable(ABC):
+    @abstractmethod
+    def play(self):
+        pass
+    
+    @abstractmethod
+    def stop(self):
+        pass
+    
+    @abstractmethod
+    def is_playing(self) -> bool:
+        pass
+
+class Pausable(ABC):
+    @abstractmethod
+    def pause(self):
+        pass
+    
+    @abstractmethod
+    def is_paused(self) -> bool:
+        pass
+
+class Seekable(ABC):
+    @abstractmethod
+    def seek(self, position: int):
+        pass
+    
+    @abstractmethod
+    def get_position(self) -> int:
+        pass
+
+class HasDuration(ABC):
+    @abstractmethod
+    def get_duration(self) -> int:
+        pass
+
+class VolumeControl(ABC):
+    @abstractmethod
+    def set_volume(self, volume: float):
+        pass
+    
+    @abstractmethod
+    def get_volume(self) -> float:
+        pass
+
+class BaseMediaPlayer(Playable):
+    def __init__(self, source: str):
+        self.source = source
+        self._is_playing = False
+    
+    def is_playing(self) -> bool:
+        return self._is_playing
+
+class AudioFilePlayer(BaseMediaPlayer, Pausable, Seekable, HasDuration, VolumeControl):
+    def __init__(self, file_path: str):
+        super().__init__(file_path)
+        self._is_paused = False
+        self._position = 0
+        self._duration = 180  # 3 minutes
+        self._volume = 1.0
+    
+    def play(self):
+        print(f"Playing audio file: {self.source}")
+        self._is_playing = True
+        self._is_paused = False
+    
+    def stop(self):
+        print("Stopping audio file")
+        self._is_playing = False
+        self._is_paused = False
+        self._position = 0
+    
+    def pause(self):
+        if self._is_playing:
+            print("Pausing audio file")
+            self._is_paused = True
+            self._is_playing = False
+    
+    def is_paused(self) -> bool:
+        return self._is_paused
+    
+    def seek(self, position: int):
+        if 0 <= position <= self._duration:
+            self._position = position
+            print(f"Seeking to {position} seconds")
+        else:
+            raise ValueError("Invalid seek position")
+    
+    def get_position(self) -> int:
+        return self._position
+    
+    def get_duration(self) -> int:
+        return self._duration
+    
+    def set_volume(self, volume: float):
+        if 0.0 <= volume <= 1.0:
+            self._volume = volume
+            print(f"Volume set to {volume * 100}%")
+        else:
+            raise ValueError("Volume must be between 0.0 and 1.0")
+    
+    def get_volume(self) -> float:
+        return self._volume
+
+class LiveStreamPlayer(BaseMediaPlayer, Pausable, VolumeControl):
+    def __init__(self, stream_url: str):
+        super().__init__(stream_url)
+        self._is_paused = False
+        self._volume = 1.0
+    
+    def play(self):
+        print(f"Starting live stream: {self.source}")
+        self._is_playing = True
+        self._is_paused = False
+    
+    def stop(self):
+        print("Stopping live stream")
+        self._is_playing = False
+        self._is_paused = False
+    
+    def pause(self):
+        if self._is_playing:
+            print("Pausing live stream")
+            self._is_paused = True
+            self._is_playing = False
+    
+    def is_paused(self) -> bool:
+        return self._is_paused
+    
+    def set_volume(self, volume: float):
+        if 0.0 <= volume <= 1.0:
+            self._volume = volume
+            print(f"Stream volume set to {volume * 100}%")
+        else:
+            raise ValueError("Volume must be between 0.0 and 1.0")
+    
+    def get_volume(self) -> float:
+        return self._volume
+
+class RadioPlayer(BaseMediaPlayer, VolumeControl):
+    def __init__(self, frequency: str):
+        super().__init__(frequency)
+        self._volume = 1.0
+    
+    def play(self):
+        print(f"Tuning to radio frequency: {self.source}")
+        self._is_playing = True
+    
+    def stop(self):
+        print("Stopping radio")
+        self._is_playing = False
+    
+    def set_volume(self, volume: float):
+        if 0.0 <= volume <= 1.0:
+            self._volume = volume
+            print(f"Radio volume set to {volume * 100}%")
+        else:
+            raise ValueError("Volume must be between 0.0 and 1.0")
+    
+    def get_volume(self) -> float:
+        return self._volume
+
+# Usage that respects LSP
+class MediaController:
+    def play_all(self, players: list[Playable]):
+        """Play all playable media - works with any Playable implementation"""
+        for player in players:
+            player.play()
+    
+    def pause_all(self, players: list[Pausable]):
+        """Pause all pausable media - only works with pausable players"""
+        for player in players:
+            if player.is_playing():
+                player.pause()
+    
+    def seek_all_to_position(self, players: list[Seekable], position: int):
+        """Seek all seekable media - only works with seekable players"""
+        for player in players:
+            try:
+                player.seek(position)
+            except ValueError as e:
+                print(f"Seek failed: {e}")
+    
+    def show_durations(self, players: list[HasDuration]):
+        """Show duration for all media with duration - only works with players that have duration"""
+        for player in players:
+            duration = player.get_duration()
+            print(f"Duration: {duration} seconds")
+    
+    def set_volume_for_all(self, players: list[VolumeControl], volume: float):
+        """Set volume for all players with volume control"""
+        for player in players:
+            player.set_volume(volume)
+
+# Example usage
+audio_player = AudioFilePlayer("song.mp3")
+stream_player = LiveStreamPlayer("http://stream.example.com")
+radio_player = RadioPlayer("101.5 FM")
+
+controller = MediaController()
+
+# All players can be played
+all_players = [audio_player, stream_player, radio_player]
+controller.play_all(all_players)
+
+# Only some players can be paused
+pausable_players = [audio_player, stream_player]  # radio can't be paused
+controller.pause_all(pausable_players)
+
+# Only audio files can be seeked
+seekable_players = [audio_player]
+controller.seek_all_to_position(seekable_players, 30)
+
+# Only audio files have duration
+duration_players = [audio_player]
+controller.show_durations(duration_players)
+
+# All players have volume control
+controller.set_volume_for_all(all_players, 0.8)
+  </code></pre>
+
+  <h3>Benefits of LSP-Compliant Design</h3>
+  <ul>
+    <li><strong>Predictable Behavior:</strong> Subclasses behave consistently with their parent classes, making the code more reliable and easier to understand.</li>
+    <li><strong>True Polymorphism:</strong> Objects can be used interchangeably through their common interfaces without unexpected behavior.</li>
+    <li><strong>Simplified Client Code:</strong> Clients can work with abstractions without needing to know about specific implementations.</li>
+    <li><strong>Better Testing:</strong> All implementations of an interface can be tested using the same test suite, ensuring consistent behavior.</li>
+    <li><strong>Easier Maintenance:</strong> Changes to interfaces are automatically enforced across all implementations, reducing the risk of breaking changes.</li>
+    <li><strong>Enhanced Reusability:</strong> Components can be reused in different contexts because they adhere to well-defined contracts.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="toc-title">🎯 LSP Implementation Guidelines</h2>
+  <p>
+    Here are key guidelines and patterns for implementing the Liskov Substitution Principle effectively in your code.
+  </p>
+  
+  <h3>1. Contract Compliance</h3>
+  <p>
+    Ensure that subclasses honor the contracts established by their parent classes or interfaces.
+  </p>
+  <pre><code class="language-csharp">// ✅ Good: Subclass strengthens postconditions, weakens preconditions
+public abstract class NumberValidator {
+    // Precondition: number can be any double
+    // Postcondition: returns true if valid, false otherwise
+    public abstract bool IsValid(double number);
+}
+
+public class PositiveNumberValidator : NumberValidator {
+    // Precondition: still accepts any double (not strengthened)
+    // Postcondition: returns true only for positive numbers (stronger than parent)
+    public override bool IsValid(double number) {
+        return number > 0;
+    }
+}
+
+public class NonZeroNumberValidator : NumberValidator {
+    // Precondition: still accepts any double (not strengthened)
+    // Postcondition: returns true for any non-zero number (stronger than parent)
+    public override bool IsValid(double number) {
+        return number != 0;
+    }
+}
+
+// ❌ Bad: Subclass strengthens preconditions
+public class RestrictiveValidator : NumberValidator {
+    public override bool IsValid(double number) {
+        // Strengthens precondition - now only accepts numbers between 1 and 100
+        if (number < 1 || number > 100) {
+            throw new ArgumentException("Number must be between 1 and 100");
+        }
+        return true;
+    }
+}
+  </code></pre>
+
+  <h3>2. Exception Handling Consistency</h3>
+  <p>
+    Subclasses should not throw new exceptions that are not expected by the parent class contract.
+  </p>
+  <pre><code class="language-python"># ✅ Good: Consistent exception handling
+class DataProcessor:
+    def process(self, data: str) -> str:
+        """Process data. Raises ValueError for invalid data."""
+        if not data:
+            raise ValueError("Data cannot be empty")
+        return data.upper()
+
+class JsonProcessor(DataProcessor):
+    def process(self, data: str) -> str:
+        """Process JSON data. Raises ValueError for invalid data."""
+        if not data:
+            raise ValueError("Data cannot be empty")
+        
+        import json
+        try:
+            # Parse to validate JSON
+            json.loads(data)
+            return data.upper()
+        except json.JSONDecodeError:
+            # Still raises ValueError as expected by parent contract
+            raise ValueError("Invalid JSON format")
+
+class XmlProcessor(DataProcessor):
+    def process(self, data: str) -> str:
+        """Process XML data. Raises ValueError for invalid data."""
+        if not data:
+            raise ValueError("Data cannot be empty")
+        
+        import xml.etree.ElementTree as ET
+        try:
+            # Parse to validate XML
+            ET.fromstring(data)
+            return data.upper()
+        except ET.ParseError:
+            # Still raises ValueError as expected by parent contract
+            raise ValueError("Invalid XML format")
+
+# ❌ Bad: Introduces unexpected exceptions
+class ProblematicProcessor(DataProcessor):
+    def process(self, data: str) -> str:
+        if not data:
+            raise ValueError("Data cannot be empty")
+        
+        # LSP violation - introduces new exception type not in parent contract
+        if len(data) > 1000:
+            raise RuntimeError("Data too large")  # Unexpected exception!
+        
+        return data.upper()
+  </code></pre>
+
+  <h3>3. Interface Segregation with LSP</h3>
+  <p>
+    Design interfaces based on client needs and ensure all implementations can fulfill the complete interface contract.
+  </p>
+  <pre><code class="language-javascript">// ✅ Good: Well-segregated interfaces that support LSP
+class Drawable {
+    draw() {
+        throw new Error('draw method must be implemented');
+    }
+}
+
+class Resizable {
+    resize(width, height) {
+        throw new Error('resize method must be implemented');
+    }
+    
+    getWidth() {
+        throw new Error('getWidth method must be implemented');
+    }
+    
+    getHeight() {
+        throw new Error('getHeight method must be implemented');
+    }
+}
+
+class Colorable {
+    setColor(color) {
+        throw new Error('setColor method must be implemented');
+    }
+    
+    getColor() {
+        throw new Error('getColor method must be implemented');
+    }
+}
+
+class Circle extends Drawable {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
+    
+    draw() {
+        console.log(`Drawing circle with radius ${this.radius}`);
+    }
+}
+
+class ColoredCircle extends Circle {
+    constructor(radius, color) {
+        super(radius);
+        this.color = color;
+    }
+    
+    draw() {
+        console.log(`Drawing ${this.color} circle with radius ${this.radius}`);
+    }
+}
+
+// Multiple inheritance through mixins
+class ResizableColoredRectangle extends Drawable {
+    constructor(width, height, color) {
+        super();
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+    
+    draw() {
+        console.log(`Drawing ${this.color} rectangle ${this.width}x${this.height}`);
+    }
+    
+    // Resizable methods
+    resize(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    getWidth() {
+        return this.width;
+    }
+    
+    getHeight() {
+        return this.height;
+    }
+    
+    // Colorable methods
+    setColor(color) {
+        this.color = color;
+    }
+    
+    getColor() {
+        return this.color;
+    }
+}
+
+// Usage that respects LSP
+class ShapeRenderer {
+    renderShapes(shapes) {
+        // All shapes implement Drawable, so this is safe
+        shapes.forEach(shape => shape.draw());
+    }
+    
+    resizeShapes(resizableShapes, newWidth, newHeight) {
+        // Only works with shapes that implement Resizable
+        resizableShapes.forEach(shape => {
+            if (typeof shape.resize === 'function') {
+                shape.resize(newWidth, newHeight);
+            }
+        });
+    }
+    
+    changeColors(colorableShapes, newColor) {
+        // Only works with shapes that implement Colorable
+        colorableShapes.forEach(shape => {
+            if (typeof shape.setColor === 'function') {
+                shape.setColor(newColor);
+            }
+        });
+    }
+}
+  </code></pre>
+
+  <h3>4. Design by Contract</h3>
+  <p>
+    Use explicit contracts to ensure LSP compliance through preconditions, postconditions, and invariants.
+  </p>
+  <pre><code class="language-java">// ✅ Good: Explicit contracts ensure LSP compliance
+public interface BankAccount {
+    /**
+     * Withdraws money from the account.
+     * 
+     * Precondition: amount > 0 && amount <= getBalance()
+     * Postcondition: getBalance() == old(getBalance()) - amount
+     * 
+     * @param amount The amount to withdraw
+     * @throws IllegalArgumentException if amount <= 0
+     * @throws InsufficientFundsException if amount > getBalance()
+     */
+    void withdraw(double amount) throws InsufficientFundsException;
+    
+    /**
+     * Deposits money into the account.
+     * 
+     * Precondition: amount > 0
+     * Postcondition: getBalance() == old(getBalance()) + amount
+     * 
+     * @param amount The amount to deposit
+     * @throws IllegalArgumentException if amount <= 0
+     */
+    void deposit(double amount);
+    
+    /**
+     * Gets the current balance.
+     * 
+     * Postcondition: return value >= 0
+     * 
+     * @return The current balance
+     */
+    double getBalance();
+}
+
+public class SavingsAccount implements BankAccount {
+    private double balance;
+    
+    public SavingsAccount(double initialBalance) {
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException("Initial balance cannot be negative");
+        }
+        this.balance = initialBalance;
+    }
+    
+    @Override
+    public void withdraw(double amount) throws InsufficientFundsException {
+        // Enforce preconditions
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (amount > balance) {
+            throw new InsufficientFundsException("Insufficient funds");
+        }
+        
+        // Perform operation
+        balance -= amount;
+        
+        // Postcondition is automatically satisfied
+    }
+    
+    @Override
+    public void deposit(double amount) {
+        // Enforce precondition
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        
+        // Perform operation
+        balance += amount;
+        
+        // Postcondition is automatically satisfied
+    }
+    
+    @Override
+    public double getBalance() {
+        return balance; // Postcondition: always >= 0
+    }
+}
+
+public class CheckingAccount implements BankAccount {
+    private double balance;
+    private final double overdraftLimit;
+    
+    public CheckingAccount(double initialBalance, double overdraftLimit) {
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException("Initial balance cannot be negative");
+        }
+        if (overdraftLimit < 0) {
+            throw new IllegalArgumentException("Overdraft limit cannot be negative");
+        }
+        this.balance = initialBalance;
+        this.overdraftLimit = overdraftLimit;
+    }
+    
+    @Override
+    public void withdraw(double amount) throws InsufficientFundsException {
+        // Enforce preconditions (weakened - allows overdraft)
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (amount > balance + overdraftLimit) {
+            throw new InsufficientFundsException("Exceeds overdraft limit");
+        }
+        
+        // Perform operation
+        balance -= amount;
+        
+        // Postcondition still satisfied: balance change is correct
+    }
+    
+    @Override
+    public void deposit(double amount) {
+        // Same implementation as SavingsAccount
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        balance += amount;
+    }
+    
+    @Override
+    public double getBalance() {
+        // May return negative value, but contract allows this for checking accounts
+        return balance;
+    }
+    
+    public double getAvailableBalance() {
+        return balance + overdraftLimit;
+    }
+}
+
+// Usage that works with any BankAccount implementation
+public class BankingService {
+    public void transferMoney(BankAccount from, BankAccount to, double amount) 
+            throws InsufficientFundsException {
+        // This works with any BankAccount implementation due to LSP
+        from.withdraw(amount);  // Contract guarantees this behaves consistently
+        to.deposit(amount);     // Contract guarantees this behaves consistently
+    }
+    
+    public void printBalances(List<BankAccount> accounts) {
+        for (BankAccount account : accounts) {
+            // Contract guarantees getBalance() works consistently
+            System.out.println("Balance: $" + account.getBalance());
+        }
+    }
+}
+  </code></pre>
+
+  <h3>Key LSP Guidelines Summary</h3>
+  <ul>
+    <li><strong>Honor Parent Contracts:</strong> Subclasses must fulfill all contracts established by their parent classes.</li>
+    <li><strong>Maintain Behavioral Consistency:</strong> The behavior of subclasses should be predictable based on the parent class interface.</li>
+    <li><strong>Don't Strengthen Preconditions:</strong> Subclasses should not require stricter inputs than their parent classes.</li>
+    <li><strong>Don't Weaken Postconditions:</strong> Subclasses should provide at least the same guarantees as their parent classes.</li>
+    <li><strong>Preserve Invariants:</strong> Class invariants must be maintained across the inheritance hierarchy.</li>
+    <li><strong>Handle Exceptions Consistently:</strong> Don't introduce unexpected exception types in subclasses.</li>
+    <li><strong>Use Composition When Inheritance Violates LSP:</strong> If "is-a" relationship doesn't hold behaviorally, consider "has-a" relationships.</li>
+  </ul>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/open-closed-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/interface-segregation-principle">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/open-closed-principle"><span aria-hidden="true">&#8592;</span> Open-Closed Principle -  Extend Without Breaking Existing Code</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/interface-segregation-principle">Interface Segregation Principle - Design Focused, Client-Specific Interfaces <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

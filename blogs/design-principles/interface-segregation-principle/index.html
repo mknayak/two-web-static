@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Interface Segregation Principle (ISP) and learn how to design focused, client-specific interfaces that prevent unnecessary dependencies. Includes comprehensive examples in C#, Python, Java, and JavaScript with real-world scenarios and progressive interface composition patterns." />
+        <meta property='og:title' content='Interface Segregation Principle - Design Focused, Client-Specific Interfaces'/>
+        <meta property='og:image' content='/assets/images/blogs/design-principles/isp-banner.webp'/>
+        <meta property='og:description' content='Master the Interface Segregation Principle (ISP) and learn how to design focused, client-specific interfaces that prevent unnecessary dependencies. Includes comprehensive examples in C#, Python, Java, and JavaScript with real-world scenarios and progressive interface composition patterns.'/> 
+        <title>Interface Segregation Principle - Design Focused, Client-Specific Interfaces | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-5">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/liskov-substitution-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/dependency-inversion-principle">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/liskov-substitution-principle"><span aria-hidden="true">&#8592;</span> Liskov Substitution Principle - Building Reliable Inheritance Hierarchies</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/dependency-inversion-principle">Dependency Inversion Principle - Building Flexible, Testable Architectures <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Interface Segregation Principle - Design Focused, Client-Specific Interfaces</h1>
+                    <p class="lead">Master the Interface Segregation Principle (ISP) and learn how to design focused, client-specific interfaces that prevent unnecessary dependencies. Includes comprehensive examples in C#, Python, Java, and JavaScript with real-world scenarios and progressive interface composition patterns.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">10-Aug, 2025 &middot;
+                                    13 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-principles/isp-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+  <h2 class="toc-title">🎯 Understanding the Interface Segregation Principle</h2>
+  <p>
+    The Interface Segregation Principle (ISP) is the fourth principle in the SOLID design principles, introduced by Robert C. Martin. It states that <strong>clients should not be forced to depend on interfaces they do not use</strong>.
+  </p>
+  <p>
+    In simpler terms, it's better to have many small, specific interfaces than one large, general-purpose interface. This principle encourages creating focused interfaces that serve specific client needs rather than forcing clients to implement methods they don't need.
+  </p>
+  <p>
+    When ISP is violated, the consequences can be significant:
+  </p>
+  <ul>
+    <li><strong>Unnecessary Dependencies:</strong> Classes are forced to implement methods they don't need, creating artificial dependencies and coupling.</li>
+    <li><strong>Interface Pollution:</strong> Large interfaces become bloated with methods that only some implementations actually use, making them hard to understand and maintain.</li>
+    <li><strong>Forced Implementation:</strong> Clients must provide empty or exception-throwing implementations for methods they don't use, violating the Liskov Substitution Principle.</li>
+    <li><strong>Reduced Flexibility:</strong> Changes to unused methods can break client implementations that don't even use those methods.</li>
+    <li><strong>Testing Complexity:</strong> Mock implementations become more complex as they need to handle more methods, even irrelevant ones.</li>
+    <li><strong>Code Bloat:</strong> Classes become larger and more complex than necessary, reducing readability and maintainability.</li>
+  </ul>
+  <p>
+    By adhering to ISP, you create interfaces that are focused, cohesive, and easy to implement, leading to more maintainable and flexible code.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">💻 Examples of ISP in Action</h2>
+  <p>
+    Let's explore how ISP can be applied in real-world scenarios using multiple programming languages. These examples demonstrate common violations and how to refactor them for better interface design.
+  </p>
+  
+  <h3>Basic Example: Worker Interface</h3>
+  <pre><code class="language-csharp">// ❌ Violates ISP - Forces all workers to implement all methods
+public interface IWorker {
+    void Work();
+    void Eat();
+    void Sleep();
+    void Program();
+    void ManagePeople();
+    void Drive();
+}
+
+public class Developer : IWorker {
+    public void Work() {
+        Console.WriteLine("Writing code");
+    }
+    
+    public void Eat() {
+        Console.WriteLine("Eating lunch");
+    }
+    
+    public void Sleep() {
+        Console.WriteLine("Sleeping");
+    }
+    
+    public void Program() {
+        Console.WriteLine("Programming applications");
+    }
+    
+    // ISP violation - developers don't necessarily manage people
+    public void ManagePeople() {
+        throw new NotImplementedException("Developers don't manage people");
+    }
+    
+    // ISP violation - not all developers drive
+    public void Drive() {
+        throw new NotImplementedException("Not all developers drive");
+    }
+}
+
+public class Manager : IWorker {
+    public void Work() {
+        Console.WriteLine("Managing team");
+    }
+    
+    public void Eat() {
+        Console.WriteLine("Eating lunch");
+    }
+    
+    public void Sleep() {
+        Console.WriteLine("Sleeping");
+    }
+    
+    // ISP violation - managers don't necessarily program
+    public void Program() {
+        throw new NotImplementedException("Managers don't program");
+    }
+    
+    public void ManagePeople() {
+        Console.WriteLine("Managing people");
+    }
+    
+    public void Drive() {
+        Console.WriteLine("Driving to meetings");
+    }
+}
+
+// ✅ Follows ISP - Segregated interfaces based on client needs
+public interface IWorkable {
+    void Work();
+}
+
+public interface IEatable {
+    void Eat();
+}
+
+public interface ISleepable {
+    void Sleep();
+}
+
+public interface IProgrammable {
+    void Program();
+}
+
+public interface IManageable {
+    void ManagePeople();
+}
+
+public interface IDriveable {
+    void Drive();
+}
+
+public class Developer : IWorkable, IEatable, ISleepable, IProgrammable {
+    public void Work() {
+        Console.WriteLine("Writing code");
+    }
+    
+    public void Eat() {
+        Console.WriteLine("Eating lunch");
+    }
+    
+    public void Sleep() {
+        Console.WriteLine("Sleeping");
+    }
+    
+    public void Program() {
+        Console.WriteLine("Programming applications");
+    }
+}
+
+public class Manager : IWorkable, IEatable, ISleepable, IManageable, IDriveable {
+    public void Work() {
+        Console.WriteLine("Managing team");
+    }
+    
+    public void Eat() {
+        Console.WriteLine("Eating lunch");
+    }
+    
+    public void Sleep() {
+        Console.WriteLine("Sleeping");
+    }
+    
+    public void ManagePeople() {
+        Console.WriteLine("Managing people");
+    }
+    
+    public void Drive() {
+        Console.WriteLine("Driving to meetings");
+    }
+}
+
+public class SeniorDeveloper : IWorkable, IEatable, ISleepable, IProgrammable, IManageable {
+    public void Work() {
+        Console.WriteLine("Leading development and coding");
+    }
+    
+    public void Eat() {
+        Console.WriteLine("Eating lunch");
+    }
+    
+    public void Sleep() {
+        Console.WriteLine("Sleeping");
+    }
+    
+    public void Program() {
+        Console.WriteLine("Programming complex systems");
+    }
+    
+    public void ManagePeople() {
+        Console.WriteLine("Mentoring junior developers");
+    }
+}
+  </code></pre>
+
+  <h3>Python Example: Document Processor</h3>
+  <pre><code class="language-python"># ❌ Violates ISP - Forces all processors to implement all methods
+from abc import ABC, abstractmethod
+
+class DocumentProcessor(ABC):
+    @abstractmethod
+    def read_document(self, path: str):
+        pass
+    
+    @abstractmethod
+    def write_document(self, path: str, content: str):
+        pass
+    
+    @abstractmethod
+    def encrypt_document(self, path: str):
+        pass
+    
+    @abstractmethod
+    def compress_document(self, path: str):
+        pass
+    
+    @abstractmethod
+    def email_document(self, path: str, recipient: str):
+        pass
+    
+    @abstractmethod
+    def print_document(self, path: str):
+        pass
+
+class SimpleTextProcessor(DocumentProcessor):
+    def read_document(self, path: str):
+        print(f"Reading text file: {path}")
+    
+    def write_document(self, path: str, content: str):
+        print(f"Writing text to: {path}")
+    
+    # ISP violation - simple text processor doesn't need encryption
+    def encrypt_document(self, path: str):
+        raise NotImplementedError("Text processor doesn't support encryption")
+    
+    # ISP violation - simple text processor doesn't need compression
+    def compress_document(self, path: str):
+        raise NotImplementedError("Text processor doesn't support compression")
+    
+    # ISP violation - simple text processor doesn't email
+    def email_document(self, path: str, recipient: str):
+        raise NotImplementedError("Text processor doesn't support emailing")
+    
+    # ISP violation - simple text processor doesn't print
+    def print_document(self, path: str):
+        raise NotImplementedError("Text processor doesn't support printing")
+
+# ✅ Follows ISP - Segregated interfaces based on capabilities
+class DocumentReader(ABC):
+    @abstractmethod
+    def read_document(self, path: str):
+        pass
+
+class DocumentWriter(ABC):
+    @abstractmethod
+    def write_document(self, path: str, content: str):
+        pass
+
+class DocumentEncryptor(ABC):
+    @abstractmethod
+    def encrypt_document(self, path: str):
+        pass
+
+class DocumentCompressor(ABC):
+    @abstractmethod
+    def compress_document(self, path: str):
+        pass
+
+class DocumentEmailer(ABC):
+    @abstractmethod
+    def email_document(self, path: str, recipient: str):
+        pass
+
+class DocumentPrinter(ABC):
+    @abstractmethod
+    def print_document(self, path: str):
+        pass
+
+class SimpleTextProcessor(DocumentReader, DocumentWriter):
+    def read_document(self, path: str):
+        print(f"Reading text file: {path}")
+        return "text content"
+    
+    def write_document(self, path: str, content: str):
+        print(f"Writing text to: {path}")
+
+class SecureDocumentProcessor(DocumentReader, DocumentWriter, DocumentEncryptor):
+    def read_document(self, path: str):
+        print(f"Reading secure document: {path}")
+        return "encrypted content"
+    
+    def write_document(self, path: str, content: str):
+        print(f"Writing secure document to: {path}")
+    
+    def encrypt_document(self, path: str):
+        print(f"Encrypting document: {path}")
+
+class FullFeaturedProcessor(DocumentReader, DocumentWriter, DocumentEncryptor, 
+                          DocumentCompressor, DocumentEmailer, DocumentPrinter):
+    def read_document(self, path: str):
+        print(f"Reading document: {path}")
+        return "document content"
+    
+    def write_document(self, path: str, content: str):
+        print(f"Writing document to: {path}")
+    
+    def encrypt_document(self, path: str):
+        print(f"Encrypting document: {path}")
+    
+    def compress_document(self, path: str):
+        print(f"Compressing document: {path}")
+    
+    def email_document(self, path: str, recipient: str):
+        print(f"Emailing document {path} to {recipient}")
+    
+    def print_document(self, path: str):
+        print(f"Printing document: {path}")
+
+# Usage with proper segregation
+def process_documents():
+    # Only use what you need
+    simple_processor = SimpleTextProcessor()
+    secure_processor = SecureDocumentProcessor()
+    full_processor = FullFeaturedProcessor()
+    
+    # Each processor only implements what it actually supports
+    readers = [simple_processor, secure_processor, full_processor]
+    for reader in readers:
+        content = reader.read_document("document.txt")
+    
+    # Only secure and full processors can encrypt
+    encryptors = [secure_processor, full_processor]
+    for encryptor in encryptors:
+        encryptor.encrypt_document("document.txt")
+    
+    # Only full processor can email
+    if isinstance(full_processor, DocumentEmailer):
+        full_processor.email_document("document.txt", "user@example.com")
+  </code></pre>
+
+  <h3>JavaScript Example: Media Player</h3>
+  <pre><code class="language-javascript">// ❌ Violates ISP - Forces all players to implement all methods
+class MediaPlayer {
+    play() {
+        throw new Error('Method must be implemented');
+    }
+    
+    pause() {
+        throw new Error('Method must be implemented');
+    }
+    
+    stop() {
+        throw new Error('Method must be implemented');
+    }
+    
+    seek(position) {
+        throw new Error('Method must be implemented');
+    }
+    
+    setVolume(volume) {
+        throw new Error('Method must be implemented');
+    }
+    
+    showSubtitles() {
+        throw new Error('Method must be implemented');
+    }
+    
+    changeVideoQuality(quality) {
+        throw new Error('Method must be implemented');
+    }
+    
+    recordStream() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class AudioPlayer extends MediaPlayer {
+    play() {
+        console.log('Playing audio');
+    }
+    
+    pause() {
+        console.log('Pausing audio');
+    }
+    
+    stop() {
+        console.log('Stopping audio');
+    }
+    
+    seek(position) {
+        console.log(`Seeking to ${position}`);
+    }
+    
+    setVolume(volume) {
+        console.log(`Setting volume to ${volume}`);
+    }
+    
+    // ISP violation - audio doesn't have subtitles
+    showSubtitles() {
+        throw new Error('Audio players do not support subtitles');
+    }
+    
+    // ISP violation - audio doesn't have video quality
+    changeVideoQuality(quality) {
+        throw new Error('Audio players do not have video quality');
+    }
+    
+    // ISP violation - not all audio players can record
+    recordStream() {
+        throw new Error('This audio player cannot record');
+    }
+}
+
+// ✅ Follows ISP - Segregated interfaces based on capabilities
+class Playable {
+    play() {
+        throw new Error('Method must be implemented');
+    }
+    
+    stop() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Pausable {
+    pause() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Seekable {
+    seek(position) {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class VolumeControllable {
+    setVolume(volume) {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class SubtitleCapable {
+    showSubtitles() {
+        throw new Error('Method must be implemented');
+    }
+    
+    hideSubtitles() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class VideoQualityControllable {
+    changeVideoQuality(quality) {
+        throw new Error('Method must be implemented');
+    }
+}
+
+class Recordable {
+    startRecording() {
+        throw new Error('Method must be implemented');
+    }
+    
+    stopRecording() {
+        throw new Error('Method must be implemented');
+    }
+}
+
+// Mixin function to combine multiple interfaces
+function mixinInterfaces(baseClass, ...mixins) {
+    mixins.forEach(mixin => {
+        Object.getOwnPropertyNames(mixin.prototype).forEach(name => {
+            if (name !== 'constructor') {
+                baseClass.prototype[name] = mixin.prototype[name];
+            }
+        });
+    });
+}
+
+class AudioPlayer extends Playable {
+    constructor() {
+        super();
+        mixinInterfaces(this.constructor, Pausable, Seekable, VolumeControllable);
+    }
+    
+    play() {
+        console.log('Playing audio');
+    }
+    
+    stop() {
+        console.log('Stopping audio');
+    }
+    
+    pause() {
+        console.log('Pausing audio');
+    }
+    
+    seek(position) {
+        console.log(`Seeking audio to ${position}`);
+    }
+    
+    setVolume(volume) {
+        console.log(`Setting audio volume to ${volume}`);
+    }
+}
+
+class VideoPlayer extends Playable {
+    constructor() {
+        super();
+        mixinInterfaces(this.constructor, Pausable, Seekable, VolumeControllable, 
+                       SubtitleCapable, VideoQualityControllable);
+    }
+    
+    play() {
+        console.log('Playing video');
+    }
+    
+    stop() {
+        console.log('Stopping video');
+    }
+    
+    pause() {
+        console.log('Pausing video');
+    }
+    
+    seek(position) {
+        console.log(`Seeking video to ${position}`);
+    }
+    
+    setVolume(volume) {
+        console.log(`Setting video volume to ${volume}`);
+    }
+    
+    showSubtitles() {
+        console.log('Showing subtitles');
+    }
+    
+    hideSubtitles() {
+        console.log('Hiding subtitles');
+    }
+    
+    changeVideoQuality(quality) {
+        console.log(`Changing video quality to ${quality}`);
+    }
+}
+
+class LiveStreamPlayer extends Playable {
+    constructor() {
+        super();
+        mixinInterfaces(this.constructor, VolumeControllable, Recordable);
+    }
+    
+    play() {
+        console.log('Starting live stream');
+    }
+    
+    stop() {
+        console.log('Stopping live stream');
+    }
+    
+    setVolume(volume) {
+        console.log(`Setting stream volume to ${volume}`);
+    }
+    
+    startRecording() {
+        console.log('Starting stream recording');
+    }
+    
+    stopRecording() {
+        console.log('Stopping stream recording');
+    }
+}
+
+// Usage with proper interface segregation
+const audioPlayer = new AudioPlayer();
+const videoPlayer = new VideoPlayer();
+const livePlayer = new LiveStreamPlayer();
+
+// All players can play and stop
+[audioPlayer, videoPlayer, livePlayer].forEach(player => {
+    player.play();
+    player.stop();
+});
+
+// Only video and live players can control volume
+[audioPlayer, videoPlayer].forEach(player => {
+    if (typeof player.setVolume === 'function') {
+        player.setVolume(80);
+    }
+});
+
+// Only video player has subtitles
+if (typeof videoPlayer.showSubtitles === 'function') {
+    videoPlayer.showSubtitles();
+}
+
+// Only live player can record
+if (typeof livePlayer.startRecording === 'function') {
+    livePlayer.startRecording();
+}
+  </code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🌍 Real-World ISP Examples</h2>
+  <p>
+    Let's examine complex, real-world scenarios where ISP compliance is crucial for maintainable and flexible software systems.
+  </p>
+  
+  <h3>Example 1: E-commerce Order Processing</h3>
+  <pre><code class="language-csharp">// ❌ Violates ISP - Forces all processors to implement all methods
+public interface IOrderProcessor {
+    void ValidateOrder(Order order);
+    void CalculateTax(Order order);
+    void CalculateShipping(Order order);
+    void ProcessPayment(Order order);
+    void ApplyDiscount(Order order);
+    void UpdateInventory(Order order);
+    void SendConfirmationEmail(Order order);
+    void GenerateInvoice(Order order);
+    void ScheduleShipping(Order order);
+    void HandleRefund(Order order);
+    void ProcessSubscription(Order order);
+    void HandleDigitalDelivery(Order order);
+}
+
+public class SimpleOrderProcessor : IOrderProcessor {
+    public void ValidateOrder(Order order) {
+        Console.WriteLine("Validating order");
+    }
+    
+    public void CalculateTax(Order order) {
+        Console.WriteLine("Calculating tax");
+    }
+    
+    public void CalculateShipping(Order order) {
+        Console.WriteLine("Calculating shipping");
+    }
+    
+    public void ProcessPayment(Order order) {
+        Console.WriteLine("Processing payment");
+    }
+    
+    // ISP violations - simple processor doesn't handle these
+    public void ApplyDiscount(Order order) {
+        throw new NotImplementedException("Simple processor doesn't handle discounts");
+    }
+    
+    public void UpdateInventory(Order order) {
+        throw new NotImplementedException("Simple processor doesn't update inventory");
+    }
+    
+    public void SendConfirmationEmail(Order order) {
+        throw new NotImplementedException("Simple processor doesn't send emails");
+    }
+    
+    public void GenerateInvoice(Order order) {
+        throw new NotImplementedException("Simple processor doesn't generate invoices");
+    }
+    
+    public void ScheduleShipping(Order order) {
+        throw new NotImplementedException("Simple processor doesn't schedule shipping");
+    }
+    
+    public void HandleRefund(Order order) {
+        throw new NotImplementedException("Simple processor doesn't handle refunds");
+    }
+    
+    public void ProcessSubscription(Order order) {
+        throw new NotImplementedException("Simple processor doesn't handle subscriptions");
+    }
+    
+    public void HandleDigitalDelivery(Order order) {
+        throw new NotImplementedException("Simple processor doesn't handle digital delivery");
+    }
+}
+
+// ✅ Follows ISP - Segregated interfaces based on responsibilities
+public interface IOrderValidator {
+    void ValidateOrder(Order order);
+}
+
+public interface ITaxCalculator {
+    void CalculateTax(Order order);
+}
+
+public interface IShippingCalculator {
+    void CalculateShipping(Order order);
+}
+
+public interface IPaymentProcessor {
+    void ProcessPayment(Order order);
+}
+
+public interface IDiscountApplicator {
+    void ApplyDiscount(Order order);
+}
+
+public interface IInventoryManager {
+    void UpdateInventory(Order order);
+}
+
+public interface INotificationSender {
+    void SendConfirmationEmail(Order order);
+}
+
+public interface IInvoiceGenerator {
+    void GenerateInvoice(Order order);
+}
+
+public interface IShippingScheduler {
+    void ScheduleShipping(Order order);
+}
+
+public interface IRefundProcessor {
+    void HandleRefund(Order order);
+}
+
+public interface ISubscriptionProcessor {
+    void ProcessSubscription(Order order);
+}
+
+public interface IDigitalDeliveryHandler {
+    void HandleDigitalDelivery(Order order);
+}
+
+public class SimpleOrderProcessor : IOrderValidator, ITaxCalculator, 
+                                   IShippingCalculator, IPaymentProcessor {
+    public void ValidateOrder(Order order) {
+        Console.WriteLine("Validating simple order");
+    }
+    
+    public void CalculateTax(Order order) {
+        Console.WriteLine("Calculating tax for simple order");
+    }
+    
+    public void CalculateShipping(Order order) {
+        Console.WriteLine("Calculating shipping for simple order");
+    }
+    
+    public void ProcessPayment(Order order) {
+        Console.WriteLine("Processing payment for simple order");
+    }
+}
+
+public class EnterpriseOrderProcessor : IOrderValidator, ITaxCalculator, IShippingCalculator,
+                                       IPaymentProcessor, IDiscountApplicator, IInventoryManager,
+                                       INotificationSender, IInvoiceGenerator, IShippingScheduler {
+    public void ValidateOrder(Order order) {
+        Console.WriteLine("Validating enterprise order with advanced rules");
+    }
+    
+    public void CalculateTax(Order order) {
+        Console.WriteLine("Calculating tax with complex tax rules");
+    }
+    
+    public void CalculateShipping(Order order) {
+        Console.WriteLine("Calculating shipping with multiple carriers");
+    }
+    
+    public void ProcessPayment(Order order) {
+        Console.WriteLine("Processing payment with multiple gateways");
+    }
+    
+    public void ApplyDiscount(Order order) {
+        Console.WriteLine("Applying enterprise discounts");
+    }
+    
+    public void UpdateInventory(Order order) {
+        Console.WriteLine("Updating inventory across warehouses");
+    }
+    
+    public void SendConfirmationEmail(Order order) {
+        Console.WriteLine("Sending detailed confirmation email");
+    }
+    
+    public void GenerateInvoice(Order order) {
+        Console.WriteLine("Generating detailed invoice");
+    }
+    
+    public void ScheduleShipping(Order order) {
+        Console.WriteLine("Scheduling shipping with preferred carriers");
+    }
+}
+
+public class SubscriptionOrderProcessor : IOrderValidator, IPaymentProcessor, 
+                                         ISubscriptionProcessor, INotificationSender {
+    public void ValidateOrder(Order order) {
+        Console.WriteLine("Validating subscription order");
+    }
+    
+    public void ProcessPayment(Order order) {
+        Console.WriteLine("Processing recurring payment");
+    }
+    
+    public void ProcessSubscription(Order order) {
+        Console.WriteLine("Setting up subscription billing cycle");
+    }
+    
+    public void SendConfirmationEmail(Order order) {
+        Console.WriteLine("Sending subscription welcome email");
+    }
+}
+
+public class DigitalOrderProcessor : IOrderValidator, IPaymentProcessor, 
+                                    IDigitalDeliveryHandler, INotificationSender {
+    public void ValidateOrder(Order order) {
+        Console.WriteLine("Validating digital product order");
+    }
+    
+    public void ProcessPayment(Order order) {
+        Console.WriteLine("Processing payment for digital product");
+    }
+    
+    public void HandleDigitalDelivery(Order order) {
+        Console.WriteLine("Delivering digital product instantly");
+    }
+    
+    public void SendConfirmationEmail(Order order) {
+        Console.WriteLine("Sending download links via email");
+    }
+}
+
+// Usage with proper interface segregation
+public class OrderProcessingService {
+    public void ProcessOrder(Order order) {
+        IOrderValidator validator = GetValidator(order.Type);
+        validator.ValidateOrder(order);
+        
+        IPaymentProcessor paymentProcessor = GetPaymentProcessor(order.Type);
+        paymentProcessor.ProcessPayment(order);
+        
+        // Only apply tax calculation for physical products
+        if (order.RequiresTaxCalculation && GetProcessor(order.Type) is ITaxCalculator taxCalculator) {
+            taxCalculator.CalculateTax(order);
+        }
+        
+        // Only handle shipping for physical products
+        if (order.RequiresShipping && GetProcessor(order.Type) is IShippingCalculator shippingCalculator) {
+            shippingCalculator.CalculateShipping(order);
+        }
+        
+        // Handle digital delivery for digital products
+        if (order.IsDigital && GetProcessor(order.Type) is IDigitalDeliveryHandler digitalHandler) {
+            digitalHandler.HandleDigitalDelivery(order);
+        }
+        
+        // Send notifications if processor supports it
+        if (GetProcessor(order.Type) is INotificationSender notificationSender) {
+            notificationSender.SendConfirmationEmail(order);
+        }
+    }
+    
+    private object GetProcessor(OrderType type) {
+        return type switch {
+            OrderType.Simple => new SimpleOrderProcessor(),
+            OrderType.Enterprise => new EnterpriseOrderProcessor(),
+            OrderType.Subscription => new SubscriptionOrderProcessor(),
+            OrderType.Digital => new DigitalOrderProcessor(),
+            _ => throw new ArgumentException("Unknown order type")
+        };
+    }
+    
+    private IOrderValidator GetValidator(OrderType type) => (IOrderValidator)GetProcessor(type);
+    private IPaymentProcessor GetPaymentProcessor(OrderType type) => (IPaymentProcessor)GetProcessor(type);
+}
+  </code></pre>
+
+  <h3>Benefits of ISP-Compliant Design</h3>
+  <ul>
+    <li><strong>Focused Interfaces:</strong> Each interface has a single, well-defined purpose, making them easier to understand and implement.</li>
+    <li><strong>Reduced Dependencies:</strong> Clients only depend on the methods they actually use, reducing coupling and making changes safer.</li>
+    <li><strong>Better Testability:</strong> Smaller interfaces are easier to mock and test, leading to more focused unit tests.</li>
+    <li><strong>Improved Flexibility:</strong> New implementations can choose which capabilities to support without being forced to implement irrelevant methods.</li>
+    <li><strong>Enhanced Maintainability:</strong> Changes to one interface don't affect clients that don't use that interface.</li>
+    <li><strong>Clear Contracts:</strong> Interface segregation makes the contracts between components more explicit and easier to reason about.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="toc-title">🎯 ISP Implementation Guidelines</h2>
+  <p>
+    Here are key guidelines and patterns for implementing the Interface Segregation Principle effectively in your code.
+  </p>
+  
+  <h3>1. Role-Based Interface Design</h3>
+  <p>
+    Design interfaces around the roles and responsibilities that clients actually need.
+  </p>
+  <pre><code class="language-java">// ✅ Good: Role-based interface segregation
+public interface Readable {
+    String read();
+}
+
+public interface Writable {
+    void write(String content);
+}
+
+public interface Searchable {
+    List<String> search(String query);
+}
+
+public interface Cacheable {
+    void cache(String key, Object value);
+    Object getFromCache(String key);
+}
+
+// Different implementations can choose their capabilities
+public class FileDataSource implements Readable, Writable {
+    @Override
+    public String read() {
+        return "File content";
+    }
+    
+    @Override
+    public void write(String content) {
+        System.out.println("Writing to file: " + content);
+    }
+}
+
+public class DatabaseDataSource implements Readable, Writable, Searchable, Cacheable {
+    private Map<String, Object> cache = new HashMap<>();
+    
+    @Override
+    public String read() {
+        return "Database content";
+    }
+    
+    @Override
+    public void write(String content) {
+        System.out.println("Writing to database: " + content);
+    }
+    
+    @Override
+    public List<String> search(String query) {
+        return Arrays.asList("Search result 1", "Search result 2");
+    }
+    
+    @Override
+    public void cache(String key, Object value) {
+        cache.put(key, value);
+    }
+    
+    @Override
+    public Object getFromCache(String key) {
+        return cache.get(key);
+    }
+}
+
+public class ReadOnlyApiSource implements Readable, Searchable {
+    @Override
+    public String read() {
+        return "API response";
+    }
+    
+    @Override
+    public List<String> search(String query) {
+        return Arrays.asList("API search result");
+    }
+}
+
+// Client code uses only what it needs
+public class DataProcessor {
+    public void processReadableData(Readable dataSource) {
+        String data = dataSource.read();
+        System.out.println("Processing: " + data);
+    }
+    
+    public void searchData(Searchable dataSource, String query) {
+        List<String> results = dataSource.search(query);
+        results.forEach(System.out::println);
+    }
+    
+    public void cacheData(Cacheable dataSource, String key, Object value) {
+        dataSource.cache(key, value);
+    }
+}
+  </code></pre>
+
+  <h3>2. Capability-Based Segregation</h3>
+  <p>
+    Group methods by capabilities rather than by objects or domains.
+  </p>
+  <pre><code class="language-python"># ✅ Good: Capability-based interface design
+from abc import ABC, abstractmethod
+from typing import List, Optional
+
+class Authenticatable(ABC):
+    @abstractmethod
+    def authenticate(self, username: str, password: str) -> bool:
+        pass
+
+class Authorizable(ABC):
+    @abstractmethod
+    def has_permission(self, user_id: str, permission: str) -> bool:
+        pass
+
+class Auditable(ABC):
+    @abstractmethod
+    def log_action(self, user_id: str, action: str, timestamp: str):
+        pass
+
+class Cacheable(ABC):
+    @abstractmethod
+    def get_from_cache(self, key: str) -> Optional[str]:
+        pass
+    
+    @abstractmethod
+    def put_in_cache(self, key: str, value: str):
+        pass
+
+class Configurable(ABC):
+    @abstractmethod
+    def get_config(self, key: str) -> str:
+        pass
+    
+    @abstractmethod
+    def set_config(self, key: str, value: str):
+        pass
+
+# Different service implementations choose their capabilities
+class BasicUserService(Authenticatable):
+    def authenticate(self, username: str, password: str) -> bool:
+        print(f"Authenticating user: {username}")
+        return username == "admin" and password == "password"
+
+class EnterpriseUserService(Authenticatable, Authorizable, Auditable, Cacheable):
+    def __init__(self):
+        self.cache = {}
+        self.audit_log = []
+    
+    def authenticate(self, username: str, password: str) -> bool:
+        result = username == "admin" and password == "password"
+        self.log_action(username, "authenticate", "2025-08-10T10:00:00Z")
+        return result
+    
+    def has_permission(self, user_id: str, permission: str) -> bool:
+        self.log_action(user_id, f"check_permission:{permission}", "2025-08-10T10:00:00Z")
+        return True  # Simplified logic
+    
+    def log_action(self, user_id: str, action: str, timestamp: str):
+        self.audit_log.append(f"{timestamp} - {user_id}: {action}")
+        print(f"Audit: {timestamp} - {user_id}: {action}")
+    
+    def get_from_cache(self, key: str) -> Optional[str]:
+        return self.cache.get(key)
+    
+    def put_in_cache(self, key: str, value: str):
+        self.cache[key] = value
+
+class ConfigurableUserService(Authenticatable, Configurable):
+    def __init__(self):
+        self.config = {}
+    
+    def authenticate(self, username: str, password: str) -> bool:
+        min_password_length = int(self.get_config("min_password_length") or "8")
+        if len(password) < min_password_length:
+            return False
+        return username == "admin" and password == "password"
+    
+    def get_config(self, key: str) -> str:
+        return self.config.get(key, "")
+    
+    def set_config(self, key: str, value: str):
+        self.config[key] = value
+        print(f"Config set: {key} = {value}")
+
+# Client code uses only required capabilities
+class AuthenticationController:
+    def __init__(self, auth_service: Authenticatable):
+        self.auth_service = auth_service
+    
+    def login(self, username: str, password: str) -> bool:
+        return self.auth_service.authenticate(username, password)
+
+class AuditController:
+    def __init__(self, audit_service: Auditable):
+        self.audit_service = audit_service
+    
+    def log_user_action(self, user_id: str, action: str):
+        self.audit_service.log_action(user_id, action, "2025-08-10T10:00:00Z")
+
+class CacheController:
+    def __init__(self, cache_service: Cacheable):
+        self.cache_service = cache_service
+    
+    def get_cached_data(self, key: str) -> Optional[str]:
+        return self.cache_service.get_from_cache(key)
+    
+    def cache_data(self, key: str, value: str):
+        self.cache_service.put_in_cache(key, value)
+
+# Usage
+basic_service = BasicUserService()
+enterprise_service = EnterpriseUserService()
+configurable_service = ConfigurableUserService()
+
+# Each controller only depends on what it needs
+auth_controller = AuthenticationController(basic_service)  # Can use any Authenticatable
+audit_controller = AuditController(enterprise_service)     # Needs Auditable
+cache_controller = CacheController(enterprise_service)     # Needs Cacheable
+
+# This promotes flexibility and testability
+auth_controller.login("admin", "password")
+audit_controller.log_user_action("user123", "login")
+cache_controller.cache_data("user_session", "abc123")
+  </code></pre>
+
+  <h3>3. Progressive Interface Composition</h3>
+  <p>
+    Build complex interfaces by composing simpler ones, allowing clients to implement only what they need.
+  </p>
+  <pre><code class="language-typescript">// ✅ Good: Progressive interface composition
+interface Readable {
+    read(): string;
+}
+
+interface Writable {
+    write(content: string): void;
+}
+
+interface Seekable {
+    seek(position: number): void;
+    getPosition(): number;
+}
+
+interface Lockable {
+    lock(): void;
+    unlock(): void;
+    isLocked(): boolean;
+}
+
+interface Compressible {
+    compress(): void;
+    decompress(): void;
+}
+
+interface Encryptable {
+    encrypt(key: string): void;
+    decrypt(key: string): void;
+}
+
+// Progressive composition - clients implement what they support
+interface BasicFile extends Readable, Writable {}
+
+interface AdvancedFile extends BasicFile, Seekable {}
+
+interface SecureFile extends AdvancedFile, Lockable, Encryptable {}
+
+interface ArchiveFile extends SecureFile, Compressible {}
+
+// Implementations choose their level of functionality
+class SimpleTextFile implements BasicFile {
+    private content: string = "";
+    
+    read(): string {
+        return this.content;
+    }
+    
+    write(content: string): void {
+        this.content = content;
+    }
+}
+
+class BinaryFile implements AdvancedFile {
+    private content: string = "";
+    private position: number = 0;
+    
+    read(): string {
+        return this.content.substring(this.position);
+    }
+    
+    write(content: string): void {
+        this.content = content;
+    }
+    
+    seek(position: number): void {
+        this.position = position;
+    }
+    
+    getPosition(): number {
+        return this.position;
+    }
+}
+
+class EncryptedFile implements SecureFile {
+    private content: string = "";
+    private position: number = 0;
+    private locked: boolean = false;
+    private encrypted: boolean = false;
+    
+    read(): string {
+        if (this.locked) {
+            throw new Error("File is locked");
+        }
+        if (this.encrypted) {
+            throw new Error("File is encrypted");
+        }
+        return this.content.substring(this.position);
+    }
+    
+    write(content: string): void {
+        if (this.locked) {
+            throw new Error("File is locked");
+        }
+        this.content = content;
+    }
+    
+    seek(position: number): void {
+        this.position = position;
+    }
+    
+    getPosition(): number {
+        return this.position;
+    }
+    
+    lock(): void {
+        this.locked = true;
+    }
+    
+    unlock(): void {
+        this.locked = false;
+    }
+    
+    isLocked(): boolean {
+        return this.locked;
+    }
+    
+    encrypt(key: string): void {
+        this.encrypted = true;
+        console.log(`File encrypted with key: ${key}`);
+    }
+    
+    decrypt(key: string): void {
+        this.encrypted = false;
+        console.log(`File decrypted with key: ${key}`);
+    }
+}
+
+// Client functions work with appropriate interface levels
+function readFile(file: Readable): string {
+    return file.read();
+}
+
+function writeFile(file: Writable, content: string): void {
+    file.write(content);
+}
+
+function seekInFile(file: Seekable, position: number): void {
+    file.seek(position);
+}
+
+function secureFile(file: Lockable & Encryptable, key: string): void {
+    file.lock();
+    file.encrypt(key);
+}
+
+// Usage demonstrates flexibility
+const simpleFile = new SimpleTextFile();
+const binaryFile = new BinaryFile();
+const encryptedFile = new EncryptedFile();
+
+// All files can be read
+[simpleFile, binaryFile, encryptedFile].forEach(file => {
+    console.log(readFile(file));
+});
+
+// Only advanced and secure files can seek
+[binaryFile, encryptedFile].forEach(file => {
+    seekInFile(file, 10);
+});
+
+// Only secure files can be locked and encrypted
+secureFile(encryptedFile, "secret-key");
+  </code></pre>
+
+  <h3>Key ISP Guidelines Summary</h3>
+  <ul>
+    <li><strong>Keep Interfaces Small and Focused:</strong> Each interface should have a single, well-defined responsibility.</li>
+    <li><strong>Design for Client Needs:</strong> Create interfaces based on what clients actually need, not what objects can do.</li>
+    <li><strong>Use Composition Over Large Interfaces:</strong> Combine small interfaces rather than creating large, monolithic ones.</li>
+    <li><strong>Avoid Fat Interfaces:</strong> If an interface has many methods, consider breaking it into smaller, more focused interfaces.</li>
+    <li><strong>Think About Capabilities:</strong> Group methods by what they enable clients to do, not by object relationships.</li>
+    <li><strong>Consider Optional Dependencies:</strong> Use interface segregation to make some dependencies optional.</li>
+    <li><strong>Review Interface Usage:</strong> Regularly review which methods clients actually use and segregate accordingly.</li>
+  </ul>
+</section>
+
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/liskov-substitution-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/dependency-inversion-principle">Next <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/liskov-substitution-principle"><span aria-hidden="true">&#8592;</span> Liskov Substitution Principle - Building Reliable Inheritance Hierarchies</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 next text-center">
+        <a href="/blogs/design-principles/dependency-inversion-principle">Dependency Inversion Principle - Building Flexible, Testable Architectures <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>

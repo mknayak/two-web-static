@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Master the Dependency Inversion Principle (DIP) and learn how to build flexible, testable architectures through dependency injection and inversion of control. Includes comprehensive examples in C#, Python, and JavaScript with enterprise patterns and testing strategies." />
+        <meta property='og:title' content='Dependency Inversion Principle - Building Flexible, Testable Architectures'/>
+        <meta property='og:image' content='/assets/images/blogs/design-principles/dip-banner.webp'/>
+        <meta property='og:description' content='Master the Dependency Inversion Principle (DIP) and learn how to build flexible, testable architectures through dependency injection and inversion of control. Includes comprehensive examples in C#, Python, and JavaScript with enterprise patterns and testing strategies.'/> 
+        <title>Dependency Inversion Principle - Building Flexible, Testable Architectures | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+
+<section class="bg-light py-5">
+    
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <!-- TOC Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div id="toc" class="toc-container d-none">
+                    <strong class="mb-2 d-block">🧭 On this page</strong>
+                    <ul class="toc-list"></ul>
+                </div>
+            </aside>
+            <div class="col-lg-9">
+                
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/interface-segregation-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-secondary" href="/blogs"> Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/interface-segregation-principle"><span aria-hidden="true">&#8592;</span> Interface Segregation Principle - Design Focused, Client-Specific Interfaces</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 end text-center">
+        <a href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <div class="toc-title"></div>
+                <div class="single-post">
+                    <h1>Dependency Inversion Principle - Building Flexible, Testable Architectures</h1>
+                    <p class="lead">Master the Dependency Inversion Principle (DIP) and learn how to build flexible, testable architectures through dependency injection and inversion of control. Includes comprehensive examples in C#, Python, and JavaScript with enterprise patterns and testing strategies.</p>
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <div class="single-post-meta me-4">
+                            <img class="single-post-meta-img" src="/assets/images/emoji/manas-mk.webp" />
+                            <div class="single-post-meta-details">
+                                <div class="single-post-meta-details-name">Tech Buddy</div>
+                                <div class="single-post-meta-details-date">10-Aug, 2025 &middot;
+                                    16 min read</div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://discord.gg/U4tQB4Cw" target="_blank" class="btn btn-outline-primary mt-2">
+                                <i class="fab fa-discord"></i> Join our Discord
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-fluid mb-2 rounded" src="/assets/images/blogs/design-principles/dip-banner.webp" />
+
+                    <div class="single-post-text my-5">
+                        <section>
+  <h2 class="toc-title">🔄 Understanding the Dependency Inversion Principle</h2>
+  <p>
+    The Dependency Inversion Principle (DIP) is the fifth and final principle in the SOLID design principles, introduced by Robert C. Martin. It states that <strong>high-level modules should not depend on low-level modules. Both should depend on abstractions</strong>. Additionally, <strong>abstractions should not depend on details. Details should depend on abstractions</strong>.
+  </p>
+  <p>
+    This principle is often implemented through Dependency Injection (DI), which is a technique for achieving Inversion of Control (IoC). By inverting dependencies, you create flexible, testable, and maintainable code that can easily adapt to changing requirements.
+  </p>
+  <p>
+    When DIP is violated, the consequences can be significant:
+  </p>
+  <ul>
+    <li><strong>Tight Coupling:</strong> High-level modules become tightly coupled to low-level implementation details, making changes difficult and risky.</li>
+    <li><strong>Testing Difficulties:</strong> Direct dependencies on concrete classes make unit testing challenging, as you cannot easily mock or substitute dependencies.</li>
+    <li><strong>Reduced Flexibility:</strong> Changes to low-level modules can cascade through the entire system, requiring modifications to multiple high-level modules.</li>
+    <li><strong>Poor Reusability:</strong> High-level modules become tied to specific implementations, reducing their reusability across different contexts.</li>
+    <li><strong>Configuration Rigidity:</strong> Runtime behavior becomes fixed at compile time, preventing dynamic configuration and plugin architectures.</li>
+    <li><strong>Deployment Complexity:</strong> Different environments require code changes rather than configuration changes, increasing deployment complexity.</li>
+  </ul>
+  <p>
+    By adhering to DIP, you create systems that are loosely coupled, easily testable, and highly configurable, allowing your software to adapt gracefully to changing requirements.
+  </p>
+</section>
+
+<section>
+  <h2 class="toc-title">💻 Examples of DIP in Action</h2>
+  <p>
+    Let's explore how DIP can be applied in real-world scenarios using multiple programming languages. These examples demonstrate common violations and how to refactor them using dependency injection and inversion of control.
+  </p>
+  
+  <h3>Basic Example: Email Service</h3>
+  <pre><code class="language-csharp">// ❌ Violates DIP - High-level module depends on low-level concrete class
+public class OrderService {
+    private readonly SmtpEmailService emailService;
+    
+    public OrderService() {
+        emailService = new SmtpEmailService(); // Direct dependency
+    }
+    
+    public void ProcessOrder(Order order) {
+        // Process order logic
+        emailService.SendEmail(order.CustomerEmail, "Order Confirmation", "Your order has been processed.");
+    }
+}
+
+public class SmtpEmailService {
+    public void SendEmail(string to, string subject, string body) {
+        // SMTP implementation
+        Console.WriteLine($"Sending SMTP email to {to}");
+    }
+}
+
+// ✅ Follows DIP - Depends on abstraction
+public interface IEmailService {
+    void SendEmail(string to, string subject, string body);
+}
+
+public class OrderService {
+    private readonly IEmailService emailService;
+    
+    public OrderService(IEmailService emailService) {
+        this.emailService = emailService; // Dependency injected
+    }
+    
+    public void ProcessOrder(Order order) {
+        // Process order logic
+        emailService.SendEmail(order.CustomerEmail, "Order Confirmation", "Your order has been processed.");
+    }
+}
+
+public class SmtpEmailService : IEmailService {
+    public void SendEmail(string to, string subject, string body) {
+        Console.WriteLine($"Sending SMTP email to {to}");
+    }
+}
+
+public class SendGridEmailService : IEmailService {
+    public void SendEmail(string to, string subject, string body) {
+        Console.WriteLine($"Sending SendGrid email to {to}");
+    }
+}</code></pre>
+
+  <h3>Python Example: Database Access</h3>
+  <pre><code class="language-python"># ❌ Violates DIP - Direct dependency on MySQL implementation
+import mysql.connector
+
+class UserService:
+    def __init__(self):
+        self.connection = mysql.connector.connect(
+            host='localhost',
+            database='myapp',
+            user='root',
+            password='password'
+        )
+    
+    def get_user(self, user_id):
+        cursor = self.connection.cursor()
+        cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+        return cursor.fetchone()
+
+# ✅ Follows DIP - Depends on abstraction
+from abc import ABC, abstractmethod
+
+class DatabaseRepository(ABC):
+    @abstractmethod
+    def find_by_id(self, table, user_id):
+        pass
+    
+    @abstractmethod
+    def save(self, table, data):
+        pass
+
+class UserService:
+    def __init__(self, repository: DatabaseRepository):
+        self.repository = repository
+    
+    def get_user(self, user_id):
+        return self.repository.find_by_id('users', user_id)
+    
+    def save_user(self, user_data):
+        return self.repository.save('users', user_data)
+
+class MySQLRepository(DatabaseRepository):
+    def __init__(self, connection_string):
+        self.connection = mysql.connector.connect(connection_string)
+    
+    def find_by_id(self, table, user_id):
+        cursor = self.connection.cursor()
+        cursor.execute(f"SELECT * FROM {table} WHERE id = %s", (user_id,))
+        return cursor.fetchone()
+    
+    def save(self, table, data):
+        # MySQL-specific save implementation
+        pass
+
+class MongoRepository(DatabaseRepository):
+    def __init__(self, connection_string):
+        from pymongo import MongoClient
+        self.client = MongoClient(connection_string)
+        self.db = self.client.myapp
+    
+    def find_by_id(self, table, user_id):
+        collection = self.db[table]
+        return collection.find_one({'_id': user_id})
+    
+    def save(self, table, data):
+        # MongoDB-specific save implementation
+        collection = self.db[table]
+        return collection.insert_one(data)</code></pre>
+
+  <h3>JavaScript Example: API Client</h3>
+  <pre><code class="language-javascript">// ❌ Violates DIP - Hardcoded to fetch API
+class WeatherService {
+    constructor() {
+        this.apiUrl = 'https://api.openweathermap.org';
+    }
+    
+    async getWeather(city) {
+        const response = await fetch(`${this.apiUrl}/weather?q=${city}`);
+        return response.json();
+    }
+}
+
+// ✅ Follows DIP - Depends on abstraction
+class WeatherService {
+    constructor(httpClient) {
+        this.httpClient = httpClient;
+    }
+    
+    async getWeather(city) {
+        return await this.httpClient.get(`/weather?q=${city}`);
+    }
+}
+
+class FetchHttpClient {
+    constructor(baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+    
+    async get(endpoint) {
+        const response = await fetch(`${this.baseUrl}${endpoint}`);
+        return response.json();
+    }
+    
+    async post(endpoint, data) {
+        const response = await fetch(`${this.baseUrl}${endpoint}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    }
+}
+
+class AxiosHttpClient {
+    constructor(baseUrl) {
+        this.axios = require('axios').create({ baseURL: baseUrl });
+    }
+    
+    async get(endpoint) {
+        const response = await this.axios.get(endpoint);
+        return response.data;
+    }
+    
+    async post(endpoint, data) {
+        const response = await this.axios.post(endpoint, data);
+        return response.data;
+    }
+}
+
+// Usage with different implementations
+const fetchClient = new FetchHttpClient('https://api.openweathermap.org');
+const axiosClient = new AxiosHttpClient('https://api.openweathermap.org');
+
+const weatherServiceWithFetch = new WeatherService(fetchClient);
+const weatherServiceWithAxios = new WeatherService(axiosClient);</code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🌍 Real-World DIP Examples</h2>
+  <p>
+    Let's examine more complex, real-world scenarios where DIP provides significant benefits in enterprise applications.
+  </p>
+
+  <h3>Enterprise E-Commerce System</h3>
+  <pre><code class="language-csharp">// ❌ Violates DIP - Tightly coupled to specific implementations
+public class OrderProcessor {
+    private readonly SqlServerRepository repository;
+    private readonly StripePaymentGateway paymentGateway;
+    private readonly SmtpEmailService emailService;
+    private readonly FileLogger logger;
+    
+    public OrderProcessor() {
+        repository = new SqlServerRepository();
+        paymentGateway = new StripePaymentGateway();
+        emailService = new SmtpEmailService();
+        logger = new FileLogger();
+    }
+    
+    public async Task ProcessOrderAsync(Order order) {
+        logger.Log("Processing order: " + order.Id);
+        
+        var payment = await paymentGateway.ProcessPaymentAsync(order.Amount);
+        if (payment.IsSuccessful) {
+            await repository.SaveOrderAsync(order);
+            await emailService.SendConfirmationAsync(order.CustomerEmail);
+        }
+    }
+}
+
+// ✅ Follows DIP - Depends on abstractions with proper DI
+public interface IRepository {
+    Task SaveOrderAsync(Order order);
+    Task<Order> GetOrderAsync(int orderId);
+}
+
+public interface IPaymentGateway {
+    Task<PaymentResult> ProcessPaymentAsync(decimal amount);
+}
+
+public interface IEmailService {
+    Task SendConfirmationAsync(string email);
+}
+
+public interface ILogger {
+    void Log(string message);
+    void LogError(string message, Exception ex);
+}
+
+public class OrderProcessor {
+    private readonly IRepository repository;
+    private readonly IPaymentGateway paymentGateway;
+    private readonly IEmailService emailService;
+    private readonly ILogger logger;
+    
+    public OrderProcessor(
+        IRepository repository,
+        IPaymentGateway paymentGateway,
+        IEmailService emailService,
+        ILogger logger) {
+        this.repository = repository;
+        this.paymentGateway = paymentGateway;
+        this.emailService = emailService;
+        this.logger = logger;
+    }
+    
+    public async Task ProcessOrderAsync(Order order) {
+        logger.Log($"Processing order: {order.Id}");
+        
+        try {
+            var payment = await paymentGateway.ProcessPaymentAsync(order.Amount);
+            if (payment.IsSuccessful) {
+                await repository.SaveOrderAsync(order);
+                await emailService.SendConfirmationAsync(order.CustomerEmail);
+                logger.Log($"Order {order.Id} processed successfully");
+            }
+        }
+        catch (Exception ex) {
+            logger.LogError($"Failed to process order {order.Id}", ex);
+            throw;
+        }
+    }
+}
+
+// Multiple implementations
+public class SqlServerRepository : IRepository {
+    public async Task SaveOrderAsync(Order order) { /* SQL Server implementation */ }
+    public async Task<Order> GetOrderAsync(int orderId) { /* SQL Server implementation */ }
+}
+
+public class CosmosDbRepository : IRepository {
+    public async Task SaveOrderAsync(Order order) { /* Cosmos DB implementation */ }
+    public async Task<Order> GetOrderAsync(int orderId) { /* Cosmos DB implementation */ }
+}
+
+public class StripePaymentGateway : IPaymentGateway {
+    public async Task<PaymentResult> ProcessPaymentAsync(decimal amount) { /* Stripe implementation */ }
+}
+
+public class PayPalPaymentGateway : IPaymentGateway {
+    public async Task<PaymentResult> ProcessPaymentAsync(decimal amount) { /* PayPal implementation */ }
+}</code></pre>
+
+  <h3>Microservices Communication</h3>
+  <pre><code class="language-python"># ✅ DIP-compliant microservices architecture
+from abc import ABC, abstractmethod
+from typing import Dict, Any
+import json
+
+class MessageBroker(ABC):
+    @abstractmethod
+    async def publish(self, topic: str, message: Dict[str, Any]) -> None:
+        pass
+    
+    @abstractmethod
+    async def subscribe(self, topic: str, handler) -> None:
+        pass
+
+class ConfigurationProvider(ABC):
+    @abstractmethod
+    def get_setting(self, key: str) -> str:
+        pass
+
+class HealthChecker(ABC):
+    @abstractmethod
+    async def check_health(self, service_name: str) -> bool:
+        pass
+
+class UserService:
+    def __init__(self, 
+                 message_broker: MessageBroker,
+                 config_provider: ConfigurationProvider,
+                 health_checker: HealthChecker):
+        self.message_broker = message_broker
+        self.config_provider = config_provider
+        self.health_checker = health_checker
+    
+    async def create_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
+        # Create user logic
+        user = {'id': 123, 'name': user_data['name'], 'email': user_data['email']}
+        
+        # Publish user created event
+        await self.message_broker.publish('user.created', {
+            'user_id': user['id'],
+            'email': user['email'],
+            'timestamp': '2025-08-10T12:00:00Z'
+        })
+        
+        return user
+    
+    async def get_user_profile(self, user_id: int) -> Dict[str, Any]:
+        # Check if profile service is healthy
+        profile_service_url = self.config_provider.get_setting('profile_service_url')
+        is_healthy = await self.health_checker.check_health('profile-service')
+        
+        if not is_healthy:
+            return {'error': 'Profile service unavailable'}
+        
+        # Get user profile from profile service
+        return {'user_id': user_id, 'profile': 'user profile data'}
+
+# Implementation classes
+class RabbitMQMessageBroker(MessageBroker):
+    async def publish(self, topic: str, message: Dict[str, Any]) -> None:
+        print(f"Publishing to RabbitMQ topic {topic}: {json.dumps(message)}")
+    
+    async def subscribe(self, topic: str, handler) -> None:
+        print(f"Subscribing to RabbitMQ topic {topic}")
+
+class KafkaMessageBroker(MessageBroker):
+    async def publish(self, topic: str, message: Dict[str, Any]) -> None:
+        print(f"Publishing to Kafka topic {topic}: {json.dumps(message)}")
+    
+    async def subscribe(self, topic: str, handler) -> None:
+        print(f"Subscribing to Kafka topic {topic}")
+
+class EnvironmentConfigProvider(ConfigurationProvider):
+    def get_setting(self, key: str) -> str:
+        import os
+        return os.getenv(key, '')
+
+class ConsulConfigProvider(ConfigurationProvider):
+    def get_setting(self, key: str) -> str:
+        # Consul implementation
+        return f"consul_value_for_{key}"
+
+class HttpHealthChecker(HealthChecker):
+    async def check_health(self, service_name: str) -> bool:
+        # HTTP health check implementation
+        return True</code></pre>
+</section>
+
+<section>
+  <h2 class="toc-title">🎯 DIP Implementation Guidelines</h2>
+  <p>
+    Here are practical guidelines and patterns for implementing the Dependency Inversion Principle effectively in your applications.
+  </p>
+
+  <h3>1. Dependency Injection Container Pattern</h3>
+  <pre><code class="language-csharp">// ✅ Using built-in DI container in .NET
+public class Startup {
+    public void ConfigureServices(IServiceCollection services) {
+        // Register dependencies
+        services.AddScoped&lt;IRepository, SqlServerRepository&gt;();
+        services.AddScoped&lt;IEmailService, SendGridEmailService&gt;();
+        services.AddScoped&lt;IPaymentGateway, StripePaymentGateway&gt;();
+        services.AddSingleton&lt;ILogger, ApplicationLogger&gt;();
+        
+        // Register high-level services
+        services.AddScoped&lt;OrderProcessor&gt;();
+        services.AddScoped&lt;UserService&gt;();
+    }
+}
+
+// ✅ Constructor injection with multiple dependencies
+public class OrderController : ControllerBase {
+    private readonly OrderProcessor orderProcessor;
+    private readonly ILogger logger;
+    
+    public OrderController(OrderProcessor orderProcessor, ILogger logger) {
+        this.orderProcessor = orderProcessor;
+        this.logger = logger;
+    }
+    
+    [HttpPost]
+    public async Task&lt;IActionResult&gt; CreateOrder([FromBody] CreateOrderRequest request) {
+        try {
+            var order = new Order { /* map from request */ };
+            await orderProcessor.ProcessOrderAsync(order);
+            return Ok();
+        }
+        catch (Exception ex) {
+            logger.LogError("Order creation failed", ex);
+            return StatusCode(500);
+        }
+    }
+}</code></pre>
+
+  <h3>2. Factory Pattern with DIP</h3>
+  <pre><code class="language-csharp">// ✅ Abstract factory for creating related dependencies
+public interface IServiceFactory {
+    IPaymentGateway CreatePaymentGateway(string provider);
+    IEmailService CreateEmailService(string provider);
+}
+
+public class ServiceFactory : IServiceFactory {
+    private readonly IServiceProvider serviceProvider;
+    
+    public ServiceFactory(IServiceProvider serviceProvider) {
+        this.serviceProvider = serviceProvider;
+    }
+    
+    public IPaymentGateway CreatePaymentGateway(string provider) {
+        return provider.ToLower() switch {
+            "stripe" => serviceProvider.GetService&lt;StripePaymentGateway&gt;(),
+            "paypal" => serviceProvider.GetService&lt;PayPalPaymentGateway&gt;(),
+            _ => throw new ArgumentException($"Unknown payment provider: {provider}")
+        };
+    }
+    
+    public IEmailService CreateEmailService(string provider) {
+        return provider.ToLower() switch {
+            "smtp" => serviceProvider.GetService&lt;SmtpEmailService&gt;(),
+            "sendgrid" => serviceProvider.GetService&lt;SendGridEmailService&gt;(),
+            _ => throw new ArgumentException($"Unknown email provider: {provider}")
+        };
+    }
+}</code></pre>
+
+  <h3>3. Configuration-Driven Dependency Selection</h3>
+  <pre><code class="language-javascript">// ✅ Configuration-based dependency injection in Node.js
+class DependencyContainer {
+    constructor(config) {
+        this.config = config;
+        this.dependencies = new Map();
+        this.registerDependencies();
+    }
+    
+    registerDependencies() {
+        // Register database based on configuration
+        if (this.config.database.type === 'mongodb') {
+            this.dependencies.set('repository', new MongoRepository(this.config.database.connectionString));
+        } else if (this.config.database.type === 'postgresql') {
+            this.dependencies.set('repository', new PostgreSQLRepository(this.config.database.connectionString));
+        }
+        
+        // Register payment gateway based on configuration
+        if (this.config.payment.provider === 'stripe') {
+            this.dependencies.set('paymentGateway', new StripePaymentGateway(this.config.payment.apiKey));
+        } else if (this.config.payment.provider === 'paypal') {
+            this.dependencies.set('paymentGateway', new PayPalPaymentGateway(this.config.payment.credentials));
+        }
+        
+        // Register logger based on environment
+        if (this.config.environment === 'production') {
+            this.dependencies.set('logger', new CloudLogger(this.config.logging.cloudConfig));
+        } else {
+            this.dependencies.set('logger', new ConsoleLogger());
+        }
+    }
+    
+    get(dependencyName) {
+        if (!this.dependencies.has(dependencyName)) {
+            throw new Error(`Dependency '${dependencyName}' not registered`);
+        }
+        return this.dependencies.get(dependencyName);
+    }
+    
+    createOrderService() {
+        return new OrderService(
+            this.get('repository'),
+            this.get('paymentGateway'),
+            this.get('logger')
+        );
+    }
+}
+
+// Usage
+const config = {
+    database: { type: 'mongodb', connectionString: 'mongodb://localhost:27017/myapp' },
+    payment: { provider: 'stripe', apiKey: 'sk_test_...' },
+    environment: 'development',
+    logging: { level: 'debug' }
+};
+
+const container = new DependencyContainer(config);
+const orderService = container.createOrderService();</code></pre>
+
+  <h3>4. Testing with DIP</h3>
+  <pre><code class="language-python"># ✅ Easy unit testing with dependency injection
+import unittest
+from unittest.mock import Mock, AsyncMock
+import pytest
+
+class TestOrderProcessor(unittest.TestCase):
+    def setUp(self):
+        # Create mocks for all dependencies
+        self.mock_repository = Mock()
+        self.mock_payment_gateway = Mock()
+        self.mock_email_service = Mock()
+        self.mock_logger = Mock()
+        
+        # Create the service under test with mocked dependencies
+        self.order_processor = OrderProcessor(
+            repository=self.mock_repository,
+            payment_gateway=self.mock_payment_gateway,
+            email_service=self.mock_email_service,
+            logger=self.mock_logger
+        )
+    
+    async def test_successful_order_processing(self):
+        # Arrange
+        order = Order(id=1, amount=100.0, customer_email="test@example.com")
+        payment_result = PaymentResult(is_successful=True, transaction_id="txn_123")
+        
+        self.mock_payment_gateway.process_payment_async.return_value = payment_result
+        self.mock_repository.save_order_async.return_value = None
+        self.mock_email_service.send_confirmation_async.return_value = None
+        
+        # Act
+        await self.order_processor.process_order_async(order)
+        
+        # Assert
+        self.mock_payment_gateway.process_payment_async.assert_called_once_with(100.0)
+        self.mock_repository.save_order_async.assert_called_once_with(order)
+        self.mock_email_service.send_confirmation_async.assert_called_once_with("test@example.com")
+        self.mock_logger.log.assert_called()
+    
+    async def test_failed_payment_processing(self):
+        # Arrange
+        order = Order(id=1, amount=100.0, customer_email="test@example.com")
+        payment_result = PaymentResult(is_successful=False, error_message="Insufficient funds")
+        
+        self.mock_payment_gateway.process_payment_async.return_value = payment_result
+        
+        # Act
+        await self.order_processor.process_order_async(order)
+        
+        # Assert
+        self.mock_payment_gateway.process_payment_async.assert_called_once_with(100.0)
+        self.mock_repository.save_order_async.assert_not_called()
+        self.mock_email_service.send_confirmation_async.assert_not_called()</code></pre>
+
+  <h3>5. DIP Best Practices</h3>
+  <ul>
+    <li><strong>Define Clear Abstractions:</strong> Create interfaces that represent business capabilities rather than implementation details.</li>
+    <li><strong>Use Constructor Injection:</strong> Prefer constructor injection over property or method injection for required dependencies.</li>
+    <li><strong>Avoid Service Locator:</strong> Don't use the service locator pattern as it creates hidden dependencies and makes testing difficult.</li>
+    <li><strong>Keep Interfaces Focused:</strong> Follow the Interface Segregation Principle when designing abstractions for DIP.</li>
+    <li><strong>Use Composition Root:</strong> Configure all dependencies in a single location (composition root) at the application's entry point.</li>
+    <li><strong>Avoid Circular Dependencies:</strong> Design your dependency graph to be acyclic and hierarchical.</li>
+    <li><strong>Consider Lifetime Management:</strong> Choose appropriate lifetimes (singleton, scoped, transient) for your dependencies.</li>
+    <li><strong>Use Factory Pattern for Complex Creation:</strong> When object creation involves complex logic, use factories that are also injected as dependencies.</li>
+  </ul>
+</section>
+                    </div>
+                </div>
+                
+    
+<div class="blog-nav container row">
+
+  <!-- Small screens: show Previous/Next only -->
+  <div class="d-block d-md-none w-100 text-center mb-3">
+    <div class="row">
+      <div class="col-5 text-start">
+          <a class="btn btn-outline-primary" href="/blogs/design-principles/interface-segregation-principle"><span aria-hidden="true">&#8592;</span> Previous</a>
+      </div>
+      <div class="col-5 text-end">
+          <a class="btn btn-outline-secondary" href="/blogs"> Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium and up: show blog titles -->
+  <div class="d-none d-md-flex w-100">
+      <div class="col-md-4 col-sm-3 prev">
+        <a href="/blogs/design-principles/interface-segregation-principle"><span aria-hidden="true">&#8592;</span> Interface Segregation Principle - Design Focused, Client-Specific Interfaces</a>
+      </div>
+    <div class="col-md-4 col-sm-3 group text-center">
+      <a href="/blogs/groups/design-principles">Design Principles</a>
+    </div>
+      <div class="col-md-4 col-sm-3 end text-center">
+        <a href="/blogs">Return to Blog Series <span aria-hidden="true">&#8594;</span></a>
+      </div>
+  </div>
+</div>
+                <hr class="my-5" />
+                <div class="container mt-5">
+                    <h4 class="mb-3 toc-title">✍️ Leave a Comment</h4>
+                    <form id="commentForm">
+                        <input type="hidden" id="blogUrl" value="" />
+                        <div class="mb-3">
+                            <label for="commentName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="commentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="commentText" class="form-label">Your Comment</label>
+                            <textarea class="form-control" id="commentText" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <div id="commentSuccess" class="alert alert-success mt-3 d-none">Thanks for your comment!
+                            Comment will be moderated before it appears On TechWayFit.</div>
+                    </form>
+                </div>
+                <div class="container mt-5">
+                    <h4 class="mb-3">Recent Comments</h4>
+                    <ul id="commentList" class="list-group mb-3"></ul>
+                    <div class="text-center">
+                        <button id="prevBtn" class="btn btn-outline-secondary me-2" disabled>Prev</button>
+                        <button id="nextBtn" class="btn btn-outline-secondary" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+        
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Language Support (Add as needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="/assets/js/tiles.js"></script>
+    <script src="/assets/js/blog-comment.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="/assets/js/quizz-component.js"></script>
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    </body>
+</html>
