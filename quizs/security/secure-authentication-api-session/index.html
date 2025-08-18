@@ -20,27 +20,882 @@
         <title>Quizs | TechWayFit</title>
         <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
         <link href="/assets/css/blog.min.css" rel="stylesheet" />
+        <link href="/assets/css/quiz-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/blog-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/theme-enhancements.css" rel="stylesheet" />
          
     <style>
         .quiz-container {
-            max-width: 900px;
-            margin: auto;
-            padding-top: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
         }
 
-        .question {
+        .quiz-progress-container {
+            background: #f8f9fa;
+            border-radius: 10        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 10px;
+            }
+            
+            .quiz-card-body {
+                padding: 15px;
+            }
+            
+            .quiz-question {
+                font-size: 1.1rem;
+            }
+            
+            .quiz-nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .quiz-back-btn, .quiz-next-btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .quiz-option {
+                padding: 12px;
+            }
+            
+            .quiz-option input[type="radio"] {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* Additional improvements */
+        .quiz-options {
+            max-width: 100%;
+        }
+
+        .quiz-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .quiz-card {
+            overflow: hidden;
+        }
+
+        .quiz-question {
+            word-wrap: break-word;
+        }  padding: 4px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-progress-track {
+            display: flex;
+            height: 8px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #e9ecef;
+        }
+
+        .quiz-progress-segment {
+            flex: 1;
+            margin-right: 2px;
+            background: #e9ecef;
+            transition: background-color 0.3s ease;
+        }
+
+        .quiz-progress-segment:last-child {
+            margin-right: 0;
+        }
+
+        .quiz-progress-segment.completed {
+            background: #28a745;
+        }
+
+        .quiz-progress-segment.current {
+            background: #007bff;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .quiz-card-body {
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            user-select: none;
+            position: relative;
+        }
+
+        .quiz-option:hover {
+            border-color: #007bff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+            background: #f0f8ff;
+        }
+
+        .quiz-option:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0,123,255,0.2);
+        }
+
+        .quiz-option.selected {
+            border-color: #007bff;
+            background: #e3f2fd;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin: 0;
+            margin-top: 2px;
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: #007bff;
+            pointer-events: none;
+        }
+
+        .quiz-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: #495057;
+            line-height: 1.5;
+            flex: 1;
+            pointer-events: none;
+        }
+
+        .quiz-card-footer {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-top: 1px solid #e9ecef;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .quiz-back-btn, .quiz-next-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .quiz-back-btn {
+            background: #6c757d;
+            color: white;
+            border: 2px solid #6c757d;
+        }
+
+        .quiz-back-btn:hover:not(:disabled) {
+            background: #5a6268;
+            border-color: #5a6268;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(108,117,125,0.3);
+        }
+
+        .quiz-back-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .quiz-next-btn {
+            background: #007bff;
+            color: white;
+            border: 2px solid #007bff;
+        }
+
+        .quiz-next-btn:hover:not(:disabled) {
+            background: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+        }
+
+        .quiz-next-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .quiz-status {
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .quiz-result {
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        .review-section {
+            margin-top: 20px;
+        }
+
+        .review-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .review-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .review-option {
+            padding: 8px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+
+        .review-option.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .review-option.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Reduce header padding */
+        .bg-light.py-10 {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+
+        .quiz-container.mb-10 {
+            margin-bottom: 2rem !important;
+        }        /* Remove excessive spacing */
+        .bg-light {
+            padding: 40px 0 !important;
+        }
+
+        .single-post {
+            margin-bottom: 0 !important;
+        }
+
+        .single-post h1 {
+            margin-bottom: 15px;
+        }
+
+        .single-post .lead {
+            margin-bottom: 20px;
+        }
+   
+
+        /* Loading Animation */
+        .quiz-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            flex-direction: column;
+        }
+
+        .quiz-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
 
-        .options label {
-            display: block;
-            margin-bottom: 5px;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .result {
-            font-weight: bold;
-            margin-top: 20px;
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 10px;
+            }
+            
+            .quiz-card-body {
+                padding: 15px;
+            }
+            
+            .quiz-question {
+                font-size: 1.1rem;
+            }
+            
+            .welcome-card {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .welcome-title {
+                font-size: 1.7rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Welcome Modal Styles */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .welcome-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 90%;
+            animation: modalSlideIn 0.5s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .name-input-group {
+            margin-bottom: 25px;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #007bff;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .welcome-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .welcome-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .welcome-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .returning-visitor {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .returning-visitor h4 {
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .returning-visitor p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Answer Filter Styles */
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .review-title {
+            margin: 0;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .answer-filter-options {
+            display: flex;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .filter-btn.active {
+            background: #007bff;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+        }
+
+        /* Enhanced Review Items */
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .question-status {
             font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .correct-status {
+            color: #28a745;
+        }
+
+        .incorrect-status {
+            color: #dc3545;
+        }
+
+        .review-item.correct-answer {
+            border-left: 4px solid #28a745;
+            background: #f8fff9;
+        }
+
+        .review-item.incorrect-answer {
+            border-left: 4px solid #dc3545;
+            background: #fff8f8;
+        }
+
+        .answer-options {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .empty-state h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Navigation Button Styles */
+        .navigation-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .nav-btn.primary-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn.primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .nav-btn.secondary-btn {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+
+        .nav-btn.secondary-btn:hover {
+            background: #e9ecef;
+            border-color: #007bff;
+            color: #007bff;
+            transform: translateY(-1px);
+        }
+
+        .final-cta {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .final-cta h5 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Mobile responsiveness for navigation */
+        @media (max-width: 768px) {
+            .navigation-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+
+        /* Mobile responsiveness for filter */
+        @media (max-width: 768px) {
+            .review-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .answer-filter-options {
+                justify-content: center;
+            }
+
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .answer-options {
+                margin-left: 0;
+            }
+
+            .question-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+ 
+
+        /* Enhanced Result Display */
+        .quiz-score-display {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .score-percentage {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+        .learning-suggestion, .success-celebration {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .learning-suggestion {
+            border-left: 4px solid #ffc107;
+        }
+
+        .success-celebration {
+            border-left: 4px solid #28a745;
+        }
+
+        .navigation-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .nav-btn.primary-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,123,255,0.3);
+        }
+
+        .nav-btn.primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.4);
+        }
+
+        .nav-btn.secondary-btn {
+            background: #fff;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .nav-btn.secondary-btn:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .final-cta h5 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .navigation-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Code Snippet Styling */
+        .code-snippet-container {
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .code-snippet-container pre {
+            margin: 0;
+            padding: 20px;
+            background: #2d3748;
+            color: #e2e8f0;
+            font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-snippet-container code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            border: none;
+            font-size: inherit;
+        }
+
+        /* Language-specific styling */
+        .language-csharp { border-left: 4px solid #239120; }
+        .language-python { border-left: 4px solid #3776ab; }
+        .language-javascript { border-left: 4px solid #f7df1e; }
+        .language-java { border-left: 4px solid #ed8b00; }
+        .language-typescript { border-left: 4px solid #3178c6; }
+        .language-cpp { border-left: 4px solid #00599c; }
+        .language-php { border-left: 4px solid #777bb4; }
+        .language-ruby { border-left: 4px solid #cc342d; }
+        .language-go { border-left: 4px solid #00add8; }
+
+        /* Syntax highlighting - basic colors */
+        .code-snippet-container .keyword { color: #f92672; }
+        .code-snippet-container .string { color: #a6e22e; }
+        .code-snippet-container .comment { color: #75715e; font-style: italic; }
+        .code-snippet-container .number { color: #ae81ff; }
+        .code-snippet-container .operator { color: #f8f8f2; }
+
+        /* Mobile responsiveness for code */
+        @media (max-width: 768px) {
+            .code-snippet-container pre {
+                padding: 15px;
+                font-size: 13px;
+            }
         }
     </style>
 
@@ -60,7 +915,8 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
                                     <ul class="navbar-nav ms-auto me-lg-5">                                   
    
-   <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/blogs">Read our Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/quizs">Test your Skills</a></li>
    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
    <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
 </ul>
@@ -68,14 +924,14 @@
                             </div>
                         </div>
                     </nav>
-					 
-<section class="bg-light py-10">
+					
+<section class="bg-light py-5">
     <div class="container px-5">
         <div class="row gx-5">
             <div class="single-post">
                 <h1>Secure Authentication API Session Quiz</h1>
                 <p class="lead">Test your knowledge on secure authentication practices, session management, and API security with this quiz. Ideal for developers and security professionals.</p>
-                <div class="d-flex align-items-center justify-content-between mb-5">
+                <div class="d-flex align-items-center justify-content-between mb-3">
                     <div class="single-post-meta me-4">
                         <img class="single-post-meta-img" src="/assets/images/cards/secure-authentication.webp" />
                         <div class="single-post-meta-details">
@@ -87,20 +943,79 @@
         </div>
     </div>
 </section>
-<div class="container quiz-container mb-10">
-    <div id="status" class="text-end text-muted mb-3"></div>
-    <div class="card" id="quizCard">
-        <div class="card-body question-box">
-            <h5 id="question" class="mb-3"></h5>
-            <form id="optionsForm" class="options"></form>
-        </div>
-        <div class="card-footer text-end">
-            <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+<div class="container quiz-container mb-5">
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="welcome-modal" style="display: none;">
+        <div class="welcome-card">
+            <div id="welcomeContent">
+                <!-- New visitor content -->
+                <div id="newVisitorContent">
+                    <h2 class="welcome-title">👋 Welcome!</h2>
+                    <p class="welcome-subtitle">How would you like me to address you during this quiz?</p>
+                    <div class="name-input-group">
+                        <input type="text" id="visitorName" class="name-input" placeholder="Enter your name..." maxlength="50" onkeypress="handleNameInput(event)">
+                    </div>
+                    <button id="startQuizBtn" class="welcome-btn" onclick="saveNameAndStart()">
+                        Let's Start the Quiz! 🚀
+                    </button>
+                </div>
+                <!-- Returning visitor content -->
+                <div id="returningVisitorContent" style="display: none;">
+                    <div class="returning-visitor">
+                        <h4>🎉 Welcome back!</h4>
+                        <p id="returningVisitorName"></p>
+                    </div>
+                    <p class="welcome-subtitle">Ready for another quiz challenge?</p>
+                    <button id="continueQuizBtn" class="welcome-btn" onclick="startQuizAfterWelcome()">
+                        Continue to Quiz 🚀
+                    </button>
+                    <p style="margin-top: 15px;">
+                        <a href="#" onclick="resetName()" style="color: #6c757d; font-size: 0.9rem;">Not you? Click here</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="quizResult" class="result text-center mt-4"></div>
-    <div id="reviewSection" class="mt-4"></div>
+    <!-- Loading State -->
+    <div id="quizLoading" class="quiz-loading">
+        <div class="quiz-spinner"></div>
+        <p class="text-muted">Preparing your quiz...</p>
+    </div>
+
+    <!-- Progress Bar with Segments -->
+    <div id="quizProgressContainer" class="quiz-progress-container" style="display: none;">
+        <div class="quiz-progress-track" id="progressTrack">
+            <!-- Progress segments will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div id="status" class="quiz-status" style="display: none;"></div>
+    
+    <!-- Quiz Card -->
+    <div class="quiz-card" id="quizCard" style="display: none;">
+        <div class="quiz-card-body">
+            <h5 id="question" class="quiz-question"></h5>
+            <div id="optionsForm" class="quiz-options"></div>
+        </div>
+        <div class="quiz-card-footer">
+            <div class="quiz-nav-buttons">
+                <button id="backBtn" class="quiz-back-btn" onclick="previousQuestion()" disabled>
+                    ← Previous
+                </button>
+                <button id="nextBtn" class="quiz-next-btn" onclick="nextQuestion()" disabled>
+                    Next →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results -->
+    <div id="quizResult" class="quiz-result" style="display: none;"></div>
+    
+    <!-- Review Section -->
+    <div id="reviewSection" class="review-section"></div>
 </div>
 
                
@@ -136,15 +1051,18 @@
 </footer> 
                 </div>
         </div>
-        
-        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+          <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/enhancements.js"></script>
         
         
     <script>
-        const questionSource = [{"question":"What is the purpose of OAuth2 in modern applications?","options":["Encrypt network traffic","Provide a UI framework","Authorize third-party access without sharing credentials","Generate JWT tokens"],"correctIndex":2},{"question":"Which token type is commonly used with OAuth2 to access resources?","options":["ID token","JWT","Access token","Session cookie"],"correctIndex":2},{"question":"What does OpenID Connect add to OAuth2?","options":["Authorization support","Token encryption","Authentication layer with ID tokens","CORS headers"],"correctIndex":2},{"question":"What should never be stored inside a JWT?","options":["User ID","Roles","Private encryption keys or passwords","Token expiration"],"correctIndex":2},{"question":"What is a recommended way to validate a JWT?","options":["Check only the payload","Ignore expiration","Verify signature and expiration","Trust the token blindly"],"correctIndex":2},{"question":"Why should APIs enforce input validation?","options":["Improve search engine ranking","Prevent runtime errors","Prevent injection and logic attacks","Reduce server CPU usage"],"correctIndex":2},{"question":"Which of the following is a good practice for API key handling?","options":["Store in frontend JavaScript","Send via GET parameter","Store securely and send via HTTPS headers","Hardcode in app source code"],"correctIndex":2},{"question":"What is the benefit of using rate limiting on APIs?","options":["Increases traffic","Improves UI loading speed","Prevents abuse and denial-of-service attacks","Increases search engine traffic"],"correctIndex":2},{"question":"How can you ensure that a client is authenticated in an API call?","options":["Check for a valid access token","Log request IP address","Allow public access","Enable verbose logging"],"correctIndex":0},{"question":"Which HTTP method should be used for sensitive data submission?","options":["GET","POST","HEAD","TRACE"],"correctIndex":1},{"question":"What is session fixation?","options":["A server not expiring sessions properly","Reusing a user\u0027s session ID to hijack a session","Logging user actions incorrectly","A type of XSS attack"],"correctIndex":1},{"question":"Which cookie attribute helps prevent session hijacking via cross-site scripts?","options":["Secure","Path","HttpOnly","Max-Age"],"correctIndex":2},{"question":"Why should session tokens be rotated after login?","options":["To reduce network traffic","To enable faster login","To prevent session fixation","To simplify session reuse"],"correctIndex":2},{"question":"What is a secure practice for session timeout?","options":["No expiration","Expire after days","Expire after inactivity","Keep alive indefinitely"],"correctIndex":2},{"question":"Which attribute ensures that a session cookie is only sent over HTTPS?","options":["Domain","Secure","Path","SameSite"],"correctIndex":1}];
+const questionSource = [{"question":"What is the purpose of OAuth2 in modern applications?","options":["Encrypt network traffic","Provide a UI framework","Authorize third-party access without sharing credentials","Generate JWT tokens"],"correctIndex":2,"explanation":"OAuth2 allows third-party applications to access a user\u0027s resources without needing the user\u0027s credentials.","language":null,"snippet":null},{"question":"Which token type is commonly used with OAuth2 to access resources?","options":["ID token","JWT","Access token","Session cookie"],"correctIndex":2,"explanation":"Access tokens are issued by the authorization server and used by the client to access protected resources.","language":null,"snippet":null},{"question":"What does OpenID Connect add to OAuth2?","options":["Authorization support","Token encryption","Authentication layer with ID tokens","CORS headers"],"correctIndex":2,"explanation":"OpenID Connect adds an authentication layer on top of OAuth2 and introduces ID tokens for user identity.","language":null,"snippet":null},{"question":"What should never be stored inside a JWT?","options":["User ID","Roles","Private encryption keys or passwords","Token expiration"],"correctIndex":2,"explanation":"JWTs are often viewable and should never contain sensitive data like passwords or private keys.","language":null,"snippet":null},{"question":"What is a recommended way to validate a JWT?","options":["Check only the payload","Ignore expiration","Verify signature and expiration","Trust the token blindly"],"correctIndex":2,"explanation":"JWTs must be validated by checking the digital signature and ensuring the token hasn\u2019t expired.","language":null,"snippet":null},{"question":"Why should APIs enforce input validation?","options":["Improve search engine ranking","Prevent runtime errors","Prevent injection and logic attacks","Reduce server CPU usage"],"correctIndex":2,"explanation":"Proper input validation prevents malicious data from causing injection or logical failures.","language":null,"snippet":null},{"question":"Which of the following is a good practice for API key handling?","options":["Store in frontend JavaScript","Send via GET parameter","Store securely and send via HTTPS headers","Hardcode in app source code"],"correctIndex":2,"explanation":"API keys should be stored securely and transmitted over encrypted channels using headers.","language":null,"snippet":null},{"question":"What is the benefit of using rate limiting on APIs?","options":["Increases traffic","Improves UI loading speed","Prevents abuse and denial-of-service attacks","Increases search engine traffic"],"correctIndex":2,"explanation":"Rate limiting restricts the number of requests a client can make, helping prevent abuse and DDoS.","language":null,"snippet":null},{"question":"How can you ensure that a client is authenticated in an API call?","options":["Check for a valid access token","Log request IP address","Allow public access","Enable verbose logging"],"correctIndex":0,"explanation":"An access token is the standard method to validate an authenticated request to a secured API.","language":null,"snippet":null},{"question":"Which HTTP method should be used for sensitive data submission?","options":["GET","POST","HEAD","TRACE"],"correctIndex":1,"explanation":"POST should be used for sensitive or state-changing data as GET appends data to the URL.","language":null,"snippet":null},{"question":"What is session fixation?","options":["A server not expiring sessions properly","Reusing a user\u0027s session ID to hijack a session","Logging user actions incorrectly","A type of XSS attack"],"correctIndex":1,"explanation":"Session fixation occurs when an attacker sets or reuses a known session ID before the user logs in.","language":null,"snippet":null},{"question":"Which cookie attribute helps prevent session hijacking via cross-site scripts?","options":["Secure","Path","HttpOnly","Max-Age"],"correctIndex":2,"explanation":"HttpOnly cookies can\u2019t be accessed via JavaScript, protecting them from XSS-based attacks.","language":null,"snippet":null},{"question":"Why should session tokens be rotated after login?","options":["To reduce network traffic","To enable faster login","To prevent session fixation","To simplify session reuse"],"correctIndex":2,"explanation":"Rotating session tokens after authentication prevents attackers from reusing session IDs.","language":null,"snippet":null},{"question":"What is a secure practice for session timeout?","options":["No expiration","Expire after days","Expire after inactivity","Keep alive indefinitely"],"correctIndex":2,"explanation":"Sessions should expire after a period of inactivity to reduce exposure if a session is hijacked.","language":null,"snippet":null},{"question":"Which attribute ensures that a session cookie is only sent over HTTPS?","options":["Domain","Secure","Path","SameSite"],"correctIndex":1,"explanation":"The Secure attribute tells the browser to send the cookie only over encrypted HTTPS connections.","language":null,"snippet":null}];        const quizMetadata = {
+            name: "Secure Authentication API Session Quiz",
+            description: "Test your knowledge on secure authentication practices, session management, and API security with this quiz. Ideal for developers and security professionals.",
+            id: "D12361A46EF94GF2C1E7754EA93D0EF7"
+        };
     </script>
     <script src="/assets/js/quizs.js"></script>
 

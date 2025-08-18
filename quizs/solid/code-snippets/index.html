@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" />
+        <meta property='og:title' content='Quizs'/>
+        <meta property='og:image'/>
+        <meta property='og:description'/> 
+        <title>Quizs | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+        <link href="/assets/css/quiz-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/blog-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/theme-enhancements.css" rel="stylesheet" />
+         
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .quiz-progress-container {
+            background: #f8f9fa;
+            border-radius: 10        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 10px;
+            }
+            
+            .quiz-card-body {
+                padding: 15px;
+            }
+            
+            .quiz-question {
+                font-size: 1.1rem;
+            }
+            
+            .quiz-nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .quiz-back-btn, .quiz-next-btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .quiz-option {
+                padding: 12px;
+            }
+            
+            .quiz-option input[type="radio"] {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* Additional improvements */
+        .quiz-options {
+            max-width: 100%;
+        }
+
+        .quiz-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .quiz-card {
+            overflow: hidden;
+        }
+
+        .quiz-question {
+            word-wrap: break-word;
+        }  padding: 4px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-progress-track {
+            display: flex;
+            height: 8px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #e9ecef;
+        }
+
+        .quiz-progress-segment {
+            flex: 1;
+            margin-right: 2px;
+            background: #e9ecef;
+            transition: background-color 0.3s ease;
+        }
+
+        .quiz-progress-segment:last-child {
+            margin-right: 0;
+        }
+
+        .quiz-progress-segment.completed {
+            background: #28a745;
+        }
+
+        .quiz-progress-segment.current {
+            background: #007bff;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .quiz-card-body {
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            user-select: none;
+            position: relative;
+        }
+
+        .quiz-option:hover {
+            border-color: #007bff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+            background: #f0f8ff;
+        }
+
+        .quiz-option:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0,123,255,0.2);
+        }
+
+        .quiz-option.selected {
+            border-color: #007bff;
+            background: #e3f2fd;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin: 0;
+            margin-top: 2px;
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: #007bff;
+            pointer-events: none;
+        }
+
+        .quiz-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: #495057;
+            line-height: 1.5;
+            flex: 1;
+            pointer-events: none;
+        }
+
+        .quiz-card-footer {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-top: 1px solid #e9ecef;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .quiz-back-btn, .quiz-next-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .quiz-back-btn {
+            background: #6c757d;
+            color: white;
+            border: 2px solid #6c757d;
+        }
+
+        .quiz-back-btn:hover:not(:disabled) {
+            background: #5a6268;
+            border-color: #5a6268;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(108,117,125,0.3);
+        }
+
+        .quiz-back-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .quiz-next-btn {
+            background: #007bff;
+            color: white;
+            border: 2px solid #007bff;
+        }
+
+        .quiz-next-btn:hover:not(:disabled) {
+            background: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+        }
+
+        .quiz-next-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .quiz-status {
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .quiz-result {
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        .review-section {
+            margin-top: 20px;
+        }
+
+        .review-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .review-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .review-option {
+            padding: 8px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+
+        .review-option.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .review-option.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Reduce header padding */
+        .bg-light.py-10 {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+
+        .quiz-container.mb-10 {
+            margin-bottom: 2rem !important;
+        }        /* Remove excessive spacing */
+        .bg-light {
+            padding: 40px 0 !important;
+        }
+
+        .single-post {
+            margin-bottom: 0 !important;
+        }
+
+        .single-post h1 {
+            margin-bottom: 15px;
+        }
+
+        .single-post .lead {
+            margin-bottom: 20px;
+        }
+   
+
+        /* Loading Animation */
+        .quiz-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            flex-direction: column;
+        }
+
+        .quiz-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 10px;
+            }
+            
+            .quiz-card-body {
+                padding: 15px;
+            }
+            
+            .quiz-question {
+                font-size: 1.1rem;
+            }
+            
+            .welcome-card {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .welcome-title {
+                font-size: 1.7rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Welcome Modal Styles */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .welcome-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 90%;
+            animation: modalSlideIn 0.5s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .name-input-group {
+            margin-bottom: 25px;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #007bff;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .welcome-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .welcome-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .welcome-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .returning-visitor {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .returning-visitor h4 {
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .returning-visitor p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Answer Filter Styles */
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .review-title {
+            margin: 0;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .answer-filter-options {
+            display: flex;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .filter-btn.active {
+            background: #007bff;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+        }
+
+        /* Enhanced Review Items */
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .question-status {
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .correct-status {
+            color: #28a745;
+        }
+
+        .incorrect-status {
+            color: #dc3545;
+        }
+
+        .review-item.correct-answer {
+            border-left: 4px solid #28a745;
+            background: #f8fff9;
+        }
+
+        .review-item.incorrect-answer {
+            border-left: 4px solid #dc3545;
+            background: #fff8f8;
+        }
+
+        .answer-options {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .empty-state h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Navigation Button Styles */
+        .navigation-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .nav-btn.primary-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn.primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .nav-btn.secondary-btn {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+
+        .nav-btn.secondary-btn:hover {
+            background: #e9ecef;
+            border-color: #007bff;
+            color: #007bff;
+            transform: translateY(-1px);
+        }
+
+        .final-cta {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .final-cta h5 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Mobile responsiveness for navigation */
+        @media (max-width: 768px) {
+            .navigation-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+
+        /* Mobile responsiveness for filter */
+        @media (max-width: 768px) {
+            .review-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .answer-filter-options {
+                justify-content: center;
+            }
+
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .answer-options {
+                margin-left: 0;
+            }
+
+            .question-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+ 
+
+        /* Enhanced Result Display */
+        .quiz-score-display {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .score-percentage {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+        .learning-suggestion, .success-celebration {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .learning-suggestion {
+            border-left: 4px solid #ffc107;
+        }
+
+        .success-celebration {
+            border-left: 4px solid #28a745;
+        }
+
+        .navigation-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .nav-btn.primary-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,123,255,0.3);
+        }
+
+        .nav-btn.primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.4);
+        }
+
+        .nav-btn.secondary-btn {
+            background: #fff;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .nav-btn.secondary-btn:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .final-cta h5 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .navigation-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Code Snippet Styling */
+        .code-snippet-container {
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .code-snippet-container pre {
+            margin: 0;
+            padding: 20px;
+            background: #2d3748;
+            color: #e2e8f0;
+            font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-snippet-container code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            border: none;
+            font-size: inherit;
+        }
+
+        /* Language-specific styling */
+        .language-csharp { border-left: 4px solid #239120; }
+        .language-python { border-left: 4px solid #3776ab; }
+        .language-javascript { border-left: 4px solid #f7df1e; }
+        .language-java { border-left: 4px solid #ed8b00; }
+        .language-typescript { border-left: 4px solid #3178c6; }
+        .language-cpp { border-left: 4px solid #00599c; }
+        .language-php { border-left: 4px solid #777bb4; }
+        .language-ruby { border-left: 4px solid #cc342d; }
+        .language-go { border-left: 4px solid #00add8; }
+
+        /* Syntax highlighting - basic colors */
+        .code-snippet-container .keyword { color: #f92672; }
+        .code-snippet-container .string { color: #a6e22e; }
+        .code-snippet-container .comment { color: #75715e; font-style: italic; }
+        .code-snippet-container .number { color: #ae81ff; }
+        .code-snippet-container .operator { color: #f8f8f2; }
+
+        /* Mobile responsiveness for code */
+        @media (max-width: 768px) {
+            .code-snippet-container pre {
+                padding: 15px;
+                font-size: 13px;
+            }
+        }
+    </style>
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Read our Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/quizs">Test your Skills</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="single-post">
+                <h1>SOLID &#x2013; Code Snippet Challenge Quiz</h1>
+                <p class="lead">Identify design issues and justify the correct SOLID principle with real C# and Python code snippets. A practical quiz for hands-on developers.</p>
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="single-post-meta me-4">
+                        <img class="single-post-meta-img" src="/assets/images/blogs/solid/quiz.webp" />
+                        <div class="single-post-meta-details">
+                            <div class="single-post-meta-details-name">20 Questions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container quiz-container mb-5">
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="welcome-modal" style="display: none;">
+        <div class="welcome-card">
+            <div id="welcomeContent">
+                <!-- New visitor content -->
+                <div id="newVisitorContent">
+                    <h2 class="welcome-title">👋 Welcome!</h2>
+                    <p class="welcome-subtitle">How would you like me to address you during this quiz?</p>
+                    <div class="name-input-group">
+                        <input type="text" id="visitorName" class="name-input" placeholder="Enter your name..." maxlength="50" onkeypress="handleNameInput(event)">
+                    </div>
+                    <button id="startQuizBtn" class="welcome-btn" onclick="saveNameAndStart()">
+                        Let's Start the Quiz! 🚀
+                    </button>
+                </div>
+                <!-- Returning visitor content -->
+                <div id="returningVisitorContent" style="display: none;">
+                    <div class="returning-visitor">
+                        <h4>🎉 Welcome back!</h4>
+                        <p id="returningVisitorName"></p>
+                    </div>
+                    <p class="welcome-subtitle">Ready for another quiz challenge?</p>
+                    <button id="continueQuizBtn" class="welcome-btn" onclick="startQuizAfterWelcome()">
+                        Continue to Quiz 🚀
+                    </button>
+                    <p style="margin-top: 15px;">
+                        <a href="#" onclick="resetName()" style="color: #6c757d; font-size: 0.9rem;">Not you? Click here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="quizLoading" class="quiz-loading">
+        <div class="quiz-spinner"></div>
+        <p class="text-muted">Preparing your quiz...</p>
+    </div>
+
+    <!-- Progress Bar with Segments -->
+    <div id="quizProgressContainer" class="quiz-progress-container" style="display: none;">
+        <div class="quiz-progress-track" id="progressTrack">
+            <!-- Progress segments will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div id="status" class="quiz-status" style="display: none;"></div>
+    
+    <!-- Quiz Card -->
+    <div class="quiz-card" id="quizCard" style="display: none;">
+        <div class="quiz-card-body">
+            <h5 id="question" class="quiz-question"></h5>
+            <div id="optionsForm" class="quiz-options"></div>
+        </div>
+        <div class="quiz-card-footer">
+            <div class="quiz-nav-buttons">
+                <button id="backBtn" class="quiz-back-btn" onclick="previousQuestion()" disabled>
+                    ← Previous
+                </button>
+                <button id="nextBtn" class="quiz-next-btn" onclick="nextQuestion()" disabled>
+                    Next →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results -->
+    <div id="quizResult" class="quiz-result" style="display: none;"></div>
+    
+    <!-- Review Section -->
+    <div id="reviewSection" class="review-section"></div>
+</div>
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+          <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/enhancements.js"></script>
+        
+        
+    <script>
+const questionSource = [{"question":"What SOLID issue is most evident?","options":["OCP violation","SRP violation (God class)","LSP violation","DIP violation"],"correctIndex":1,"explanation":"This is a clear SRP violation as the Invoice class has multiple responsibilities: business logic (AddItem, Total), persistence (SaveToDb), and presentation (RenderPdf) all mixed together.","language":"csharp","snippet":"class Invoice {\n  public void AddItem(Item i) { /*...*/ }\n  public decimal Total() { /*...*/ return 0; }\n  public void SaveToDb() { /* SQL */ }\n  public string RenderPdf() { /* PDF */ return \u0022\u0022; }\n}"},{"question":"Which principle/pattern best improves this?","options":["SRP via splitting functions","OCP via Strategy (DiscountPolicy)","ISP","Singleton"],"correctIndex":1,"explanation":"OCP via Strategy pattern would allow adding new discount policies without editing the calc_discount function, making it open for extension but closed for modification.","language":"python","snippet":"def calc_discount(user, amount, type):\n    if type == \u0027NEW\u0027: return amount * 0.9\n    elif type == \u0027VIP\u0027: return amount * 0.8\n    elif type == \u0027EMP\u0027: return amount * 0.7\n    # more branches every quarter...\n    return amount"},{"question":"What\u0027s wrong and which fix is best?","options":["SRP violation; split class","LSP violation; refactor with capabilities (IFlyingBird)","DIP violation; add abstraction","OCP violation; add more subclasses"],"correctIndex":1,"explanation":"This is an LSP violation because the Ostrich subclass breaks the base class contract by throwing an exception. The fix is to refactor with capability-based interfaces like IFlyingBird.","language":"csharp","snippet":"abstract class Bird { public abstract void Fly(); }\nclass Ostrich : Bird { public override void Fly(){ throw new NotSupportedException(); } }"},{"question":"Identify the main SOLID problem.","options":["LSP violation","DIP violation (depends on concretion)","ISP violation","OCP violation"],"correctIndex":1,"explanation":"This is a DIP violation because the ReportService depends on a concrete MySqlClient instead of an abstraction like IDatabase that could be injected.","language":"python","snippet":"class ReportService:\n    def __init__(self):\n        self.db = MySqlClient(\u0027conn\u0027)  # concrete\n    def monthly(self):\n        data = self.db.query(\u0027SELECT ...\u0027)\n        return render(data)"},{"question":"Which principle is violated and how to fix?","options":["SRP; split classes","ISP; split into IPrinter, IScanner, IFax","OCP; add extension points","DIP; inject interfaces"],"correctIndex":1,"explanation":"This violates ISP because SimplePrinter is forced to implement methods it doesn\u0027t use. The fix is to split into smaller, focused interfaces like IPrinter, IScanner, IFax.","language":"csharp","snippet":"interface IMachine { void Print(); void Scan(); void Fax(); }\nclass SimplePrinter : IMachine {\n  public void Print() { }\n  public void Scan() { /* empty */ }\n  public void Fax() { /* empty */ }\n}"},{"question":"Best improvement?","options":["Rename methods for clarity (SRP)","Introduce ILogger abstraction and inject (DIP \u002B DI)","Use Singleton for logger","Add more elifs in handle()"],"correctIndex":1,"explanation":"The best improvement is to introduce an ILogger abstraction and inject it, enabling the use of different logger implementations like Console, Cloud, or test doubles.","language":"python","snippet":"class FileLogger:\n    def log(self, msg): open(\u0027app.log\u0027,\u0027a\u0027).write(msg)\nclass Service:\n    def __init__(self): self.logger = FileLogger()\n    def handle(self): self.logger.log(\u0027ok\u0027)"},{"question":"Which refactor aligns with SOLID?","options":["Make method static","Strategy \u002B OCP (ITaxPolicy per country)","Inline the logic into Order","Throw NotImplemented for unknown"],"correctIndex":1,"explanation":"Using Strategy pattern with OCP allows extending with new tax policies per country without modifying the existing TaxCalculator code.","language":"csharp","snippet":"class TaxCalculator {\n  public decimal Calc(Order o){\n    if(o.Country==\u0022US\u0022) return o.Amount*0.07m;\n    if(o.Country==\u0022DE\u0022) return o.Amount*0.19m;\n    if(o.Country==\u0022IN\u0022) return o.Amount*0.18m;\n    return 0;\n  }\n}"},{"question":"What is the design issue?","options":["SRP violation","LSP risk; prefer composition or separate types without mutators that break invariants","DIP violation","ISP violation"],"correctIndex":1,"explanation":"This is an LSP risk because Square\u0027s set_w method can break the square invariant (width = height), potentially causing substitutability issues when used as a Rectangle.","language":"python","snippet":"class Rectangle:\n    def __init__(self,w,h): self.w,self.h=w,h\n    def area(self): return self.w*self.h\nclass Square(Rectangle):\n    def __init__(self,s): super().__init__(s,s)\n    def set_w(self,w): self.w=w  # breaks invariant\n"},{"question":"Which combined SOLID improvements are best?","options":["Make everything static","SRP split (Validator/Mapper/Repository/Notifier) \u002B DIP for repo/notifier","Add more if/else","Move all to DB triggers"],"correctIndex":1,"explanation":"The best approach is to split responsibilities (SRP) into separate classes for validation, mapping, repository, and notification, while using DIP for the repository and notifier dependencies.","language":"csharp","snippet":"class UserController {\n  public string Post(UserDto dto){\n    // validate\n    if(string.IsNullOrWhiteSpace(dto.Email)) return \u0022bad\u0022;\n    // map\n    var u = new User{Email=dto.Email};\n    // save\n    new SqlUserRepo().Save(u);\n    // send email\n    new SmtpClient().Send(\u0022welcome\u0022);\n    return \u0022ok\u0022;\n  }\n}"},{"question":"Best SOLID-aligned design?","options":["OCP with IExportStrategy per format","Merge with importer for cohesion","Use a Singleton factory","Inline all logic into callers"],"correctIndex":0,"explanation":"Using OCP with IExportStrategy per format allows adding new export formats without modifying the existing Exporter class.","language":"python","snippet":"class Exporter:\n    def export(self, fmt, data):\n        if fmt == \u0027csv\u0027: return to_csv(data)\n        if fmt == \u0027json\u0027: return to_json(data)\n        if fmt == \u0027xml\u0027: return to_xml(data)"},{"question":"Identify the principle and fix.","options":["SRP; split classes","ISP; split interfaces by client use cases (IPlacement, IFulfillment, IRefunds)","OCP; add inheritance","DIP; inject services"],"correctIndex":1,"explanation":"This violates ISP because SimpleOrderService is burdened with methods it doesn\u0027t use. The fix is to split into focused interfaces like IPlacement, IFulfillment, and IRefunds.","language":"csharp","snippet":"interface IOrderService { void Place(); void Cancel(); void Approve(); void Ship(); void Refund(); }\nclass SimpleOrderService : IOrderService {\n  public void Place(){}\n  public void Cancel(){}\n  public void Approve(){} // never used\n  public void Ship(){}    // never used\n  public void Refund(){}  // never used\n}"},{"question":"Which SOLID principle is respected here?","options":["DIP (depends on abstraction), enabling OCP (swap gateways)","LSP","ISP","SRP only"],"correctIndex":0,"explanation":"This respects DIP by depending on an abstraction (gateway interface) rather than a concrete implementation, which also enables OCP by allowing different payment gateways to be swapped.","language":"python","snippet":"class PaymentService:\n    def __init__(self, gateway):\n        self.gateway = gateway  # expects interface\n    def pay(self, order):\n        return self.gateway.charge(order.total)\n# elsewhere\nservice = PaymentService(StripeGateway())"},{"question":"Pick the best refactor.","options":["Make EmailNotifier static","Introduce INotifier and inject it (DIP); keep SignUp focused (SRP)","Inline SendWelcome into Execute","Add more constructors"],"correctIndex":1,"explanation":"The best refactor is to introduce an INotifier interface and inject it, which decouples the classes (DIP) and improves testability while keeping SignUp focused on its core responsibility (SRP).","language":"csharp","snippet":"class EmailNotifier {\n  public void SendWelcome(User u){ /* SMTP */ }\n}\nclass SignUpUseCase {\n  private readonly EmailNotifier _n = new EmailNotifier();\n  public void Execute(User u){ /* save */ _n.SendWelcome(u); }\n}"},{"question":"What\u0027s the design smell and fix?","options":["SRP violation; too many shapes","LSP violation; NullShape breaks contract (area\u22650). Use Null Object with valid semantics or avoid fake subtype.","OCP; add more types","DIP; inject radius"],"correctIndex":1,"explanation":"This violates LSP because NullShape returns a negative area, breaking the expected contract that area should be non-negative. The fix is to use proper Null Object pattern with valid semantics.","language":"python","snippet":"class Shape:\n    def area(self): raise NotImplementedError\nclass Circle(Shape):\n    def __init__(self,r): self.r=r\n    def area(self): return 3.14*self.r*self.r\nclass NullShape(Shape):\n    def area(self): return -1  # sentinel\n"},{"question":"Which combination improves design the most?","options":["SRP (separate query/format) \u002B DIP (IDb \u002B IReportRenderer)","Make Get() async only","Use static helpers","Throw exceptions for errors"],"correctIndex":0,"explanation":"The best improvement is to separate concerns (SRP) by splitting query and formatting logic, and use dependency inversion (DIP) with IDb and IReportRenderer interfaces.","language":"csharp","snippet":"class ReportController {\n  public string Get(){\n    var data = new SqlConnection(\u0022...\u0022); // direct\n    // query \u002B format HTML here\n    return \u0022\u003Ctable\u003E...\u003C/table\u003E\u0022;\n  }\n}"},{"question":"Choose the SOLID-friendly redesign.","options":["Single giant IMetrics with all methods","OCP with pushers implementing IMetricsSink","Hardcode \u0027prom\u0027 only","Global variable for sink"],"correctIndex":1,"explanation":"Using OCP with pushers implementing IMetricsSink allows adding new metrics sinks without editing the Metrics class, following the open/closed principle.","language":"python","snippet":"class Metrics:\n    def send(self, kind, value):\n        if kind == \u0027prom\u0027: push_prom(value)\n        elif kind == \u0027datadog\u0027: push_dd(value)\n        elif kind == \u0027stdout\u0027: print(value)\n"},{"question":"Which refactor best matches SOLID?","options":["Define IExporter and use a factory/DI to resolve (OCP \u002B DIP)","Make ExportService static","Merge exporters into one class","Throw NotImplemented for unknown"],"correctIndex":0,"explanation":"Defining IExporter and using factory/DI follows both OCP (can add new exporters without changing ExportService) and DIP (depends on abstractions, not concrete exporters).","language":"csharp","snippet":"class PdfExporter { public byte[] Export(Order o) { /*...*/ return new byte[0]; } }\nclass CsvExporter { public byte[] Export(Order o) { /*...*/ return new byte[0]; } }\nclass ExportService {\n  public byte[] Run(string fmt, Order o){\n    if(fmt==\u0022pdf\u0022) return new PdfExporter().Export(o);\n    if(fmt==\u0022csv\u0022) return new CsvExporter().Export(o);\n    return Array.Empty\u003Cbyte\u003E();\n  }\n}"},{"question":"What\u0027s the nuance here?","options":["LSP violation","DIP partially applied; but using concretes as defaults harms testability\u2014prefer interfaces/protocols and inject explicitly","ISP violation","OCP violation only"],"correctIndex":1,"explanation":"While this attempts to use DIP, using concrete classes as default parameters harms testability. It\u0027s better to use interfaces/protocols and inject dependencies explicitly.","language":"python","snippet":"class UserRepo:\n    def get(self, id): ...\nclass AuditRepo:\n    def log(self, m): ...\nclass Service:\n    def __init__(self, user_repo=UserRepo(), audit=AuditRepo()):\n        self.user_repo=user_repo; self.audit=audit"},{"question":"Does this respect LSP and why?","options":["Yes, as long as Pay() contract is honored; extras are fine","No, because extra methods break LSP","No, because abstract classes are bad","Yes, because it\u0027s faster"],"correctIndex":0,"explanation":"This respects LSP as long as the Pay() contract is honored. Derived types can add extra features like Mine() without breaking substitutability.","language":"csharp","snippet":"abstract class Payment { public abstract void Pay(); }\nclass CryptoPayment : Payment { public override void Pay(){ /* requires network */ }\n  public void Mine(){ /* extra */ }\n}\nvoid Checkout(Payment p){ p.Pay(); }"},{"question":"Pick the best SOLID-aligned change.","options":["Turn CsvReader into global","Introduce Reader interface/protocol and inject (DIP); later add JsonReader via OCP","Inline read into run","Add if path.endswith(\u0027.csv\u0027)"],"correctIndex":1,"explanation":"The best change is to introduce a Reader interface/protocol and inject it (DIP), which later allows adding JsonReader via OCP without modifying existing code.","language":"python","snippet":"class CsvReader:\n    def read(self, path): return open(path).read()\nclass ImportUseCase:\n    def run(self, path):\n        data = CsvReader().read(path)  # tight coupling\n        return parse(data)"}];        const quizMetadata = {
+            name: "SOLID \u2013 Code Snippet Challenge Quiz",
+            description: "Identify design issues and justify the correct SOLID principle with real C# and Python code snippets. A practical quiz for hands-on developers.",
+            id: "SOLIDCODE20250817006ABCDEF234567890"
+        };
+    </script>
+    <script src="/assets/js/quizs.js"></script>
+
+    </body>
+</html>

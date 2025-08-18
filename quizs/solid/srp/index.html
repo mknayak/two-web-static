@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TT494NCJZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TT494NCJZN');
+</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" />
+        <meta property='og:title' content='Quizs'/>
+        <meta property='og:image'/>
+        <meta property='og:description'/> 
+        <title>Quizs | TechWayFit</title>
+        <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
+        <link href="/assets/css/blog.min.css" rel="stylesheet" />
+        <link href="/assets/css/quiz-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/blog-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/theme-enhancements.css" rel="stylesheet" />
+         
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .quiz-progress-container {
+            background: #f8f9fa;
+            border-radius: 10        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 10px;
+            }
+            
+            .quiz-card-body {
+                padding: 15px;
+            }
+            
+            .quiz-question {
+                font-size: 1.1rem;
+            }
+            
+            .quiz-nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .quiz-back-btn, .quiz-next-btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .quiz-option {
+                padding: 12px;
+            }
+            
+            .quiz-option input[type="radio"] {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* Additional improvements */
+        .quiz-options {
+            max-width: 100%;
+        }
+
+        .quiz-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .quiz-card {
+            overflow: hidden;
+        }
+
+        .quiz-question {
+            word-wrap: break-word;
+        }  padding: 4px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-progress-track {
+            display: flex;
+            height: 8px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #e9ecef;
+        }
+
+        .quiz-progress-segment {
+            flex: 1;
+            margin-right: 2px;
+            background: #e9ecef;
+            transition: background-color 0.3s ease;
+        }
+
+        .quiz-progress-segment:last-child {
+            margin-right: 0;
+        }
+
+        .quiz-progress-segment.completed {
+            background: #28a745;
+        }
+
+        .quiz-progress-segment.current {
+            background: #007bff;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .quiz-card-body {
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            user-select: none;
+            position: relative;
+        }
+
+        .quiz-option:hover {
+            border-color: #007bff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+            background: #f0f8ff;
+        }
+
+        .quiz-option:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0,123,255,0.2);
+        }
+
+        .quiz-option.selected {
+            border-color: #007bff;
+            background: #e3f2fd;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin: 0;
+            margin-top: 2px;
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: #007bff;
+            pointer-events: none;
+        }
+
+        .quiz-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: #495057;
+            line-height: 1.5;
+            flex: 1;
+            pointer-events: none;
+        }
+
+        .quiz-card-footer {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-top: 1px solid #e9ecef;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .quiz-back-btn, .quiz-next-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .quiz-back-btn {
+            background: #6c757d;
+            color: white;
+            border: 2px solid #6c757d;
+        }
+
+        .quiz-back-btn:hover:not(:disabled) {
+            background: #5a6268;
+            border-color: #5a6268;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(108,117,125,0.3);
+        }
+
+        .quiz-back-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .quiz-next-btn {
+            background: #007bff;
+            color: white;
+            border: 2px solid #007bff;
+        }
+
+        .quiz-next-btn:hover:not(:disabled) {
+            background: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+        }
+
+        .quiz-next-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .quiz-status {
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .quiz-result {
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        .review-section {
+            margin-top: 20px;
+        }
+
+        .review-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .review-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .review-option {
+            padding: 8px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+
+        .review-option.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .review-option.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Reduce header padding */
+        .bg-light.py-10 {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+
+        .quiz-container.mb-10 {
+            margin-bottom: 2rem !important;
+        }        /* Remove excessive spacing */
+        .bg-light {
+            padding: 40px 0 !important;
+        }
+
+        .single-post {
+            margin-bottom: 0 !important;
+        }
+
+        .single-post h1 {
+            margin-bottom: 15px;
+        }
+
+        .single-post .lead {
+            margin-bottom: 20px;
+        }
+   
+
+        /* Loading Animation */
+        .quiz-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            flex-direction: column;
+        }
+
+        .quiz-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .quiz-container {
+                padding: 10px;
+            }
+            
+            .quiz-card-body {
+                padding: 15px;
+            }
+            
+            .quiz-question {
+                font-size: 1.1rem;
+            }
+            
+            .welcome-card {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .welcome-title {
+                font-size: 1.7rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Welcome Modal Styles */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .welcome-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 90%;
+            animation: modalSlideIn 0.5s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .name-input-group {
+            margin-bottom: 25px;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #007bff;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .welcome-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .welcome-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .welcome-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .returning-visitor {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .returning-visitor h4 {
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .returning-visitor p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Answer Filter Styles */
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .review-title {
+            margin: 0;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .answer-filter-options {
+            display: flex;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .filter-btn.active {
+            background: #007bff;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+        }
+
+        /* Enhanced Review Items */
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .question-status {
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .correct-status {
+            color: #28a745;
+        }
+
+        .incorrect-status {
+            color: #dc3545;
+        }
+
+        .review-item.correct-answer {
+            border-left: 4px solid #28a745;
+            background: #f8fff9;
+        }
+
+        .review-item.incorrect-answer {
+            border-left: 4px solid #dc3545;
+            background: #fff8f8;
+        }
+
+        .answer-options {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .empty-state h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Navigation Button Styles */
+        .navigation-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .nav-btn.primary-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn.primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .nav-btn.secondary-btn {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+
+        .nav-btn.secondary-btn:hover {
+            background: #e9ecef;
+            border-color: #007bff;
+            color: #007bff;
+            transform: translateY(-1px);
+        }
+
+        .final-cta {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .final-cta h5 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Mobile responsiveness for navigation */
+        @media (max-width: 768px) {
+            .navigation-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+
+        /* Mobile responsiveness for filter */
+        @media (max-width: 768px) {
+            .review-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .answer-filter-options {
+                justify-content: center;
+            }
+
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .answer-options {
+                margin-left: 0;
+            }
+
+            .question-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+ 
+
+        /* Enhanced Result Display */
+        .quiz-score-display {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .score-percentage {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+        .learning-suggestion, .success-celebration {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .learning-suggestion {
+            border-left: 4px solid #ffc107;
+        }
+
+        .success-celebration {
+            border-left: 4px solid #28a745;
+        }
+
+        .navigation-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .nav-btn.primary-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,123,255,0.3);
+        }
+
+        .nav-btn.primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.4);
+        }
+
+        .nav-btn.secondary-btn {
+            background: #fff;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .nav-btn.secondary-btn:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .final-cta h5 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .navigation-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Code Snippet Styling */
+        .code-snippet-container {
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .code-snippet-container pre {
+            margin: 0;
+            padding: 20px;
+            background: #2d3748;
+            color: #e2e8f0;
+            font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-snippet-container code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            border: none;
+            font-size: inherit;
+        }
+
+        /* Language-specific styling */
+        .language-csharp { border-left: 4px solid #239120; }
+        .language-python { border-left: 4px solid #3776ab; }
+        .language-javascript { border-left: 4px solid #f7df1e; }
+        .language-java { border-left: 4px solid #ed8b00; }
+        .language-typescript { border-left: 4px solid #3178c6; }
+        .language-cpp { border-left: 4px solid #00599c; }
+        .language-php { border-left: 4px solid #777bb4; }
+        .language-ruby { border-left: 4px solid #cc342d; }
+        .language-go { border-left: 4px solid #00add8; }
+
+        /* Syntax highlighting - basic colors */
+        .code-snippet-container .keyword { color: #f92672; }
+        .code-snippet-container .string { color: #a6e22e; }
+        .code-snippet-container .comment { color: #75715e; font-style: italic; }
+        .code-snippet-container .number { color: #ae81ff; }
+        .code-snippet-container .operator { color: #f8f8f2; }
+
+        /* Mobile responsiveness for code */
+        @media (max-width: 768px) {
+            .code-snippet-container pre {
+                padding: 15px;
+                font-size: 13px;
+            }
+        }
+    </style>
+
+        <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container px-5">
+                            <a href="/">
+								<img src="/assets/images/logo-3.webp" alt="TechWayFit" width="150" />
+							</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">                             
+                                    <ul class="navbar-nav ms-auto me-lg-5">                                   
+   
+   <li class="nav-item"><a class="nav-link" href="/blogs">Read our Blogs</a></li>
+   <li class="nav-item"><a class="nav-link" href="/quizs">Test your Skills</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+</ul>
+
+                            </div>
+                        </div>
+                    </nav>
+					
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="single-post">
+                <h1>SOLID &#x2013; Single Responsibility Principle Quiz</h1>
+                <p class="lead">Test your understanding of the Single Responsibility Principle (SRP). Learn to identify God classes, focused design, and when to split responsibilities.</p>
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="single-post-meta me-4">
+                        <img class="single-post-meta-img" src="/assets/images/blogs/solid/quiz.webp" />
+                        <div class="single-post-meta-details">
+                            <div class="single-post-meta-details-name">10 Questions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container quiz-container mb-5">
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="welcome-modal" style="display: none;">
+        <div class="welcome-card">
+            <div id="welcomeContent">
+                <!-- New visitor content -->
+                <div id="newVisitorContent">
+                    <h2 class="welcome-title">👋 Welcome!</h2>
+                    <p class="welcome-subtitle">How would you like me to address you during this quiz?</p>
+                    <div class="name-input-group">
+                        <input type="text" id="visitorName" class="name-input" placeholder="Enter your name..." maxlength="50" onkeypress="handleNameInput(event)">
+                    </div>
+                    <button id="startQuizBtn" class="welcome-btn" onclick="saveNameAndStart()">
+                        Let's Start the Quiz! 🚀
+                    </button>
+                </div>
+                <!-- Returning visitor content -->
+                <div id="returningVisitorContent" style="display: none;">
+                    <div class="returning-visitor">
+                        <h4>🎉 Welcome back!</h4>
+                        <p id="returningVisitorName"></p>
+                    </div>
+                    <p class="welcome-subtitle">Ready for another quiz challenge?</p>
+                    <button id="continueQuizBtn" class="welcome-btn" onclick="startQuizAfterWelcome()">
+                        Continue to Quiz 🚀
+                    </button>
+                    <p style="margin-top: 15px;">
+                        <a href="#" onclick="resetName()" style="color: #6c757d; font-size: 0.9rem;">Not you? Click here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="quizLoading" class="quiz-loading">
+        <div class="quiz-spinner"></div>
+        <p class="text-muted">Preparing your quiz...</p>
+    </div>
+
+    <!-- Progress Bar with Segments -->
+    <div id="quizProgressContainer" class="quiz-progress-container" style="display: none;">
+        <div class="quiz-progress-track" id="progressTrack">
+            <!-- Progress segments will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div id="status" class="quiz-status" style="display: none;"></div>
+    
+    <!-- Quiz Card -->
+    <div class="quiz-card" id="quizCard" style="display: none;">
+        <div class="quiz-card-body">
+            <h5 id="question" class="quiz-question"></h5>
+            <div id="optionsForm" class="quiz-options"></div>
+        </div>
+        <div class="quiz-card-footer">
+            <div class="quiz-nav-buttons">
+                <button id="backBtn" class="quiz-back-btn" onclick="previousQuestion()" disabled>
+                    ← Previous
+                </button>
+                <button id="nextBtn" class="quiz-next-btn" onclick="nextQuestion()" disabled>
+                    Next →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results -->
+    <div id="quizResult" class="quiz-result" style="display: none;"></div>
+    
+    <!-- Review Section -->
+    <div id="reviewSection" class="review-section"></div>
+</div>
+
+               
+                </main>
+            </div>
+            <div id="layoutDefault_footer">
+                    <!-- Page Header-->
+                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-3">
+                <div class="footer-brand">Tech Way Fit</div>
+                <div class="mb-3">Code it Right</Code></div>
+                <div class="icon-list-social mb-5">
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3" />
+        <div class="row gx-5 align-items-center">
+            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
+            <div class="col-md-6 text-md-end small">
+                <a href="/privacy-policy">Privacy Policy</a>
+                &middot;
+                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
+                <a href="/sitemap.xml">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+                </div>
+        </div>
+          <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script src="/assets/js/enhancements.js"></script>
+        
+        
+    <script>
+const questionSource = [{"question":"What is the key idea of the Single Responsibility Principle (SRP)?","options":["A class should only have one method","A class should avoid interfaces","A class should have one reason to change","A class should inherit only once"],"correctIndex":2,"explanation":"The key idea of SRP is that a class should have only one reason to change, meaning it should only have one job or responsibility.","language":null,"snippet":null},{"question":"Which scenario violates SRP?","options":["A class that only generates reports","A class that saves employee data AND generates employee reports","A class that only calculates tax","A class that only saves employee data"],"correctIndex":1,"explanation":"A class that saves employee data AND generates employee reports has two reasons to change, violating SRP.","language":null,"snippet":null},{"question":"What is a \u0027God class\u0027?","options":["A class with no dependencies","A class that contains too many responsibilities","A class that is abstract","A class with only one method"],"correctIndex":1,"explanation":"A \u0027God class\u0027 is a class that contains too many responsibilities, making it difficult to maintain and test.","language":null,"snippet":null},{"question":"What problem do God classes cause in enterprises?","options":["They make testing easier","They reduce the number of classes","They improve performance","They block scaling and cause frequent merge conflicts"],"correctIndex":3,"explanation":"God classes are often tightly coupled and have many dependencies, making them difficult to test in isolation.","language":null,"snippet":null},{"question":"How does SRP improve testing?","options":["By reducing database calls","By forcing use of inheritance","By isolating changes to a single reason","By increasing class size"],"correctIndex":2,"explanation":"SRP improves testing by isolating changes to a single reason, making it easier to unit test individual components.","language":null,"snippet":null},{"question":"What is a sign that a class violates SRP?","options":["It has private methods","It uses interfaces","It is less than 100 lines of code","It changes for multiple unrelated reasons"],"correctIndex":3,"explanation":"A class that changes for multiple unrelated reasons is a sign that it violates SRP.","language":null,"snippet":null},{"question":"Which principle complements SRP to avoid too many small classes?","options":["OCP","High Cohesion","DIP","DRY"],"correctIndex":1,"explanation":"High Cohesion complements SRP by ensuring that related logic stays together, reducing the need for excessive class splitting.","language":null,"snippet":null},{"question":"When should you split a class under SRP?","options":["Never split classes","Always, regardless of size","When it changes for multiple reasons","Only when it exceeds 1000 lines"],"correctIndex":2,"explanation":"You should split a class when it changes for multiple reasons, as this indicates a violation of SRP.","language":null,"snippet":null},{"question":"Which design pattern often helps apply SRP?","options":["Proxy Pattern","Decorator Pattern","Singleton Pattern","Repository Pattern"],"correctIndex":3,"explanation":"The Repository Pattern helps apply SRP by separating the data access logic from the business logic, allowing each to evolve independently.","language":null,"snippet":null},{"question":"Why is SRP important for scaling applications?","options":["Because it prevents inheritance","Because multiple teams can work on separate responsibilities safely","Because it improves UI","Because it reduces server cost"],"correctIndex":1,"explanation":"SRP is important for scaling applications because it allows multiple teams to work on separate responsibilities without stepping on each other\u0027s toes.","language":null,"snippet":null}];        const quizMetadata = {
+            name: "SOLID \u2013 Single Responsibility Principle Quiz",
+            description: "Test your understanding of the Single Responsibility Principle (SRP). Learn to identify God classes, focused design, and when to split responsibilities.",
+            id: "SOLIDSRP20250817001ABCDEF234567890"
+        };
+    </script>
+    <script src="/assets/js/quizs.js"></script>
+
+    </body>
+</html>
