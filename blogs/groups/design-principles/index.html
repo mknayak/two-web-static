@@ -20,9 +20,10 @@
         <title>Design Principles | TechWayFit</title>
         <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
         <link href="/assets/css/blog.min.css" rel="stylesheet" />
-        <link href="/assets/css/quiz-enhancements.css" rel="stylesheet" />
-        <link href="/assets/css/blog-enhancements.css" rel="stylesheet" />
-        <link href="/assets/css/theme-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/blog-enhancements.min.css" rel="stylesheet" />
+        <link href="/assets/css/theme-enhancements-min.css" rel="stylesheet" />
+         
+        <link href="/assets/css/dark-mode-min.css" rel="stylesheet" />
          
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
     </head>
@@ -227,7 +228,7 @@
 							</div>
 							<div class="card-body p-3 row">
 								<div class="col-md-5">
-									<img class="icon-stack-icon" src="/assets/images/blogs/solid/quiz.webp" alt="..." style="max-width: 100%;" />
+									<img class="icon-stack-icon" src="/assets/images/blogs/design-principles/quiz.webp" alt="..." style="max-width: 100%;" />
 								</div>
 								<div class="col-md-6">
 									Test your understanding of the Single Responsibility Principle (SRP). Learn to identify God classes, focused design, and when to split responsibilities.
@@ -244,7 +245,7 @@
 							</div>
 							<div class="card-body p-3 row">
 								<div class="col-md-5">
-									<img class="icon-stack-icon" src="/assets/images/blogs/solid/quiz.webp" alt="..." style="max-width: 100%;" />
+									<img class="icon-stack-icon" src="/assets/images/blogs/design-principles/quiz.webp" alt="..." style="max-width: 100%;" />
 								</div>
 								<div class="col-md-6">
 									Challenge yourself with questions on the Open/Closed Principle (OCP). Understand how to extend systems without modifying core logic.
@@ -261,7 +262,7 @@
 							</div>
 							<div class="card-body p-3 row">
 								<div class="col-md-5">
-									<img class="icon-stack-icon" src="/assets/images/blogs/solid/quiz.webp" alt="..." style="max-width: 100%;" />
+									<img class="icon-stack-icon" src="/assets/images/blogs/design-principles/quiz.webp" alt="..." style="max-width: 100%;" />
 								</div>
 								<div class="col-md-6">
 									Evaluate your grasp of the Liskov Substitution Principle (LSP). Spot violations in inheritance and ensure substitutability in your code.
@@ -278,7 +279,7 @@
 							</div>
 							<div class="card-body p-3 row">
 								<div class="col-md-5">
-									<img class="icon-stack-icon" src="/assets/images/blogs/solid/quiz.webp" alt="..." style="max-width: 100%;" />
+									<img class="icon-stack-icon" src="/assets/images/blogs/design-principles/quiz.webp" alt="..." style="max-width: 100%;" />
 								</div>
 								<div class="col-md-6">
 									Check your knowledge of the Interface Segregation Principle (ISP). Avoid fat interfaces and design client-specific contracts.
@@ -295,7 +296,7 @@
 							</div>
 							<div class="card-body p-3 row">
 								<div class="col-md-5">
-									<img class="icon-stack-icon" src="/assets/images/blogs/solid/quiz.webp" alt="..." style="max-width: 100%;" />
+									<img class="icon-stack-icon" src="/assets/images/blogs/design-principles/quiz.webp" alt="..." style="max-width: 100%;" />
 								</div>
 								<div class="col-md-6">
 									Master the Dependency Inversion Principle (DIP). Learn to depend on abstractions, improve testability, and decouple modules.
@@ -312,7 +313,7 @@
 							</div>
 							<div class="card-body p-3 row">
 								<div class="col-md-5">
-									<img class="icon-stack-icon" src="/assets/images/blogs/solid/quiz.webp" alt="..." style="max-width: 100%;" />
+									<img class="icon-stack-icon" src="/assets/images/blogs/design-principles/quiz.webp" alt="..." style="max-width: 100%;" />
 								</div>
 								<div class="col-md-6">
 									Identify design issues and justify the correct SOLID principle with real C# and Python code snippets. A practical quiz for hands-on developers.
@@ -331,28 +332,30 @@
             </div>
             <div id="layoutDefault_footer">
                     <!-- Page Header-->
-                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-    <div class="container px-5">
-        <div class="row gx-5">
-            <div class="col-lg-3">
-                <div class="footer-brand">Tech Way Fit</div>
-                <div class="mb-3">Code it Right</Code></div>
-                <div class="icon-list-social mb-5">
-                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <footer class="footer py-2 mt-auto bg-dark footer-dark">
+    <div class="container px-4">
+        <div class="row align-items-center">
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="footer-brand me-3">Tech Way Fit</div>
+                <div class="text-muted small">Code it Right</div>
+                <div class="icon-list-social ms-3 d-none d-lg-flex">
+                    <a class="icon-list-social-link me-2" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link me-2" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link me-2" href="#!"><i class="fab fa-github"></i></a>
                     <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-        </div>
-        <hr class="my-3" />
-        <div class="row gx-5 align-items-center">
-            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-            <div class="col-md-6 text-md-end small">
-                <a href="/privacy-policy">Privacy Policy</a>
-                &middot;
-                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                <a href="/sitemap.xml">Sitemap</a>
+            <div class="col-md-6">
+                <div class="row small text-md-end">
+                    <div class="col-12 mb-1">Copyright &copy; TechWayFit.com 2025</div>
+                    <div class="col-12">
+                        <a href="/privacy-policy">Privacy Policy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a href="/terms-of-service">Terms &amp; Conditions</a>
+                        <span class="mx-1">&middot;</span>
+                        <a href="/sitemap.xml">Sitemap</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

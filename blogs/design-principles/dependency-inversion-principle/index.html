@@ -20,12 +20,13 @@
         <title>Dependency Inversion Principle - Building Flexible, Testable Architectures | TechWayFit</title>
         <link href="/assets/css/twf-styles-min.css" rel="stylesheet" />
         <link href="/assets/css/blog.min.css" rel="stylesheet" />
-        <link href="/assets/css/quiz-enhancements.css" rel="stylesheet" />
-        <link href="/assets/css/blog-enhancements.css" rel="stylesheet" />
-        <link href="/assets/css/theme-enhancements.css" rel="stylesheet" />
+        <link href="/assets/css/blog-enhancements.min.css" rel="stylesheet" />
+        <link href="/assets/css/theme-enhancements-min.css" rel="stylesheet" />
          
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
 
+        <link href="/assets/css/dark-mode-min.css" rel="stylesheet" />
+         
         <link rel="icon" type="image/x-icon" href="/assets/favico.webp" />
     </head>
     <body>
@@ -800,28 +801,30 @@ class TestOrderProcessor(unittest.TestCase):
             </div>
             <div id="layoutDefault_footer">
                     <!-- Page Header-->
-                    <footer class="footer pt-4 pb-2 mt-auto bg-dark footer-dark">
-    <div class="container px-5">
-        <div class="row gx-5">
-            <div class="col-lg-3">
-                <div class="footer-brand">Tech Way Fit</div>
-                <div class="mb-3">Code it Right</Code></div>
-                <div class="icon-list-social mb-5">
-                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
+                    <footer class="footer py-2 mt-auto bg-dark footer-dark">
+    <div class="container px-4">
+        <div class="row align-items-center">
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="footer-brand me-3">Tech Way Fit</div>
+                <div class="text-muted small">Code it Right</div>
+                <div class="icon-list-social ms-3 d-none d-lg-flex">
+                    <a class="icon-list-social-link me-2" href="#!"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-list-social-link me-2" href="#!"><i class="fab fa-facebook"></i></a>
+                    <a class="icon-list-social-link me-2" href="#!"><i class="fab fa-github"></i></a>
                     <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-        </div>
-        <hr class="my-3" />
-        <div class="row gx-5 align-items-center">
-            <div class="col-md-6 small">Copyright &copy; TechWayFit.com 2025</div>
-            <div class="col-md-6 text-md-end small">
-                <a href="/privacy-policy">Privacy Policy</a>
-                &middot;
-                <a href="/terms-of-service">Terms &amp; Conditions</a>&middot;
-                <a href="/sitemap.xml">Sitemap</a>
+            <div class="col-md-6">
+                <div class="row small text-md-end">
+                    <div class="col-12 mb-1">Copyright &copy; TechWayFit.com 2025</div>
+                    <div class="col-12">
+                        <a href="/privacy-policy">Privacy Policy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a href="/terms-of-service">Terms &amp; Conditions</a>
+                        <span class="mx-1">&middot;</span>
+                        <a href="/sitemap.xml">Sitemap</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
